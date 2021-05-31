@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Leo/source/repos/_myMonoGames/Pong/myEngine/Content/myContent/Audio/BallHit_V1.mp3","C:/Users/Leo/source/repos/_myMonoGames/Pong/myEngine/Content/bin/DesktopGL/myContent/Audio/BallHit_V1.xnb","SoundEffectProcessor","SoundEffectContent",17385,74021,0,2745362
+"C:/Users/Leo/source/repos/_myMonoGames/Pong/myEngine/Content/myContent/Audio/BallHit_V2.mp3","C:/Users/Leo/source/repos/_myMonoGames/Pong/myEngine/Content/bin/DesktopGL/myContent/Audio/BallHit_V2.xnb","SoundEffectProcessor","SoundEffectContent",8745,32549,0,1442755
