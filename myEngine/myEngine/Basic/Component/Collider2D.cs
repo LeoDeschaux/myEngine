@@ -40,7 +40,7 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            DrawSimpleShape.DrawRectangle(new Vector2(rectangle.X, rectangle.Y), new Vector2(rectangle.Width, rectangle.Height), Color.Green, 1, 1000);
+            //DrawSimpleShape.DrawRectangle(new Vector2(rectangle.X, rectangle.Y), new Vector2(rectangle.Width, rectangle.Height), Color.Green, 1, 1000);
         }
     }
 }

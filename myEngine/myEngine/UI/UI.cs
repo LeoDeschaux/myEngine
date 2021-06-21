@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public abstract class UI
+    public abstract class UI : Entity
     {
         //FIELDS
 
@@ -15,8 +15,7 @@ namespace myEngine
         //METHODS
 
         //UPDATE & DRAW
-        public abstract void Update(GameTime gameTime);
-
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public abstract override void Update();
+        public abstract override void Draw(SpriteBatch spriteBatch);
     }
 }

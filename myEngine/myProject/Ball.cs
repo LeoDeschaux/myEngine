@@ -12,7 +12,7 @@ namespace myEngine
         //FIELDS
         public static int sizeX = 30, sizeY = 30;
         public Sprite sprite;
-        private Trail trail;
+        public Trail trail;
 
         private float speed = 12*60;
 
@@ -21,6 +21,7 @@ namespace myEngine
 
         //COMPONENTS
         //private AudioSource audioSource;
+        Collider2D collider;
 
         public enum BallState
         {
@@ -43,6 +44,7 @@ namespace myEngine
             trail.maxPoints = 3;
 
             AddComponent(new Collider2D(sprite));
+            //collider = new Collider2D(sprite);
         }
 
         //METHODS

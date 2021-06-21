@@ -14,12 +14,18 @@ namespace myEngine
         public float speed = 500;
 
         public Transform anchorPoint;
+        public Collider2D collider;
+
+        //SCORE
+        public int score = 0;
 
         //CONSTRUCTOR 
         public Player()
         {
             raquette = new Raquette();
             anchorPoint = new Transform();
+
+            AddComponent(new Collider2D(raquette.sprite));
         }
 
         //METHODS
@@ -29,6 +35,11 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+        }
+
+        public override void OnCollision(Collider2D other)
+        {
+            score++;
         }
     }
 }

@@ -74,11 +74,11 @@ namespace myEngine
             GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
             // TODO: Add your drawing code here
-            //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);
+            //spriteBatch.Begin();
+            //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Additive);
 
-            spriteBatch.Begin();
-            
             world.Draw(spriteBatch);
 
             spriteBatch.End();
