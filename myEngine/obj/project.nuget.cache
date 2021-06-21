@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "s1GOTovcvANM5Z1+jObew/E2eX6+ozXmr6UE2J8L+f2oipoNI6ZDPCr2TJnJJxDz/6PbRVKXIY/XqUvpYm1n+w==",
+  "dgSpecHash": "+F+b3+sMboRLsfpPQbyM6A5Bdxh3p2rvCEeBWJIebJtk/5I6GIe3oS3ckltMpUUJ9CEjKZoYY09zgchvYb7hXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Leo\\Documents\\GitHub\\FromGitHub\\myEngine\\myEngine\\myEngine.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Leo\\.nuget\\packages\\cyotek.drawing.bitmapfont\\2.0.1\\cyotek.drawing.bitmapfont.2.0.1.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\fontstashsharp.monogame\\0.9.3\\fontstashsharp.monogame.0.9.3.nupkg.sha512",
     "C:\\Users\\Leo\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
-    "C:\\Users\\Leo\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+    "C:\\Users\\Leo\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\stbimagesharp\\2.22.4\\stbimagesharp.2.22.4.nupkg.sha512",
+    "C:\\Users\\Leo\\.nuget\\packages\\stbtruetypesharp\\1.24.7\\stbtruetypesharp.1.24.7.nupkg.sha512"
   ],
   "logs": []
 }

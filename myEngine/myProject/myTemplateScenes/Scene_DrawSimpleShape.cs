@@ -35,8 +35,6 @@ namespace myEngine
             }
             if (input.GetMouseUp(0))
                 draw = false;
-
-            input.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

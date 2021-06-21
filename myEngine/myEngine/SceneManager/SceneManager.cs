@@ -11,12 +11,13 @@ namespace myEngine
     public class SceneManager : Entity
     {
         //FIELDS
-        public IScene currentScene;
+        public static IScene currentScene;
         private Input input;
 
         //CONSTRUCTOR
         public SceneManager()
         {
+            //currentScene = new Scene_MainMenu();
             currentScene = new Scene_MainMenu();
             input = new Input();
         }
@@ -30,28 +31,20 @@ namespace myEngine
         private void CheckInput_ChangeScene()
         {
             if (input.GetKeyDown(Keys.F1))
-            {
-                ClearScene();
-                currentScene = new Scene_Pong();
-            }
-
+                ChangeScene(new Scene_Pong());
             if (input.GetKeyDown(Keys.F2))
-            {
-                ClearScene();
-                currentScene = new Scene_DrawSimpleShape();
-            }
-
+                ChangeScene(new Scene_DrawSimpleShape());
             if (input.GetKeyDown(Keys.F3))
-            {
-                ClearScene();
-                currentScene = new Scene_Animation();
-            }
-
+                ChangeScene(new Scene_Animation());
             if (input.GetKeyDown(Keys.F4))
-            {
-                ClearScene();
-                currentScene = new Scene_ParticleSystem();
-            }
+                ChangeScene(new Scene_ParticleSystem());
+        }
+
+        public void ChangeScene(IScene scene)
+        {
+            ClearScene();
+            Type t = Type.GetType(scene.ToString());
+            currentScene = (IScene)Activator.CreateInstance(t);
         }
 
         private void ClearScene()

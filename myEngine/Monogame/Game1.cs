@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
 
 namespace myEngine
 {
@@ -12,13 +10,14 @@ namespace myEngine
         public static SpriteBatch spriteBatch;
 
         public static World world;
-        public SceneManager sceneManager;
+        public static SceneManager sceneManager;
         public static PhysicEngine physicEngine;
 
         private Settings settings;
 
         //DEBUG
         public static DebugInput debugInput;
+
 
         public Game1()
         { 
@@ -75,9 +74,13 @@ namespace myEngine
             GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
+            //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);
+
+            spriteBatch.Begin();
+            
             world.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

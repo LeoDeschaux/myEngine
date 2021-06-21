@@ -117,8 +117,6 @@ namespace myEngine
 
             //float myValue = myTweens[0].value;
             //mySprites[0].transform.SetPosition(mySprites[0].transform.GetPosition().X, myValue);
-
-            input.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -6,26 +6,35 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using System.IO;
+using FontStashSharp;
+
 namespace myEngine
 {
     public class Text : GameObject
     {
         //COMPONENTS
+        private FontSystem fontSystem;
 
         //FIELDS
         public string s;
         public SpriteFont font;
-        private float fontSize;
+        public int fontSize;
 
         public Color color;
 
         public int orderInLayer = 0;
 
+        public bool isVisible = true;
+
         //CONSTRUCTOR 
         public Text(string s = "new Text")
         {
+            fontSystem = FontSystemFactory.CreateStroked(Game1.spriteBatch.GraphicsDevice, 1, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
+            fontSystem.AddFont(File.ReadAllBytes(@"Content/myContent/UI/Fonts/arial.ttf"));
+
             this.s = s;
-            this.fontSize = 0.5f;
+            this.fontSize = 32;
 
             this.color = Color.Black;
 
@@ -36,17 +45,16 @@ namespace myEngine
         }
 
         //METHODS
-        public void SetFontSize(int x)
-        {
-            fontSize = (float)x / 80;
-        }
 
         //DRAW
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (font != null && s != null)
-                spriteBatch.DrawString(font, s, transform.position, color, transform.rotation, Microsoft.Xna.Framework.Vector2.Zero, transform.scale * fontSize, SpriteEffects.None,
-                    (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000); 
+            {
+                SpriteFontBase font18 = fontSystem.GetFont(fontSize);
+                spriteBatch.DrawString(font18, s, new Vector2(transform.position.X, transform.position.Y), color);
+                
+            }
         }
     }
 }

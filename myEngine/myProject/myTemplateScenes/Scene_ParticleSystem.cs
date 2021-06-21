@@ -42,8 +42,6 @@ namespace myEngine
             }
             else
                 particleEngine.isActive = false;
-
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)

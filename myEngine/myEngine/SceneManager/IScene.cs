@@ -15,7 +15,7 @@ namespace myEngine
         //CONSTRUCTOR
         public IScene()
         {
-            Game1.world.AddEntity(this);
+            Settings.BACKGROUND_COLOR = Color.Black;
         }
 
         //UPDATE & DRAW
