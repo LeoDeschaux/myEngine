@@ -36,7 +36,6 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
         }
     }
 }

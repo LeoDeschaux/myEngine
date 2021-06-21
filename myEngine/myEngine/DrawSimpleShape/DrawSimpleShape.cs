@@ -48,7 +48,7 @@ namespace myEngine
         }
 
         //##### DRAW RECTANGLE #####
-        public static void DrawRectangle(Vector2 position, Vector2 dimension, Color color, float thickness = 1f, int orderInLayer = 0)
+        public static void DrawRectangle(Vector2 position, Vector2 dimension, float rotation, Color color, float thickness = 1f, int orderInLayer = 0)
         {
             Vector2 point1 = position;
             Vector2 point2 = position + dimension;
@@ -62,6 +62,51 @@ namespace myEngine
 
             DrawLine(new Vector2(point2.X, point2.Y), new Vector2(point1.X, point2.Y), color, thickness, orderInLayer);
             DrawLine(new Vector2(point2.X, point2.Y), new Vector2(point2.X, point1.Y), color, thickness, orderInLayer);
+        }
+
+        public static void DrawRectangle(Rectangle rectangle, float rotation, Color color, float thickness = 1f, int orderInLayer = 0)
+        {
+            float angle = MathHelper.ToRadians(rotation);
+
+            Vector2 center = new Vector2(rectangle.X + (rectangle.Width / 2), rectangle.Y + (rectangle.Height / 2));
+            Vector2 point1 = new Vector2(rectangle.X, rectangle.Y);
+            Vector2 point2 = new Vector2(rectangle.X + rectangle.Width, rectangle.Y);
+            Vector2 point3 = new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height);
+            Vector2 point4 = new Vector2(rectangle.X, rectangle.Y + rectangle.Height);
+
+            Vector2 initPoint1 = point1;
+
+            //POINT1
+            float x = center.X + (rectangle.Width/2 * (float)Math.Cos((double)angle) - rectangle.Height / 2 * (float)Math.Sin((double)angle));
+            float y = center.Y + (rectangle.Width / 2 * (float)Math.Sin((double)angle) + rectangle.Height/2 * (float)Math.Cos((double)angle));
+            point1 = new Vector2(x, y);
+
+            //POINT2
+            angle += (float)Math.PI / 2;
+            x = center.X + (rectangle.Height / 2 * (float)Math.Cos((double)angle) - rectangle.Width / 2 * (float)Math.Sin((double)angle));
+            y = center.Y + (rectangle.Height / 2 * (float)Math.Sin((double)angle) + rectangle.Width / 2 * (float)Math.Cos((double)angle));
+            point2 = new Vector2(x, y);
+
+            //POINT3
+            angle += (float)Math.PI / 2;
+            x = center.X + (rectangle.Width/2 * (float)Math.Cos((double)angle) - rectangle.Height / 2 * (float)Math.Sin((double)angle));
+            y = center.Y + (rectangle.Width / 2 * (float)Math.Sin((double)angle) + rectangle.Height/2 * (float)Math.Cos((double)angle));
+            point3 = new Vector2(x, y);
+
+            //POINT4
+            angle += (float)Math.PI / 2;
+            x = center.X + (rectangle.Height / 2 * (float)Math.Cos((double)angle) - rectangle.Width / 2 * (float)Math.Sin((double)angle));
+            y = center.Y + (rectangle.Height / 2 * (float)Math.Sin((double)angle) + rectangle.Width / 2 * (float)Math.Cos((double)angle));
+            point4 = new Vector2(x, y);
+
+            //NEW RECTANGLE
+            DrawLine(point1, point2, Color.Red, 3f);
+            DrawLine(point2, point3, Color.Red, 3f);
+            DrawLine(point3, point4, Color.Red, 3f);
+            DrawLine(point4, point1, Color.Red, 3f);
+
+            //DIAGO
+            DrawLine(point1, point3, Color.Red, 3f);
         }
 
         public static void DrawRectangleFull(Vector2 position, Vector2 dimension, Color color, int orderInLayer = 0)
@@ -79,6 +124,15 @@ namespace myEngine
 
             Game1.spriteBatch.Draw(GetTexture(), r, null, color, 0, Vector2.Zero, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
+        }
+
+        public static void DrawRuller(Vector2 position, Color color)
+        {
+            //VERTICAL
+            DrawSimpleShape.DrawLine(new Vector2(position.X, 0), Settings.SCREEN_HEIGHT, MathHelper.ToRadians(90), color);
+            
+            //HORIZONTAL
+            DrawSimpleShape.DrawLine(new Vector2(0, position.Y), Settings.SCREEN_WIDTH, 0, color);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_MainMenu();
+            currentScene = new Scene_Pong();
             input = new Input();
         }
 
@@ -38,12 +38,21 @@ namespace myEngine
                 ChangeScene(new Scene_Animation());
             if (input.GetKeyDown(Keys.F4))
                 ChangeScene(new Scene_ParticleSystem());
+            if (input.GetKeyDown(Keys.F5))
+                ChangeScene(new Scene_PhysiqueEngine());
         }
 
         public void ChangeScene(IScene scene)
         {
             ClearScene();
             Type t = Type.GetType(scene.ToString());
+            currentScene = (IScene)Activator.CreateInstance(t);
+        }
+
+        public void ReloadScene()
+        {
+            ClearScene();
+            Type t = Type.GetType(currentScene.ToString());
             currentScene = (IScene)Activator.CreateInstance(t);
         }
 

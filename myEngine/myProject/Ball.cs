@@ -105,25 +105,33 @@ namespace myEngine
         
         public override void OnCollision(Collider2D other)
         {
-            //REBOND HORIZONTAL
-            if (transform.position.X > ((Player)other.gameObject).raquette.transform.position.X)
-                direction.X = 1;
-            if (transform.position.X < ((Player)other.gameObject).raquette.transform.position.X)
-                direction.X = -1;
+            if(other.gameObject is Player)
+            {
+                //REBOND HORIZONTAL
+                if (transform.position.X > ((Player)other.gameObject).raquette.transform.position.X)
+                    direction.X = 1;
+                if (transform.position.X < ((Player)other.gameObject).raquette.transform.position.X)
+                    direction.X = -1;
 
-            //VERTICAL
-            float raquettePosY = ((Player)other.gameObject).raquette.transform.position.Y;
-            float raquetteDimY = ((Player)other.gameObject).raquette.sprite.GetRectangle().Height;
+                //VERTICAL
+                float raquettePosY = ((Player)other.gameObject).raquette.transform.position.Y;
+                float raquetteDimY = ((Player)other.gameObject).raquette.sprite.GetRectangle().Height;
 
-            if (transform.position.Y < (raquettePosY - (raquetteDimY / 2)) + raquetteDimY / 3)
-                direction.Y = -1;
-            else if ((transform.position.Y > (raquettePosY - (raquetteDimY / 2)) + raquetteDimY / 3) &&
-                    transform.position.Y < (raquettePosY - (raquetteDimY / 2)) + (raquetteDimY / 3) * 2)
-                direction.Y = 0;
-            else if (transform.position.Y > (raquettePosY - (raquetteDimY / 2)) + (raquetteDimY / 3) * 2)
-                direction.Y = 1;
+                if (transform.position.Y < (raquettePosY - (raquetteDimY / 2)) + raquetteDimY / 3)
+                    direction.Y = -1;
+                else if ((transform.position.Y > (raquettePosY - (raquetteDimY / 2)) + raquetteDimY / 3) &&
+                        transform.position.Y < (raquettePosY - (raquetteDimY / 2)) + (raquetteDimY / 3) * 2)
+                    direction.Y = 0;
+                else if (transform.position.Y > (raquettePosY - (raquetteDimY / 2)) + (raquetteDimY / 3) * 2)
+                    direction.Y = 1;
 
-            OnBallChangeDirection(false);
+                OnBallChangeDirection(false);
+            }
+            else
+            {
+                other.Destroy();
+                other.gameObject.Destroy();
+            }
         }
 
         private void OnBallChangeDirection(bool isAWall)

@@ -1,7 +1,10 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
@@ -10,10 +13,14 @@ namespace myEngine
         //FIELDS
         private Input input;
 
+        public static Text t;
+
         //CONSTRUCTOR
         public DebugInput()
         {
             input = new Input();
+            t = new Text();
+            t.color = Color.White;
         }
 
         //METHODS
@@ -33,6 +40,13 @@ namespace myEngine
             else if (input.GetKeyDown(Keys.NumPad1) && Settings.GAME_SPEED == 0.1f)
                 Settings.GAME_SPEED = 1f;
 
+        }
+
+        public override void Draw(SpriteBatch sprite)
+        {
+            //MOUSE CURSOR
+            //DrawSimpleShape.DrawRuller(input.mousePos.ToVector2(), Color.Red);
+            t.s = input.mousePos.ToVector2().ToString();
         }
     }
 }

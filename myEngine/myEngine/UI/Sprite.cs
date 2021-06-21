@@ -10,7 +10,8 @@ namespace myEngine
     {
         //FIELDS
         public Texture2D texture;
-        private Vector2 dimension;
+        public Vector2 dimension;
+        private Vector2 origin;
         public Color color;
 
         private Rectangle sourceRectangle;
@@ -33,6 +34,10 @@ namespace myEngine
 
             color = Color.White;
             sourceRectangle = new Rectangle(0, 0, (int)dimension.X, (int)dimension.Y);
+
+            //origin = new Vector2((float)(GetRectangle().X), (float)(GetRectangle().Y));
+            //origin = Vector2.Zero;
+            origin = new Vector2(dimension.X / 2, dimension.Y / 2);
         }
 
         //METHODS
@@ -45,6 +50,15 @@ namespace myEngine
                 (int)(dimension.Y * transform.scale.Y));
         }
 
+        public Rectangle GetRec()
+        {
+            return new Rectangle(
+                (int)transform.position.X,
+                (int)transform.position.Y,
+                (int)dimension.X,
+                (int)dimension.Y);
+        }
+
         private Vector2 GetCenter()
         {
             return new Vector2(transform.position.X + (dimension.X / 2), transform.position.Y + (dimension.Y / 2));
@@ -54,7 +68,7 @@ namespace myEngine
         public override void Draw(SpriteBatch spriteBatch)
         {
             if(isVisible)
-            spriteBatch.Draw(this.texture, GetRectangle(), this.sourceRectangle, this.color, transform.rotation, Vector2.Zero, SpriteEffects.None, 
+            spriteBatch.Draw(this.texture, GetRec(), this.sourceRectangle, this.color, MathHelper.ToRadians(transform.rotation), origin, SpriteEffects.None, 
                 (float)( (Math.Clamp(orderInLayer, -1000, 1000)+1000)) / 2000);
         }
     }

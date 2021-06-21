@@ -9,7 +9,7 @@ namespace myEngine
     {
         //FIELDS
         //List<GameObject> gameObjects;
-        List<Entity> entities;
+        public List<Entity> entities;
         List<Component> components;
 
         //CONSTRUCTOR
@@ -38,15 +38,17 @@ namespace myEngine
 
         public void Draw(SpriteBatch spriteBatch)
         {
-
-            //foreach (GameObject g in gameObjects)
-            //    g.Draw(spriteBatch);
-
-            foreach (Entity e in entities)
+            for (int i = 0; i < entities.Count; i++)
+            {
+                Entity e = entities[i];
                 e.Draw(spriteBatch);
-            foreach (Component c in components)
+            }
+
+            for (int i = 0; i < components.Count; i++)
+            {
+                Component c = components[i];
                 c.Draw(spriteBatch);
-            
+            }
         }
 
         public void AddEntity(Entity e)

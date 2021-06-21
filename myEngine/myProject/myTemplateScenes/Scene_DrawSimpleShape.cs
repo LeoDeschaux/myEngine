@@ -42,7 +42,7 @@ namespace myEngine
             text.Draw(spriteBatch);
 
             if (draw)
-                DrawSimpleShape.DrawRectangle(pos, input.mousePos.ToVector2() - pos, Color.Red);
+                DrawSimpleShape.DrawRectangle(pos, input.mousePos.ToVector2() - pos, 0f, Color.Red);
         }
     }
 }

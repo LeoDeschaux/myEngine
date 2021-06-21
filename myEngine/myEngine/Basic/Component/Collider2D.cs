@@ -14,6 +14,8 @@ namespace myEngine
 
         private Sprite sprite;
 
+        public float scale = 1;
+
         //CONSTRUCTOR
 
         public Collider2D(Sprite sprite)
@@ -27,20 +29,28 @@ namespace myEngine
             {
                 this.sprite = sprite;
                 transformTarget = sprite.transform;
-                rectangle = sprite.GetRectangle();
+                rectangle = sprite.GetRec();
             }
         }
 
         //UPDATE & DRAW
         public override void Update()
         {
-            //rectangle = new Rectangle((int)transformTarget.position.X, (int)transformTarget.position.Y, rectangle.Width, rectangle.Height);
-            rectangle = sprite.GetRectangle();
+            rectangle = calculateRectangle();
+        }
+
+        private Rectangle calculateRectangle()
+        {
+            rectangle = sprite.GetRec();
+            Vector2 dimension = new Vector2(sprite.GetRec().Width, sprite.GetRec().Height);
+            Rectangle newRectangle = new Rectangle((int)(rectangle.X-(dimension.X*scale/2)), (int)(rectangle.Y-(dimension.Y*scale/2)), (int)(dimension.X*scale), (int)(dimension.Y*scale));
+            return newRectangle;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //DrawSimpleShape.DrawRectangle(new Vector2(rectangle.X, rectangle.Y), new Vector2(rectangle.Width, rectangle.Height), Color.Green, 1, 1000);
+            //you cannot rotate the rectangle, but 0 correspond to the rotation just in case..
+            //DrawSimpleShape.DrawRectangle(rectangle, 0, Color.Green, 2, 1000);
         }
     }
 }
