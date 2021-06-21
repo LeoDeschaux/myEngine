@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace myEngine
 {
@@ -13,6 +14,8 @@ namespace myEngine
         private static float ASPECT_RATIO;
 
         public static float GAME_SPEED = 1f;
+
+        public static Color BACKGROUND_COLOR = Color.Black;
 
         //REF
         private Game1 game;

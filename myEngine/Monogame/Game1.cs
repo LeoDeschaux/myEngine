@@ -21,7 +21,7 @@ namespace myEngine
         public static DebugInput debugInput;
 
         public Game1()
-        {
+        { 
             graphics = new GraphicsDeviceManager(this);
 
             Content.RootDirectory = "Content";
@@ -72,7 +72,7 @@ namespace myEngine
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);

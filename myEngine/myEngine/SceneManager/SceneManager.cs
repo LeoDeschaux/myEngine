@@ -17,7 +17,7 @@ namespace myEngine
         //CONSTRUCTOR
         public SceneManager()
         {
-            currentScene = new Scene_Pong();
+            currentScene = new Scene_MainMenu();
             input = new Input();
         }
 
