@@ -10,9 +10,10 @@ namespace myEngine
     public class ParticleProfile
     {
         //FIELDS
-        public bool burstMode = false; // != looping
+        public bool burstMode = false;
+        public bool loopMode = false;
         public bool startAwake = true;
-        public float duration = 5f;
+        public float duration = 3f;
 
         //NUMBERS
         public int burstAmount = 10;

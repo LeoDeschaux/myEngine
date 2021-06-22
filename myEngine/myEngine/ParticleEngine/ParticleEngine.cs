@@ -72,8 +72,13 @@ namespace myEngine
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
-                    isActive = false;
-                    timeToDestroy = true;
+                    if (!profile.loopMode)
+                    {
+                        isActive = false;
+                        timeToDestroy = true;
+                    }
+                    else
+                        timer = profile.duration;
                 }
             }
 

@@ -21,7 +21,7 @@ namespace myEngine
         public virtual void Draw(SpriteBatch sprite) { }
 
         //METHODS
-        public void Destroy()
+        public virtual void Destroy()
         {
             OnDestroy();
             Game1.world.RemoveEntity(this);

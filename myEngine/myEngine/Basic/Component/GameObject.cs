@@ -50,6 +50,16 @@ namespace myEngine
 
         public virtual void OnCollision(Collider2D other) { }
 
+        public override void Destroy()
+        {
+            base.Destroy();
+
+            foreach (Component c in components)
+            {
+                c.Destroy();
+            }
+        }
+
         public override void OnDestroy() { }
     }
 }

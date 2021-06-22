@@ -49,7 +49,7 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            //you cannot rotate the rectangle, but 0 correspond to the rotation just in case..
+            //you cannot rotate a rectangle, but 0 correspond to the rotation just in case..
             if(Settings.DEBUG_MODE)
                 DrawSimpleShape.DrawRectangle(rectangle, 0, Color.Green, 2, 1000);
         }

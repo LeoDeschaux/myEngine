@@ -21,6 +21,8 @@ namespace myEngine
             
             ParticleProfile pp = new ParticleProfile(p);
             pp.maxParticles = 1000;
+            pp.burstMode = false;
+            pp.loopMode = true;
 
             particleEngine = new ParticleEngine(pp, Vector2.Zero);
             particleEngine.isActive = false;
