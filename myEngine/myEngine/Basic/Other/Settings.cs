@@ -11,6 +11,7 @@ namespace myEngine
         //FIELDS
         public static int SCREEN_WIDTH = 1280;
         public static int SCREEN_HEIGHT = 720;
+
         private static float ASPECT_RATIO;
 
         public static float GAME_SPEED = 1f;
@@ -20,7 +21,7 @@ namespace myEngine
         public static bool DEBUG_MODE = false;
 
         //REF
-        private Game1 game;
+        public Game1 game;
 
         //CONSTRUCTOR
         public Settings(Game1 game)
@@ -34,9 +35,6 @@ namespace myEngine
 
             game.Window.AllowUserResizing = true;
             game.Window.ClientSizeChanged += OnResize;
-
-            //game.graphics.SynchronizeWithVerticalRetrace = false;
-            //game.IsFixedTimeStep = false;
 
             game.Window.Title = "MonogameV2";
             game.graphics.ApplyChanges();
@@ -55,7 +53,7 @@ namespace myEngine
                 Settings.SCREEN_HEIGHT = game.Window.ClientBounds.Height;
                 Settings.SCREEN_WIDTH = (int)((float)Settings.SCREEN_HEIGHT * ASPECT_RATIO);
             }
-
+            
             game.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             game.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
@@ -70,11 +68,6 @@ namespace myEngine
             Debug();
         }
 
-        public void Draw()
-        {
-
-        }
-
         public void Debug()
         {
             //DEBUG
@@ -87,6 +80,5 @@ namespace myEngine
         {
             return new Vector2((float)SCREEN_WIDTH / 2, (float)SCREEN_HEIGHT / 2);
         }
-
     }
 }

@@ -14,8 +14,10 @@ namespace myEngine
 
         public static SpriteFont defaultFont;
         public static SoundEffect ball_hit_raquette, ball_hit_wall;
-        public static SoundEffect target_hit_small_v1, target_hit_small_v2;
-        public static SoundEffect target_hit_medium, target_hit_big;
+        public static SoundEffect[] target_hit_sounds;
+
+        //RANDOM
+        static Random random;
 
         public static void LoadImages(ContentManager content)
         {
@@ -44,11 +46,18 @@ namespace myEngine
             ball_hit_raquette = content.Load<SoundEffect>("myContent/Audio/BallHit_V1");
             ball_hit_wall = content.Load<SoundEffect>("myContent/Audio/BallHit_V2");
 
-            target_hit_small_v1 = content.Load<SoundEffect>("myContent/Audio/TargetHit_Small");
-            target_hit_small_v2 = content.Load<SoundEffect>("myContent/Audio/TargetHit_SmallV2");
+            target_hit_sounds = new SoundEffect[4];
+            target_hit_sounds[0] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Small");
+            target_hit_sounds[1] = content.Load<SoundEffect>("myContent/Audio/TargetHit_SmallV2");
+            target_hit_sounds[2] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Medium");
+            target_hit_sounds[3] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Big");
+        }
 
-            target_hit_medium = content.Load<SoundEffect>("myContent/Audio/TargetHit_Medium");
-            target_hit_big = content.Load<SoundEffect>("myContent/Audio/TargetHit_Big");
+        public static SoundEffect GetSound(SoundEffect[] sounds)
+        {
+            random = new Random();
+            SoundEffect s = sounds[random.Next(0, sounds.Length)];
+            return s;
         }
     }
 }

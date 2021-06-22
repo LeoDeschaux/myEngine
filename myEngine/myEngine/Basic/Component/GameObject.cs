@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class GameObject : Entity
+    public class GameObject : Entity, IDisposable
     {
         //FIELDS
         public string name;
@@ -59,7 +59,5 @@ namespace myEngine
                 c.Destroy();
             }
         }
-
-        public override void OnDestroy() { }
     }
 }

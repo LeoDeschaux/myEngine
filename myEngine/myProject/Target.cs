@@ -6,10 +6,10 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Target : GameObject
+    public class Target : GameObject, IDisposable
     {
         //FIELDS
-        Sprite sprite;
+        public Sprite sprite;
 
         //CONSTRUCTOR
         public Target()
@@ -43,7 +43,7 @@ namespace myEngine
             ParticleEngine pe = new ParticleEngine(pp, sprite.transform.position);
 
             //AUDIO
-            AudioSource.PlaySoundEffect(Ressources.target_hit_small_v1);
+            AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[0]);
 
             this.GetComponent<Collider2D>().Destroy();
             sprite.Destroy();

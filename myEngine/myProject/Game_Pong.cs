@@ -14,7 +14,7 @@ namespace myEngine
         public Player player_Human;
         public Ball ball;
 
-        public Target target;
+        public TargetSpawner targetSpawner;
 
         //CONSTRUCTOR
         public Game_Pong()
@@ -24,17 +24,21 @@ namespace myEngine
 
             ball = new Ball(player_Human.anchorPoint);
 
-            target = new Target();
+            targetSpawner = new TargetSpawner();
         }
 
         //UPDATE & DRAW
         public override void Update()
         {
-            if (Scene_Pong.input.GetKey(Keys.Delete))
+            if (Scene_Pong.input.GetKeyDown(Keys.Delete))
             {
                 ball.Destroy();
                 ball.sprite.Destroy();
                 ball.trail.Destroy();
+            }
+            if(Scene_Pong.input.GetKeyDown(Keys.Tab))
+            {
+                targetSpawner.SpawnNewTarget();
             }
         }
 

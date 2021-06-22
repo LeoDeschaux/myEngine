@@ -22,7 +22,6 @@ namespace myEngine
         private float timer;
         public bool isActive;
 
-
         //CONSTRUCTOR
         public ParticleEngine(ParticleProfile profile, Vector2 location)
         {

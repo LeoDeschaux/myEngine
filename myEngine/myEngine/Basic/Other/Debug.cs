@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
-    public class DebugInput : Entity
+    public class Debug : Entity
     {
         //FIELDS
         private Input input;
@@ -16,7 +16,7 @@ namespace myEngine
         public static Text t;
 
         //CONSTRUCTOR
-        public DebugInput()
+        public Debug()
         {
             input = new Input();
             t = new Text();

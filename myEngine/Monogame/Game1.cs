@@ -13,10 +13,10 @@ namespace myEngine
         public static SceneManager sceneManager;
         public static PhysicEngine physicEngine;
 
-        private Settings settings;
+        public static Settings settings;
 
         //DEBUG
-        public static DebugInput debugInput;
+        public static Debug debug;
 
 
         public Game1()
@@ -31,6 +31,7 @@ namespace myEngine
         {
             // TODO: Add your initialization logic here
             settings = new Settings(this);
+            Settings_Init.InitSettingsFromFile(settings);
 
             base.Initialize();
         }
@@ -49,7 +50,7 @@ namespace myEngine
             sceneManager = new SceneManager();
 
             //DEBUG
-            debugInput = new DebugInput();
+            debug = new Debug();
         }
 
         protected override void Update(GameTime gameTime)

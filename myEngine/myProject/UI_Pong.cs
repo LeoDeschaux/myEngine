@@ -44,15 +44,11 @@ namespace myEngine
 
                 Sprite s = new Sprite(livesPlayer[i].transform.position, livesPlayer[i].dimension*0.8f);
                 s.orderInLayer = 1000;
-                s.color = Color.Red;
+                s.color = Color.HotPink;
             }
-
-            livesPlayer[0].AddComponent(new Collider2D(livesPlayer[0]));
-            livesPlayer[0].GetComponent<Collider2D>().scale *= 2;
 
             //SET AI LIVES
             livesAI = new Sprite[3];
-
         }
 
         public override void Update()

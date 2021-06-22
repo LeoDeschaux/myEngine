@@ -5,10 +5,12 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Entity
+    public class Entity : IDisposable
     {
         //FIELDS
         //public bool dontDestroyOnLoad = false;
+
+        public bool disposed = false;
 
         //CONSTRUCTOR
         public Entity()
@@ -24,9 +26,15 @@ namespace myEngine
         public virtual void Destroy()
         {
             OnDestroy();
+            Dispose();
             Game1.world.RemoveEntity(this);
         }
 
         public virtual void OnDestroy() { }
+
+        public void Dispose()
+        {
+            disposed = true;
+        }
     }
 }
