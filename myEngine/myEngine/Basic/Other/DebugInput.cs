@@ -40,6 +40,11 @@ namespace myEngine
             else if (input.GetKeyDown(Keys.NumPad1) && Settings.GAME_SPEED == 0.1f)
                 Settings.GAME_SPEED = 1f;
 
+            if (input.GetKeyDown(Keys.F12) && !Settings.DEBUG_MODE)
+                Settings.DEBUG_MODE = true;
+            else if (input.GetKeyDown(Keys.F12) && Settings.DEBUG_MODE)
+                Settings.DEBUG_MODE = false;
+
         }
 
         public override void Draw(SpriteBatch sprite)

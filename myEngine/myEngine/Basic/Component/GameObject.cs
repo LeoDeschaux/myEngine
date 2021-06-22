@@ -49,5 +49,7 @@ namespace myEngine
         }
 
         public virtual void OnCollision(Collider2D other) { }
+
+        public override void OnDestroy() { }
     }
 }

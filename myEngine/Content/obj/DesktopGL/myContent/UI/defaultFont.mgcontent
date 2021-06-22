@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Leo/source/repos/_myMonoGames/Pong/myEngine/Content/myContent/UI/DefaultFont.spritefont</SourceFile>
+  <SourceFile>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/myContent/UI/DefaultFont.spritefont</SourceFile>
   <SourceTime>2021-05-10T19:55:15.6743224+02:00</SourceTime>
-  <DestFile>C:/Users/Leo/source/repos/_myMonoGames/Pong/myEngine/Content/bin/DesktopGL/myContent/UI/defaultFont.xnb</DestFile>
-  <DestTime>2021-05-31T20:43:00.9074351+02:00</DestTime>
+  <DestFile>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/bin/DesktopGL/myContent/UI/defaultFont.xnb</DestFile>
+  <DestTime>2021-06-22T15:04:00.7071418+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

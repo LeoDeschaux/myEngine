@@ -129,7 +129,6 @@ namespace myEngine
             }
             else
             {
-                other.Destroy();
                 other.gameObject.Destroy();
             }
         }
@@ -148,10 +147,6 @@ namespace myEngine
                 AudioSource.PlaySoundEffect(Ressources.ball_hit_wall);
             else
                 AudioSource.PlaySoundEffect(Ressources.ball_hit_raquette);
-
-
-            //AUDIO
-
         }
     }
 }

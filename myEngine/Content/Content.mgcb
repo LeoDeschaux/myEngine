@@ -25,6 +25,30 @@
 /processorParam:Quality=Best
 /build:myContent/Audio/BallHit_V2.mp3
 
+#begin myContent/Audio/TargetHit_Big.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:myContent/Audio/TargetHit_Big.mp3
+
+#begin myContent/Audio/TargetHit_Medium.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:myContent/Audio/TargetHit_Medium.mp3
+
+#begin myContent/Audio/TargetHit_Small.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:myContent/Audio/TargetHit_Small.mp3
+
+#begin myContent/Audio/TargetHit_SmallV2.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:myContent/Audio/TargetHit_SmallV2.mp3
+
 #begin myContent/ParticleSystem/circle.png
 /importer:TextureImporter
 /processor:TextureProcessor

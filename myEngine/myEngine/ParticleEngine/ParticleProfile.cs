@@ -19,7 +19,6 @@ namespace myEngine
         public int emissionRate = 100;
         public int maxParticles = 1000;
 
-
         //PARTICLE
         public Particle particle;
 
@@ -37,6 +36,7 @@ namespace myEngine
                     DrawSimpleShape.GetTexture(10, 10),
                     Vector2.Zero,
                     Vector2.Zero,
+                    1,
                     0f,
                     0f,
                     Color.White,

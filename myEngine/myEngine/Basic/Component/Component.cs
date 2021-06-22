@@ -29,7 +29,10 @@ namespace myEngine
         //METHODS
         public void Destroy()
         {
+            OnDestroy();
             Game1.world.RemoveComponent(this);
         }
+
+        public virtual void OnDestroy() { }
     }
 }

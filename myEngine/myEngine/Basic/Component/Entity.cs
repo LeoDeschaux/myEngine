@@ -23,7 +23,10 @@ namespace myEngine
         //METHODS
         public void Destroy()
         {
+            OnDestroy();
             Game1.world.RemoveEntity(this);
         }
+
+        public virtual void OnDestroy() { }
     }
 }

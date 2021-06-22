@@ -14,6 +14,7 @@ namespace myEngine
         private Random random;
         public Vector2 EmitterLocation { get; set; }
         private List<Particle> particles;
+        private int totalParticlesSpawned;
 
         //PARTICLE PROFILE
         private ParticleProfile profile;
@@ -47,6 +48,8 @@ namespace myEngine
                     1f * (float)(random.NextDouble() * 2 - 1),
                     1f * (float)(random.NextDouble() * 2 - 1));
 
+            float speed = profile.particle.Speed;
+
             float angle = profile.particle.Angle;
 
             float angularVelocity = 0.1f * (float)(random.NextDouble() * 2 - 1);
@@ -54,28 +57,40 @@ namespace myEngine
             Color color = profile.particle.Color;
             float size = 0.1f + profile.particle.Size * (float)random.NextDouble();
 
-            float ttl = 0.1f + (float)random.NextDouble() * 1f;
+            float ttl = 0.1f + (float)random.NextDouble() * profile.particle.TTL;
 
-            return new Particle(texture, position, velocity, angle, angularVelocity, color, size, ttl);
+            return new Particle(texture, position, velocity, speed, angle, angularVelocity, color, size, ttl);
         }
 
         //UPDATE & DRAW
         public override void Update()
         {
-            if(profile.burstMode)
+            bool timeToDestroy = false;
+
+            if (!profile.burstMode)
             {
                 timer -= Time.deltaTime;
                 if (timer <= 0)
+                {
                     isActive = false;
+                    timeToDestroy = true;
+                }
+            }
+
+            if (profile.burstMode && totalParticlesSpawned == profile.burstAmount)
+            {
+                isActive = false;
+                timeToDestroy = true;
             }
 
             if (isActive)
             {
                 if(profile.burstMode)
                 {
-                    for (int i = 0; i < profile.burstAmount - particles.Count; i++)
+                    for (int i = 0; i < profile.burstAmount; i++)
                     {
                         particles.Add(GenerateNewParticle());
+                        totalParticlesSpawned++;
                     }
                 }
                 else
@@ -98,9 +113,10 @@ namespace myEngine
                 }
             }
 
-            bool timeToDestroy = isActive && profile.burstMode == true ? true : false;
             if (particles.Count == 0 && timeToDestroy)
+            {
                 Destroy();
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

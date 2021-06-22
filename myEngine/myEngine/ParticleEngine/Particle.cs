@@ -19,9 +19,10 @@ namespace myEngine
         public Color Color { get; set; }            // The color of the particle
         public float Size { get; set; }                // The size of the particle
         public float TTL { get; set; }                // The 'time to live' of the particle
+        public float Speed { get; set; }
 
         //CONSTRUCTOR
-        public Particle(Texture2D texture, Vector2 position, Vector2 velocity,
+        public Particle(Texture2D texture, Vector2 position, Vector2 velocity, float speed,
             float angle, float angularVelocity, Color color, float size, float ttl)
         {
             Texture = texture;
@@ -32,6 +33,7 @@ namespace myEngine
             Color = color;
             Size = size;
             TTL = ttl;
+            Speed = speed;
         }
 
         public Particle(Texture2D texture)
@@ -44,13 +46,14 @@ namespace myEngine
             Color = Color.White;
             Size = 1f;
             TTL = 1;
+            Speed = 1;
         }
 
         //UPDATE & DRAW
         public void Update()
         {
             TTL -= Time.deltaTime;
-            Position += Velocity * Time.deltaTime * 60;
+            Position += Velocity * Speed * Time.deltaTime * 60;
             Angle += AngularVelocity * Time.deltaTime * 60;
         }
 

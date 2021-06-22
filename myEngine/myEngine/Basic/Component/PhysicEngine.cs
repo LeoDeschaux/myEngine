@@ -21,6 +21,11 @@ namespace myEngine
             collider2Ds.Add(collider);
         }
 
+        public void RemoveCollider2D(Collider2D collider)
+        {
+            collider2Ds.Remove(collider);
+        }
+
         //UPDATE 
         public void Update()
         {

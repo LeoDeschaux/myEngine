@@ -17,6 +17,8 @@ namespace myEngine
 
         public static Color BACKGROUND_COLOR = Color.Black;
 
+        public static bool DEBUG_MODE = false;
+
         //REF
         private Game1 game;
 

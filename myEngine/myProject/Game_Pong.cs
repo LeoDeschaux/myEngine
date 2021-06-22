@@ -14,6 +14,8 @@ namespace myEngine
         public Player player_Human;
         public Ball ball;
 
+        public Target target;
+
         //CONSTRUCTOR
         public Game_Pong()
         {
@@ -21,6 +23,8 @@ namespace myEngine
             player_Human = new Player_Human();
 
             ball = new Ball(player_Human.anchorPoint);
+
+            target = new Target();
         }
 
         //UPDATE & DRAW
