@@ -11,14 +11,14 @@ namespace myEngine
     public class SceneManager : Entity
     {
         //FIELDS
-        public static IScene currentScene;
+        private IScene currentScene;
         private Input input;
 
         //CONSTRUCTOR
         public SceneManager()
         {
             //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_Pong();
+            currentScene = new Scene_MainMenu();
             input = new Input();
         }
 
@@ -47,6 +47,8 @@ namespace myEngine
             ClearScene();
             Type t = Type.GetType(scene.ToString());
             currentScene = (IScene)Activator.CreateInstance(t);
+
+            Console.WriteLine("Nombre d'obj:" + Game1.world.entities.Count);
         }
 
         public void ReloadScene()

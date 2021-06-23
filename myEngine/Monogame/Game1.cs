@@ -18,7 +18,6 @@ namespace myEngine
         //DEBUG
         public static Debug debug;
 
-
         public Game1()
         { 
             graphics = new GraphicsDeviceManager(this);

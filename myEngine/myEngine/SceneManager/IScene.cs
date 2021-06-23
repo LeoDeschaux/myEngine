@@ -16,6 +16,7 @@ namespace myEngine
         public IScene()
         {
             Settings.BACKGROUND_COLOR = Color.Black;
+            Settings.GAME_SPEED = 1;
         }
 
         //UPDATE & DRAW

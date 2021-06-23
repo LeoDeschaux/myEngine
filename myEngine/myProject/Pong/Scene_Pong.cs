@@ -14,8 +14,6 @@ namespace myEngine
         public static Game_Pong game;
         public UI ui;
 
-        
-
         //CONSTRUCTOR
         public Scene_Pong()
         {
@@ -29,7 +27,11 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            //Console.WriteLine(Game1.world.entities.Count);
+            if (input.GetKeyDown(Keys.None))
+            {
+                ((UI_Pong) ui).OnPauseMenuCalled();
+                //Game1.sceneManager.ChangeScene(new Scene_MainMenu());
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

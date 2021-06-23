@@ -12,8 +12,6 @@ namespace myEngine
     {
         //FIELDS
         public Input input;
-        public Game_Pong game;
-        public UI ui;
 
         //CONSTRUCTOR
         public Scene_MainMenu()

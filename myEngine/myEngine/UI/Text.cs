@@ -52,8 +52,12 @@ namespace myEngine
             if (font != null && s != null)
             {
                 SpriteFontBase font18 = fontSystem.GetFont(fontSize);
-                spriteBatch.DrawString(font18, s, new Vector2(transform.position.X, transform.position.Y), color);
-                
+                //spriteBatch.DrawString(font18, s, new Vector2(transform.position.X, transform.position.Y), color);
+
+                spriteBatch.DrawString(font18, s, transform.position, color, transform.scale, transform.rotation, Vector2.Zero,
+                    (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
+
+                //spriteBatch.DrawString(font18, s, transform.position, color, transform.scale, transform.rotation, Vector2.Zero, orderInLayer);
             }
         }
     }
