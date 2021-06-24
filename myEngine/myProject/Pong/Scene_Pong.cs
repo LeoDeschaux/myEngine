@@ -20,6 +20,8 @@ namespace myEngine
             input = new Input();
             game = new Game_Pong();
             ui = new UI_Pong();
+
+            Console.WriteLine("CECI EST LA VERSION PVP ?");
         }
 
         //METHODS
