@@ -21,9 +21,11 @@ namespace myEngine
         public float TTL { get; set; }                // The 'time to live' of the particle
         public float Speed { get; set; }
 
+        public int OrderInLayer = 0;
+
         //CONSTRUCTOR
         public Particle(Texture2D texture, Vector2 position, Vector2 velocity, float speed,
-            float angle, float angularVelocity, Color color, float size, float ttl)
+            float angle, float angularVelocity, Color color, float size, float ttl, int orderInLayer)
         {
             Texture = texture;
             Position = position;
@@ -34,6 +36,8 @@ namespace myEngine
             Size = size;
             TTL = ttl;
             Speed = speed;
+
+            OrderInLayer = orderInLayer;
         }
 
         public Particle(Texture2D texture)
@@ -63,7 +67,8 @@ namespace myEngine
             Vector2 origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
 
             spriteBatch.Draw(Texture, Position, sourceRectangle, Color,
-                Angle, origin, Size, SpriteEffects.None, 0f);
+                Angle, origin, Size, SpriteEffects.None, 
+                (float)((Math.Clamp(OrderInLayer, -1000, 1000) + 1000)) / 2000);
         }
     }
 }

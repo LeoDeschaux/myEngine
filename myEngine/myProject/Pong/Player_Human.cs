@@ -39,6 +39,7 @@ namespace myEngine
             {
                 Scene_Pong.game.ball.FireBall(0);
                 Console.WriteLine("FIRE");
+                Scene_Pong.game.targetSpawner.Start();
             }
         }
     }

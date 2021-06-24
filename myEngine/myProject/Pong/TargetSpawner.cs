@@ -15,6 +15,8 @@ namespace myEngine
 
         private Random random;
 
+        private bool isActive = false;
+
         //CONSTRUCTOR
         public TargetSpawner()
         {
@@ -25,24 +27,33 @@ namespace myEngine
             zoneRectangle = new Rectangle((int)(position.X - (dimension.X / 2)), (int)(position.Y - (dimension.Y / 2)), (int)dimension.X, (int)dimension.Y);
 
             //zoneRectangle = new Rectangle(Settings.Get_Screen_Center().ToPoint(), (Vector2.One * 200).ToPoint());
-            SpawnNewTarget();
+            //SpawnNewTarget();
         }
 
         Delay delay;
-        public void OnTargetDestroyed()
+        public void SpawnNewTarget()
         {
             if(delay != null)
                 delay.Destroy();
 
             delay = new Delay(2000, () =>
             {
-                SpawnNewTarget();
+                SpawnTarget();
             });
         }
 
-        //METHODS
-        public void SpawnNewTarget()
+        public void Start()
         {
+            isActive = true;
+            SpawnNewTarget();
+        }
+
+        //METHODS
+        public void SpawnTarget()
+        {
+            if (!isActive)
+                return;
+
             if (target == null)
                 target = new Target();
 

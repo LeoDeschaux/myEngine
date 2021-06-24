@@ -45,7 +45,7 @@ namespace myEngine
             this.GetComponent<Collider2D>().Destroy();
             sprite.Destroy();
 
-            Scene_Pong.game.targetSpawner.OnTargetDestroyed();
+            Scene_Pong.game.targetSpawner.SpawnNewTarget();
         }
 
         public override void OnCollision(Collider2D other)

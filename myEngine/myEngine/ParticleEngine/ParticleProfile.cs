@@ -42,7 +42,8 @@ namespace myEngine
                     0f,
                     Color.White,
                     1,
-                    1
+                    1,
+                    0
                 );
             }
         }

@@ -58,7 +58,9 @@ namespace myEngine
 
             float ttl = 0.1f + (float)random.NextDouble() * profile.particle.TTL;
 
-            return new Particle(texture, position, velocity, speed, angle, angularVelocity, color, size, ttl);
+            int orderInLayer = profile.particle.OrderInLayer;
+
+            return new Particle(texture, position, velocity, speed, angle, angularVelocity, color, size, ttl, orderInLayer);
         }
 
         //UPDATE & DRAW
