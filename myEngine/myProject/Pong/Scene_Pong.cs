@@ -35,8 +35,6 @@ namespace myEngine
 
             if (input.GetKeyDown(Keys.Tab))
             {
-                Console.WriteLine("REMOVE LIFE!!");
-                ((UI_Pong)ui).RemoveLife(game.player_Human, game.player_Human.lives);
             }
         }
 

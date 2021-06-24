@@ -9,7 +9,6 @@ namespace myEngine
     {
         public static void InitSettingsFromFile(Settings settings)
         {
-            Console.WriteLine("CALLED"); 
             var iniFile = new IniFile("options.ini");
 
             //string s = iniFile.GetInteger("Section", "variable", "defaultValue");

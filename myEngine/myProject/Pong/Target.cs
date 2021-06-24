@@ -16,7 +16,7 @@ namespace myEngine
         {
             sprite = new Sprite(new Vector2(Settings.Get_Screen_Center().X, Settings.Get_Screen_Center().Y), new Vector2(50, 50));
             sprite.color = Color.HotPink;
-            sprite.orderInLayer = -1000;
+            sprite.orderInLayer = 0;
             sprite.transform.rotation = 45f;
             this.AddComponent(new Collider2D(sprite));
             this.GetComponent<Collider2D>().scale = 2;
@@ -44,6 +44,8 @@ namespace myEngine
 
             this.GetComponent<Collider2D>().Destroy();
             sprite.Destroy();
+
+            Scene_Pong.game.targetSpawner.OnTargetDestroyed();
         }
 
         public override void OnCollision(Collider2D other)

@@ -28,24 +28,37 @@ namespace myEngine
             SpawnNewTarget();
         }
 
+        Delay delay;
+        public void OnTargetDestroyed()
+        {
+            if(delay != null)
+                delay.Destroy();
+
+            delay = new Delay(2000, () =>
+            {
+                SpawnNewTarget();
+            });
+        }
+
         //METHODS
         public void SpawnNewTarget()
         {
             if (target == null)
                 target = new Target();
+
+            if (target.disposed)
+            {
+                target = new Target();
+                target.transform.position = new Vector2(zoneRectangle.X + (zoneRectangle.Width * (float)random.NextDouble()),
+                                                        zoneRectangle.Y + (zoneRectangle.Height * (float)random.NextDouble()));
+                target.sprite.transform.position = target.transform.position;
+                target.sprite.orderInLayer = 500;
+            }
         }
 
         //UPDATE & DRAW
         public override void Update()
         {
-            if (target.disposed)
-            {
-                target = new Target();
-                target.transform.position = new Vector2(zoneRectangle.X + (zoneRectangle.Width * (float)random.NextDouble()), 
-                                                        zoneRectangle.Y + (zoneRectangle.Height * (float)random.NextDouble()));
-                target.sprite.transform.position = target.transform.position;
-                target.sprite.orderInLayer = 500;
-            }
         }
 
         public override void Draw(SpriteBatch sprite)

@@ -189,8 +189,44 @@ namespace myEngine
                 }
 
                 //CHECK GAME STATE
-                if (Scene_Pong.game.player_Human.lives == 0 || Scene_Pong.game.player_AI.lives == 0)
+                if (Scene_Pong.game.player_Human.lives == 0)
                 {
+                    Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
+                    p.Color = Color.White;
+                    p.Speed = 10;
+                    p.TTL = 0.5f;
+
+                    ParticleProfile pp = new ParticleProfile(p);
+                    pp.burstMode = true;
+                    pp.burstAmount = 150;
+
+                    ParticleEngine pe = new ParticleEngine(pp, Scene_Pong.game.player_Human.raquette.sprite.transform.position);
+
+                    Scene_Pong.game.player_Human.raquette.sprite.Destroy();
+
+                    Console.WriteLine("GAME OVER");
+
+                    //MAKE BETTER BULLET TIME
+                    Settings.GAME_SPEED = 0.2f;
+
+                    //RELOAD SCENE AFTER 2sec
+                    //Game1.sceneManager.ReloadScene();
+                    Scene_Pong.OnGameWin();
+                }
+                else if (Scene_Pong.game.player_AI.lives == 0)
+                {
+                    Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
+                    p.Color = Color.White;
+                    p.Speed = 10;
+                    p.TTL = 0.5f;
+
+                    ParticleProfile pp = new ParticleProfile(p);
+                    pp.burstMode = true;
+                    pp.burstAmount = 150;
+
+                    ParticleEngine pe = new ParticleEngine(pp, Scene_Pong.game.player_AI.raquette.sprite.transform.position);
+                    Scene_Pong.game.player_AI.raquette.sprite.Destroy();
+
                     Console.WriteLine("GAME OVER");
 
                     //MAKE BETTER BULLET TIME

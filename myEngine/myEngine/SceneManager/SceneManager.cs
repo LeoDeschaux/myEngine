@@ -20,6 +20,7 @@ namespace myEngine
             //currentScene = new Scene_MainMenu();
             currentScene = new Scene_MainMenu();
             input = new Input();
+            Console.WriteLine(" ");
         }
 
         //UPDATE & DRAW
@@ -47,17 +48,10 @@ namespace myEngine
             ClearScene();
             Type t = Type.GetType(scene.ToString());
             currentScene = (IScene)Activator.CreateInstance(t);
-
-            Console.WriteLine("Nombre d'obj:" + Game1.world.entities.Count);
         }
 
         public void ReloadScene()
         {
-            /*
-            ClearScene();
-            Type t = Type.GetType(currentScene.ToString());
-            currentScene = (IScene)Activator.CreateInstance(t);
-            */
             ChangeScene(currentScene);
         }
 
@@ -71,7 +65,6 @@ namespace myEngine
             if(currentScene != null)
             {
                 currentScene.Destroy();
-                Console.WriteLine("SCENE DESTROYED");
             }
         }
     }

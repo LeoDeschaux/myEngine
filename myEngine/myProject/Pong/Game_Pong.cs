@@ -30,12 +30,6 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (Scene_Pong.input.GetKeyDown(Keys.Delete))
-            {
-                ball.Destroy();
-                ball.sprite.Destroy();
-                ball.trail.Destroy();
-            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
