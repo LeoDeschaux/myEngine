@@ -140,9 +140,9 @@ namespace myEngine
 
                 if (direction.X == 1)
                 {
-                    Scene_Pong.game.player_Human.score++;
+                    Scene_Pong.game.player1.score++;
 
-                    int lives = Scene_Pong.game.player_AI.lives;
+                    int lives = Scene_Pong.game.player2.lives;
                     int i = 0;
 
                     if (lives == 3)
@@ -157,17 +157,17 @@ namespace myEngine
                     //AUDIO
                     AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
 
-                    Scene_Pong.game.player_AI.lives--;
+                    Scene_Pong.game.player2.lives--;
 
 
                     //UPDATE UI
-                    ((UI_Pong)Scene_Pong.ui).RemoveLife(Scene_Pong.game.player_AI, Scene_Pong.game.player_AI.lives);
+                    ((UI_Pong)Scene_Pong.ui).RemoveLife(Scene_Pong.game.player2, Scene_Pong.game.player2.lives);
                 }
                 else if (direction.X == -1)
                 {
-                    Scene_Pong.game.player_AI.score++;
+                    Scene_Pong.game.player2.score++;
 
-                    int lives = Scene_Pong.game.player_Human.lives;
+                    int lives = Scene_Pong.game.player1.lives;
                     int i = 0;
 
                     if (lives == 3)
@@ -182,14 +182,14 @@ namespace myEngine
                     //AUDIO
                     AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
 
-                    Scene_Pong.game.player_Human.lives--;
+                    Scene_Pong.game.player1.lives--;
 
                     //UPDATE UI
-                    ((UI_Pong)Scene_Pong.ui).RemoveLife(Scene_Pong.game.player_Human, Scene_Pong.game.player_Human.lives);
+                    ((UI_Pong)Scene_Pong.ui).RemoveLife(Scene_Pong.game.player1, Scene_Pong.game.player1.lives);
                 }
 
                 //CHECK GAME STATE
-                if (Scene_Pong.game.player_Human.lives == 0)
+                if (Scene_Pong.game.player1.lives == 0)
                 {
                     Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
                     p.Color = Color.White;
@@ -200,11 +200,9 @@ namespace myEngine
                     pp.burstMode = true;
                     pp.burstAmount = 150;
 
-                    ParticleEngine pe = new ParticleEngine(pp, Scene_Pong.game.player_Human.raquette.sprite.transform.position);
+                    ParticleEngine pe = new ParticleEngine(pp, Scene_Pong.game.player1.raquette.sprite.transform.position);
 
-                    Scene_Pong.game.player_Human.raquette.sprite.Destroy();
-
-                    Console.WriteLine("GAME OVER");
+                    Scene_Pong.game.player1.raquette.sprite.Destroy();
 
                     //MAKE BETTER BULLET TIME
                     Settings.GAME_SPEED = 0.2f;
@@ -213,7 +211,7 @@ namespace myEngine
                     //Game1.sceneManager.ReloadScene();
                     Scene_Pong.OnGameWin();
                 }
-                else if (Scene_Pong.game.player_AI.lives == 0)
+                else if (Scene_Pong.game.player2.lives == 0)
                 {
                     Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
                     p.Color = Color.White;
@@ -224,10 +222,8 @@ namespace myEngine
                     pp.burstMode = true;
                     pp.burstAmount = 150;
 
-                    ParticleEngine pe = new ParticleEngine(pp, Scene_Pong.game.player_AI.raquette.sprite.transform.position);
-                    Scene_Pong.game.player_AI.raquette.sprite.Destroy();
-
-                    Console.WriteLine("GAME OVER");
+                    ParticleEngine pe = new ParticleEngine(pp, Scene_Pong.game.player2.raquette.sprite.transform.position);
+                    Scene_Pong.game.player2.raquette.sprite.Destroy();
 
                     //MAKE BETTER BULLET TIME
                     Settings.GAME_SPEED = 0.2f;

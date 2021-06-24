@@ -20,6 +20,9 @@ namespace myEngine
         public int score = 0;
         public int lives = 3;
 
+        //BALL
+
+
         //CONSTRUCTOR 
         public Player()
         {

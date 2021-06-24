@@ -64,7 +64,7 @@ namespace myEngine
             {
                 sprite.color = Color.LightGray;
 
-                if (Scene_Pong.input.ms.LeftButton == ButtonState.Pressed && Scene_Pong.input.prevMouseState.LeftButton != ButtonState.Pressed)
+                if (Scene_Pong.input.GetMouseDown(0))
                 {
                     sprite.color = Color.Black;
 

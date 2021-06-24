@@ -10,8 +10,8 @@ namespace myEngine
     public class Game_Pong : Entity
     {
         //FIELDS
-        public Player player_AI;
-        public Player player_Human;
+        public Player player1;
+        public Player player2;
         public Ball ball;
 
         public TargetSpawner targetSpawner;
@@ -19,10 +19,11 @@ namespace myEngine
         //CONSTRUCTOR
         public Game_Pong()
         {
-            player_AI = new Player_AI();
-            player_Human = new Player_Human();
+            player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
+            player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
+            //player2 = new Player_AI();
 
-            ball = new Ball(player_Human.anchorPoint);
+            ball = new Ball(player1.anchorPoint);
 
             targetSpawner = new TargetSpawner();
         }

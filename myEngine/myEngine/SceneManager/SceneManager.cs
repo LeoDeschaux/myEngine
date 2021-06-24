@@ -18,9 +18,8 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_MainMenu();
+            currentScene = new Scene_Pong();
             input = new Input();
-            Console.WriteLine(" ");
         }
 
         //UPDATE & DRAW

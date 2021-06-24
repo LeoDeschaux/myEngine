@@ -20,7 +20,7 @@ namespace myEngine
         //CONSTRUCTOR
         public TargetSpawner()
         {
-            random = new Random();
+            random = new Random(123456789);
 
             Vector2 position = Settings.Get_Screen_Center();
             Vector2 dimension = new Vector2(500, Settings.SCREEN_HEIGHT - 100);

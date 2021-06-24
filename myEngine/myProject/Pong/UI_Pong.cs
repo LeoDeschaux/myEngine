@@ -27,7 +27,7 @@ namespace myEngine
             //SET PLAYER SCORE
             scorePlayer = new Text();
             scorePlayer.color = c;
-            scorePlayer.s = Scene_Pong.game.player_Human.score.ToString();
+            scorePlayer.s = Scene_Pong.game.player1.score.ToString();
             scorePlayer.fontSize = 300;
             scorePlayer.transform.position = new Vector2(200, Settings.SCREEN_HEIGHT / 2 - 200);
             scorePlayer.orderInLayer = -1000;
@@ -35,7 +35,7 @@ namespace myEngine
             //SET AI SCORE
             scoreAI = new Text();
             scoreAI.color = c;
-            scoreAI.s = Scene_Pong.game.player_Human.score.ToString();
+            scoreAI.s = Scene_Pong.game.player1.score.ToString();
             scoreAI.fontSize = 300;
             scoreAI.transform.position = new Vector2(800, Settings.SCREEN_HEIGHT / 2 - 200);
             scoreAI.orderInLayer = -1000;
@@ -71,8 +71,8 @@ namespace myEngine
 
         public override void Update()
         {
-            scorePlayer.s = Scene_Pong.game.player_Human.score.ToString();
-            scoreAI.s = Scene_Pong.game.player_AI.score.ToString();
+            scorePlayer.s = Scene_Pong.game.player1.score.ToString();
+            scoreAI.s = Scene_Pong.game.player2.score.ToString();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
