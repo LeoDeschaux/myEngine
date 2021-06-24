@@ -35,21 +35,12 @@ namespace myEngine
 
             if (input.GetKeyDown(Keys.Tab))
             {
-
+                game.player2.OnPlayerScorePoint();
             }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-        }
-
-        static Delay delay;
-        public static void OnGameWin()
-        {
-            delay = new Delay(2000, () =>
-            {
-                Game1.sceneManager.ReloadScene();
-            });
         }
     }
 }

@@ -13,21 +13,19 @@ namespace myEngine
 
         public Target target;
 
-        private Random random;
+        private static Random random;
 
         private bool isActive = false;
 
         //CONSTRUCTOR
         public TargetSpawner()
         {
-            random = new Random(123456789);
+            random = new Random();
+            //Console.WriteLine((float)Time.gameTime.TotalGameTime.TotalSeconds);
 
             Vector2 position = Settings.Get_Screen_Center();
             Vector2 dimension = new Vector2(500, Settings.SCREEN_HEIGHT - 100);
             zoneRectangle = new Rectangle((int)(position.X - (dimension.X / 2)), (int)(position.Y - (dimension.Y / 2)), (int)dimension.X, (int)dimension.Y);
-
-            //zoneRectangle = new Rectangle(Settings.Get_Screen_Center().ToPoint(), (Vector2.One * 200).ToPoint());
-            //SpawnNewTarget();
         }
 
         Delay delay;
@@ -54,10 +52,7 @@ namespace myEngine
             if (!isActive)
                 return;
 
-            if (target == null)
-                target = new Target();
-
-            if (target.disposed)
+            if (target == null || target.disposed)
             {
                 target = new Target();
                 target.transform.position = new Vector2(zoneRectangle.X + (zoneRectangle.Width * (float)random.NextDouble()),
@@ -74,7 +69,6 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite)
         {
-            //DrawSimpleShape.DrawRectangle(zoneRectangle, 0, Color.Red);
         }
     }
 }

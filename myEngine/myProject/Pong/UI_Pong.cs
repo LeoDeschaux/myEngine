@@ -9,14 +9,14 @@ namespace myEngine
     public class UI_Pong : UI
     {
         //FIELDS
-        Text scorePlayer;
-        Text scoreAI;
+        Text scorePlayer1;
+        Text scorePlayer2;
 
-        Sprite[] livesContainerPlayer;
-        Sprite[] livesPlayer;
+        Sprite[] livesContainerPlayer1;
+        Sprite[] livesPlayer1;
 
-        Sprite[] livesContainerAI;
-        Sprite[] livesAI;
+        Sprite[] livesContainerPlayer2;
+        Sprite[] livesPlayer2;
 
 
         //CONCSTRUCTOR
@@ -25,54 +25,54 @@ namespace myEngine
             Color c = new Color(30, 30, 30);
 
             //SET PLAYER SCORE
-            scorePlayer = new Text();
-            scorePlayer.color = c;
-            scorePlayer.s = Scene_Pong.game.player1.score.ToString();
-            scorePlayer.fontSize = 300;
-            scorePlayer.transform.position = new Vector2(200, Settings.SCREEN_HEIGHT / 2 - 200);
-            scorePlayer.orderInLayer = -1000;
+            scorePlayer1 = new Text();
+            scorePlayer1.color = c;
+            scorePlayer1.s = Scene_Pong.game.player1.score.ToString();
+            scorePlayer1.fontSize = 300;
+            scorePlayer1.transform.position = new Vector2(200, Settings.SCREEN_HEIGHT / 2 - 200);
+            scorePlayer1.orderInLayer = -1000;
 
             //SET AI SCORE
-            scoreAI = new Text();
-            scoreAI.color = c;
-            scoreAI.s = Scene_Pong.game.player1.score.ToString();
-            scoreAI.fontSize = 300;
-            scoreAI.transform.position = new Vector2(800, Settings.SCREEN_HEIGHT / 2 - 200);
-            scoreAI.orderInLayer = -1000;
+            scorePlayer2 = new Text();
+            scorePlayer2.color = c;
+            scorePlayer2.s = Scene_Pong.game.player1.score.ToString();
+            scorePlayer2.fontSize = 300;
+            scorePlayer2.transform.position = new Vector2(800, Settings.SCREEN_HEIGHT / 2 - 200);
+            scorePlayer2.orderInLayer = -1000;
 
             //SET PLAYER LIVES
-            livesContainerPlayer = new Sprite[3];
-            livesPlayer = new Sprite[3];
+            livesContainerPlayer1 = new Sprite[3];
+            livesPlayer1 = new Sprite[3];
             for (int i = 0; i < 3; i++)
             {
-                livesContainerPlayer[i] = new Sprite(new Vector2((int)((150) + 30*1.2*i), 650), new Vector2(30, 30));
-                livesContainerPlayer[i].color = Color.White;
-                livesContainerPlayer[i].orderInLayer = 450;
+                livesContainerPlayer1[i] = new Sprite(new Vector2((int)((150) + 30*1.2*i), 650), new Vector2(30, 30));
+                livesContainerPlayer1[i].color = Color.White;
+                livesContainerPlayer1[i].orderInLayer = 450;
 
-                livesPlayer[i] = new Sprite(livesContainerPlayer[i].transform.position, livesContainerPlayer[i].dimension*0.8f);
-                livesPlayer[i].orderInLayer = 500;
-                livesPlayer[i].color = Color.HotPink;
+                livesPlayer1[i] = new Sprite(livesContainerPlayer1[i].transform.position, livesContainerPlayer1[i].dimension*0.8f);
+                livesPlayer1[i].orderInLayer = 500;
+                livesPlayer1[i].color = Color.HotPink;
             }
 
             //SET PLAYER LIVES
-            livesContainerAI = new Sprite[3];
-            livesAI = new Sprite[3];
+            livesContainerPlayer2 = new Sprite[3];
+            livesPlayer2 = new Sprite[3];
             for (int i = 0; i < 3; i++)
             {
-                livesContainerAI[i] = new Sprite(new Vector2((int)((1100) + 30 * 1.2 * i), 650), new Vector2(30, 30));
-                livesContainerAI[i].color = Color.White;
-                livesContainerAI[i].orderInLayer = 450;
+                livesContainerPlayer2[i] = new Sprite(new Vector2((int)((1100) + 30 * 1.2 * i), 650), new Vector2(30, 30));
+                livesContainerPlayer2[i].color = Color.White;
+                livesContainerPlayer2[i].orderInLayer = 450;
 
-                livesAI[i] = new Sprite(livesContainerAI[i].transform.position, livesContainerAI[i].dimension * 0.8f);
-                livesAI[i].orderInLayer = 500;
-                livesAI[i].color = Color.HotPink;
+                livesPlayer2[i] = new Sprite(livesContainerPlayer2[i].transform.position, livesContainerPlayer2[i].dimension * 0.8f);
+                livesPlayer2[i].orderInLayer = 500;
+                livesPlayer2[i].color = Color.HotPink;
             }
         }
 
         public override void Update()
         {
-            scorePlayer.s = Scene_Pong.game.player1.score.ToString();
-            scoreAI.s = Scene_Pong.game.player2.score.ToString();
+            scorePlayer1.s = Scene_Pong.game.player1.score.ToString();
+            scorePlayer2.s = Scene_Pong.game.player2.score.ToString();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -80,9 +80,9 @@ namespace myEngine
         }
 
         //METHODS
-        public void RemoveLife(Player player, int remainingLifes)
+        public void RemoveLife(Player player)
         {
-            if(player is Player_Human)
+            if((int)player.playerIndex == 0)
             {
                 Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
                 p.Color = Color.HotPink;
@@ -93,11 +93,11 @@ namespace myEngine
                 pp.burstMode = true;
                 pp.burstAmount = 50;
 
-                int i = Math.Clamp(remainingLifes, 0, 2);
-                ParticleEngine pe = new ParticleEngine(pp, livesPlayer[i].transform.position);
-                livesPlayer[i].Destroy();
+                int i = Math.Clamp(player.lives, 0, 2);
+                ParticleEngine pe = new ParticleEngine(pp, livesPlayer1[i].transform.position);
+                livesPlayer1[i].Destroy();
             }
-            else if(player is Player_AI)
+            else if((int)player.playerIndex == 1)
             {
                 Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
                 p.Color = Color.HotPink;
@@ -108,12 +108,11 @@ namespace myEngine
                 pp.burstMode = true;
                 pp.burstAmount = 50;
 
-                int i = Math.Clamp(remainingLifes, 0, 2);
-                ParticleEngine pe = new ParticleEngine(pp, livesAI[i].transform.position);
-                livesAI[i].Destroy();
+                int i = Math.Clamp(player.lives, 0, 2);
+                ParticleEngine pe = new ParticleEngine(pp, livesPlayer2[i].transform.position);
+                livesPlayer2[i].Destroy();
             }
         }
-
 
         //PAUSE MENU
         Sprite pauseMenu_BG;

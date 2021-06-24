@@ -13,8 +13,9 @@ namespace myEngine
         private bool inRange = false;
 
         //CONSTRUCTOR
-        public Player_AI()
+        public Player_AI(PlayerIndex playerIndex)
         {
+            this.playerIndex = playerIndex;
             raquette.transform.position = new Vector2(1080, Settings.SCREEN_HEIGHT / 2);
             name = "AI";
         }
@@ -31,7 +32,6 @@ namespace myEngine
                 inRange = false;
             else
                 inRange = true;
-
 
             if (inRange)
             {
@@ -50,7 +50,7 @@ namespace myEngine
                 }
                 else
                 {
-                    BackAndForce();
+                    BackAndForth();
                 }
             }
             else
@@ -67,7 +67,7 @@ namespace myEngine
             }
         }
 
-        private void BackAndForce()
+        private void BackAndForth()
         {
             if (moveUp)
                 raquette.transform.position = new Vector2(raquette.transform.position.X, raquette.transform.position.Y + (speed * Time.deltaTime));

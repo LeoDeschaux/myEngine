@@ -6,8 +6,6 @@ using System.Text;
 
 namespace myEngine
 {
-    
-
     public class Input : Entity
     {
         //FIELDS

@@ -20,12 +20,25 @@ namespace myEngine
         public Game_Pong()
         {
             player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
-            player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
-            //player2 = new Player_AI();
+            //player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
+            player2 = new Player_AI(PlayerIndex.Two);
+
+            player1.name = "Player one";
+            player2.name = "Player two";
 
             ball = new Ball(player1.anchorPoint);
+            player1.isHoldingTheBall = true;
 
             targetSpawner = new TargetSpawner();
+        }
+
+        public void OnGameOver(PlayerIndex playerIndex)
+        {
+
+            Console.WriteLine("GAME OVER");
+
+
+            ReloadScene();
         }
 
         //UPDATE & DRAW
@@ -35,6 +48,15 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+        }
+
+        static Delay delay;
+        public static void ReloadScene()
+        {
+            delay = new Delay(2000, () =>
+            {
+                Game1.sceneManager.ReloadScene();
+            });
         }
     }
 }

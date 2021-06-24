@@ -20,7 +20,10 @@ namespace myEngine
         }
 
         //METHODS
-
-        //
+        public static void InitTime()
+        {
+            gameTime = new GameTime();
+            deltaTime = 0;
+        }
     }
 }

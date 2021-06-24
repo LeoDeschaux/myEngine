@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace myEngine
 {
@@ -43,6 +44,8 @@ namespace myEngine
             Ressources.LoadImages(this.Content);
             Ressources.LoadFont(this.Content);
             Ressources.LoadRessources(this.Content);
+
+            Time.InitTime();
 
             physicEngine = new PhysicEngine();
             world = new World();

@@ -16,11 +16,14 @@ namespace myEngine
         public Transform anchorPoint;
         public Collider2D collider;
 
+        public string name = "Player_Default";
+        public PlayerIndex playerIndex;
         //SCORE
         public int score = 0;
         public int lives = 3;
 
         //BALL
+        public bool isHoldingTheBall = false;
 
 
         //CONSTRUCTOR 
@@ -43,6 +46,69 @@ namespace myEngine
 
         public override void OnCollision(Collider2D other)
         {
+        }
+        
+        public void RemoveLife()
+        {
+            lives--;
+
+            if (lives == 0)
+                OnPlayerDie();
+        }
+
+        public void OnPlayerScorePoint()
+        {
+            Console.WriteLine(GetAdversaire().name + " viens de perdre de la vie");
+
+            score++;
+
+            int lives = GetAdversaire().lives;
+
+            //AUDIO
+            int i = 0;
+            if (lives == 3)
+                i = 0;
+            else if (lives == 2)
+                i = 2;
+            else if (lives == 1)
+                i = 3;
+            else if (lives <= 0)
+                i = 3;
+
+            AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
+
+            //REMOVE LIFE
+            GetAdversaire().RemoveLife();
+
+            //UPDATE UI
+            ((UI_Pong)Scene_Pong.ui).RemoveLife(GetAdversaire());
+        }
+
+        private Player GetAdversaire()
+        {
+            Player adversaire = Scene_Pong.game.player1;
+            if (adversaire.playerIndex == this.playerIndex)
+                adversaire = Scene_Pong.game.player2;
+
+            return adversaire;
+        }
+
+        private void OnPlayerDie()
+        {
+            Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
+            p.Color = Color.White;
+            p.Speed = 10;
+            p.TTL = 0.5f;
+
+            ParticleProfile pp = new ParticleProfile(p);
+            pp.burstMode = true;
+            pp.burstAmount = 150;
+
+            ParticleEngine pe = new ParticleEngine(pp, raquette.sprite.transform.position);
+            raquette.sprite.Destroy();
+
+            Settings.GAME_SPEED = 0.2f;
+            Scene_Pong.game.OnGameOver((PlayerIndex)0);
         }
     }
 }
