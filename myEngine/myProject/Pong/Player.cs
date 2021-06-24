@@ -18,6 +18,7 @@ namespace myEngine
 
         //SCORE
         public int score = 0;
+        public int lives = 3;
 
         //CONSTRUCTOR 
         public Player()
@@ -39,7 +40,6 @@ namespace myEngine
 
         public override void OnCollision(Collider2D other)
         {
-            score++;
         }
     }
 }

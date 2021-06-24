@@ -16,8 +16,6 @@ namespace myEngine
 
         public TargetSpawner targetSpawner;
 
-        KeyboardState kb;
-
         //CONSTRUCTOR
         public Game_Pong()
         {
@@ -27,8 +25,6 @@ namespace myEngine
             ball = new Ball(player_Human.anchorPoint);
 
             targetSpawner = new TargetSpawner();
-
-            kb = new KeyboardState();
         }
 
         //UPDATE & DRAW
@@ -39,10 +35,6 @@ namespace myEngine
                 ball.Destroy();
                 ball.sprite.Destroy();
                 ball.trail.Destroy();
-            }
-            if(Scene_Pong.input.GetKeyDown(Keys.Tab))
-            {
-                targetSpawner.SpawnNewTarget();
             }
         }
 

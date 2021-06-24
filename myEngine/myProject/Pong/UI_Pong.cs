@@ -12,8 +12,12 @@ namespace myEngine
         Text scorePlayer;
         Text scoreAI;
 
+        Sprite[] livesContainerPlayer;
         Sprite[] livesPlayer;
+
+        Sprite[] livesContainerAI;
         Sprite[] livesAI;
+
 
         //CONCSTRUCTOR
         public UI_Pong()
@@ -37,20 +41,32 @@ namespace myEngine
             scoreAI.orderInLayer = -1000;
 
             //SET PLAYER LIVES
+            livesContainerPlayer = new Sprite[3];
             livesPlayer = new Sprite[3];
             for (int i = 0; i < 3; i++)
             {
-                livesPlayer[i] = new Sprite(new Vector2((int)((150) + 30*1.2*i), 650), new Vector2(30, 30));
-                livesPlayer[i].color = Color.White;
-                livesPlayer[i].orderInLayer = 450;
+                livesContainerPlayer[i] = new Sprite(new Vector2((int)((150) + 30*1.2*i), 650), new Vector2(30, 30));
+                livesContainerPlayer[i].color = Color.White;
+                livesContainerPlayer[i].orderInLayer = 450;
 
-                Sprite s = new Sprite(livesPlayer[i].transform.position, livesPlayer[i].dimension*0.8f);
-                s.orderInLayer = 500;
-                s.color = Color.HotPink;
+                livesPlayer[i] = new Sprite(livesContainerPlayer[i].transform.position, livesContainerPlayer[i].dimension*0.8f);
+                livesPlayer[i].orderInLayer = 500;
+                livesPlayer[i].color = Color.HotPink;
             }
 
-            //SET AI LIVES
+            //SET PLAYER LIVES
+            livesContainerAI = new Sprite[3];
             livesAI = new Sprite[3];
+            for (int i = 0; i < 3; i++)
+            {
+                livesContainerAI[i] = new Sprite(new Vector2((int)((1100) + 30 * 1.2 * i), 650), new Vector2(30, 30));
+                livesContainerAI[i].color = Color.White;
+                livesContainerAI[i].orderInLayer = 450;
+
+                livesAI[i] = new Sprite(livesContainerAI[i].transform.position, livesContainerAI[i].dimension * 0.8f);
+                livesAI[i].orderInLayer = 500;
+                livesAI[i].color = Color.HotPink;
+            }
         }
 
         public override void Update()
@@ -61,6 +77,41 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+        }
+
+        //METHODS
+        public void RemoveLife(Player player, int remainingLifes)
+        {
+            if(player is Player_Human)
+            {
+                Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
+                p.Color = Color.HotPink;
+                p.Speed = 10;
+                p.TTL = 0.5f;
+
+                ParticleProfile pp = new ParticleProfile(p);
+                pp.burstMode = true;
+                pp.burstAmount = 50;
+
+                int i = Math.Clamp(remainingLifes, 0, 2);
+                ParticleEngine pe = new ParticleEngine(pp, livesPlayer[i].transform.position);
+                livesPlayer[i].Destroy();
+            }
+            else if(player is Player_AI)
+            {
+                Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
+                p.Color = Color.HotPink;
+                p.Speed = 10;
+                p.TTL = 0.5f;
+
+                ParticleProfile pp = new ParticleProfile(p);
+                pp.burstMode = true;
+                pp.burstAmount = 50;
+
+                int i = Math.Clamp(remainingLifes, 0, 2);
+                ParticleEngine pe = new ParticleEngine(pp, livesAI[i].transform.position);
+                livesAI[i].Destroy();
+            }
         }
 
 

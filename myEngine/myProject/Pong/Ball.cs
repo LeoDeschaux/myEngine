@@ -101,6 +101,13 @@ namespace myEngine
 
                 transform.position += direction * speed * Time.deltaTime;
             }
+
+            /*
+            if (direction.X == 1)
+                sprite.color = Color.Blue;
+            else if (direction.X == -1)
+                sprite.color = Color.Red;
+            */
         }
         
         public override void OnCollision(Collider2D other)
@@ -130,6 +137,69 @@ namespace myEngine
             else
             {
                 other.gameObject.Destroy();
+
+                if (direction.X == 1)
+                {
+                    Scene_Pong.game.player_Human.score++;
+
+                    int lives = Scene_Pong.game.player_AI.lives;
+                    int i = 0;
+
+                    if (lives == 3)
+                        i = 0;
+                    else if (lives == 2)
+                        i = 2;
+                    else if (lives == 1)
+                        i = 3;
+                    else if (lives <= 0)
+                        i = 3;
+
+                    //AUDIO
+                    AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
+
+                    Scene_Pong.game.player_AI.lives--;
+
+
+                    //UPDATE UI
+                    ((UI_Pong)Scene_Pong.ui).RemoveLife(Scene_Pong.game.player_AI, Scene_Pong.game.player_AI.lives);
+                }
+                else if (direction.X == -1)
+                {
+                    Scene_Pong.game.player_AI.score++;
+
+                    int lives = Scene_Pong.game.player_Human.lives;
+                    int i = 0;
+
+                    if (lives == 3)
+                        i = 0;
+                    else if (lives == 2)
+                        i = 2;
+                    else if (lives == 1)
+                        i = 3;
+                    else if (lives <= 0)
+                        i = 3;
+
+                    //AUDIO
+                    AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
+
+                    Scene_Pong.game.player_Human.lives--;
+
+                    //UPDATE UI
+                    ((UI_Pong)Scene_Pong.ui).RemoveLife(Scene_Pong.game.player_Human, Scene_Pong.game.player_Human.lives);
+                }
+
+                //CHECK GAME STATE
+                if (Scene_Pong.game.player_Human.lives == 0 || Scene_Pong.game.player_AI.lives == 0)
+                {
+                    Console.WriteLine("GAME OVER");
+
+                    //MAKE BETTER BULLET TIME
+                    Settings.GAME_SPEED = 0.2f;
+
+                    //RELOAD SCENE AFTER 2sec
+                    //Game1.sceneManager.ReloadScene();
+                    Scene_Pong.OnGameWin();
+                }
             }
         }
 

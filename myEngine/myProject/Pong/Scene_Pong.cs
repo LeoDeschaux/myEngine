@@ -12,7 +12,7 @@ namespace myEngine
         //FIELDS
         public static Input input;
         public static Game_Pong game;
-        public UI ui;
+        public static UI ui;
 
         //CONSTRUCTOR
         public Scene_Pong()
@@ -32,10 +32,25 @@ namespace myEngine
                 ((UI_Pong) ui).OnPauseMenuCalled();
                 //Game1.sceneManager.ChangeScene(new Scene_MainMenu());
             }
+
+            if (input.GetKeyDown(Keys.Tab))
+            {
+                Console.WriteLine("REMOVE LIFE!!");
+                ((UI_Pong)ui).RemoveLife(game.player_Human, game.player_Human.lives);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+        }
+
+        static Delay delay;
+        public static void OnGameWin()
+        {
+            delay = new Delay(2000, () =>
+            {
+                Game1.sceneManager.ReloadScene();
+            });
         }
     }
 }

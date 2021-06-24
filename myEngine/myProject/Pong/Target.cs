@@ -42,9 +42,6 @@ namespace myEngine
 
             ParticleEngine pe = new ParticleEngine(pp, sprite.transform.position);
 
-            //AUDIO
-            AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[0]);
-
             this.GetComponent<Collider2D>().Destroy();
             sprite.Destroy();
         }

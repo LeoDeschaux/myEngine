@@ -5,14 +5,19 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Delay
+    public class Delay : Entity
     {
         public double Timer = 0.0;
         public double DelayTime = 0.0;
 
-        public Delay(double DelayTime)
+        Action action;
+
+        public Delay(double DelayTime, Action action)
         {
             this.DelayTime = DelayTime;
+            Timer = Time.gameTime.TotalGameTime.TotalMilliseconds + DelayTime;
+
+            this.action = action;
         }
 
         public void Wait(GameTime gt, Action Action)
@@ -21,6 +26,19 @@ namespace myEngine
             {
                 Timer = gt.TotalGameTime.TotalMilliseconds + DelayTime;
                 Action.Invoke();
+            }
+        }
+
+        public override void Update()
+        {
+            if (this.Timer <= Time.gameTime.TotalGameTime.TotalMilliseconds)
+            {
+                Timer = Time.gameTime.TotalGameTime.TotalMilliseconds + DelayTime;
+
+                if (action != null)
+                {
+                    action.Invoke();
+                }
             }
         }
 

@@ -53,20 +53,26 @@ namespace myEngine
 
         public void ReloadScene()
         {
+            /*
             ClearScene();
             Type t = Type.GetType(currentScene.ToString());
             currentScene = (IScene)Activator.CreateInstance(t);
+            */
+            ChangeScene(currentScene);
         }
 
         private void ClearScene()
         {
-            //Game1.world = new World();
+            Game1.world = new World();
             Game1.world.ClearWorld();
             Game1.world.AddEntity(this);
             Game1.world.AddEntity(input);
 
             if(currentScene != null)
+            {
                 currentScene.Destroy();
+                Console.WriteLine("SCENE DESTROYED");
+            }
         }
     }
 }
