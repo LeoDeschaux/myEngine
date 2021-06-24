@@ -45,6 +45,8 @@ namespace myEngine
             Ressources.LoadFont(this.Content);
             Ressources.LoadRessources(this.Content);
 
+            Save_RunTime.Init();
+
             Time.InitTime();
 
             physicEngine = new PhysicEngine();

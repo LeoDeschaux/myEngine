@@ -20,11 +20,11 @@ namespace myEngine
         public PlayerIndex playerIndex;
         //SCORE
         public int score = 0;
+        private string scoreKey = "PlayerScore";
         public int lives = 3;
 
         //BALL
         public bool isHoldingTheBall = false;
-
 
         //CONSTRUCTOR 
         public Player()
@@ -36,6 +36,18 @@ namespace myEngine
         }
 
         //METHODS
+        public void LoadScore()
+        {
+            if (Save_RunTime.data.ContainsKey((scoreKey + playerIndex).ToString()))
+                score = Int32.Parse(Save_RunTime.data[(scoreKey + playerIndex).ToString()]);
+        }
+
+        public void SaveScore()
+        {
+            Save_RunTime.data.Remove((scoreKey+playerIndex).ToString());
+            Save_RunTime.data.Add((scoreKey+playerIndex).ToString(), score.ToString());
+        }
+
 
         //UPDATE & DRAW
         public abstract override void Update();
@@ -56,14 +68,8 @@ namespace myEngine
                 OnPlayerDie();
         }
 
-        public void OnPlayerScorePoint()
+        public void OnPlayerGetRemovedStock()
         {
-            Console.WriteLine(GetAdversaire().name + " viens de perdre de la vie");
-
-            score++;
-
-            int lives = GetAdversaire().lives;
-
             //AUDIO
             int i = 0;
             if (lives == 3)
@@ -78,10 +84,11 @@ namespace myEngine
             AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
 
             //REMOVE LIFE
-            GetAdversaire().RemoveLife();
+            RemoveLife();
 
             //UPDATE UI
-            ((UI_Pong)Scene_Pong.ui).RemoveLife(GetAdversaire());
+            ((UI_Pong)Scene_Pong.ui).RemoveLife(this);
+
         }
 
         private Player GetAdversaire()
@@ -108,7 +115,8 @@ namespace myEngine
             raquette.sprite.Destroy();
 
             Settings.GAME_SPEED = 0.2f;
-            Scene_Pong.game.OnGameOver((PlayerIndex)0);
+
+            Scene_Pong.game.OnGameOver(playerIndex);
         }
     }
 }

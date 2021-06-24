@@ -23,22 +23,28 @@ namespace myEngine
             //player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
             player2 = new Player_AI(PlayerIndex.Two);
 
-            player1.name = "Player one";
-            player2.name = "Player two";
-
             ball = new Ball(player1.anchorPoint);
             player1.isHoldingTheBall = true;
 
             targetSpawner = new TargetSpawner();
         }
 
-        public void OnGameOver(PlayerIndex playerIndex)
+        public void OnGameOver(PlayerIndex looser)
         {
+            Player player = Scene_Pong.game.player1;
+            if (looser == player.playerIndex)
+                player = Scene_Pong.game.player2;
 
-            Console.WriteLine("GAME OVER");
+            player.score++;
 
-
+            SaveScore();
             ReloadScene();
+        }
+
+        private void SaveScore()
+        {
+            player1.SaveScore();
+            player2.SaveScore();
         }
 
         //UPDATE & DRAW

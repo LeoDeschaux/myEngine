@@ -18,6 +18,8 @@ namespace myEngine
             this.playerIndex = playerIndex;
             raquette.transform.position = new Vector2(1080, Settings.SCREEN_HEIGHT / 2);
             name = "AI";
+
+            LoadScore();
         }
 
         //METHODS

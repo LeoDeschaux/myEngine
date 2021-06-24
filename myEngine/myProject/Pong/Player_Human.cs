@@ -22,6 +22,8 @@ namespace myEngine
             anchorPoint.position = new Vector2(raquette.transform.position.X + 20, raquette.transform.position.Y);
             
             name = "PLAYER";
+
+            LoadScore();
         }
 
         //METHODS

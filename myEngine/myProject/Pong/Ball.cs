@@ -101,13 +101,6 @@ namespace myEngine
 
                 transform.position += direction * speed * Time.deltaTime;
             }
-
-            /*
-            if (direction.X == 1)
-                sprite.color = Color.Blue;
-            else if (direction.X == -1)
-                sprite.color = Color.Red;
-            */
         }
         
         public override void OnCollision(Collider2D other)
@@ -139,9 +132,10 @@ namespace myEngine
                 other.gameObject.Destroy();
 
                 if (direction.X == 1)
-                    Scene_Pong.game.player1.OnPlayerScorePoint();
+                    Scene_Pong.game.player2.OnPlayerGetRemovedStock();
                 else if (direction.X == -1)
-                    Scene_Pong.game.player2.OnPlayerScorePoint();
+                    Scene_Pong.game.player1.OnPlayerGetRemovedStock();
+
             }
         }
 

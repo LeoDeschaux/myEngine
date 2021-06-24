@@ -30,12 +30,11 @@ namespace myEngine
             if (input.GetKeyDown(Keys.None))
             {
                 ((UI_Pong) ui).OnPauseMenuCalled();
-                //Game1.sceneManager.ChangeScene(new Scene_MainMenu());
             }
 
             if (input.GetKeyDown(Keys.Tab))
             {
-                game.player2.OnPlayerScorePoint();
+                game.player1.OnPlayerGetRemovedStock();
             }
         }
 
