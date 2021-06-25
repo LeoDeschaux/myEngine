@@ -9,19 +9,18 @@ namespace myEngine
     public class Player_Human : Player
     {
         //FIELDS
-
         private Input input;
 
         //CONSTRUCTOR
-        public Player_Human(Vector2 startPos, PlayerIndex playerIndex)
+        public Player_Human(Vector2 startPos, PlayerIndex playerIndex, InputProfile inputProfile)
         {
-            input = new Input(playerIndex);
+            input = new Input(inputProfile);
             this.playerIndex = playerIndex;
 
             raquette.transform.position = startPos;
             anchorPoint.position = new Vector2(raquette.transform.position.X + 20, raquette.transform.position.Y);
             
-            name = "PLAYER";
+            name = "Player_Human_Default_Name";
 
             LoadScore();
         }
@@ -33,12 +32,14 @@ namespace myEngine
         {
             anchorPoint.position = new Vector2(raquette.transform.position.X + 80, raquette.transform.position.Y);
 
-
-            if (input.GetButton(myButtons.LeftAxisDown) && raquette.transform.position.Y < (Settings.SCREEN_HEIGHT - raquette.sprite.GetRectangle().Height / 2))
+            bool pressingDown = (input.GetButton(myButtons.LeftAxisDown) || input.GetButton(myButtons.DPadDown));
+            if (pressingDown && raquette.transform.position.Y < (Settings.SCREEN_HEIGHT - raquette.sprite.GetRectangle().Height / 2))
             {
                 raquette.transform.position = new Vector2(raquette.transform.position.X, raquette.transform.position.Y + (speed * Time.deltaTime));
             }
-            if (input.GetButton(myButtons.LeftAxisUp) && raquette.transform.position.Y > (0 + raquette.sprite.GetRectangle().Height / 2))
+
+            bool pressingUp = (input.GetButton(myButtons.LeftAxisUp) || input.GetButton(myButtons.DPadUp));
+            if (pressingUp && raquette.transform.position.Y > (0 + raquette.sprite.GetRectangle().Height / 2))
             {
                 raquette.transform.position = new Vector2(raquette.transform.position.X, raquette.transform.position.Y - (speed * Time.deltaTime));
             }

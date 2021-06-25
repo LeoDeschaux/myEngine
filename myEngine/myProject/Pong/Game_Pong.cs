@@ -28,12 +28,15 @@ namespace myEngine
         {
             if(gameMode == GameMode.PvP)
             {
-                player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
-                player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
+                player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One, new InputProfile(PlayerIndex.One, InputMode.defaultKeyboard));
+                player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two, new InputProfile(PlayerIndex.Two, InputMode.defaultGamePad, 1));
+
+                player1.name = "PLAYER A GAUCHE";
+                player2.name = "PLAYER A DROITE";
             }
             else
             {
-                player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
+                player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One, new InputProfile(PlayerIndex.One, InputMode.defaultKeyboard));
                 player2 = new Player_AI(PlayerIndex.Two);
             }
 

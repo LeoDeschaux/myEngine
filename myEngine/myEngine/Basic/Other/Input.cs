@@ -19,14 +19,25 @@ namespace myEngine
 
         //INPUT PROFILE
         private InputProfile inputProfile;
-        private int playerIndex;
 
         //CONSTRUCTOR
-        public Input(PlayerIndex playerIndex = 0)
+        /*
+        public Input(PlayerIndex playerIndex = 0) //INPUT PROFILE
         {
-            this.playerIndex = (int)playerIndex;
             inputProfile = new InputProfile(playerIndex);
+            mouse = new Mouse();
+        }
+        */
 
+        public Input()
+        {
+            inputProfile = new InputProfile();
+            mouse = new Mouse();
+        }
+
+        public Input(InputProfile inputProfile)
+        {
+            this.inputProfile = inputProfile;
             mouse = new Mouse();
         }
 
@@ -36,8 +47,11 @@ namespace myEngine
             prevKeyState = keyState;
             keyState = Keyboard.GetState();
 
-            prevGamePadState = gamePadState;
-            gamePadState = GamePad.GetState(playerIndex);
+            if(inputProfile.gamePadIndex != -1)
+            {
+                prevGamePadState = gamePadState;
+                gamePadState = GamePad.GetState(inputProfile.gamePadIndex);
+            }
         }
 
         //BUTTONS / Action / Input
@@ -52,12 +66,11 @@ namespace myEngine
                 if (kvp.Key == button)
                     inputGamePadButton = (Buttons)kvp.Value;
 
-            foreach (var kvp in inputProfile.keyBoard)
+            foreach (var kvp in inputProfile.keyboard)
                 if (kvp.Key == button)
                     inputKey = (Keys)kvp.Value;
 
-
-            if (GetGamePad(inputGamePadButton) || GetKey(inputKey))
+            if ((GetKey(inputKey) && inputKey != 0) || (GetGamePad(inputGamePadButton) && inputGamePadButton != 0))
                 b = true;
 
             return b;
@@ -74,12 +87,11 @@ namespace myEngine
                 if (kvp.Key == button)
                     inputGamePadButton = (Buttons)kvp.Value;
 
-            foreach (var kvp in inputProfile.keyBoard)
+            foreach (var kvp in inputProfile.keyboard)
                 if (kvp.Key == button)
                     inputKey = (Keys)kvp.Value;
 
-            
-            if (GetGamePadDown(inputGamePadButton) || GetKeyDown(inputKey))
+            if ((GetKeyDown(inputKey) && inputKey != 0)  || (GetGamePadDown(inputGamePadButton) && inputGamePadButton != 0))
                 b = true;
 
             return b;

@@ -80,7 +80,6 @@ namespace myEngine
             Save_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvP;
             Game1.sceneManager.ChangeScene(new Scene_Pong());
-            Console.WriteLine("VOUS AVEZ CHOISI PVP");
         }
 
         private void LoadAIScene()

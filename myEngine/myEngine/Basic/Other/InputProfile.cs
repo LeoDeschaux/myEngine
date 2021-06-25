@@ -6,47 +6,110 @@ using System.Text;
 
 namespace myEngine
 {
+    public enum InputMode
+    {
+        defaultKeyboard,
+        defaultGamePad
+    }
+
+    //POSSIBLE EXTENSION : 
+    /*
+        public IDictionary<myButtons, List<Keys>> keyboard;
+        keyboard.Add(myButtons.ButtonB, new List<Keys> { Keys.Space, Keys.LeftControl });
+
+        foreach (var kvp in inputProfile.gamePad)
+            {
+                if (kvp.Key == button)
+                {
+                    foreach (var v in kvp.Value)
+                    {
+                        inputGamePadButton = (Buttons) v;
+                        if (GetGamePad(inputGamePadButton) && inputGamePadButton != 0)
+                            b = true;
+                    }
+                }
+            }
+        */
+
+
     public class InputProfile
     {
+        private List<Button> l;
+
         //FIELDS
         public IDictionary<myButtons, Buttons> gamePad;
-        public IDictionary<myButtons, Keys> keyBoard;
+        public IDictionary<myButtons, Keys> keyboard;
+
+        public PlayerIndex playerIndex;
+        public int gamePadIndex = -1;
+
+        private InputMode inputMode;
 
         //CONSTRUCTOR
+        /*
         public InputProfile(PlayerIndex playerIndex)
         {
             gamePad = new Dictionary<myButtons, Buttons>();
             keyBoard = new Dictionary<myButtons, Keys>();
 
-            InitDefaultProfile(playerIndex);
+            this.playerIndex = playerIndex;
+
+            InitDefaultProfile();
+        }
+        */
+
+        public InputProfile()
+        {
+            gamePad = new Dictionary<myButtons, Buttons>();
+            keyboard = new Dictionary<myButtons, Keys>();
+
+            this.playerIndex = PlayerIndex.One;
+        }
+
+        public InputProfile(PlayerIndex playerIndex, InputMode inputMode)
+        {
+            gamePad = new Dictionary<myButtons, Buttons>();
+            keyboard = new Dictionary<myButtons, Keys>();
+
+            this.playerIndex = playerIndex;
+            this.inputMode = inputMode;
+
+            InitDefaultProfile();
+        }
+
+        public InputProfile(PlayerIndex playerIndex, InputMode inputMode, int gamePadNumber)
+        {
+            gamePad = new Dictionary<myButtons, Buttons>();
+            keyboard = new Dictionary<myButtons, Keys>();
+
+            this.playerIndex = playerIndex;
+            this.inputMode = inputMode;
+            this.gamePadIndex = (gamePadNumber-1);
+
+            InitDefaultProfile();
         }
 
         //METHODS
-        public void InitDefaultProfile(PlayerIndex playerIndex)
+        public void InitDefaultProfile()
         {
-            if(playerIndex == PlayerIndex.One)
-                InitKeyBoard();
-            
-            InitGamePad();
+            if (inputMode == InputMode.defaultKeyboard)
+                InitKeyboard();
+            if (inputMode == InputMode.defaultGamePad)
+                InitGamePad();
         }
 
-        public void InitKeyBoard()
+        public void InitKeyboard()
         {
-            keyBoard = new Dictionary<myButtons, Keys>();
+            keyboard = new Dictionary<myButtons, Keys>();
 
             //SET KEYBOARD
-            keyBoard = new Dictionary<myButtons, Keys>();
-            keyBoard.Add(myButtons.ButtonA, Keys.Space);
+            keyboard.Add(myButtons.ButtonA, Keys.Space);
+            keyboard.Add(myButtons.ButtonB, Keys.LeftControl);
 
-            keyBoard.Add(myButtons.DPadUp, Keys.Up);
-            keyBoard.Add(myButtons.DPadRight, Keys.Right);
-            keyBoard.Add(myButtons.DPadDown, Keys.Down);
-            keyBoard.Add(myButtons.DPadLeft, Keys.Left);
-
-            keyBoard.Add(myButtons.LeftAxisUp, Keys.Up);
-            keyBoard.Add(myButtons.LeftAxisRight, Keys.Right);
-            keyBoard.Add(myButtons.LeftAxisDown, Keys.Down);
-            keyBoard.Add(myButtons.LeftAxisLeft, Keys.Left);
+            keyboard.Add(myButtons.LeftAxisUp, Keys.Up);
+            keyboard.Add(myButtons.LeftAxisRight, Keys.Right);
+            keyboard.Add(myButtons.LeftAxisDown, Keys.Down);
+            keyboard.Add(myButtons.LeftAxisLeft, Keys.Left);
         }
 
         public void InitGamePad()

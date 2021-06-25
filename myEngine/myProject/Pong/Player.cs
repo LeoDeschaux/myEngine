@@ -16,7 +16,7 @@ namespace myEngine
         public Transform anchorPoint;
         public Collider2D collider;
 
-        public string name = "Player_Default";
+        public string name = "Player_Default_Name";
         public PlayerIndex playerIndex;
         //SCORE
         public int score = 0;

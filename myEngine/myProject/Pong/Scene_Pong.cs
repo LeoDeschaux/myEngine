@@ -14,7 +14,7 @@ namespace myEngine
         public static Game_Pong game;
         public static UI ui;
 
-        public static GameMode gameMode = GameMode.PvAI;
+        public static GameMode gameMode = GameMode.PvP;
 
         //CONSTRUCTOR
         public Scene_Pong()
