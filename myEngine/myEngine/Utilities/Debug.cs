@@ -51,7 +51,7 @@ namespace myEngine
         {
             //MOUSE CURSOR
             //DrawSimpleShape.DrawRuller(input.mousePos.ToVector2(), Color.Red);
-            t.s = input.mousePos.ToVector2().ToString();
+            t.s = input.mouse.position.ToVector2().ToString();
         }
     }
 }

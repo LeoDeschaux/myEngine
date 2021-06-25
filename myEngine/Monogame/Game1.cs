@@ -19,6 +19,8 @@ namespace myEngine
         //DEBUG
         public static Debug debug;
 
+        private static bool isGameRunning = true;
+
         public Game1()
         { 
             graphics = new GraphicsDeviceManager(this);
@@ -59,7 +61,7 @@ namespace myEngine
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (!isGameRunning || (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 Exit();
 
             // TODO: Add your update logic here
@@ -72,6 +74,11 @@ namespace myEngine
             physicEngine.Update();
 
             base.Update(gameTime);
+        }
+
+        public static void ExitGame()
+        {
+            isGameRunning = false;
         }
 
         protected override void Draw(GameTime gameTime)

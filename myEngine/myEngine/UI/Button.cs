@@ -21,6 +21,8 @@ namespace myEngine
         private bool isActive;
         public bool isVisible = true;
 
+        Mouse m;
+
         //----- COLORS -----
         //default
         //hover
@@ -50,6 +52,8 @@ namespace myEngine
 
             //image.transform.SetParent(this.transform);
             //text.transform.SetParent(this.transform);
+            
+            m = new Mouse();
 
             isActive = true;
         }
@@ -57,14 +61,15 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
+
             if (!isActive || !isVisible)
                 return;
 
-            if (sprite.GetRectangle().Contains(Scene_Pong.input.mousePos))
+            if (sprite.GetRectangle().Contains(m.ms.Position))
             {
                 sprite.color = Color.LightGray;
 
-                if (Scene_Pong.input.GetMouseDown(0))
+                if (m.GetMouseDown(0))
                 {
                     sprite.color = Color.Black;
 

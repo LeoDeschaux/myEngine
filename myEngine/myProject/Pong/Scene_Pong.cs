@@ -14,11 +14,13 @@ namespace myEngine
         public static Game_Pong game;
         public static UI ui;
 
+        public static GameMode gameMode = GameMode.PvAI;
+
         //CONSTRUCTOR
         public Scene_Pong()
         {
             input = new Input();
-            game = new Game_Pong();
+            game = new Game_Pong(Scene_Pong.gameMode);
             ui = new UI_Pong();
         }
 

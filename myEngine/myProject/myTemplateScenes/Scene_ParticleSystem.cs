@@ -37,10 +37,10 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (input.ms.LeftButton == ButtonState.Pressed)
+            if (input.GetMouseDown(0))
             {
                 particleEngine.isActive = true;
-                particleEngine.EmitterLocation = new Vector2(input.mousePos.X, input.mousePos.Y);
+                particleEngine.EmitterLocation = new Vector2(input.mouse.position.X, input.mouse.position.Y);
             }
             else
                 particleEngine.isActive = false;

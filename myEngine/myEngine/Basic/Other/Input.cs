@@ -12,9 +12,7 @@ namespace myEngine
         public KeyboardState keyState;
         private KeyboardState prevKeyState;
 
-        public MouseState ms;
-        private MouseState prevMouseState;
-        public Point mousePos;
+        public Mouse mouse;
 
         public GamePadState gamePadState;
         private GamePadState prevGamePadState;
@@ -28,15 +26,13 @@ namespace myEngine
         {
             this.playerIndex = (int)playerIndex;
             inputProfile = new InputProfile(playerIndex);
+
+            mouse = new Mouse();
         }
 
         //METHODS
         public override void Update()
         {
-            prevMouseState = ms;
-            ms = Microsoft.Xna.Framework.Input.Mouse.GetState();
-            mousePos = new Point(ms.X, ms.Y);
-
             prevKeyState = keyState;
             keyState = Keyboard.GetState();
 
@@ -114,29 +110,11 @@ namespace myEngine
         //MOUSE
         public bool GetMouseDown(int i)
         {
-            if(i == 0)
-                return (ms.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released);
-
-            if (i == 1)
-                return (ms.RightButton == ButtonState.Pressed && prevMouseState.RightButton == ButtonState.Released);
-
-            if (i == 2)
-                return (ms.MiddleButton == ButtonState.Pressed && prevMouseState.MiddleButton == ButtonState.Released);
-
-            return false;
+            return GetMouseDown(i);
         }
         public bool GetMouseUp(int i)
         {
-            if (i == 0)
-                return (ms.LeftButton == ButtonState.Released && prevMouseState.LeftButton == ButtonState.Pressed);
-
-            if (i == 1)
-                return (ms.RightButton == ButtonState.Released && prevMouseState.RightButton == ButtonState.Pressed);
-
-            if (i == 2)
-                return (ms.MiddleButton == ButtonState.Released && prevMouseState.MiddleButton == ButtonState.Pressed);
-
-            return false;
+            return GetMouseUp(i);
         }
     }
 }

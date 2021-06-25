@@ -7,6 +7,12 @@ using System.Text;
 
 namespace myEngine
 {
+    public enum GameMode
+    {
+        PvP,
+        PvAI
+    }
+
     public class Game_Pong : Entity
     {
         //FIELDS
@@ -16,12 +22,20 @@ namespace myEngine
 
         public TargetSpawner targetSpawner;
 
+
         //CONSTRUCTOR
-        public Game_Pong()
+        public Game_Pong(GameMode gameMode)
         {
-            player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
-            //player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
-            player2 = new Player_AI(PlayerIndex.Two);
+            if(gameMode == GameMode.PvP)
+            {
+                player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
+                player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two);
+            }
+            else
+            {
+                player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One);
+                player2 = new Player_AI(PlayerIndex.Two);
+            }
 
             ball = new Ball(player1.anchorPoint);
             player1.isHoldingTheBall = true;
