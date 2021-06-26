@@ -19,8 +19,8 @@ namespace myEngine
         public Debug()
         {
             input = new Input();
-            t = new Text();
-            t.color = Color.White;
+            //t = new Text();
+            //t.color = Color.White;
         }
 
         //METHODS
@@ -51,7 +51,7 @@ namespace myEngine
         {
             //MOUSE CURSOR
             //DrawSimpleShape.DrawRuller(input.mousePos.ToVector2(), Color.Red);
-            t.s = input.mouse.position.ToVector2().ToString();
+            //t.s = input.mouse.position.ToVector2().ToString();
         }
     }
 }

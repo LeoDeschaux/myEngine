@@ -21,8 +21,6 @@ namespace myEngine
         private bool isActive;
         public bool isVisible = true;
 
-        Mouse m;
-
         //----- COLORS -----
         //default
         //hover
@@ -53,8 +51,6 @@ namespace myEngine
             //image.transform.SetParent(this.transform);
             //text.transform.SetParent(this.transform);
             
-            m = new Mouse();
-
             isActive = true;
         }
 
@@ -65,11 +61,11 @@ namespace myEngine
             if (!isActive || !isVisible)
                 return;
 
-            if (sprite.GetRectangle().Contains(m.ms.Position))
+            if (sprite.GetRectangle().Contains(Mouse.mouseState.Position))
             {
                 sprite.color = Color.LightGray;
 
-                if (m.GetMouseDown(0))
+                if (Mouse.GetMouseDown(0))
                 {
                     sprite.color = Color.Black;
 

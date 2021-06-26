@@ -12,8 +12,6 @@ namespace myEngine
         public KeyboardState keyState;
         private KeyboardState prevKeyState;
 
-        public Mouse mouse;
-
         public GamePadState gamePadState;
         private GamePadState prevGamePadState;
 
@@ -32,13 +30,11 @@ namespace myEngine
         public Input()
         {
             inputProfile = new InputProfile();
-            mouse = new Mouse();
         }
 
         public Input(InputProfile inputProfile)
         {
             this.inputProfile = inputProfile;
-            mouse = new Mouse();
         }
 
         //METHODS
@@ -122,11 +118,11 @@ namespace myEngine
         //MOUSE
         public bool GetMouseDown(int i)
         {
-            return GetMouseDown(i);
+            return Mouse.GetMouseDown(i);
         }
         public bool GetMouseUp(int i)
         {
-            return GetMouseUp(i);
+            return Mouse.GetMouseUp(i);
         }
     }
 }

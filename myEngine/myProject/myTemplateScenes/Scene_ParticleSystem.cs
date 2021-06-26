@@ -40,7 +40,7 @@ namespace myEngine
             if (input.GetMouseDown(0))
             {
                 particleEngine.isActive = true;
-                particleEngine.EmitterLocation = new Vector2(input.mouse.position.X, input.mouse.position.Y);
+                particleEngine.EmitterLocation = new Vector2(Mouse.position.X, Mouse.position.Y);
             }
             else
                 particleEngine.isActive = false;

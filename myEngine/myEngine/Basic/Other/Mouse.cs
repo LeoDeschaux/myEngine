@@ -6,53 +6,73 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Mouse : Entity
+    public static class Mouse
     {
         //FIELDS
-        public MouseState ms;
-        public MouseState prevMouseState;
-        public Point position;
+        public static MouseState mouseState;
+        public static MouseState prevMouseState;
+        public static Point position;
 
-        public Vector2 sensitivity;
+        public static Vector2 sensitivity;
+
+        private static bool asBeenReleased = true;
 
         //CONSTRUCTOR
-        public Mouse()
+        public static void Update()
         {
+            prevMouseState = mouseState;
+            mouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
+            position = new Point(mouseState.X, mouseState.Y);
 
-        }
-
-        public override void Update()
-        {
-            prevMouseState = ms;
-            ms = Microsoft.Xna.Framework.Input.Mouse.GetState();
-            position = new Point(ms.X, ms.Y);
+            asBeenReleased = true;
         }
 
         //METHODS
-        public bool GetMouseDown(int i)
+        public static bool GetMouseDown(int i)
         {
+            if (!asBeenReleased)
+                return false;
+
             if (i == 0)
-                return (ms.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released);
+            {
+                if (mouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
+                {
+                    asBeenReleased = false;
+                    return true;
+                }
+            }
 
             if (i == 1)
-                return (ms.RightButton == ButtonState.Pressed && prevMouseState.RightButton == ButtonState.Released);
+            {
+                if (mouseState.RightButton == ButtonState.Pressed && prevMouseState.RightButton == ButtonState.Released);
+                {
+                    asBeenReleased = false;
+                    return true;
+                }
+            }
 
             if (i == 2)
-                return (ms.MiddleButton == ButtonState.Pressed && prevMouseState.MiddleButton == ButtonState.Released);
+            {
+                if (mouseState.MiddleButton == ButtonState.Pressed && prevMouseState.MiddleButton == ButtonState.Released);
+                {
+                    asBeenReleased = false;
+                    return true;
+                }
+            }
 
             return false;
         }
 
-        public bool GetMouseUp(int i)
+        public static bool GetMouseUp(int i)
         {
             if (i == 0)
-                return (ms.LeftButton == ButtonState.Released && prevMouseState.LeftButton == ButtonState.Pressed);
+                return (mouseState.LeftButton == ButtonState.Released && prevMouseState.LeftButton == ButtonState.Pressed);
 
             if (i == 1)
-                return (ms.RightButton == ButtonState.Released && prevMouseState.RightButton == ButtonState.Pressed);
+                return (mouseState.RightButton == ButtonState.Released && prevMouseState.RightButton == ButtonState.Pressed);
 
             if (i == 2)
-                return (ms.MiddleButton == ButtonState.Released && prevMouseState.MiddleButton == ButtonState.Pressed);
+                return (mouseState.MiddleButton == ButtonState.Released && prevMouseState.MiddleButton == ButtonState.Pressed);
 
             return false;
         }

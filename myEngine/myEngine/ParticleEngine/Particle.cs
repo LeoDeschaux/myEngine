@@ -51,6 +51,8 @@ namespace myEngine
             Size = 1f;
             TTL = 1;
             Speed = 1;
+
+            OrderInLayer = 0;
         }
 
         //UPDATE & DRAW

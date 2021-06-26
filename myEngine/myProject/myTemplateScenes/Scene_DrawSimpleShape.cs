@@ -31,7 +31,7 @@ namespace myEngine
             if (input.GetMouseDown(0))
             {
                 draw = true;
-                pos = input.mouse.position.ToVector2();
+                pos = Mouse.position.ToVector2();
             }
             if (input.GetMouseUp(0))
                 draw = false;
@@ -42,7 +42,7 @@ namespace myEngine
             text.Draw(spriteBatch);
 
             if (draw)
-                DrawSimpleShape.DrawRectangle(pos, input.mouse.position.ToVector2() - pos, 0f, Color.Red);
+                DrawSimpleShape.DrawRectangle(pos, Mouse.position.ToVector2() - pos, 0f, Color.Red);
         }
     }
 }

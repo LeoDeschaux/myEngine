@@ -68,6 +68,8 @@ namespace myEngine
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * Settings.GAME_SPEED;
             Time.UpdateGameTime(gameTime, deltaTime);
 
+            Mouse.Update();
+
             settings.Update();
 
             world.Update();

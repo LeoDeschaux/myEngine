@@ -35,7 +35,7 @@ namespace myEngine
             if (input.GetKeyDown(Keys.F2))
                 ChangeScene(new Scene_DrawSimpleShape());
             if (input.GetKeyDown(Keys.F3))
-                ChangeScene(new Scene_Animation());
+                ChangeScene(new Scene_Tweening());
             if (input.GetKeyDown(Keys.F4))
                 ChangeScene(new Scene_ParticleSystem());
             if (input.GetKeyDown(Keys.F5))

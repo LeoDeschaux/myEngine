@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Scene_Animation : IScene
+    public class Scene_3D : IScene
     {
         //FIELDS 
 
