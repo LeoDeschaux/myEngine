@@ -32,7 +32,6 @@ namespace myEngine
             text2.transform.position = new Vector2(Settings.Get_Screen_Center().X - 250, Settings.Get_Screen_Center().Y + 200);
             */
 
-            /*
             //BUTTON PVP
             Button pvp = new Button();
             pvp.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 400);
@@ -59,7 +58,6 @@ namespace myEngine
             ai.text.orderInLayer = 9000;
 
             ai.onButtonPressed += (object sender, EventArgs eventArgs) => LoadAIScene();
-            */
 
             //QUITTER
             //BUTTON AI
