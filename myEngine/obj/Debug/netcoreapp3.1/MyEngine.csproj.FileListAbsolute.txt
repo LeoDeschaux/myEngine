@@ -103,3 +103,4 @@ C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\myContent\UI\Fonts\arial.ttf
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\options.ini
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\TileMaps\myFile.xnb
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\TileMaps\spritesheet.xnb

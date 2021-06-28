@@ -20,6 +20,7 @@ namespace myEngine
         public static ContentManager content;
 
         public static Texture2D animatedSprite;
+        public static Texture2D spriteSheet;
 
         //RANDOM
         static Random random;
@@ -63,6 +64,7 @@ namespace myEngine
 
             //
             animatedSprite = content.Load<Texture2D>("TileMaps/myFile");
+            spriteSheet = content.Load<Texture2D>("TileMaps/spritesheet");
 
 
         }

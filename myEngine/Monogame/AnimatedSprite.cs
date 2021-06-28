@@ -8,12 +8,17 @@ namespace myEngine
     {
         //FIELDS
         public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private int Rows { get; set; }
+        private int Columns { get; set; }
         private int currentFrame;
         private int totalFrames;
 
         public float speed = 1;
+
+        public bool playAllFrame = true;
+        public bool play = true;
+
+        public int animationIndex = 0;
 
         //CONSTRUCTOR
         public AnimatedSprite(Texture2D texture, int rows, int columns)
@@ -44,14 +49,42 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            Rectangle sourceRectangle = new Rectangle();
+            Rectangle destinationRectangle = new Rectangle();
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)transform.position.X, (int)transform.position.Y, width, height);
+            if(play)
+            {
+                if (playAllFrame)
+                {
+                    int width = Texture.Width / Columns;
+                    int height = Texture.Height / Rows;
+                    int row = (int)((float)currentFrame / (float)Columns);
+                    int column = currentFrame % Columns;
 
+                    sourceRectangle = new Rectangle(width * column, height * row, width, height);
+                    destinationRectangle = new Rectangle((int)transform.position.X, (int)transform.position.Y, width, height);
+                }
+                else
+                {
+                    int width = Texture.Width / Columns;
+                    int height = Texture.Height / Rows;
+                    int row = animationIndex;
+                    int column = currentFrame % Columns;
+
+                    sourceRectangle = new Rectangle(width * column, height * row, width, height);
+                    destinationRectangle = new Rectangle((int)transform.position.X, (int)transform.position.Y, width, height);
+                }
+            }
+            else
+            {
+                int width = Texture.Width / Columns;
+                int height = Texture.Height / Rows;
+                int row = animationIndex;
+                int column = 0 % Columns;
+
+                sourceRectangle = new Rectangle(width * column, height * row, width, height);
+                destinationRectangle = new Rectangle((int)transform.position.X, (int)transform.position.Y, width, height);
+            }
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
     }
