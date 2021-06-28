@@ -12,6 +12,8 @@ namespace myEngine
 
         public static World world;
         public static SceneManager sceneManager;
+
+        public static AudioEngine audioEngine;
         public static PhysicEngine physicEngine;
 
         public static Settings settings;
@@ -51,6 +53,7 @@ namespace myEngine
 
             Time.InitTime();
 
+            audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
             world = new World();
             sceneManager = new SceneManager();

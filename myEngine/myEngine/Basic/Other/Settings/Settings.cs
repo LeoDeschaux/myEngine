@@ -33,8 +33,10 @@ namespace myEngine
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
+            /*
             game.Window.AllowUserResizing = true;
             game.Window.ClientSizeChanged += OnResize;
+            */
 
             game.Window.Title = "MonogameV2";
             game.graphics.ApplyChanges();

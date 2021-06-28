@@ -23,6 +23,7 @@ namespace myEngine
             pp.maxParticles = 1000;
             pp.burstMode = false;
             pp.loopMode = true;
+            pp.duration = 5;
 
             particleEngine = new ParticleEngine(pp, Vector2.Zero);
             particleEngine.isActive = false;
@@ -37,7 +38,7 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (input.GetMouseDown(0))
+            if (Mouse.GetMouse(0))
             {
                 particleEngine.isActive = true;
                 particleEngine.EmitterLocation = new Vector2(Mouse.position.X, Mouse.position.Y);

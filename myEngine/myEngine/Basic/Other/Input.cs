@@ -104,6 +104,9 @@ namespace myEngine
             return (gamePadState.IsButtonDown(button) && prevGamePadState.IsButtonUp(button));
         }
 
+
+        /***********************************************************************************/
+
         //KEYBOARD
         public bool GetKey(Keys key)
         {
@@ -116,6 +119,10 @@ namespace myEngine
         }
 
         //MOUSE
+        public bool GetMouse(int i)
+        {
+            return Mouse.GetMouse(i);
+        }
         public bool GetMouseDown(int i)
         {
             return Mouse.GetMouseDown(i);

@@ -100,13 +100,13 @@ namespace myEngine
             point4 = new Vector2(x, y);
 
             //NEW RECTANGLE
-            DrawLine(point1, point2, Color.Red, 3f);
-            DrawLine(point2, point3, Color.Red, 3f);
-            DrawLine(point3, point4, Color.Red, 3f);
-            DrawLine(point4, point1, Color.Red, 3f);
+            DrawLine(point1, point2, color, 3f);
+            DrawLine(point2, point3, color, 3f);
+            DrawLine(point3, point4, color, 3f);
+            DrawLine(point4, point1, color, 3f);
 
             //DIAGO
-            DrawLine(point1, point3, Color.Red, 3f);
+            DrawLine(point1, point3, color, 3f);
         }
 
         public static void DrawRectangleFull(Vector2 position, Vector2 dimension, Color color, int orderInLayer = 0)

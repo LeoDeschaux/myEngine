@@ -14,6 +14,7 @@
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/myContent/ParticleSystem/diamond.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/myContent/ParticleSystem/star.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/myContent/UI/DefaultFont.spritefont</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/TileMaps/myFile.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -26,5 +27,6 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>myContent/UI/defaultFont.spritefont</File>
+    <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

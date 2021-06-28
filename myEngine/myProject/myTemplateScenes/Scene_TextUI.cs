@@ -4,44 +4,47 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
+using System.IO;
+using System.Linq;
+
+using Microsoft.Xna.Framework.Input;
+using System.Threading.Tasks;
+using FontStashSharp;
+
 namespace myEngine
 {
     public class Scene_TextUI : IScene
     {
         //FIELDS 
-        Text text;
+        Text origin;
+        Text textCenter;
 
-        //CONSTRUCTOR
-        public Scene_TextUI()
+		//CONSTRUCTOR
+		public Scene_TextUI()
         {
-            text = new Text();
-            text.s = "CECI EST MON TEXT";
-            text.color = Color.White;
-            text.fontSize = 60;
-            //text.transform.position = Settings.Get_Screen_Center();
+            origin = new Text();
+            origin.s = "TEXT ORIGIN";
+            origin.color = Color.White;
+            origin.fontSize = 60;
 
-            Console.WriteLine("Font pos : " + text.transform.position);
-            //Console.WriteLine("Font mesure : " + text.font.MeasureString(text.s));
-
-            //Console.WriteLine("DynaFont : " + text.font.TextBounds(text.s, text.transform.position, FontStashSharp.Bounds, text.transform.scale));
-
-
-            //Vector2 size = new Vector2(text.font.Texture.Width, text.font.Texture.Height);
-            //Console.WriteLine("Font size : " + size);
-
-            //Console.WriteLine("Bonds : " + text.font.Texture.Bounds);
-        }
+            textCenter = new Text();
+            textCenter.s = "CECI EST MON TEXT";
+            textCenter.color = Color.White;
+            textCenter.fontSize = 60;
+            textCenter.transform.position = Settings.Get_Screen_Center();
+            textCenter.alignment = Alignment.Center;
+		}
 
         public override void Update()
         {
         }
 
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            DrawSimpleShape.DrawRuller(text.transform.position + Vector2.One, Color.Red);
-            DrawSimpleShape.DrawRuller(text.font.MeasureString(text.s), Color.Green);
-            Vector2 size = new Vector2(text.font.Texture.Width, text.font.Texture.Height);
-            DrawSimpleShape.DrawRuller(size, Color.Blue);
-        }
-    }
+            DrawSimpleShape.DrawRectangle(origin.GetRectangle(), 0f, Color.Green);
+
+            DrawSimpleShape.DrawRuller(textCenter.transform.position + Vector2.One, Color.Red);
+            DrawSimpleShape.DrawRectangle(textCenter.GetRectangle(), 0f, Color.Green);
+		}
+	}
 }

@@ -16,6 +16,11 @@ namespace myEngine
         public static SoundEffect ball_hit_raquette, ball_hit_wall;
         public static SoundEffect[] target_hit_sounds;
 
+        //
+        public static ContentManager content;
+
+        public static Texture2D animatedSprite;
+
         //RANDOM
         static Random random;
 
@@ -43,14 +48,23 @@ namespace myEngine
 
         public static void LoadRessources(ContentManager content)
         {
-            ball_hit_raquette = content.Load<SoundEffect>("myContent/Audio/BallHit_V1");
-            ball_hit_wall = content.Load<SoundEffect>("myContent/Audio/BallHit_V2");
-
             target_hit_sounds = new SoundEffect[4];
-            target_hit_sounds[0] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Small");
-            target_hit_sounds[1] = content.Load<SoundEffect>("myContent/Audio/TargetHit_SmallV2");
-            target_hit_sounds[2] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Medium");
-            target_hit_sounds[3] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Big");
+
+            if (AudioEngine.audioDeviceConnected)
+            {
+                ball_hit_raquette = content.Load<SoundEffect>("myContent/Audio/BallHit_V1");
+                ball_hit_wall = content.Load<SoundEffect>("myContent/Audio/BallHit_V2");
+
+                target_hit_sounds[0] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Small");
+                target_hit_sounds[1] = content.Load<SoundEffect>("myContent/Audio/TargetHit_SmallV2");
+                target_hit_sounds[2] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Medium");
+                target_hit_sounds[3] = content.Load<SoundEffect>("myContent/Audio/TargetHit_Big");
+            }
+
+            //
+            animatedSprite = content.Load<Texture2D>("TileMaps/myFile");
+
+
         }
 
         public static SoundEffect GetSound(SoundEffect[] sounds)

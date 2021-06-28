@@ -24,14 +24,6 @@ namespace myEngine
             text.fontSize = 120;
             text.transform.position = new Vector2(Settings.Get_Screen_Center().X - 450, 100);
 
-            /*
-            Text text2 = new Text();
-            text2.s = "PRESS ENTER TO PLAY";
-            text2.color = Color.White;
-            text2.fontSize = 50;
-            text2.transform.position = new Vector2(Settings.Get_Screen_Center().X - 250, Settings.Get_Screen_Center().Y + 200);
-            */
-
             //BUTTON PVP
             Button pvp = new Button();
             pvp.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 400);
@@ -60,7 +52,6 @@ namespace myEngine
             ai.onButtonPressed += (object sender, EventArgs eventArgs) => LoadAIScene();
 
             //QUITTER
-            //BUTTON AI
             Button exit = new Button();
             exit.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 655);
             exit.sprite.dimension = new Vector2(350, 50);

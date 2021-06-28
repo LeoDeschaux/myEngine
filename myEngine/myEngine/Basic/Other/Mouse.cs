@@ -28,6 +28,20 @@ namespace myEngine
         }
 
         //METHODS
+        public static bool GetMouse(int i)
+        {
+            if (i == 0)
+                return (mouseState.LeftButton == ButtonState.Pressed);
+
+            if (i == 1)
+                return (mouseState.RightButton == ButtonState.Pressed);
+
+            if (i == 2)
+                return (mouseState.MiddleButton == ButtonState.Pressed);
+
+            return false;
+        }
+
         public static bool GetMouseDown(int i)
         {
             if (!asBeenReleased)
