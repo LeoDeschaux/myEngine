@@ -10,11 +10,9 @@ namespace myEngine
         //FIELDS
         private static Random random;
 
-
         //CONSTRUCTOR
         public AudioSource()
         {
-            
         }
 
         //METHODS
@@ -23,20 +21,23 @@ namespace myEngine
             if (!AudioEngine.audioDeviceConnected)
                 return;
 
-            random = new Random();
+            if (soundEffect == null)
+                return;
 
-            //float volume = 1f + ((float)random.NextDouble()*1.5f) - 1.5f/2;
+            random = new Random(); 
 
-            if (SoundEffect.MasterVolume <= 0)
-                Console.WriteLine("PAS D'AUDIO");
-
-            float maxVolume = 0.1f;
-            float volume = 0.8f + (((maxVolume * 2) * (float)random.NextDouble()) - maxVolume);
+            float maxVolume = AudioEngine.MasterMixer.volume;
+            float volume = 0.8f + ( ((float)random.NextDouble()) / 5f );
+            volume = volume * maxVolume;
 
             float maxPitch = 0.1f;
-            float pitch = 0f + (((maxPitch * 2) * (float)random.NextDouble()) - maxPitch);
+            float pitch = 0f + ( ((float)random.NextDouble()) /  (1f/maxPitch) );
 
             float pan = 0.0f;
+
+            volume = Math.Clamp(volume, 0, 1);
+            pitch = Math.Clamp(pitch, 0, 1);
+            pan = Math.Clamp(pan, 0, 1);
 
             soundEffect.Play(volume, pitch, pan);
         }

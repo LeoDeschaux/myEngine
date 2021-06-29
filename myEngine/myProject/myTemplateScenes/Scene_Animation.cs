@@ -8,27 +8,19 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine
 {
-    
-
     public class Scene_Animation : IScene
     {
         //FIELDS 
         Transform transformChar;
         myChar state;
         AnimatedSprite spritesheet;
+        float speed = 200;
 
         Input input;
-
-        float speed = 200;
 
         //CONSTRUCTOR
         public Scene_Animation()
         {
-            //Frame
-            //Sequence (plusieurs frame)
-            //AnimationPlayer
-            //Animation
-
             Settings.BACKGROUND_COLOR = Color.CornflowerBlue;
 
             AnimatedSprite animatedSprite = new AnimatedSprite(Ressources.animatedSprite, 2, 2);

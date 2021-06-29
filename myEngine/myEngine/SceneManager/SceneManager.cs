@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_Animation();
+            currentScene = new Scene_Pong();
             input = new Input();
         }
 

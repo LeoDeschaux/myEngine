@@ -44,8 +44,10 @@ namespace myEngine
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            audioEngine = new AudioEngine();
+
             // TODO: use this.Content to load your game content here
-            Ressources.LoadImages(this.Content);
+            Ressources.LoadImages(this.Content); 
             Ressources.LoadFont(this.Content);
             Ressources.LoadRessources(this.Content);
 
@@ -53,7 +55,6 @@ namespace myEngine
 
             Time.InitTime();
 
-            audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
             world = new World();
             sceneManager = new SceneManager();
