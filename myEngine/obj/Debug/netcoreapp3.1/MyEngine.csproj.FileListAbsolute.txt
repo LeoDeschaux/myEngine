@@ -104,3 +104,5 @@ C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\options.ini
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\TileMaps\myFile.xnb
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\TileMaps\spritesheet.xnb
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\myContent\DEFAULT_CUBE.xnb
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\myContent\pomme.xnb

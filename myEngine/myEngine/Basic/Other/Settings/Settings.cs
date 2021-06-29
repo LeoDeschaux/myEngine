@@ -12,7 +12,7 @@ namespace myEngine
         public static int SCREEN_WIDTH = 1280;
         public static int SCREEN_HEIGHT = 720;
 
-        private static float ASPECT_RATIO;
+        public static float ASPECT_RATIO { get; private set; }
 
         public static float GAME_SPEED = 1f;
 

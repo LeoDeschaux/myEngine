@@ -71,7 +71,5 @@ namespace myEngine
             spriteBatch.Draw(this.texture, GetRec(), this.sourceRectangle, this.color, MathHelper.ToRadians(transform.rotation), origin, SpriteEffects.None, 
                 (float)( (Math.Clamp(orderInLayer, -1000, 1000)+1000)) / 2000);
         }
-
-        
     }
 }

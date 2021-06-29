@@ -22,6 +22,10 @@ namespace myEngine
         public static Texture2D animatedSprite;
         public static Texture2D spriteSheet;
 
+        //
+        public static Model DEFAULT_CUBE;
+        public static Model pomme;
+
         //RANDOM
         static Random random;
 
@@ -66,7 +70,9 @@ namespace myEngine
             animatedSprite = content.Load<Texture2D>("TileMaps/myFile");
             spriteSheet = content.Load<Texture2D>("TileMaps/spritesheet");
 
-
+            //
+            DEFAULT_CUBE = content.Load<Model>("myContent/DEFAULT_CUBE");
+            pomme = content.Load<Model>("myContent/pomme");
         }
 
         public static SoundEffect GetSound(SoundEffect[] sounds)
