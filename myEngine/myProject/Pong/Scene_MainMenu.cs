@@ -13,6 +13,8 @@ namespace myEngine
         //FIELDS
         public Input input;
 
+        Button pvp;
+
         //CONSTRUCTOR
         public Scene_MainMenu()
         {
@@ -25,17 +27,22 @@ namespace myEngine
             text.transform.position = new Vector2(Settings.Get_Screen_Center().X - 450, 100);
 
             //BUTTON PVP
-            Button pvp = new Button();
+            pvp = new Button();
             pvp.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 400);
             pvp.sprite.dimension = new Vector2(500, 80);
 
             pvp.text.transform.position = new Vector2(480, 355);
+            //pvp.text.transform.position = pvp.sprite.transform.position;
+            //pvp.text.alignment = Alignment.Center;
+            
             pvp.text.color = Color.Black;
             pvp.text.fontSize = 80;
             pvp.text.s = "Play PVP";
             pvp.text.orderInLayer = 9000;
 
             pvp.onButtonPressed += (object sender, EventArgs eventArgs) => LoadPVPScene();
+
+            Console.WriteLine(pvp.transform.position);
 
 
             //BUTTON AI
@@ -92,7 +99,12 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            /*
+            DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), Color.White);
 
+            DrawSimpleShape.DrawRuller(pvp.transform.position+Vector2.One, Color.Red);
+            DrawSimpleShape.DrawRuller(pvp.sprite.transform.position, Color.Blue);
+            */
         }
     }
 }

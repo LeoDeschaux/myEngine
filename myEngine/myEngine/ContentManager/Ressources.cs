@@ -29,7 +29,7 @@ namespace myEngine
         //RANDOM
         static Random random;
 
-        public static void LoadImages(ContentManager content)
+        private static void LoadImages(ContentManager content)
         {
             Images = new Dictionary<string, Texture2D>();
 
@@ -46,13 +46,16 @@ namespace myEngine
             }
         }
 
-        public static void LoadFont(ContentManager content)
+        private static void LoadFont(ContentManager content)
         {
             defaultFont = content.Load<SpriteFont>("myContent/UI/defaultFont");
         }
 
         public static void LoadRessources(ContentManager content)
         {
+            LoadImages(content);
+            LoadFont(content);
+
             target_hit_sounds = new SoundEffect[4];
 
             if (AudioEngine.audioDeviceConnected)

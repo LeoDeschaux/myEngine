@@ -13,7 +13,7 @@ namespace myEngine
         //COMPONENTS
         public Transform transform;
 
-        public Image image;
+        //public Image image;
         public Text text;
         public Sprite sprite;
 
@@ -30,8 +30,8 @@ namespace myEngine
         // SETTERS
         public void SetActive(bool b)
         {
-            Color c = b ? Color.White : Color.Gray;
-            image.SetColor(c);
+            //Color c = b ? Color.White : Color.Gray;
+            //image.SetColor(c);
 
             isActive = b;
         }

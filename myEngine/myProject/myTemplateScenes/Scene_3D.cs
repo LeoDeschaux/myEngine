@@ -36,8 +36,6 @@ namespace myEngine
             myObject.transform3D.rotation.X++;
             myObject.transform3D.rotation.Y++;
 
-            //myObject.transform3D.position.X += 1 * Time.deltaTime;
-            
             //
             if(input.GetKey(Keys.Q))
             {

@@ -47,8 +47,6 @@ namespace myEngine
             audioEngine = new AudioEngine();
 
             // TODO: use this.Content to load your game content here
-            Ressources.LoadImages(this.Content); 
-            Ressources.LoadFont(this.Content);
             Ressources.LoadRessources(this.Content);
 
             Save_RunTime.Init();
