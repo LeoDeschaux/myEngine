@@ -21,10 +21,11 @@ namespace myEngine
             input = new Input();
 
             Text text = new Text();
-            text.s = "PONG THE GAME";
+            text.s = "CRYSTAL PONG";
             text.color = Color.White;
             text.fontSize = 120;
-            text.transform.position = new Vector2(Settings.Get_Screen_Center().X - 450, 100);
+            text.transform.position = new Vector2(Settings.SCREEN_WIDTH / 2, 150);
+            text.alignment = Alignment.Center;
 
             //BUTTON PVP
             pvp = new Button();
