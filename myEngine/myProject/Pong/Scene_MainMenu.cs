@@ -60,7 +60,7 @@ namespace myEngine
             exit.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 655);
             exit.sprite.dimension = new Vector2(350, 50);
 
-            exit.text.transform.position = new Vector2(585, 630);
+            exit.text.transform.position = new Vector2(595, 630);
             exit.text.color = Color.Black;
             exit.text.fontSize = 50;
             exit.text.s = "Exit";

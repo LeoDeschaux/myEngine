@@ -126,6 +126,12 @@ namespace myEngine
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
         }
 
+        public static void DrawRuller(Vector2 position)
+        {
+            DrawSimpleShape.DrawLine(new Vector2(position.X, 0), Settings.SCREEN_HEIGHT, MathHelper.ToRadians(90), Color.Red);
+            DrawSimpleShape.DrawLine(new Vector2(0, position.Y), Settings.SCREEN_WIDTH, 0, Color.Red);
+        }
+
         public static void DrawRuller(Vector2 position, Color color)
         {
             //VERTICAL
