@@ -15,6 +15,8 @@ namespace myEngine
 
         public int maxPoints;
 
+        public int orderInLayer = 0;
+
         //CONSTRUCTOR
         public Trail(Transform transform)
         {
@@ -43,11 +45,11 @@ namespace myEngine
                 float f = ( (float)i+1 / (float)positions.Count ) * 255;
 
                 if (i + 1 < positions.Count)
-                    DrawSimpleShape.DrawLine(positions[i], positions[i + 1], new Color(255, 0, 0, (int)f));
+                    DrawSimpleShape.DrawLine(positions[i], positions[i + 1], new Color(255, 0, 0, (int)f), orderInLayer: orderInLayer);
             }
 
             if(positions.Count > 0)
-                DrawSimpleShape.DrawLine(positions[positions.Count - 1], transform.position, Color.Red);
+                DrawSimpleShape.DrawLine(positions[positions.Count - 1], transform.position, Color.Red, orderInLayer: orderInLayer);
         }
     }
 }
