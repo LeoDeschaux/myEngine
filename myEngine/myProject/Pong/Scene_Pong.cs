@@ -29,10 +29,15 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (input.GetKeyDown(Keys.None))
+            if (input.GetKeyDown(Keys.Escape))
             {
                 ((UI_Pong) ui).OnPauseMenuCalled();
             }
+
+
+
+            if (Settings.RELEASE_MODE)
+                return;
 
             if (input.GetKeyDown(Keys.Tab))
             {

@@ -155,22 +155,25 @@ namespace myEngine
                 pause.fontSize = 500;
                 pause.color = Color.White;
                 pause.orderInLayer = 700;
-                pause.transform.position = new Vector2(900, 200);
+                //pause.transform.position = new Vector2(900, 200);
+                pause.transform.position = new Vector2(Settings.SCREEN_WIDTH/2 + 45, Settings.SCREEN_HEIGHT/2 - 50);
+                pause.alignment = Alignment.Center;
                 pause.transform.rotation = MathHelper.ToRadians(90);
 
                 //BUTTON
                 mainMenu = new Button();
                 mainMenu.isVisible = true;
 
-                mainMenu.sprite.transform.position = new Vector2(650, 600);
+                mainMenu.sprite.transform.position = new Vector2(Settings.SCREEN_WIDTH / 2, 600);
                 mainMenu.sprite.dimension = new Vector2(500, 100);
                 mainMenu.sprite.orderInLayer = 700;
 
-                mainMenu.text.s = "Quitter la partie";
+                mainMenu.text.s = "Exit to Menu";
                 mainMenu.text.orderInLayer = 800;
                 mainMenu.text.color = Color.Black;
-                mainMenu.text.transform.position = new Vector2(500, 580);
-                mainMenu.text.fontSize = 50;
+                mainMenu.text.transform.position = new Vector2(Settings.SCREEN_WIDTH/2, 600);
+                mainMenu.text.alignment = Alignment.Center;
+                mainMenu.text.fontSize = 65;
 
                 mainMenu.onButtonPressed += QuitGame;
 

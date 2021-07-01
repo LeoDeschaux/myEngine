@@ -20,6 +20,8 @@ namespace myEngine
 
         public static bool DEBUG_MODE = false;
 
+        public static bool RELEASE_MODE = true;
+
         //REF
         public Game1 game;
 
@@ -61,7 +63,7 @@ namespace myEngine
 
             game.graphics.ApplyChanges();
 
-            Console.WriteLine("ratio: " + ASPECT_RATIO + ", dimension: " + Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT);
+            //Console.WriteLine("ratio: " + ASPECT_RATIO + ", dimension: " + Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT);
         }
 
         //UPDATE & DRAW

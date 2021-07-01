@@ -42,9 +42,6 @@ namespace myEngine
 
             pvp.onButtonPressed += (object sender, EventArgs eventArgs) => LoadPVPScene();
 
-            Console.WriteLine(pvp.transform.position);
-
-
             //BUTTON AI
             Button ai = new Button();
             ai.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 500);

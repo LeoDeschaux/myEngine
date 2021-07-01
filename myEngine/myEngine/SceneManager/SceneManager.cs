@@ -18,14 +18,15 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_Pong();
+            currentScene = new Scene_MainMenu();
             input = new Input();
         }
 
         //UPDATE & DRAW
         public override void Update()
         {
-            CheckInput_ChangeScene();
+            if(!Settings.RELEASE_MODE)
+                CheckInput_ChangeScene();
         }
 
         private void CheckInput_ChangeScene()

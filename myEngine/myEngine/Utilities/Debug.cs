@@ -28,6 +28,9 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
+            if (Settings.RELEASE_MODE)
+                return;
+
             //STOP TIME
             if (input.GetKeyDown(Keys.NumPad0) && Settings.GAME_SPEED != 0f)
                 Settings.GAME_SPEED = 0.0f;

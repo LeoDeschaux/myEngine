@@ -63,8 +63,12 @@ namespace myEngine
 
         protected override void Update(GameTime gameTime)
         {
-            if (!isGameRunning || (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)))
+            if (!isGameRunning)
                 Exit();
+
+            if (!Settings.RELEASE_MODE && (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)))
+                Exit();
+            
 
             // TODO: Add your update logic here
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * Settings.GAME_SPEED;
