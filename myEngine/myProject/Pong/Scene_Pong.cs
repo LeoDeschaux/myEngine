@@ -14,7 +14,7 @@ namespace myEngine
         public static Game_Pong game;
         public static UI ui;
 
-        public static GameMode gameMode = GameMode.PvP;
+        public static GameMode gameMode = GameMode.PvAI;
 
         //CONSTRUCTOR
         public Scene_Pong()
@@ -37,6 +37,11 @@ namespace myEngine
             if (input.GetKeyDown(Keys.Tab))
             {
                 game.player1.OnPlayerGetRemovedStock();
+            }
+
+            if (input.GetKeyDown(Keys.CapsLock))
+            {
+                game.player2.OnPlayerGetRemovedStock();
             }
         }
 

@@ -22,6 +22,9 @@ namespace myEngine
 
         public TargetSpawner targetSpawner;
 
+        //SAVE
+        private string lastWinner = "none";
+        private string lastWinnerKey = "LastWinner";
 
         //CONSTRUCTOR
         public Game_Pong(GameMode gameMode)
@@ -30,9 +33,6 @@ namespace myEngine
             {
                 player1 = new Player_Human(new Vector2(160, Settings.SCREEN_HEIGHT / 2), PlayerIndex.One, new InputProfile(PlayerIndex.One, InputMode.defaultKeyboard));
                 player2 = new Player_Human(new Vector2(1080, Settings.SCREEN_HEIGHT / 2), PlayerIndex.Two, new InputProfile(PlayerIndex.Two, InputMode.defaultGamePad, 1));
-
-                player1.name = "PLAYER A GAUCHE";
-                player2.name = "PLAYER A DROITE";
             }
             else
             {
@@ -40,10 +40,37 @@ namespace myEngine
                 player2 = new Player_AI(PlayerIndex.Two);
             }
 
-            ball = new Ball(player1.anchorPoint);
-            player1.isHoldingTheBall = true;
+            player1.SetInGamePlayerPosition(InGamePlayerPosition.Left);
+            player2.SetInGamePlayerPosition(InGamePlayerPosition.Right);
+
+            ServeTheBall();
 
             targetSpawner = new TargetSpawner();
+        }
+
+        private void ServeTheBall()
+        {
+            if (Save_RunTime.data.ContainsKey(lastWinnerKey))
+                lastWinner = Save_RunTime.data[lastWinnerKey];
+
+            if (lastWinner != "none")
+            {
+                if (lastWinner == "One")
+                {
+                    ball = new Ball(player1.anchorPoint);
+                    player1.isHoldingTheBall = true;
+                }
+                else if (lastWinner == "Two")
+                {
+                    ball = new Ball(player2.anchorPoint);
+                    player2.isHoldingTheBall = true;
+                }
+            }
+            else
+            {
+                ball = new Ball(player1.anchorPoint);
+                player1.isHoldingTheBall = true;
+            }
         }
 
         public void OnGameOver(PlayerIndex looser)
@@ -53,6 +80,9 @@ namespace myEngine
                 player = Scene_Pong.game.player2;
 
             player.score++;
+
+            Save_RunTime.data.Remove(lastWinnerKey);
+            Save_RunTime.data.Add(lastWinnerKey, looser.ToString());
 
             SaveScore();
             ReloadScene();

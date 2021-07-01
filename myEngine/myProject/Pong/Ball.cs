@@ -34,11 +34,11 @@ namespace myEngine
         {
             this.transform = anchorPos;
 
-            ballState = BallState.idle;
-
             sprite = new Sprite(new Vector2(transform.position.X/2, transform.position.Y), new Vector2(sizeX, sizeY));
             sprite.color = Color.Yellow;
             sprite.transform = this.transform;
+
+            ballState = BallState.idle;
 
             trail = new Trail(sprite.transform);
             trail.maxPoints = 3;
@@ -48,16 +48,16 @@ namespace myEngine
         }
 
         //METHODS
-        public void FireBall(int direction = 0)
+        public void FireBall(int direction)
         {
-            if(direction == 0 && ballState == BallState.idle)
+            if(direction != 0 && ballState == BallState.idle)
             {
                 Vector2 currentPos = transform.position;
                 transform = new Transform();
                 transform.position = currentPos;
                 sprite.transform = this.transform;
 
-                this.direction.X = 1;
+                this.direction.X = direction;
                 this.direction.Y = 0;
 
                 ballState = BallState.moving;

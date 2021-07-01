@@ -16,8 +16,10 @@ namespace myEngine
         public Player_AI(PlayerIndex playerIndex)
         {
             this.playerIndex = playerIndex;
+
             raquette.transform.position = new Vector2(1080, Settings.SCREEN_HEIGHT / 2);
-            name = "AI";
+
+            name = "Player_AI_Default_Name";
 
             LoadScore();
         }
@@ -27,6 +29,11 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
+            base.Update();
+
+            if (Scene_Pong.game.ball.ballState != Ball.BallState.moving && isHoldingTheBall)
+                FireBall(ballDirection);
+
             Vector2 ballPos = Scene_Pong.game.ball.transform.position;
             Vector2 raqPos = raquette.transform.position;
 

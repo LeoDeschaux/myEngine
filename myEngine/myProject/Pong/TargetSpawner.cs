@@ -21,7 +21,6 @@ namespace myEngine
         public TargetSpawner()
         {
             random = new Random();
-            //Console.WriteLine((float)Time.gameTime.TotalGameTime.TotalSeconds);
 
             Vector2 position = Settings.Get_Screen_Center();
             Vector2 dimension = new Vector2(500, Settings.SCREEN_HEIGHT - 100);

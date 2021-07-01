@@ -7,6 +7,12 @@ using System.Text;
 
 namespace myEngine
 {
+    public enum InGamePlayerPosition
+    {
+        Left,
+        Right
+    }
+
     public abstract class Player : GameObject
     {
         //FIELDS
@@ -14,10 +20,14 @@ namespace myEngine
         public float speed = 500;
 
         public Transform anchorPoint;
+        public float anchorOffSetX = 80;
+        public int ballDirection = 1;
+
         public Collider2D collider;
 
         public string name = "Player_Default_Name";
         public PlayerIndex playerIndex;
+
         //SCORE
         public int score = 0;
         private string scoreKey = "PlayerScore";
@@ -32,10 +42,32 @@ namespace myEngine
             raquette = new Raquette();
             anchorPoint = new Transform();
 
+            anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
+
             AddComponent(new Collider2D(raquette.sprite));
         }
 
         //METHODS
+        public void SetInGamePlayerPosition(InGamePlayerPosition position)
+        {
+            if (position == InGamePlayerPosition.Left)
+            {
+                name = "PLAYER A GAUCHE";
+                anchorOffSetX = 80;
+                ballDirection = 1;
+
+                anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
+            }
+            else if (position == InGamePlayerPosition.Right)
+            {
+                name = "PLAYER A DROITE";
+                anchorOffSetX = -80;
+                ballDirection = -1;
+
+                anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
+            }
+        }
+
         public void LoadScore()
         {
             if (Save_RunTime.data.ContainsKey((scoreKey + playerIndex).ToString()))
@@ -50,7 +82,10 @@ namespace myEngine
 
 
         //UPDATE & DRAW
-        public abstract override void Update();
+        public override void Update()
+        {
+            anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
+        }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -59,7 +94,13 @@ namespace myEngine
         public override void OnCollision(Collider2D other)
         {
         }
-        
+
+        public void FireBall(int direction)
+        {
+            Scene_Pong.game.ball.FireBall(direction);
+            Scene_Pong.game.targetSpawner.Start();
+        }
+
         public void RemoveLife()
         {
             lives--;

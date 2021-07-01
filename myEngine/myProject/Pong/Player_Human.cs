@@ -18,7 +18,6 @@ namespace myEngine
             this.playerIndex = playerIndex;
 
             raquette.transform.position = startPos;
-            anchorPoint.position = new Vector2(raquette.transform.position.X + 20, raquette.transform.position.Y);
             
             name = "Player_Human_Default_Name";
 
@@ -26,11 +25,12 @@ namespace myEngine
         }
 
         //METHODS
+        
 
         //UPDATE & DRAW
         public override void Update()
         {
-            anchorPoint.position = new Vector2(raquette.transform.position.X + 80, raquette.transform.position.Y);
+            base.Update();
 
             bool pressingDown = (input.GetButton(myButtons.LeftAxisDown) || input.GetButton(myButtons.DPadDown));
             if (pressingDown && raquette.transform.position.Y < (Settings.SCREEN_HEIGHT - raquette.sprite.GetRectangle().Height / 2))
@@ -46,8 +46,7 @@ namespace myEngine
 
             if(input.GetButtonDown(myButtons.ButtonA) && Scene_Pong.game.ball.ballState != Ball.BallState.moving && isHoldingTheBall)
             {
-                Scene_Pong.game.ball.FireBall(0);
-                Scene_Pong.game.targetSpawner.Start();
+                FireBall(ballDirection);
             }
         }
     }

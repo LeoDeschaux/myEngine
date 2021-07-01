@@ -29,7 +29,9 @@ namespace myEngine
             scorePlayer1.color = c;
             scorePlayer1.s = Scene_Pong.game.player1.score.ToString();
             scorePlayer1.fontSize = 300;
-            scorePlayer1.transform.position = new Vector2(200, Settings.SCREEN_HEIGHT / 2 - 200);
+            scorePlayer1.transform.position = new Vector2(Settings.SCREEN_WIDTH/4, (Settings.SCREEN_HEIGHT / 2) - 100);
+            scorePlayer1.alignment = Alignment.Center;
+
             scorePlayer1.orderInLayer = -1000;
 
             //SET AI SCORE
@@ -37,7 +39,9 @@ namespace myEngine
             scorePlayer2.color = c;
             scorePlayer2.s = Scene_Pong.game.player1.score.ToString();
             scorePlayer2.fontSize = 300;
-            scorePlayer2.transform.position = new Vector2(800, Settings.SCREEN_HEIGHT / 2 - 200);
+            scorePlayer2.transform.position = new Vector2((Settings.SCREEN_WIDTH / 4)*3, (Settings.SCREEN_HEIGHT / 2) - 100);
+            scorePlayer2.alignment = Alignment.Center;
+
             scorePlayer2.orderInLayer = -1000;
 
             //SET PLAYER LIVES
@@ -67,12 +71,18 @@ namespace myEngine
                 livesPlayer2[i].orderInLayer = 500;
                 livesPlayer2[i].color = Color.HotPink;
             }
+
+            UpdateUI();
+        }
+
+        public void UpdateUI()
+        {
+            scorePlayer1.s = Scene_Pong.game.player1.score.ToString();
+            scorePlayer2.s = Scene_Pong.game.player2.score.ToString();
         }
 
         public override void Update()
         {
-            scorePlayer1.s = Scene_Pong.game.player1.score.ToString();
-            scorePlayer2.s = Scene_Pong.game.player2.score.ToString();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -82,7 +92,10 @@ namespace myEngine
         //METHODS
         public void RemoveLife(Player player)
         {
-            if((int)player.playerIndex == 0)
+            if (player.lives < 0)
+                return;
+
+            if ((int)player.playerIndex == 0)
             {
                 Particle p = new Particle(DrawSimpleShape.GetTexture(10, 10));
                 p.Color = Color.HotPink;
@@ -112,6 +125,8 @@ namespace myEngine
                 ParticleEngine pe = new ParticleEngine(pp, livesPlayer2[i].transform.position);
                 livesPlayer2[i].Destroy();
             }
+
+            UpdateUI();
         }
 
         //PAUSE MENU
