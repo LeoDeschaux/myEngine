@@ -45,6 +45,7 @@ namespace myEngine
         {
             audioEngine = new AudioEngine();
 
+            game.Content.RootDirectory = "Content";
             Ressources.LoadRessources(content);
 
             Save_RunTime.Init();

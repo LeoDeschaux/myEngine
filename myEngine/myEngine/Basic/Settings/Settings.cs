@@ -30,6 +30,8 @@ namespace myEngine
         {
             this.game = game;
 
+            game.IsMouseVisible = true;
+
             //Engine.graphicDevice.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;

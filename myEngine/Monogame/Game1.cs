@@ -1,7 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
 
 namespace myEngine
 {
@@ -12,9 +9,6 @@ namespace myEngine
         public Game1()
         {
             graphicDevice = new GraphicsDeviceManager(this);
-
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true;
         }
 
         protected override void Initialize()
