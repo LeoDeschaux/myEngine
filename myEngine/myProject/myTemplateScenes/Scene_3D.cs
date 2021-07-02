@@ -10,7 +10,7 @@ namespace myEngine
     public class Scene_3D : IScene
     {
         //FIELDS 
-        private Camera camera;
+        private Camera3D camera;
         private Object3D myObject;
         private Object3D myObject2;
 
@@ -21,7 +21,7 @@ namespace myEngine
         public Scene_3D()
         {
             Console.WriteLine("SCENE 3D");
-            camera = new Camera();
+            camera = new Camera3D();
             myObject = new Object3D(camera);
             myObject.transform3D.position = new Vector3(-4, 0, 0);
 

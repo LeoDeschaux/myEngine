@@ -15,7 +15,7 @@ namespace myEngine
         //CONSTRUCTOR
         public Entity()
         {
-            Game1.world.AddEntity(this);
+            Engine.world.AddEntity(this);
         }
 
         //UPDATE & DRAW
@@ -27,7 +27,7 @@ namespace myEngine
         {
             OnDestroy();
             Dispose();
-            Game1.world.RemoveEntity(this);
+            Engine.world.RemoveEntity(this);
         }
 
         public virtual void OnDestroy() { }

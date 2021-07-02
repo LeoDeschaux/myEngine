@@ -16,13 +16,13 @@ namespace myEngine
             //bool b = iniFile.GetBoolean("Section", "variable", "defaultValue");
 
             bool b = iniFile.GetBoolean("Options", "FullScreen", false);
-            settings.game.graphics.IsFullScreen = b;
+            Engine.graphicDevice.IsFullScreen = b;
 
             int x = iniFile.GetInteger("Options", "Screen_Width", 1280);
             int y = iniFile.GetInteger("Options", "Screen_Height", 720);
-            
-            settings.game.graphics.PreferredBackBufferWidth = x;
-            settings.game.graphics.PreferredBackBufferHeight = y;
+
+            Engine.graphicDevice.PreferredBackBufferWidth = x;
+            Engine.graphicDevice.PreferredBackBufferHeight = y;
 
             Settings.SCREEN_WIDTH = x;
             Settings.SCREEN_HEIGHT = y;
@@ -30,7 +30,7 @@ namespace myEngine
             //game.graphics.SynchronizeWithVerticalRetrace = false;
             //game.IsFixedTimeStep = false;
 
-            settings.game.graphics.ApplyChanges();
+            Engine.graphicDevice.ApplyChanges();
         }
     }
 }

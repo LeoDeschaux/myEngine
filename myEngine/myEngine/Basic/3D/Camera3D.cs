@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Camera : GameObject
+    public class Camera3D : GameObject
     {
         //FIELDS 
         Vector3 camTarget;
@@ -22,7 +22,7 @@ namespace myEngine
         public Matrix projectionMatrix;
 
         //CONSTRUCTOR
-        public Camera()
+        public Camera3D()
         {
             //Setup Camera
             camPosition = new Vector3(0f, 0f, -10f);

@@ -11,10 +11,10 @@ namespace myEngine
         public Transform3D transform3D;
         public Model model;
 
-        private Camera camera;
+        private Camera3D camera;
 
         //CONSTRUCTOR
-        public Object3D(Camera camera)
+        public Object3D(Camera3D camera)
         {
             transform3D = new Transform3D();
             model = Ressources.DEFAULT_CUBE;

@@ -18,9 +18,5 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.Black;
             Settings.GAME_SPEED = 1;
         }
-
-        //UPDATE & DRAW
-        public abstract override void Update();
-        public abstract override void Draw(SpriteBatch sprite);
     }
 }

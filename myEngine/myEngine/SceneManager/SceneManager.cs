@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_MainMenu();
+            currentScene = new Scene_Animation();
             input = new Input();
         }
 
@@ -57,10 +57,10 @@ namespace myEngine
 
         private void ClearScene()
         {
-            Game1.world = new World();
-            Game1.world.ClearWorld();
-            Game1.world.AddEntity(this);
-            Game1.world.AddEntity(input);
+            Engine.world = new World();
+            Engine.world.ClearWorld();
+            Engine.world.AddEntity(this);
+            Engine.world.AddEntity(input);
 
             if(currentScene != null)
             {

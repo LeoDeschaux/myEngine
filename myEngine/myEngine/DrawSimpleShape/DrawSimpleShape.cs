@@ -13,7 +13,7 @@ namespace myEngine
         //METHODS
         public static Texture2D GetTexture(int x = 1, int y = 1)
         {
-            Texture2D texture = new Texture2D(Game1.spriteBatch.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            Texture2D texture = new Texture2D(Engine.spriteBatch.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
 
             if (x == 1 && y == 1)
             {
@@ -21,7 +21,7 @@ namespace myEngine
             }
             else
             {
-                texture = new Texture2D(Game1.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
+                texture = new Texture2D(Engine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 
                 Color[] data = new Color[x * y];
                 for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
@@ -43,7 +43,7 @@ namespace myEngine
         {
             var origin = new Vector2(0f, 0.5f);
             var scale = new Vector2(length, thickness);
-            Game1.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
+            Engine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
         }
 
@@ -122,7 +122,7 @@ namespace myEngine
 
             //Rectangle sourceRectangle = new Rectangle(0, 0, (int)dimension.X, (int)dimension.Y);
 
-            Game1.spriteBatch.Draw(GetTexture(), r, null, color, 0, Vector2.Zero, SpriteEffects.None,
+            Engine.spriteBatch.Draw(GetTexture(), r, null, color, 0, Vector2.Zero, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
         }
 

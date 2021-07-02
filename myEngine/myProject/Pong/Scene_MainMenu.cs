@@ -75,19 +75,19 @@ namespace myEngine
         {
             Save_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvP;
-            Game1.sceneManager.ChangeScene(new Scene_Pong());
+            Engine.sceneManager.ChangeScene(new Scene_Pong());
         }
 
         private void LoadAIScene()
         {
             Save_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvAI;
-            Game1.sceneManager.ChangeScene(new Scene_Pong());
+            Engine.sceneManager.ChangeScene(new Scene_Pong());
         }
 
         private void ExitGame()
         {
-            Game1.ExitGame();
+            Engine.ExitGame();
         }
 
         //UPDATE & DRAW

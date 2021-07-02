@@ -191,7 +191,7 @@ namespace myEngine
 
         private void QuitGame(object sender, EventArgs eventArgs)
         {
-            Game1.sceneManager.ChangeScene(new Scene_MainMenu());
+            Engine.sceneManager.ChangeScene(new Scene_MainMenu());
         }
     }
 }

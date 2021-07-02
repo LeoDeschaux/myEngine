@@ -77,8 +77,8 @@ namespace myEngine
             components = new List<Component>();
             entities = new List<Entity>();
 
-            Game1.physicEngine = new PhysicEngine();
-            Game1.debug = new Debug();
+            Engine.physicEngine = new PhysicEngine();
+            Engine.debug = new Debug();
 
             /*
             for (int i = 0; i < gameObjects.Count; i++)

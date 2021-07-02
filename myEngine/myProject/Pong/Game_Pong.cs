@@ -108,7 +108,7 @@ namespace myEngine
         {
             delay = new Delay(2000, () =>
             {
-                Game1.sceneManager.ReloadScene();
+                Engine.sceneManager.ReloadScene();
             });
         }
     }

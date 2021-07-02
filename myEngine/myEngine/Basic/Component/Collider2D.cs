@@ -23,7 +23,7 @@ namespace myEngine
             transformTarget = new Transform();
             rectangle = new Rectangle();
 
-            Game1.physicEngine.AddCollider2D(this);
+            Engine.physicEngine.AddCollider2D(this);
 
             if (sprite != null)
             {
@@ -56,7 +56,7 @@ namespace myEngine
 
         public override void OnDestroy()
         {
-            Game1.physicEngine.RemoveCollider2D(this);
+            Engine.physicEngine.RemoveCollider2D(this);
         }
     }
 }

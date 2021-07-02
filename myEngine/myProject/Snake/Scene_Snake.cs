@@ -4,7 +4,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Object2D : GameObject
+    public class Scene_Snake : IScene
     {
         //FIELDS
 

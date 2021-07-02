@@ -13,7 +13,7 @@ namespace myEngine
         //CONSTRUCTOR
         public Component()
         {
-            Game1.world.AddComponent(this);
+            Engine.world.AddComponent(this);
             this.gameObject = null;
         }
 
@@ -30,7 +30,7 @@ namespace myEngine
         public void Destroy()
         {
             OnDestroy();
-            Game1.world.RemoveComponent(this);
+            Engine.world.RemoveComponent(this);
         }
 
         public virtual void OnDestroy() { }

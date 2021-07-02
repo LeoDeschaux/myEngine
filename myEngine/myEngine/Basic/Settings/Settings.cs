@@ -20,7 +20,7 @@ namespace myEngine
 
         public static bool DEBUG_MODE = false;
 
-        public static bool RELEASE_MODE = true;
+        public static bool RELEASE_MODE = false;
 
         //REF
         public Game1 game;
@@ -30,8 +30,9 @@ namespace myEngine
         {
             this.game = game;
 
-            game.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
-            game.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+            //Engine.graphicDevice.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
@@ -41,7 +42,7 @@ namespace myEngine
             */
 
             game.Window.Title = "MonogameV2";
-            game.graphics.ApplyChanges();
+            Engine.graphicDevice.ApplyChanges();
         }
         
         public void OnResize(Object sender, EventArgs e)
@@ -57,11 +58,11 @@ namespace myEngine
                 Settings.SCREEN_HEIGHT = game.Window.ClientBounds.Height;
                 Settings.SCREEN_WIDTH = (int)((float)Settings.SCREEN_HEIGHT * ASPECT_RATIO);
             }
-            
-            game.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
-            game.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
-            game.graphics.ApplyChanges();
+            Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+
+            Engine.graphicDevice.ApplyChanges();
 
             //Console.WriteLine("ratio: " + ASPECT_RATIO + ", dimension: " + Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT);
         }
