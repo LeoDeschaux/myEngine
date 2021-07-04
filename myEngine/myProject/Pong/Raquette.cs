@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace myEngine
+using myEngine.myProject.Pong;
+
+namespace myEngine.myProject.Pong
 {
     public class Raquette : GameObject
     {

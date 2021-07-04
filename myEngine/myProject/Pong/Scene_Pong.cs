@@ -5,12 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using myEngine.myProject.Pong;
+
 namespace myEngine
 {
     public class Scene_Pong : IScene
     {
         //FIELDS
-        public static Input input;
         public static Game_Pong game;
         public static UI ui;
 
@@ -19,7 +20,6 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_Pong()
         {
-            input = new Input();
             game = new Game_Pong(Scene_Pong.gameMode);
             ui = new UI_Pong();
         }
@@ -29,22 +29,21 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (input.GetKeyDown(Keys.Escape))
+            if (Input.GetKeyDown(Keys.Escape))
             {
                 ((UI_Pong) ui).OnPauseMenuCalled();
             }
 
 
-
             if (Settings.RELEASE_MODE)
                 return;
 
-            if (input.GetKeyDown(Keys.Tab))
+            if (Input.GetKeyDown(Keys.Tab))
             {
                 game.player1.OnPlayerGetRemovedStock();
             }
 
-            if (input.GetKeyDown(Keys.CapsLock))
+            if (Input.GetKeyDown(Keys.CapsLock))
             {
                 game.player2.OnPlayerGetRemovedStock();
             }

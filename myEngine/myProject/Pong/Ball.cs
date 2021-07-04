@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using myEngine.myProject.Pong;
 
-namespace myEngine
+
+namespace myEngine.myProject.Pong
 {
     public class Ball : GameObject
     {

@@ -10,7 +10,6 @@ namespace myEngine
     public class Scene_DrawSimpleShape : IScene
     {
         //FIELDS
-        Input input;
         bool draw;
         Vector2 pos;
 
@@ -19,8 +18,6 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_DrawSimpleShape()
         {
-            input = new Input();
-
             text = new Text("DRAG LEFT CLICK \nTO DRAW A RECTANGLE");
             text.color = new Color(50, 50, 50);
         }
@@ -28,12 +25,12 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (input.GetMouseDown(0))
+            if (Input.GetMouseDown(0))
             {
                 draw = true;
                 pos = Mouse.position.ToVector2();
             }
-            if (input.GetMouseUp(0))
+            if (Input.GetMouseUp(0))
                 draw = false;
         }
 

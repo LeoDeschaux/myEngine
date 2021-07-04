@@ -12,7 +12,6 @@ namespace myEngine
         //FIELDS
         ParticleEngine particleEngine;
         Text text;
-        Input input;
 
         //CONSTRUCTOR
         public Scene_ParticleSystem()
@@ -31,8 +30,6 @@ namespace myEngine
             //UI
             text = new Text("LEFT CLICK TO FIRE PARTICLES");
             text.color = new Color(50, 50, 50);
-
-            input = new Input();
         }
 
         //UPDATE & DRAW

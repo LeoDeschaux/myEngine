@@ -16,8 +16,6 @@ namespace myEngine
         AnimatedSprite spritesheet;
         float speed = 200;
 
-        Input input;
-
         //CONSTRUCTOR
         public Scene_Animation()
         {
@@ -37,7 +35,6 @@ namespace myEngine
             spritesheet.playAllFrame = false;
             spritesheet.animationIndex = 1;
 
-            input = new Input();
             state = myChar.idle;
         }
 
@@ -56,26 +53,26 @@ namespace myEngine
             if (state != myChar.idle)
                 spritesheet.play = true;
 
-            if (input.GetKey(Keys.Right))
+            if (Input.GetKey(Keys.Right))
             {
                 transformChar.position.X += speed * Time.deltaTime;
                 state = myChar.right;
                 spritesheet.animationIndex = 1;
 
             }
-            else if (input.GetKey(Keys.Left))
+            else if (Input.GetKey(Keys.Left))
             {
                 transformChar.position.X -= speed * Time.deltaTime;
                 state = myChar.left;
                 spritesheet.animationIndex = 3;
             }
-            else if (input.GetKey(Keys.Up))
+            else if (Input.GetKey(Keys.Up))
             {
                 transformChar.position.Y -= speed * Time.deltaTime;
                 state = myChar.up;
                 spritesheet.animationIndex = 2;
             }
-            else if (input.GetKey(Keys.Down))
+            else if (Input.GetKey(Keys.Down))
             {
                 transformChar.position.Y += speed * Time.deltaTime;
                 state = myChar.down;

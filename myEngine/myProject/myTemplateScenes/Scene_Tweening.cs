@@ -10,8 +10,6 @@ namespace myEngine
     public class Scene_Tweening : IScene
     {
         //FIELDS
-        Input input;
-
         public Sprite[] mySprites;
 
         // MY ANIMATE VARS
@@ -28,7 +26,6 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_Tweening()
         {
-            input = new Input();
             mySprites = new Sprite[20];
 
             random = new Random();
@@ -100,7 +97,7 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (input.GetKeyDown(Keys.Enter))
+            if (Input.GetKeyDown(Keys.Enter))
             {
                 for (int x = 0; x < mySprites.Length; x++)
                 {

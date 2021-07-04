@@ -17,11 +17,6 @@ namespace myEngine
             base.Initialize();
         }
 
-        protected override void LoadContent()
-        {
-            Engine.LoadContent(this.Content);
-        }
-
         protected override void Update(GameTime gameTime)
         {
             Engine.Update(gameTime);

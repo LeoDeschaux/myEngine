@@ -11,6 +11,10 @@ namespace myEngine
         public Matrix transformMatrix { get; private set; }
 
         //CONSTRUCTOR
+        public Camera2D()
+        {
+            transform.position = Settings.Get_Screen_Center();
+        }
 
         //METHODS
         public override void Update()

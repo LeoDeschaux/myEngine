@@ -14,7 +14,6 @@ namespace myEngine
         private Object3D myObject;
         private Object3D myObject2;
 
-        private Input input;
         private float speed = 15f;
 
         //CONSTRUCTOR
@@ -27,8 +26,6 @@ namespace myEngine
 
             myObject2 = new Object3D(camera);
             myObject2.transform3D.position = new Vector3(4, 0, 0);
-
-            input = new Input();
         }
 
         public override void Update()
@@ -37,34 +34,34 @@ namespace myEngine
             myObject.transform3D.rotation.Y++;
 
             //
-            if(input.GetKey(Keys.Q))
+            if(Input.GetKey(Keys.Q))
             {
                 camera.camPosition.X += speed * Time.deltaTime;
             }
 
-            if (input.GetKey(Keys.D))
+            if (Input.GetKey(Keys.D))
             {
                 camera.camPosition.X -= speed * Time.deltaTime;
             }
 
             //
-            if (input.GetKey(Keys.Z))
+            if (Input.GetKey(Keys.Z))
             {
                 camera.camPosition.Z += speed * Time.deltaTime;
             }
 
-            if (input.GetKey(Keys.S))
+            if (Input.GetKey(Keys.S))
             {
                 camera.camPosition.Z -= speed * Time.deltaTime;
             }
 
             //
-            if (input.GetKey(Keys.A))
+            if (Input.GetKey(Keys.A))
             {
                 camera.camRotation.Y -= speed * 10 * Time.deltaTime;
             }
 
-            if (input.GetKey(Keys.E))
+            if (Input.GetKey(Keys.E))
             {
                 camera.camRotation.Y += speed * 10 * Time.deltaTime;
             }

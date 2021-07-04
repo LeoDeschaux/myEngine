@@ -8,11 +8,15 @@ namespace myEngine
 {
     public class Input : Entity
     {
-        //FIELDS
-        public KeyboardState keyState;
-        private KeyboardState prevKeyState;
+        //STATIC FIELDS
+        public static Point mousePos;
 
-        public GamePadState gamePadState;
+        //STATIC KEYBOARD 
+        private static KeyboardState keyState;
+        private static KeyboardState prevKeyState;
+
+        //PLAYER GAME PAD
+        private GamePadState gamePadState;
         private GamePadState prevGamePadState;
 
         //INPUT PROFILE
@@ -40,14 +44,19 @@ namespace myEngine
         //METHODS
         public override void Update()
         {
-            prevKeyState = keyState;
-            keyState = Keyboard.GetState();
-
             if(inputProfile.gamePadIndex != -1)
             {
                 prevGamePadState = gamePadState;
                 gamePadState = GamePad.GetState(inputProfile.gamePadIndex);
             }
+        }
+
+        public static void StaticUpdate()
+        {
+            prevKeyState = keyState;
+            keyState = Keyboard.GetState();
+
+            mousePos = Mouse.position;
         }
 
         //BUTTONS / Action / Input
@@ -104,30 +113,28 @@ namespace myEngine
             return (gamePadState.IsButtonDown(button) && prevGamePadState.IsButtonUp(button));
         }
 
-
         /***********************************************************************************/
-
         //KEYBOARD
-        public bool GetKey(Keys key)
+        public static bool GetKey(Keys key)
         {
             return (keyState.IsKeyDown(key));
         }
 
-        public bool GetKeyDown(Keys key)
+        public static bool GetKeyDown(Keys key)
         {
             return (keyState.IsKeyDown(key) && prevKeyState.IsKeyUp(key));
         }
 
         //MOUSE
-        public bool GetMouse(int i)
+        public static bool GetMouse(int i)
         {
             return Mouse.GetMouse(i);
         }
-        public bool GetMouseDown(int i)
+        public static bool GetMouseDown(int i)
         {
             return Mouse.GetMouseDown(i);
         }
-        public bool GetMouseUp(int i)
+        public static bool GetMouseUp(int i)
         {
             return Mouse.GetMouseUp(i);
         }

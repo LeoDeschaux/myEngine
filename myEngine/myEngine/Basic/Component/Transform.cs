@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Transform //Transform2D 
+    public class Transform // : Entity //Transform2D 
     {
         //FIELDS
         public Vector2 position;

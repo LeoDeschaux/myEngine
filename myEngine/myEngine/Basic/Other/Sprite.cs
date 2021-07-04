@@ -20,6 +20,17 @@ namespace myEngine
         public int orderInLayer = 0;
 
         //CONSTRUCTOR
+        public Sprite()
+        {
+            transform = new Transform();
+            this.texture = DrawSimpleShape.GetTexture();
+            transform.position = Vector2.Zero;
+            this.dimension = Vector2.One * 150;
+            color = Color.White;
+            sourceRectangle = new Rectangle(0, 0, (int)dimension.X, (int)dimension.Y);
+            origin = new Vector2(dimension.X / 2, dimension.Y / 2);
+        }
+
         public Sprite(Vector2 position, Vector2 dimension, Texture2D texture2D = null)
         {
             transform = new Transform();

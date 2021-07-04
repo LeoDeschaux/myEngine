@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
+using myEngine.myProject.Pong;
+
 namespace myEngine
 {
     public class Scene_MainMenu : IScene

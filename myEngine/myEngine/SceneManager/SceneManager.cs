@@ -11,14 +11,14 @@ namespace myEngine
     public class SceneManager : Entity
     {
         //FIELDS
-        private IScene currentScene;
+        public IScene currentScene;
         private Input input;
 
         //CONSTRUCTOR
         public SceneManager()
         {
-            //currentScene = new Scene_MainMenu();
-            currentScene = new Scene_Animation();
+            //currentScene = new Scene_ParentTransform();
+            currentScene = new Scene_Snake();
             input = new Input();
         }
 
@@ -31,15 +31,15 @@ namespace myEngine
 
         private void CheckInput_ChangeScene()
         {
-            if (input.GetKeyDown(Keys.F1))
+            if (Input.GetKeyDown(Keys.F1))
                 ChangeScene(new Scene_Pong());
-            if (input.GetKeyDown(Keys.F2))
+            if (Input.GetKeyDown(Keys.F2))
                 ChangeScene(new Scene_DrawSimpleShape());
-            if (input.GetKeyDown(Keys.F3))
+            if (Input.GetKeyDown(Keys.F3))
                 ChangeScene(new Scene_Tweening());
-            if (input.GetKeyDown(Keys.F4))
+            if (Input.GetKeyDown(Keys.F4))
                 ChangeScene(new Scene_ParticleSystem());
-            if (input.GetKeyDown(Keys.F5))
+            if (Input.GetKeyDown(Keys.F5))
                 ChangeScene(new Scene_PhysiqueEngine());
         }
 

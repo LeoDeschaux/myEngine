@@ -39,24 +39,24 @@ namespace myEngine
 
             settings = new Settings(game);
             Settings_Init.InitSettingsFromFile(settings);
-        }
-
-        public static void LoadContent(ContentManager content)
-        {
-            audioEngine = new AudioEngine();
-
-            game.Content.RootDirectory = "Content";
-            Ressources.LoadRessources(content);
 
             Save_RunTime.Init();
-
             Time.InitTime();
 
+            audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
+
+            LoadContent(game.Content);
+
             world = new World();
             sceneManager = new SceneManager();
-
             debug = new Debug();
+        }
+
+        private static void LoadContent(ContentManager content)
+        {
+            game.Content.RootDirectory = "Content";
+            Ressources.LoadRessources(content);
         }
 
         public static void Update(GameTime gameTime)
@@ -71,6 +71,8 @@ namespace myEngine
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * Settings.GAME_SPEED;
             Time.UpdateGameTime(gameTime, deltaTime);
 
+
+            Input.StaticUpdate();
             Mouse.Update();
 
             settings.Update();
@@ -83,14 +85,25 @@ namespace myEngine
         {
             game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
-            // TODO: Add your drawing code here
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied); //, transformMatrix: Scene_2DCamera.camera.transformMatrix);
+            //DRAW BACKGROUND
+            spriteBatch.Begin();
+            //..
+            spriteBatch.End();
+
+            //DRAW SCENE
+            Matrix matrix = sceneManager.currentScene.camera.transformMatrix;
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, transformMatrix: matrix);
+
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);
-            //spriteBatch.Begin();
             //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Additive);
 
             world.Draw(spriteBatch);
 
+            spriteBatch.End();
+
+            //DRAW UI
+            spriteBatch.Begin();
+            //..
             spriteBatch.End();
         }
 
