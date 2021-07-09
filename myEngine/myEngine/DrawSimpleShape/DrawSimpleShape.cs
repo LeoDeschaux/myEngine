@@ -140,5 +140,14 @@ namespace myEngine
             //HORIZONTAL
             DrawSimpleShape.DrawLine(new Vector2(0, position.Y), Settings.SCREEN_WIDTH, 0, color);
         }
+
+        public static void DrawRuller(Vector2 position, Color color, int orderInLayer = 0)
+        {
+            //VERTICAL
+            DrawSimpleShape.DrawLine(new Vector2(position.X, 0), Settings.SCREEN_HEIGHT, MathHelper.ToRadians(90), color, orderInLayer: orderInLayer);
+
+            //HORIZONTAL
+            DrawSimpleShape.DrawLine(new Vector2(0, position.Y), Settings.SCREEN_WIDTH, 0, color, orderInLayer: orderInLayer);
+        }
     }
 }

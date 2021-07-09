@@ -13,10 +13,17 @@ namespace myEngine
         ParticleEngine particleEngine;
         Text text;
 
+        //
+        Particle p;
+
         //CONSTRUCTOR
         public Scene_ParticleSystem()
         {
-            Particle p = new Particle(Ressources.Images["diamond"]);
+            //p = new Particle(Ressources.Images["diamond"]);
+
+            p = new Particle(DrawSimpleShape.GetTexture(10, 10));
+
+            p.Speed = 20;
             
             ParticleProfile pp = new ParticleProfile(p);
             pp.maxParticles = 1000;
@@ -25,7 +32,9 @@ namespace myEngine
             pp.duration = 5;
 
             particleEngine = new ParticleEngine(pp, Vector2.Zero);
-            particleEngine.isActive = false;
+            particleEngine.isActive = true;
+
+            particleEngine.EmitterLocation = Settings.Get_Screen_Center();
             
             //UI
             text = new Text("LEFT CLICK TO FIRE PARTICLES");
@@ -35,6 +44,21 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
+            if (Input.GetKeyDown(Keys.Add))
+            {
+                Console.Write("PLUS : ");
+                Console.WriteLine(p.Size);
+                p.Size += 1;
+            }
+
+            if (Input.GetKeyDown(Keys.Subtract))
+            {
+                Console.Write("MINUS : ");
+                Console.WriteLine(p.Size);
+                p.Size -= 1;
+            }
+
+            /*
             if (Mouse.GetMouse(0))
             {
                 particleEngine.isActive = true;
@@ -42,6 +66,7 @@ namespace myEngine
             }
             else
                 particleEngine.isActive = false;
+            */
         }
 
         public override void Draw(SpriteBatch spriteBatch)

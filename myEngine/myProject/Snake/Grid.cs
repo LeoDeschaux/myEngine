@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using myEngine.myProject.Snake;
 
 namespace myEngine.myProject.Snake
@@ -14,25 +15,71 @@ namespace myEngine.myProject.Snake
         apple
     }
 
-    public class Grid
+    public class Grid : Entity
     {
         //FIELDS
-        private int size = 5;
+        public int size { get; private set; } = 10;
         private CellState[,] grid;
+
+        private Sprite[,] sprites;
+        float spriteSize = 50;
+
+        Vector2 start;
+
 
         //CONSTRUCTOR
         public Grid()
         {
-            grid = new CellState[5, 5];
+            grid = new CellState[size, size];
+            sprites = new Sprite[size, size];
 
-            for (int y = 0; y < size; y++)
-                for (int x = 0; x < size; x++)
-                    grid[x, y] = CellState.empty;
-
-            grid[2, 2] = CellState.head;
+            ClearGrid();
         }
 
         //METHODS
+        public void SetPlayerPos(GridPosition pos)
+        {
+            if (pos.X < 0 || pos.Y < 0 || pos.X >= size || pos.Y >= size)
+                return;
+
+            ClearGrid();
+
+            InitSprites();
+
+            Console.Clear();
+
+            grid[pos.X, pos.Y] = CellState.head;
+
+            DisplayGridToConsole();
+        }
+
+        private void ClearGrid()
+        {
+            for (int y = 0; y < size; y++)
+                for (int x = 0; x < size; x++)
+                    grid[x, y] = CellState.empty;
+        }
+
+        private void InitSprites()
+        {
+            for (int y = 0; y < size; y++)
+                for (int x = 0; x < size; x++)
+                {
+                    Sprite s = sprites[x, y];
+                    s = new Sprite();
+                    s.color = Color.White;
+                    s.orderInLayer = -500;
+
+                    s.dimension = new Vector2(spriteSize, spriteSize); 
+                    
+                    start = new Vector2(Settings.Get_Screen_Center().X - ((size * spriteSize * 1.1f)/2), Settings.Get_Screen_Center().Y - ((size * spriteSize * 1.1f))/2);
+                    start = new Vector2(start.X + spriteSize/2, start.Y + spriteSize/2);
+
+                    s.transform.position = new Vector2(start.X + (x * spriteSize * 1.1f), start.Y + (y * spriteSize * 1.1f));
+
+                }
+        }
+
         public void DisplayGridToConsole()
         {
             for(int y = 0; y < size; y++)
@@ -55,9 +102,12 @@ namespace myEngine.myProject.Snake
                 
                 Console.WriteLine();
             }
-            
-
         }
 
+        public override void Draw(SpriteBatch sprite)
+        {
+            DrawSimpleShape.DrawRuller(start, Color.Green);
+            DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center());
+        }
     }
 }

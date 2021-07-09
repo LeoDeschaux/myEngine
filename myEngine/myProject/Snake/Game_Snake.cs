@@ -9,7 +9,7 @@ namespace myEngine.myProject.Snake
     public class Game_Snake : Entity
     {
         //FIELDS
-        Grid grid;
+        public static Grid grid;
         Player player;
 
         //APPLE SPAWNER
@@ -17,17 +17,13 @@ namespace myEngine.myProject.Snake
         //CONSTRUCTOR
         public Game_Snake()
         {
-            Console.WriteLine("NEW GAME");
-            player = new Player();
             grid = new Grid();
+            player = new Player();
         }
 
         //METHODS
         public override void Update()
         {
-            if (Input.GetKeyDown(Keys.P))
-                grid.DisplayGridToConsole();
         }
-
     }
 }

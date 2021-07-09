@@ -106,3 +106,8 @@ C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\TileMaps\spritesheet.xnb
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\myContent\DEFAULT_CUBE.xnb
 C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\Content\myContent\pomme.xnb
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\ImGui.NET.dll
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libcimgui.so
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libcimgui.dylib
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\cimgui.dll
+C:\Users\Leo\Documents\GitHub\FromGitHub\myEngine\myEngine\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\cimgui.dll

@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_ParentTransform();
-            currentScene = new Scene_Snake();
+            currentScene = new Scene_ParticleEditor();
             input = new Input();
         }
 
@@ -31,6 +31,7 @@ namespace myEngine
 
         private void CheckInput_ChangeScene()
         {
+            /*
             if (Input.GetKeyDown(Keys.F1))
                 ChangeScene(new Scene_Pong());
             if (Input.GetKeyDown(Keys.F2))
@@ -41,6 +42,10 @@ namespace myEngine
                 ChangeScene(new Scene_ParticleSystem());
             if (Input.GetKeyDown(Keys.F5))
                 ChangeScene(new Scene_PhysiqueEngine());
+            */
+
+            if (Input.GetKeyDown(Keys.F12))
+                ChangeScene(new Scene_ParticleSystem());
         }
 
         public void ChangeScene(IScene scene)
