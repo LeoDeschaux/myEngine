@@ -67,12 +67,8 @@ namespace myEngine
             if (!Settings.RELEASE_MODE && (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 game.Exit();
 
-            if (Input.GetKeyDown(Keys.Space))
-                Console.WriteLine("PUTAIN WHAT");
-
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * Settings.GAME_SPEED;
             Time.UpdateGameTime(gameTime, deltaTime);
-
 
             Input.StaticUpdate();
             Mouse.Update();
@@ -107,6 +103,9 @@ namespace myEngine
             spriteBatch.Begin();
             //..
             spriteBatch.End();
+
+            //ImGUI
+            sceneManager.currentScene.DrawUI();
         }
 
         //METHODS

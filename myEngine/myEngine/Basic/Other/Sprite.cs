@@ -66,8 +66,8 @@ namespace myEngine
             return new Rectangle(
                 (int)transform.position.X,
                 (int)transform.position.Y,
-                (int)dimension.X,
-                (int)dimension.Y);
+                (int)(dimension.X * transform.scale.X),
+                (int)(dimension.Y * transform.scale.Y));
         }
 
         private Vector2 GetCenter()
