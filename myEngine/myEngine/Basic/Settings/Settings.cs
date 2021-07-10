@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace myEngine
 {
     public class Settings
@@ -32,19 +33,20 @@ namespace myEngine
 
             game.IsMouseVisible = true;
 
-            //Engine.graphicDevice.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
-            /*
-            game.Window.AllowUserResizing = true;
+            game.Window.AllowUserResizing = false;
             game.Window.ClientSizeChanged += OnResize;
-            */
+
+            game.Window.IsBorderless = false;
+
 
             game.Window.Title = "MonogameV2";
             Engine.graphicDevice.ApplyChanges();
+
         }
         
         public void OnResize(Object sender, EventArgs e)

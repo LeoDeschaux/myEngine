@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ImGuiNET.SampleProgram.XNA;
 using ImGuiNET;
 
 using Microsoft.Xna.Framework;
@@ -17,12 +16,10 @@ namespace myEngine
     {
         //FIELDS
         Sprite sprite;
-        Random random;
 
         Perlin p;
 
         //GUI
-        private ImGuiRenderer _imGuiRenderer;
 
         //CONSTRUCTOR
         public Scene_PerlinNoise()
@@ -37,11 +34,6 @@ namespace myEngine
             sprite.dimension = new Vector2(256, 256);
 
             sprite.texture = GetTexture((int)sprite.dimension.X, (int)sprite.dimension.Y);
-
-            //sprite.transform.scale = Vector2.One * 50f;
-
-            _imGuiRenderer = new ImGuiRenderer(Engine.game);
-            _imGuiRenderer.RebuildFontAtlas();
         }
 
         //METOHDS
@@ -76,6 +68,7 @@ namespace myEngine
         public float scale = 20;
         public float offSetX = 0;
         public float offSetY = 0;
+        public float threshold = 100;
 
         public Color CalculateColor(int x, int y)
         {
@@ -86,24 +79,29 @@ namespace myEngine
 
             int sample = (int)(d * 255);
 
+            if (sample <= threshold)
+                sample = 0;
+            else
+                sample = 255;
+
             Color c = new Color(sample, sample, sample);
 
             return c;
         }
 
-        public override void DrawUI()
+        public override void DrawGUI()
         {
-            _imGuiRenderer.BeforeLayout(Time.gameTime);
             ImGui.Begin("Perlin Noise");
             ImGui.SetWindowSize(new System.Numerics.Vector2(300, 200));
+            ImGui.SetWindowPos(new System.Numerics.Vector2(50, 50));
 
             ImGui.Text("Params");
             ImGui.SliderFloat("Scale", ref scale, 1f, 50f, string.Empty);
             ImGui.SliderFloat("OffSetX", ref offSetX, 0f, 10f, string.Empty);
             ImGui.SliderFloat("OffSetY", ref offSetY, 0f, 10f, string.Empty);
+            ImGui.SliderFloat("ThreshHold", ref threshold, 0f, 255f, string.Empty);
 
             ImGui.End();
-            _imGuiRenderer.AfterLayout();
         }
     }
 }

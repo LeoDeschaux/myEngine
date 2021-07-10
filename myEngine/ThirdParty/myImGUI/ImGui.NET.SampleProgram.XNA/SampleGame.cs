@@ -4,6 +4,8 @@ using System;
 using System.IO;
 using Num = System.Numerics;
 
+using myEngine;
+
 namespace ImGuiNET.SampleProgram.XNA
 {
     public class SampleGame : Game

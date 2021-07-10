@@ -37,7 +37,7 @@ namespace myEngine
             {
                 "circle",
                 "diamond",
-                "star"
+                "starV2"
             };
 
             foreach (string img in imagesName)

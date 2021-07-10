@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace ImGuiNET.SampleProgram.XNA
+using ImGuiNET.SampleProgram.XNA;
+using ImGuiNET;
+
+namespace myEngine
 {
     /// <summary>
     /// ImGui renderer for use with XNA-likes (FNA & MonoGame)
@@ -214,7 +217,7 @@ namespace ImGuiNET.SampleProgram.XNA
         {
             var io = ImGui.GetIO();
 
-            var mouse = Mouse.GetState();
+            var mouse = Microsoft.Xna.Framework.Input.Mouse.GetState();
             var keyboard = Keyboard.GetState();
 
             for (int i = 0; i < _keys.Count; i++)

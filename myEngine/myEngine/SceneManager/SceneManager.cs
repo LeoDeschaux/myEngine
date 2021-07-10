@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_ParentTransform();
-            currentScene = new Scene_PerlinNoise();
+            currentScene = new Scene_WindowSizes();
             input = new Input();
         }
 

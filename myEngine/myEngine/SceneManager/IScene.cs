@@ -22,9 +22,6 @@ namespace myEngine
             camera = new Camera2D();
         }
 
-        public virtual void DrawUI()
-        {
-
-        }
+        public virtual void DrawGUI() { }
     }
 }

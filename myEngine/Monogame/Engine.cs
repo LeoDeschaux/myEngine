@@ -8,6 +8,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
+using ImGuiNET;
+
+
+
 namespace myEngine
 {
     public class Engine
@@ -30,6 +34,8 @@ namespace myEngine
 
         public static bool isGameRunning = true;
 
+        private static ImGuiRenderer imGuiRenderer;
+
         //METHODS
         public static void Initialize(Game1 game)
         {
@@ -38,7 +44,7 @@ namespace myEngine
             spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
             settings = new Settings(game);
-            Settings_Init.InitSettingsFromFile(settings);
+            //Settings_Init.InitSettingsFromFile(settings);
 
             Save_RunTime.Init();
             Time.InitTime();
@@ -51,6 +57,10 @@ namespace myEngine
             world = new World();
             sceneManager = new SceneManager();
             debug = new Debug();
+
+            //GUI
+            imGuiRenderer = new ImGuiRenderer(Engine.game);
+            imGuiRenderer.RebuildFontAtlas();
         }
 
         private static void LoadContent(ContentManager content)
@@ -105,7 +115,9 @@ namespace myEngine
             spriteBatch.End();
 
             //ImGUI
-            sceneManager.currentScene.DrawUI();
+            imGuiRenderer.BeforeLayout(Time.gameTime);
+            sceneManager.currentScene.DrawGUI();
+            imGuiRenderer.AfterLayout();
         }
 
         //METHODS

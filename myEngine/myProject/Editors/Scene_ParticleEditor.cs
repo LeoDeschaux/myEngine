@@ -96,7 +96,7 @@ namespace myEngine
             }
         }
 
-        public override void DrawUI()
+        public override void DrawGUI()
         {
             _imGuiRenderer.BeforeLayout(Time.gameTime);
             ImGuiLayout();
