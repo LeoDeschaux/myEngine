@@ -3,7 +3,6 @@
 
 /outputDir:bin/$(Platform)
 /intermediateDir:obj/$(Platform)
-/platform:DesktopGL
 /config:
 /profile:Reach
 /compress:False
@@ -13,43 +12,103 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin myContent/Audio/BallHit_V1.mp3
+#begin ../../myEngine/Content/myContent/ParticleSystem/circle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/ParticleSystem/circle.png;myContent/ParticleSystem/circle.png
+
+#begin ../../myEngine/Content/myContent/ParticleSystem/diamond.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/ParticleSystem/diamond.png;myContent/ParticleSystem/diamond.png
+
+#begin ../../myEngine/Content/myContent/ParticleSystem/star.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/ParticleSystem/star.png;myContent/ParticleSystem/star.png
+
+#begin ../../myEngine/Content/myContent/ParticleSystem/starV2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/ParticleSystem/starV2.png;myContent/ParticleSystem/starV2.png
+
+#begin ../../myEngine/Content/myContent/ParticleSystem/starV3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/ParticleSystem/starV3.png;myContent/ParticleSystem/starV3.png
+
+#begin ../../myEngine/Content/myContent/Audio/BallHit_V1.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:myContent/Audio/BallHit_V1.mp3
+/build:../../myEngine/Content/myContent/Audio/BallHit_V1.mp3;myContent/Audio/BallHit_V1.mp3
 
-#begin myContent/Audio/BallHit_V2.mp3
+#begin ../../myEngine/Content/myContent/Audio/BallHit_V2.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:myContent/Audio/BallHit_V2.mp3
+/build:../../myEngine/Content/myContent/Audio/BallHit_V2.mp3;myContent/Audio/BallHit_V2.mp3
 
-#begin myContent/Audio/TargetHit_Big.mp3
+#begin ../../myEngine/Content/myContent/Audio/TargetHit_Big.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:myContent/Audio/TargetHit_Big.mp3
+/build:../../myEngine/Content/myContent/Audio/TargetHit_Big.mp3;myContent/Audio/TargetHit_Big.mp3
 
-#begin myContent/Audio/TargetHit_Medium.mp3
+#begin ../../myEngine/Content/myContent/Audio/TargetHit_Medium.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:myContent/Audio/TargetHit_Medium.mp3
+/build:../../myEngine/Content/myContent/Audio/TargetHit_Medium.mp3;myContent/Audio/TargetHit_Medium.mp3
 
-#begin myContent/Audio/TargetHit_Small.mp3
+#begin ../../myEngine/Content/myContent/Audio/TargetHit_Small.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:myContent/Audio/TargetHit_Small.mp3
+/build:../../myEngine/Content/myContent/Audio/TargetHit_Small.mp3;myContent/Audio/TargetHit_Small.mp3
 
-#begin myContent/Audio/TargetHit_SmallV2.mp3
+#begin ../../myEngine/Content/myContent/Audio/TargetHit_SmallV2.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:myContent/Audio/TargetHit_SmallV2.mp3
+/build:../../myEngine/Content/myContent/Audio/TargetHit_SmallV2.mp3;myContent/Audio/TargetHit_SmallV2.mp3
 
-#begin myContent/DEFAULT_CUBE.fbx
+#begin ../../myEngine/Content/myContent/3D/DEFAULT_CUBE.fbx
 /importer:FbxImporter
 /processor:ModelProcessor
 /processorParam:ColorKeyColor=0,0,0,0
@@ -66,45 +125,9 @@
 /processorParam:Scale=1
 /processorParam:SwapWindingOrder=False
 /processorParam:TextureFormat=Compressed
-/build:myContent/DEFAULT_CUBE.fbx
+/build:../../myEngine/Content/myContent/3D/DEFAULT_CUBE.fbx;myContent/3D/DEFAULT_CUBE.fbx
 
-#begin myContent/ParticleSystem/circle.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:myContent/ParticleSystem/circle.png
-
-#begin myContent/ParticleSystem/diamond.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:myContent/ParticleSystem/diamond.png
-
-#begin myContent/ParticleSystem/star.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:myContent/ParticleSystem/star.png
-
-#begin myContent/pomme.fbx
+#begin ../../myEngine/Content/myContent/3D/pomme.fbx
 /importer:FbxImporter
 /processor:ModelProcessor
 /processorParam:ColorKeyColor=0,0,0,0
@@ -121,14 +144,7 @@
 /processorParam:Scale=1
 /processorParam:SwapWindingOrder=False
 /processorParam:TextureFormat=Compressed
-/build:myContent/pomme.fbx
-
-#begin myContent/UI/DefaultFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:myContent/UI/DefaultFont.spritefont;myContent/UI/defaultFont.spritefont
+/build:../../myEngine/Content/myContent/3D/pomme.fbx;myContent/3D/pomme.fbx
 
 #begin TileMaps/myFile.png
 /importer:TextureImporter
@@ -153,3 +169,26 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileMaps/spritesheet.png
+#begin ../../myEngine/Content/TileMaps/myFile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/TileMaps/myFile.png;TileMaps/myFile.png
+
+#begin ../../myEngine/Content/TileMaps/spritesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/TileMaps/spritesheet.png;TileMaps/spritesheet.png

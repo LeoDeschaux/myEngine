@@ -47,7 +47,7 @@ namespace myEngine
             //Settings_Init.InitSettingsFromFile(settings);
 
             Save_RunTime.Init();
-            Time.InitTime();
+            Time.Init();
 
             audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
@@ -66,7 +66,7 @@ namespace myEngine
         private static void LoadContent(ContentManager content)
         {
             game.Content.RootDirectory = "Content";
-            Ressources.LoadRessources(content);
+            Ressources.Init(content);
         }
 
         public static void Update(GameTime gameTime)

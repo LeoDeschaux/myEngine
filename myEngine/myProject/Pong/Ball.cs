@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,8 +23,11 @@ namespace myEngine.myProject.Pong
         private Vector2 direction;
 
         //COMPONENTS
-        //private AudioSource audioSource;
         Collider2D collider;
+
+        //SOUNDS
+        SoundEffect ball_hit_wall;
+        SoundEffect ball_hit_raquette;
 
         public enum BallState
         {
@@ -48,6 +52,10 @@ namespace myEngine.myProject.Pong
 
             AddComponent(new Collider2D(sprite));
             //collider = new Collider2D(sprite);
+
+            //LOAD SOUNDS
+            ball_hit_wall = Ressources.Load<SoundEffect>("myContent/Audio/BallHit_V2");
+            ball_hit_raquette = Ressources.Load<SoundEffect>("myContent/Audio/BallHit_V1"); 
         }
 
         //METHODS
@@ -153,9 +161,9 @@ namespace myEngine.myProject.Pong
             ParticleEngine p = new ParticleEngine(pp, transform.position);
 
             if (isAWall)
-                AudioSource.PlaySoundEffect(Ressources.ball_hit_wall);
+                AudioSource.PlaySoundEffect(ball_hit_wall);
             else
-                AudioSource.PlaySoundEffect(Ressources.ball_hit_raquette);
+                AudioSource.PlaySoundEffect(ball_hit_raquette);
         }
     }
 }

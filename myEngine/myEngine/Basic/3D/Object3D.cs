@@ -17,7 +17,7 @@ namespace myEngine
         public Object3D(Camera3D camera)
         {
             transform3D = new Transform3D();
-            model = Ressources.DEFAULT_CUBE;
+            model = Ressources.Load<Model>("myContent/3D/DEFAULT_CUBE");
 
             this.camera = camera;
         }

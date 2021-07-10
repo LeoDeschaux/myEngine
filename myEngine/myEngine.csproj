@@ -45,9 +45,6 @@
     <EmbeddedResource Include="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
-  </ItemGroup>
-  <ItemGroup>
     <TrimmerRootAssembly Include="Microsoft.Xna.Framework.Content.ContentTypeReader" Visible="false" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +55,7 @@
     <PackageReference Include="Nopipeline.Task" Version="2.1.5" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ContentManager\" />
     <Folder Include="myEngine\SaveSystem\" />
   </ItemGroup>
   <ItemGroup>

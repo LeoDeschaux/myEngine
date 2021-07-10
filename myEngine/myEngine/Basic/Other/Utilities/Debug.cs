@@ -43,10 +43,12 @@ namespace myEngine
             else if (Input.GetKeyDown(Keys.NumPad1) && Settings.GAME_SPEED == 0.1f)
                 Settings.GAME_SPEED = 1f;
 
+            /*
             if (Input.GetKeyDown(Keys.F12) && !Settings.DEBUG_MODE)
                 Settings.DEBUG_MODE = true;
             else if (Input.GetKeyDown(Keys.F12) && Settings.DEBUG_MODE)
                 Settings.DEBUG_MODE = false;
+            */
 
         }
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 using ImGuiNET;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace myEngine
 {
@@ -22,17 +23,10 @@ namespace myEngine
             current_item = screenRes;
 
             Sprite sprite = new Sprite();
-            sprite.texture = Ressources.Images["starV2"];
+            sprite.texture = Ressources.Load<Texture2D>("myContent/ParticleSystem/star");
             sprite.transform.position = Settings.Get_Screen_Center();
-
-            //sprite.dimension = new Vector2(150, 150);
-
             sprite.transform.scale =  Vector2.One * 2;
         }
-
-
-
-
 
         string screenRes = Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT;
         string[] items = { "720x480", "1280x720", "1920x1280" };

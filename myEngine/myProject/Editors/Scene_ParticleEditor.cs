@@ -22,7 +22,6 @@ namespace myEngine
         Particle p;
 
         //GUI
-        private ImGuiRenderer _imGuiRenderer;
 
         //VALUE
         public static Vector3 particleColor;
@@ -56,10 +55,6 @@ namespace myEngine
 
             //GUI
             Settings.BACKGROUND_COLOR = Color.LightSlateGray;
-
-            _imGuiRenderer = new ImGuiRenderer(Engine.game);
-            _imGuiRenderer.RebuildFontAtlas();
-
         }
 
         //UPDATE & DRAW
@@ -98,9 +93,7 @@ namespace myEngine
 
         public override void DrawGUI()
         {
-            _imGuiRenderer.BeforeLayout(Time.gameTime);
             ImGuiLayout();
-            _imGuiRenderer.AfterLayout();
         }
 
         //GUI

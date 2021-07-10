@@ -5,8 +5,8 @@
 		"../../myEngine/bin/Debug/*.dll"
 	],
 	"content": {
-		"textures": {
-			"path": "Graphics/*.png",
+		"commonTextures": {
+			"path": "myContent/ParticleSystem/*.png",
 			"recursive": "True",
 			"action": "build",
 			"importer": "TextureImporter",
@@ -20,25 +20,58 @@
 				"MakeSquare": "False",
 				"TextureFormat": "Color"
 			}
+		},
+		"userTextures": {
+			"path": "TileMaps/*.png", // $ means that 'root' will not be appended to the path.
+			"recursive": "True",
+			"action": "build",
+			"importer": "TextureImporter",
+			"processor": "TextureProcessor",
+			"processorParam": {
+				"ColorKeyColor": "255,0,255,255",
+				"ColorKeyEnabled": "True",
+				"GenerateMipmaps": "False",
+				"PremultiplyAlpha": "True",
+				"ResizeToPowerOfTwo": "False",
+				"MakeSquare": "False",
+				"TextureFormat": "Color"
+			}
+		},
+		"mp3": {
+			"path": "myContent/Audio/*.mp3", // $ means that 'root' will not be appended to the path.
+			"recursive": "True",
+			"action": "build",
+			"importer": "Mp3Importer",
+			"processor": "SoundEffectProcessor",
+			"processorParam": {
+				"Quality": "Best"
+			}
+		},
+		"model": {
+			"path": "myContent/3D/*.fbx",
+			"recursive": "True",
+			"action": "build",
+			"importer": "FbxImporter",
+			"processor": "ModelProcessor",
+			"processorParam": {
+				"ColorKeyColor": "0,0,0,0",
+				"ColorKeyEnabled": "True",
+				"DefaultEffect": "BasicEffect",
+				"GenerateMipmaps": "True",
+				"GenerateTangentFrames": "False",
+				"PremultiplyTextureAlpha": "True",
+				"PremultiplyVertexColors": "True",
+				"ResizeTexturesToPowerOfTwo": "False",
+				"RotationX": "0",
+				"RotationY": "0",
+				"RotationZ": "0",
+				"Scale": "1",
+				"SwapWindingOrder": "False",
+				"TextureFormat": "Compressed"
+			}
 		}
 	},
 	// This rule will load graphics from platform-specific projects.
-	"textures": {
-		"path": "$Graphics/*.png", // $ means that 'root' will not be appended to the path.
-		"recursive": "True",
-		"action": "build",
-		"importer": "TextureImporter",
-		"processor": "TextureProcessor",
-		"processorParam": {
-			"ColorKeyColor": "255,0,255,255",
-			"ColorKeyEnabled": "True",
-			"GenerateMipmaps": "False",
-			"PremultiplyAlpha": "True",
-			"ResizeToPowerOfTwo": "False",
-			"MakeSquare": "False",
-			"TextureFormat": "Color"
-		}
-	},
 	"sampleWatch": {
 		"path": "SampleWatch/*.sampleWatch",
 		"recursive": "True",
@@ -50,5 +83,10 @@
 			// Relative to the sampleWatch path.
 			"*.txt"
 		]
+	},
+	"fonts": {
+		"path": "myContent/UI/Fonts/*.ttf",
+		"recursive": "True",
+		"action": "copy"
 	}
 }

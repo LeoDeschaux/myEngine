@@ -21,7 +21,7 @@ namespace myEngine
         {
             Settings.BACKGROUND_COLOR = Color.CornflowerBlue;
 
-            AnimatedSprite animatedSprite = new AnimatedSprite(Ressources.animatedSprite, 2, 2);
+            AnimatedSprite animatedSprite = new AnimatedSprite(Ressources.Load<Texture2D>("TileMaps/myFile"), 2, 2);
             animatedSprite.transform.position = Settings.Get_Screen_Center();
             animatedSprite.speed = 4;
             animatedSprite.playAllFrame = true;
@@ -29,7 +29,7 @@ namespace myEngine
             //
             transformChar = new Transform();
 
-            spritesheet = new AnimatedSprite(Ressources.spriteSheet, 4, 4);
+            spritesheet = new AnimatedSprite(Ressources.Load<Texture2D>("TileMaps/spritesheet"), 4, 4);
             spritesheet.speed = 4;
             spritesheet.transform = transformChar;
             spritesheet.playAllFrame = false;

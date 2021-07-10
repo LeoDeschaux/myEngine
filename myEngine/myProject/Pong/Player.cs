@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using myEngine.myProject.Pong;
+using Microsoft.Xna.Framework.Audio;
 
 namespace myEngine.myProject.Pong
 {
@@ -38,6 +39,9 @@ namespace myEngine.myProject.Pong
         //BALL
         public bool isHoldingTheBall = false;
 
+        //SOUNDS
+        SoundEffect[] target_hit_sounds;
+
         //CONSTRUCTOR 
         public Player()
         {
@@ -47,6 +51,13 @@ namespace myEngine.myProject.Pong
             anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
 
             AddComponent(new Collider2D(raquette.sprite));
+
+            target_hit_sounds = new SoundEffect[] { 
+                Ressources.Load<SoundEffect>("myContent/Audio/TargetHit_Small"),
+                Ressources.Load<SoundEffect>("myContent/Audio/TargetHit_SmallV2"),
+                Ressources.Load<SoundEffect>("myContent/Audio/TargetHit_Medium"),
+                Ressources.Load<SoundEffect>("myContent/Audio/TargetHit_Big")
+            };
         }
 
         //METHODS
@@ -124,7 +135,7 @@ namespace myEngine.myProject.Pong
             else if (lives <= 0)
                 i = 3;
 
-            AudioSource.PlaySoundEffect(Ressources.target_hit_sounds[i]);
+            AudioSource.PlaySoundEffect(target_hit_sounds[i]);
 
             //REMOVE LIFE
             RemoveLife();

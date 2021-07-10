@@ -31,7 +31,6 @@ namespace myEngine
 
         private void CheckInput_ChangeScene()
         {
-            /*
             if (Input.GetKeyDown(Keys.F1))
                 ChangeScene(new Scene_Pong());
             if (Input.GetKeyDown(Keys.F2))
@@ -42,10 +41,25 @@ namespace myEngine
                 ChangeScene(new Scene_ParticleSystem());
             if (Input.GetKeyDown(Keys.F5))
                 ChangeScene(new Scene_PhysiqueEngine());
+            if (Input.GetKeyDown(Keys.F6))
+                ChangeScene(new Scene_3D());
+            if (Input.GetKeyDown(Keys.F7))
+                ChangeScene(new Scene_Animation());
+            if (Input.GetKeyDown(Keys.F8))
+                ChangeScene(new Scene_2DCamera());
+            if (Input.GetKeyDown(Keys.F9))
+                ChangeScene(new Scene_ParentTransform());
+            if (Input.GetKeyDown(Keys.F10))
+                ChangeScene(new Scene_PerlinNoise());
+            if (Input.GetKeyDown(Keys.F11))
+                ChangeScene(new Scene_TextUI());
+            /*
+            if (Input.GetKeyDown(Keys.F12))
+                ChangeScene(new Scene_WindowSizes());
             */
 
             if (Input.GetKeyDown(Keys.F12))
-                ChangeScene(new Scene_ParticleSystem());
+                ChangeScene(new Scene_ParticleEditor());
         }
 
         public void ChangeScene(IScene scene)
