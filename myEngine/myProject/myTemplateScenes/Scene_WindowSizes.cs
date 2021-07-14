@@ -32,6 +32,8 @@ namespace myEngine
         string[] items = { "720x480", "1280x720", "1920x1280" };
         string current_item = null;
 
+        bool fullScreen = false;
+
         //GUI
         public override void DrawGUI()
         {
@@ -63,12 +65,23 @@ namespace myEngine
                     if (ImGui.Selectable(items[n], is_selected))
                     {
                         current_item = items[n];
-                        Console.WriteLine(current_item);
+                        if (current_item == "720x480")
+                            Settings.SetScreenSize(720, 480);
+                        else if (current_item == "1280x720")
+                            Settings.SetScreenSize(1280, 720);
+                        else if (current_item == "1920x1280")
+                            Settings.SetScreenSize(1920, 1280);
                     }
                     if (is_selected)
                         ImGui.SetItemDefaultFocus();   // You may set the initial focus when opening the combo (scrolling + for keyboard navigation support)
                 }
                 ImGui.EndCombo();
+            }
+
+            if (ImGui.Checkbox("FullScreen", ref fullScreen))
+            {
+                Engine.graphicDevice.IsFullScreen = fullScreen;
+                Engine.graphicDevice.ApplyChanges();
             }
 
             ImGui.End();

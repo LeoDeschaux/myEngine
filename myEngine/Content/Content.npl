@@ -6,7 +6,7 @@
 	],
 	"content": {
 		"commonTextures": {
-			"path": "myContent/ParticleSystem/*.png",
+			"path": "myContent/*.png",
 			"recursive": "True",
 			"action": "build",
 			"importer": "TextureImporter",

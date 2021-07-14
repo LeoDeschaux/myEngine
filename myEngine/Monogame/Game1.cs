@@ -3,8 +3,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-
-
 namespace myEngine
 {
     public class Game1 : Game

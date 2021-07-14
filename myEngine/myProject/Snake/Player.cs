@@ -2,79 +2,71 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using myEngine.myProject.Snake;
 
 namespace myEngine.myProject.Snake
 {
-    public struct GridPosition
-    {
-        public int X;
-        public int Y;
-
-        public override string ToString()
-        {
-            return "{"+X+","+Y+"}";
-        }
-    }
-
     public class Player : GameObject
     {
         //FIELDS
-        private GridPosition gridPosition;
+        public IntVec2 gridPosition;
+        public IntVec2 direction;
+
+        //
+        public Sprite head;
+
+        public Sprite s;
 
         //CONSTRUCTOR
         public Player()
         {
-            gridPosition = new GridPosition();
-            
-            Game_Snake.grid.SetPlayerPos(gridPosition);
-            Console.WriteLine(gridPosition);
+            gridPosition = new IntVec2(0,0);
+            direction = new IntVec2(1,0);
+
+            head = new Sprite();
+            head.transform.position = new Vector2(1130, 500);
+            head.dimension = new Vector2(50, 50);
+            head.texture = Ressources.Load<Texture2D>("myContent/2D/Snake_Head");
         }
+
+        public override void Draw(SpriteBatch sprite)
+        {
+            //DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), Color.Red);
+            DrawSimpleShape.DrawRuller(head.transform.position, Color.Red);
+        }
+
+        float speed = 50;
 
         //METHODS
         public override void Update()
         {
+            //head.transform.rotation += speed * Time.deltaTime;
+
             if (Input.GetKeyDown(Keys.Up))
             {
-                if(gridPosition.Y - 1 >= 0)
-                {
-                    gridPosition.Y--;
-                    Game_Snake.grid.SetPlayerPos(gridPosition);
-                    Console.WriteLine(gridPosition);
-                }
+                direction = new IntVec2(0,-1);
+                head.transform.rotation = 270;
             }
 
             if (Input.GetKeyDown(Keys.Down))
             {
-                if (gridPosition.Y + 1 < Game_Snake.grid.size)
-                {
-                    gridPosition.Y++;
-                    Game_Snake.grid.SetPlayerPos(gridPosition);
-                    Console.WriteLine(gridPosition);
-                }
+                direction = new IntVec2(0,1);
+                head.transform.rotation = 90;
             }
 
             if (Input.GetKeyDown(Keys.Left))
             {
-                if (gridPosition.X - 1 >= 0)
-                {
-                    gridPosition.X--;
-                    Game_Snake.grid.SetPlayerPos(gridPosition);
-                    Console.WriteLine(gridPosition);
-                }
+                direction = new IntVec2(-1,0);
+                head.transform.rotation = 180;
             }
 
             if (Input.GetKeyDown(Keys.Right))
             {
-                if (gridPosition.X + 1 < Game_Snake.grid.size)
-                {
-                    gridPosition.X++;
-                    Game_Snake.grid.SetPlayerPos(gridPosition);
-                    Console.WriteLine(gridPosition);
-                }
+                direction = new IntVec2(1,0);
+                head.transform.rotation = 0;
             }
         }
-
     }
 }

@@ -100,7 +100,7 @@ namespace myEngine
 
             //DRAW SCENE
             Matrix matrix = sceneManager.currentScene.camera.transformMatrix;
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, transformMatrix: matrix);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
 
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);
             //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Additive);

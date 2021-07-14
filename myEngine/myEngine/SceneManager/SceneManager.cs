@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_ParentTransform();
-            currentScene = new Scene_WindowSizes();
+            currentScene = new Scene_Snake();
             input = new Input();
         }
 

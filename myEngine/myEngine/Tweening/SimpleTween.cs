@@ -26,6 +26,8 @@ namespace myEngine
         private float delay;
         private float timerDelay;
 
+        public float speed = 1000f;
+
         //CONSTRUCTOR
         public SimpleTween(float startValue, float endValue, float duration, float delay = 0, bool playOnlyOnce = true)
         {
@@ -50,14 +52,14 @@ namespace myEngine
         {
             if (start)
             {
-                timerDelay += (float)Time.deltaTime;
+                timerDelay += speed * (float)Time.deltaTime;
                 if (timerDelay > delay)
                     isPlaying = true;
             }
 
             if (isPlaying)
             {
-                timer += (float)Time.deltaTime;
+                timer += speed * (float)Time.deltaTime;
                 if (timer < duration)
                 {
                     //value = LinearTween(startValue, endValue, timer, duration);

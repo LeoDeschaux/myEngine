@@ -10,20 +10,31 @@ namespace myEngine.myProject.Snake
     {
         //FIELDS
         public static Grid grid;
-        Player player;
+        public Player player;
+
+        Delay delay;
 
         //APPLE SPAWNER
 
         //CONSTRUCTOR
         public Game_Snake()
         {
-            grid = new Grid();
             player = new Player();
+            grid = new Grid(player);
+
+            delay = new Delay(200, () =>
+            {
+                grid.UpdateGrid();
+            });
         }
 
         //METHODS
         public override void Update()
         {
+            return;
+
+            if (Input.GetKeyDown(Keys.Enter))
+                grid.UpdateGrid();
         }
     }
 }

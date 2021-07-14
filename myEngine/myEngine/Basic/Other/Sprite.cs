@@ -11,13 +11,12 @@ namespace myEngine
         //FIELDS
         public Texture2D texture;
         public Vector2 dimension;
-        private Vector2 origin;
         public Color color;
-
-        private Rectangle sourceRectangle;
 
         public bool isVisible = true;
         public int orderInLayer = 0;
+
+        public SpriteEffects spriteEffect;
 
         //CONSTRUCTOR
         public Sprite()
@@ -27,8 +26,7 @@ namespace myEngine
             transform.position = Vector2.Zero;
             this.dimension = Vector2.One * 150;
             color = Color.White;
-            sourceRectangle = new Rectangle(0, 0, (int)dimension.X, (int)dimension.Y);
-            origin = new Vector2(dimension.X / 2, dimension.Y / 2);
+            spriteEffect = SpriteEffects.None;
         }
 
         public Sprite(Vector2 position, Vector2 dimension, Texture2D texture2D = null)
@@ -44,19 +42,16 @@ namespace myEngine
             this.dimension = dimension;
 
             color = Color.White;
-            sourceRectangle = new Rectangle(0, 0, (int)dimension.X, (int)dimension.Y);
 
-            //origin = new Vector2((float)(GetRectangle().X), (float)(GetRectangle().Y));
-            //origin = Vector2.Zero;
-            origin = new Vector2(dimension.X / 2, dimension.Y / 2);
+            spriteEffect = SpriteEffects.None;
         }
 
         //METHODS
         public Rectangle GetRectangle()
         {
             return new Rectangle(
-                (int)transform.position.X-(int)(dimension.X/2),
-                (int)transform.position.Y-(int)(dimension.Y/2),
+                (int)transform.position.X-(int)((dimension.X * transform.scale.X) / 2),
+                (int)transform.position.Y-(int)((dimension.Y * transform.scale.Y) / 2),
                 (int)(dimension.X * transform.scale.X),
                 (int)(dimension.Y * transform.scale.Y));
         }
@@ -70,16 +65,16 @@ namespace myEngine
                 (int)(dimension.Y * transform.scale.Y));
         }
 
-        private Vector2 GetCenter()
+        private Vector2 GetOrigin()
         {
-            return new Vector2(transform.position.X + (dimension.X / 2), transform.position.Y + (dimension.Y / 2));
+            return new Vector2(texture.Width/2, texture.Height/2);
         }
 
         //DRAW
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(isVisible)
-            spriteBatch.Draw(this.texture, GetRec(), this.sourceRectangle, this.color, MathHelper.ToRadians(transform.rotation), origin, SpriteEffects.None, 
+            if (isVisible)
+            spriteBatch.Draw(this.texture, GetRec(), null, this.color, MathHelper.ToRadians(transform.rotation), GetOrigin(), spriteEffect, 
                 (float)( (Math.Clamp(orderInLayer, -1000, 1000)+1000)) / 2000);
         }
     }

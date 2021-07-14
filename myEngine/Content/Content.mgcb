@@ -192,3 +192,15 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../../myEngine/Content/TileMaps/spritesheet.png;TileMaps/spritesheet.png
+
+#begin ../../myEngine/Content/myContent/2D/Snake_Head.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Snake_Head.png;myContent/2D/Snake_Head.png

@@ -39,8 +39,8 @@ namespace myEngine
             {
                 for (int x = 0; x < 5; x++)
                 {
-                    Microsoft.Xna.Framework.Vector2 offSet = new Microsoft.Xna.Framework.Vector2(350, 450);
-                    mySprites[i] = new Sprite(new Microsoft.Xna.Framework.Vector2(x * 125, y*55)+ offSet, new Microsoft.Xna.Framework.Vector2(120, 50));
+                    Vector2 offSet = new Vector2(350, 450);
+                    mySprites[i] = new Sprite(new Vector2(x * 125, y*55)+ offSet, new Vector2(120, 50));
                     //mySprites[i].transform.scale = new Vector2(0.5f, 0.5f);
                     i++;
                 }
@@ -76,7 +76,7 @@ namespace myEngine
                 if (myTweens[x].isPlaying)
                 {
                     float myValue = myTweens[x].value;
-                    mySprites[x].transform.position = new Microsoft.Xna.Framework.Vector2(mySprites[x].transform.position.X, myValue);
+                    mySprites[x].transform.position = new Vector2(mySprites[x].transform.position.X, myValue);
                 }
 
                 if (myTweensR[x].isPlaying)
@@ -118,12 +118,6 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            text.Draw(spriteBatch);
-
-            for (int i = 0; i < mySprites.Length; i++)
-            {
-                mySprites[i].Draw(spriteBatch);
-            }
         }
     }
 }

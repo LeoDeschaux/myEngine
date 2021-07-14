@@ -55,7 +55,6 @@
     <PackageReference Include="Nopipeline.Task" Version="2.1.5" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ContentManager\" />
     <Folder Include="myEngine\SaveSystem\" />
   </ItemGroup>
   <ItemGroup>
@@ -66,4 +65,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 </Project>

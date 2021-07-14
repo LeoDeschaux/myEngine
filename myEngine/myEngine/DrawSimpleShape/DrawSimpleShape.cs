@@ -11,22 +11,13 @@ namespace myEngine
         //FIELDS
 
         //METHODS
-        public static Texture2D GetTexture(int x = 1, int y = 1)
+        public static Texture2D GetTexture(int x = 2, int y = 2) //2 make it divisible, i guess ?????
         {
-            Texture2D texture = new Texture2D(Engine.spriteBatch.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            Texture2D texture = new Texture2D(Engine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 
-            if (x == 1 && y == 1)
-            {
-                texture.SetData(new[] { Color.White });
-            }
-            else
-            {
-                texture = new Texture2D(Engine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
-
-                Color[] data = new Color[x * y];
-                for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
-                texture.SetData(data);
-            }
+            Color[] data = new Color[x * y];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
+            texture.SetData(data);
 
             return texture;
         }

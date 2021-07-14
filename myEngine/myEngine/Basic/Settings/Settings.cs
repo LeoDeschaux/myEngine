@@ -39,10 +39,9 @@ namespace myEngine
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
             game.Window.AllowUserResizing = false;
-            game.Window.ClientSizeChanged += OnResize;
+            //game.Window.ClientSizeChanged += OnResize;
 
             game.Window.IsBorderless = false;
-
 
             game.Window.Title = "MonogameV2";
             Engine.graphicDevice.ApplyChanges();
@@ -69,6 +68,19 @@ namespace myEngine
             Engine.graphicDevice.ApplyChanges();
 
             //Console.WriteLine("ratio: " + ASPECT_RATIO + ", dimension: " + Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT);
+        }
+
+        public static void SetScreenSize(int x, int y)
+        {
+            Settings.SCREEN_WIDTH = x;
+            Settings.SCREEN_HEIGHT = y;
+
+            Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+
+            ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
+
+            Engine.graphicDevice.ApplyChanges();
         }
 
         //UPDATE & DRAW
