@@ -19,7 +19,6 @@ namespace myEngine
         //BASE
         public static Game1 game;
         public static GraphicsDeviceManager graphicDevice;
-        public static SpriteBatch spriteBatch;
 
         //FIELDS
         public static World world;
@@ -27,6 +26,7 @@ namespace myEngine
 
         public static AudioEngine audioEngine;
         public static PhysicEngine physicEngine;
+        public static RendererEngine rendererEngine;
 
         public static Settings settings;
 
@@ -34,14 +34,12 @@ namespace myEngine
 
         public static bool isGameRunning = true;
 
-        private static ImGuiRenderer imGuiRenderer;
 
         //METHODS
         public static void Initialize(Game1 game)
         {
             Engine.game = game;
             graphicDevice = game.graphicDevice;
-            spriteBatch = new SpriteBatch(game.GraphicsDevice);
 
             settings = new Settings(game);
             //Settings_Init.InitSettingsFromFile(settings);
@@ -49,6 +47,7 @@ namespace myEngine
             Save_RunTime.Init();
             Time.Init();
 
+            rendererEngine = new RendererEngine();
             audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
 
@@ -57,10 +56,6 @@ namespace myEngine
             world = new World();
             sceneManager = new SceneManager();
             debug = new Debug();
-
-            //GUI
-            imGuiRenderer = new ImGuiRenderer(Engine.game);
-            imGuiRenderer.RebuildFontAtlas();
         }
 
         private static void LoadContent(ContentManager content)
@@ -91,33 +86,7 @@ namespace myEngine
 
         public static void Draw()
         {
-            game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
-
-            //DRAW BACKGROUND
-            spriteBatch.Begin();
-            //..
-            spriteBatch.End();
-
-            //DRAW SCENE
-            Matrix matrix = sceneManager.currentScene.camera.transformMatrix;
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
-
-            //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);
-            //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Additive);
-
-            world.Draw(spriteBatch);
-
-            spriteBatch.End();
-
-            //DRAW UI
-            spriteBatch.Begin();
-            //..
-            spriteBatch.End();
-
-            //ImGUI
-            imGuiRenderer.BeforeLayout(Time.gameTime);
-            sceneManager.currentScene.DrawGUI();
-            imGuiRenderer.AfterLayout();
+            rendererEngine.Draw();
         }
 
         //METHODS

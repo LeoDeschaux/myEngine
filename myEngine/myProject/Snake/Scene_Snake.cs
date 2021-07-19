@@ -14,7 +14,8 @@ namespace myEngine
     {
         //FIELDS
         Game_Snake game;
-        //TO ADD: UI
+
+        //TODO: convert UI to seperate class
 
         //CONSTRUCTOR
         public Scene_Snake()
@@ -31,6 +32,8 @@ namespace myEngine
 
         public override void DrawGUI()
         {
+            return;
+
             ImGui.Begin("Rotation");
             ImGui.SetWindowSize(wSize);
 
@@ -39,23 +42,23 @@ namespace myEngine
 
             //System.Numerics.Vector2 position = new System.Numerics.Vector2(game.player.head.transform.position.X, game.player.head.transform.position.Y);
 
-            position = new System.Numerics.Vector2(game.player.head.transform.position.X, game.player.head.transform.position.Y);
+            position = new System.Numerics.Vector2(game.snake.head.transform.position.X, game.snake.head.transform.position.Y);
 
             ImGui.DragFloat2("Transform Position", ref position);
 
             //ImGui.InputFloat("PosX", ref game.player.head.transform.position.X, 0, 1280, string.Empty);
             //ImGui.InputFloat("PoY", ref game.player.head.transform.position.Y, 0, 720, string.Empty);
 
-            ImGui.SliderFloat("dimensionX", ref game.player.head.dimension.X, 0, 200, string.Empty);
-            ImGui.SliderFloat("dimensionY", ref game.player.head.dimension.Y, 0, 200, string.Empty);
+            ImGui.SliderFloat("dimensionX", ref game.snake.head.dimension.X, 0, 200, string.Empty);
+            ImGui.SliderFloat("dimensionY", ref game.snake.head.dimension.Y, 0, 200, string.Empty);
 
-            ImGui.SliderFloat("ScaleX", ref game.player.head.transform.scale.X, 0, 2, string.Empty);
-            ImGui.SliderFloat("ScaleY", ref game.player.head.transform.scale.Y, 0, 2, string.Empty);
+            ImGui.SliderFloat("ScaleX", ref game.snake.head.transform.scale.X, 0, 2, string.Empty);
+            ImGui.SliderFloat("ScaleY", ref game.snake.head.transform.scale.Y, 0, 2, string.Empty);
 
             ImGui.End();
 
-            game.player.head.transform.position.X = position.X;
-            game.player.head.transform.position.Y = position.Y;
+            game.snake.head.transform.position.X = position.X;
+            game.snake.head.transform.position.Y = position.Y;
         }
 
         //METHODS

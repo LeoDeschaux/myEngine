@@ -9,8 +9,8 @@ namespace myEngine
     {
         //FIELDS
         //List<GameObject> gameObjects;
-        public List<Entity> entities;
-        List<Component> components;
+        public static List<Entity> entities;
+        static List<Component> components;
 
         //CONSTRUCTOR
         public World()
@@ -18,6 +18,12 @@ namespace myEngine
             //gameObjects = new List<GameObject>();
             entities = new List<Entity>();
             components = new List<Component>();
+        }
+
+        public static void GetWorldStats()
+        {
+            Console.WriteLine("Entities: " + entities.Count);
+            Console.WriteLine("Components: " + components.Count);
         }
 
         //UPDATE & DRAW

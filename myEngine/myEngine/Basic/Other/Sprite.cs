@@ -17,6 +17,7 @@ namespace myEngine
         public int orderInLayer = 0;
 
         public SpriteEffects spriteEffect;
+        public Effect effect;
 
         //CONSTRUCTOR
         public Sprite()
@@ -25,6 +26,17 @@ namespace myEngine
             this.texture = DrawSimpleShape.GetTexture();
             transform.position = Vector2.Zero;
             this.dimension = Vector2.One * 150;
+            color = Color.White;
+            spriteEffect = SpriteEffects.None;
+        }
+
+        public Sprite(Texture2D texture2D)
+        {
+            transform = new Transform();
+
+            this.texture = texture2D;
+
+            this.dimension = new Vector2(texture2D.Width, texture2D.Height);
             color = Color.White;
             spriteEffect = SpriteEffects.None;
         }
@@ -73,9 +85,20 @@ namespace myEngine
         //DRAW
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (isVisible)
+            if (!isVisible)
+                return;
+
+
+            //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp);
+            //spriteBatch.Begin(SpriteSortMode.Immediate);
+
+            //effect?.CurrentTechnique.Passes[0].Apply();
+
             spriteBatch.Draw(this.texture, GetRec(), null, this.color, MathHelper.ToRadians(transform.rotation), GetOrigin(), spriteEffect, 
                 (float)( (Math.Clamp(orderInLayer, -1000, 1000)+1000)) / 2000);
+
+            spriteBatch.End();
         }
     }
 }

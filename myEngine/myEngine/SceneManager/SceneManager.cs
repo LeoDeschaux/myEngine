@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_ParentTransform();
-            currentScene = new Scene_Snake();
+            currentScene = new Scene_2DShader();
             input = new Input();
         }
 

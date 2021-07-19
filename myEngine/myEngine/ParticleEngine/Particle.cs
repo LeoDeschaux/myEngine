@@ -68,9 +68,11 @@ namespace myEngine
             Rectangle sourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
             Vector2 origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
 
+            spriteBatch.Begin();
             spriteBatch.Draw(Texture, Position, sourceRectangle, Color,
                 Angle, origin, Size, SpriteEffects.None, 
                 (float)((Math.Clamp(OrderInLayer, -1000, 1000) + 1000)) / 2000);
+            spriteBatch.End();
         }
     }
 }

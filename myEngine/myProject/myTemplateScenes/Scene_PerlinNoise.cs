@@ -49,7 +49,7 @@ namespace myEngine
 
         public Texture2D GetTexture(int x = 1, int y = 1)
         {
-            Texture2D texture = new Texture2D(Engine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
+            Texture2D texture = new Texture2D(RendererEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 
             Color[] data = new Color[x * y];
             for (int i = 0; i < data.Length; ++i)

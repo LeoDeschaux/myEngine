@@ -4,43 +4,51 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/circle.png</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/diamond.png</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/star.png</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/starV2.png</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/starV3.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/mountain.jpg</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Snake_Head.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/DEFAULT_CUBE.fbx</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/pomme.fbx</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/BallHit_V1.mp3</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/BallHit_V2.mp3</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/TargetHit_Big.mp3</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/TargetHit_Medium.mp3</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/TargetHit_Small.mp3</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/TargetHit_SmallV2.mp3</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/DEFAULT_CUBE.fbx</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/pomme.fbx</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/TileMaps/myFile.png</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/TileMaps/spritesheet.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/circle.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/diamond.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/star.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/starV2.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/ParticleSystem/starV3.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/TileMaps/myFile.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/TileMaps/spritesheet.png</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Snake_Head.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/myContent/Shader/testShader.fx</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/TileMaps/myFile.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/TileMaps/spritesheet.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/texture.jpg</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/character.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>myContent/ParticleSystem/circle.png</File>
-    <File>myContent/ParticleSystem/diamond.png</File>
-    <File>myContent/ParticleSystem/star.png</File>
-    <File>myContent/ParticleSystem/starV2.png</File>
-    <File>myContent/ParticleSystem/starV3.png</File>
+    <File>myContent/2D/mountain.jpg</File>
+    <File>myContent/2D/Snake_Head.png</File>
+    <File>myContent/3D/DEFAULT_CUBE.fbx</File>
+    <File>myContent/3D/pomme.fbx</File>
     <File>myContent/Audio/BallHit_V1.mp3</File>
     <File>myContent/Audio/BallHit_V2.mp3</File>
     <File>myContent/Audio/TargetHit_Big.mp3</File>
     <File>myContent/Audio/TargetHit_Medium.mp3</File>
     <File>myContent/Audio/TargetHit_Small.mp3</File>
     <File>myContent/Audio/TargetHit_SmallV2.mp3</File>
-    <File>myContent/3D/DEFAULT_CUBE.fbx</File>
-    <File>myContent/3D/pomme.fbx</File>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
+    <File>myContent/ParticleSystem/circle.png</File>
+    <File>myContent/ParticleSystem/diamond.png</File>
+    <File>myContent/ParticleSystem/star.png</File>
+    <File>myContent/ParticleSystem/starV2.png</File>
+    <File>myContent/ParticleSystem/starV3.png</File>
     <File>TileMaps/myFile.png</File>
     <File>TileMaps/spritesheet.png</File>
-    <File>myContent/2D/Snake_Head.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>myContent/2D/texture.jpg</File>
+    <File>myContent/2D/character.png</File>
   </DestFiles>
 </SourceFileCollection>

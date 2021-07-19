@@ -39,7 +39,7 @@ namespace myEngine
         //CONSTRUCTOR 
         public Text(string s = "new Text")
         {
-            fontSystem = FontSystemFactory.CreateStroked(Engine.spriteBatch.GraphicsDevice, 1, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
+            fontSystem = FontSystemFactory.CreateStroked(RendererEngine.spriteBatch.GraphicsDevice, 1, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
             fontSystem.AddFont(File.ReadAllBytes(@"Content/myContent/UI/Fonts/arial.ttf"));
 
             this.s = s;
@@ -75,8 +75,12 @@ namespace myEngine
 
             if (font != null && s != null)
             {
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp);
+
                 spriteBatch.DrawString(font, s, transform.position, color, transform.scale, transform.rotation, origin,
                     (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
+
+                spriteBatch.End();
             }
         }
 

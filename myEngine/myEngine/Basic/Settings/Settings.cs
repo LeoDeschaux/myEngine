@@ -38,18 +38,18 @@ namespace myEngine
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
-            game.Window.AllowUserResizing = false;
-            //game.Window.ClientSizeChanged += OnResize;
+            game.Window.AllowUserResizing = true;
+            game.Window.ClientSizeChanged += OnResize;
 
             game.Window.IsBorderless = false;
 
             game.Window.Title = "MonogameV2";
             Engine.graphicDevice.ApplyChanges();
-
         }
         
         public void OnResize(Object sender, EventArgs e)
         {
+            /*
             if (game.Window.ClientBounds.Width != Settings.SCREEN_WIDTH)
             {
                 Settings.SCREEN_WIDTH = game.Window.ClientBounds.Width;
@@ -61,13 +61,17 @@ namespace myEngine
                 Settings.SCREEN_HEIGHT = game.Window.ClientBounds.Height;
                 Settings.SCREEN_WIDTH = (int)((float)Settings.SCREEN_HEIGHT * ASPECT_RATIO);
             }
+            */
 
-            Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
-            Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+            //Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            //Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
             Engine.graphicDevice.ApplyChanges();
 
-            //Console.WriteLine("ratio: " + ASPECT_RATIO + ", dimension: " + Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT);
+            //Settings.SCREEN_WIDTH = game.Window.ClientBounds.Width;
+            //Settings.SCREEN_HEIGHT = game.Window.ClientBounds.Height;
+
+            Console.WriteLine("ratio: " + ASPECT_RATIO + ", dimension: " + Settings.SCREEN_WIDTH + "x" + Settings.SCREEN_HEIGHT);
         }
 
         public static void SetScreenSize(int x, int y)
