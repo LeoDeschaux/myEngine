@@ -52,7 +52,7 @@ namespace myEngine
 
         }
 
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
             //MOUSE CURSOR
             //DrawSimpleShape.DrawRuller(input.mousePos.ToVector2(), Color.Red);

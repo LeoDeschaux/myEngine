@@ -51,7 +51,7 @@ namespace myEngine
             effect.Parameters["param1"]?.SetValue(x);
         }
 
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
         }
 

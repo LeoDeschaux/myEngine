@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+using ImGuiNET;
+
 namespace myEngine
 {
     public class Scene_DrawSimpleShape : IScene
@@ -32,14 +34,19 @@ namespace myEngine
             }
             if (Input.GetMouseUp(0))
                 draw = false;
+
+            DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-            text.Draw(spriteBatch);
+            text.Draw(spriteBatch, matrix);
 
             if (draw)
                 DrawSimpleShape.DrawRectangle(pos, Mouse.position.ToVector2() - pos, 0f, Color.Red);
+
+            DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());
+
         }
     }
 }

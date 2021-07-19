@@ -16,6 +16,6 @@ namespace myEngine
 
         //UPDATE & DRAW
         public abstract override void Update();
-        public abstract override void Draw(SpriteBatch spriteBatch);
+        public abstract override void Draw(SpriteBatch spriteBatch, Matrix matrix);
     }
 }

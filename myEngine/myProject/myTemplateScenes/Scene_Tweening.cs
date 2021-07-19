@@ -116,7 +116,7 @@ namespace myEngine
             //mySprites[0].transform.SetPosition(mySprites[0].transform.GetPosition().X, myValue);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
         }
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -42,12 +43,12 @@ namespace myEngine
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             for (int i = 0; i < entities.Count; i++)
             {
                 Entity e = entities[i];
-                e.Draw(spriteBatch);
+                e.Draw(spriteBatch, matrix);
             }
 
             for (int i = 0; i < components.Count; i++)

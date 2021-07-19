@@ -100,7 +100,7 @@ namespace myEngine.myProject.Pong
             anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
         }
 

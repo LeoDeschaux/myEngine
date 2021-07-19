@@ -30,7 +30,7 @@ namespace myEngine.myProject.Pong
         {
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
         }
     }

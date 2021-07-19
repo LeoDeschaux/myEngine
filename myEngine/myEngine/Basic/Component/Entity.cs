@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,7 +21,7 @@ namespace myEngine
 
         //UPDATE & DRAW
         public virtual void Update() { }
-        public virtual void Draw(SpriteBatch sprite) { }
+        public virtual void Draw(SpriteBatch sprite, Matrix matrix) { }
 
         //METHODS
         public virtual void Destroy()

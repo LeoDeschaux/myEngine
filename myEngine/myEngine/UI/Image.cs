@@ -75,7 +75,7 @@ namespace myEngine
         }
 
         //DRAW
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             spriteBatch.Draw(this.texture, this.GetRectangle(), this.sourceRectangle, this.color, this.rotation, this.origin, this.effects, 0f);
         }

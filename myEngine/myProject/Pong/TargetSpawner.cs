@@ -68,7 +68,7 @@ namespace myEngine.myProject.Pong
         {
         }
 
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
         }
     }

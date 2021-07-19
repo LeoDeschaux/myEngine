@@ -47,7 +47,7 @@ namespace myEngine
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             Rectangle sourceRectangle = new Rectangle();
             Rectangle destinationRectangle = new Rectangle();
@@ -85,7 +85,10 @@ namespace myEngine
                 sourceRectangle = new Rectangle(width * column, height * row, width, height);
                 destinationRectangle = new Rectangle((int)transform.position.X, (int)transform.position.Y, width, height);
             }
+
+            spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.End();
         }
     }
 }

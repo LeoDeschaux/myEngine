@@ -42,7 +42,7 @@ namespace myEngine
             sprite.texture = GetTexture((int)sprite.dimension.X, (int)sprite.dimension.Y);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
 
         }

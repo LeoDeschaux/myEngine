@@ -125,7 +125,7 @@ namespace myEngine
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             for (int index = 0; index < particles.Count; index++)
             {

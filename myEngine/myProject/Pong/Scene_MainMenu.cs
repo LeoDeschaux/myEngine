@@ -97,7 +97,7 @@ namespace myEngine
         {
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             /*
             DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), Color.White);

@@ -77,7 +77,7 @@ namespace myEngine
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             int x = 16;
             int y = 9;

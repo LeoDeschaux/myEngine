@@ -39,7 +39,7 @@ namespace myEngine
         {
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             DrawSimpleShape.DrawRectangle(origin.GetRectangle(), 0f, Color.Green);
 

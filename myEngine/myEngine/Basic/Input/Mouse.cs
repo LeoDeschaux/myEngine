@@ -22,7 +22,12 @@ namespace myEngine
         {
             prevMouseState = mouseState;
             mouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
-            position = new Point(mouseState.X, mouseState.Y);
+            //position = new Point(mouseState.X, mouseState.Y);
+
+            float ratioX = (float)Engine.game.Window.ClientBounds.Width / (float)Settings.SCREEN_WIDTH;
+            float ratioY = (float)Engine.game.Window.ClientBounds.Height / (float)Settings.SCREEN_HEIGHT;
+
+            position = new Point((int)(mouseState.X / ratioX), (int)(mouseState.Y / ratioY));
 
             asBeenReleased = true;
         }

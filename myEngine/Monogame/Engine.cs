@@ -47,11 +47,11 @@ namespace myEngine
             Save_RunTime.Init();
             Time.Init();
 
+            LoadContent(game.Content);
+
             rendererEngine = new RendererEngine();
             audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
-
-            LoadContent(game.Content);
 
             world = new World();
             sceneManager = new SceneManager();

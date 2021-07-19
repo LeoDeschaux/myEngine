@@ -56,7 +56,7 @@ namespace myEngine
                 p.transform.rotation += speed * Time.deltaTime;
         }
 
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
         }
     }

@@ -95,7 +95,7 @@ namespace myEngine.myProject.Snake
         }
 
         //DRAW & UPDATE
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
             //DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), Color.Red);
             DrawSimpleShape.DrawRuller(head.transform.position, Color.Red);

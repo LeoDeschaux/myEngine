@@ -66,7 +66,7 @@ namespace myEngine
         }
 
         //DRAW
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             SpriteFontBase font = fontSystem.GetFont(fontSize);
 
@@ -75,7 +75,7 @@ namespace myEngine
 
             if (font != null && s != null)
             {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp);
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
 
                 spriteBatch.DrawString(font, s, transform.position, color, transform.scale, transform.rotation, origin,
                     (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);

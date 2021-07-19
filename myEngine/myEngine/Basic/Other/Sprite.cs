@@ -83,14 +83,13 @@ namespace myEngine
         }
 
         //DRAW
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             if (!isVisible)
                 return;
 
 
-            //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);
             //spriteBatch.Begin(SpriteSortMode.Immediate);
 
             //effect?.CurrentTechnique.Passes[0].Apply();

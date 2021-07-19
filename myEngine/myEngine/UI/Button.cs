@@ -79,7 +79,7 @@ namespace myEngine
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
             if (!isVisible)
                 return;

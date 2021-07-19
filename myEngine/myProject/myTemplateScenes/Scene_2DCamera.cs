@@ -48,10 +48,9 @@ namespace myEngine
             }
         }
 
-        public override void Draw(SpriteBatch sprite)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center());
+            DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), matrix);
         }
-
     }
 }

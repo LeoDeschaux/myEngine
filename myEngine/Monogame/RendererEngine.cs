@@ -11,10 +11,12 @@ namespace myEngine
     {
         //FIELDS
         public static SpriteBatch spriteBatch;
-
         public RenderTarget2D renderTarget;
 
         private static ImGuiRenderer imGuiRenderer;
+
+        Effect effect;
+        Texture2D textureMask;
 
         //CONSTRUCTOR
         public RendererEngine()
@@ -29,6 +31,10 @@ namespace myEngine
             Engine.game.GraphicsDevice.PresentationParameters.BackBufferFormat,
             DepthFormat.Depth24);
 
+            //POST PROCESSING
+            effect = Ressources.Load<Effect>("myContent/Shader/testShader");
+            textureMask = Ressources.Load<Texture2D>("myContent/2D/texture");
+            
             //GUI
             imGuiRenderer = new ImGuiRenderer(Engine.game);
             imGuiRenderer.RebuildFontAtlas();
@@ -38,7 +44,6 @@ namespace myEngine
         public void Draw()
         {
             RenderScene();
-
             DrawTextureToScreen();
         }
 
@@ -56,14 +61,14 @@ namespace myEngine
             spriteBatch.End();
 
             //DRAW SCENE
-            Matrix matrix = Engine.sceneManager.currentScene.camera.transformMatrix;
             //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
             //spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp);
             //spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.Additive);
 
             //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
 
-            Engine.world.Draw(spriteBatch);
+            Matrix matrix = Engine.sceneManager.currentScene.camera.transformMatrix;
+            Engine.world.Draw(spriteBatch, matrix);
 
             //spriteBatch.End();
 
@@ -82,12 +87,23 @@ namespace myEngine
 
         protected void DrawTextureToScreen()
         {
+            /*
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,
                 SamplerState.LinearClamp, DepthStencilState.Default,
                 RasterizerState.CullNone);
+            */
 
+            //POST PROCESSING
+            effect.Parameters["customTexture"]?.SetValue(textureMask);
+
+            float speed = 2f;
+            float time = (float)Math.Sin((double)Time.gameTime.TotalGameTime.TotalSeconds * speed);
+            float intensity = 0.2f;
+
+            effect.Parameters["param1"]?.SetValue((1+time) * intensity);
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
             spriteBatch.Draw(renderTarget, new Rectangle(0, 0, Engine.game.Window.ClientBounds.Width, Engine.game.Window.ClientBounds.Height), Color.White);
-
             spriteBatch.End();
         }
 
