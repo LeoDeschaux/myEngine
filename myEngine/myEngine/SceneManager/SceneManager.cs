@@ -18,7 +18,7 @@ namespace myEngine
         public SceneManager()
         {
             //currentScene = new Scene_ParentTransform();
-            currentScene = new Scene_PostProcessing();
+            currentScene = new Scene_ParticleEditor();
             input = new Input();
         }
 

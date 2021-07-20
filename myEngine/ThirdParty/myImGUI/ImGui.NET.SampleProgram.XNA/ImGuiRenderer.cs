@@ -230,7 +230,8 @@ namespace myEngine
             io.KeyAlt = keyboard.IsKeyDown(Keys.LeftAlt) || keyboard.IsKeyDown(Keys.RightAlt);
             io.KeySuper = keyboard.IsKeyDown(Keys.LeftWindows) || keyboard.IsKeyDown(Keys.RightWindows);
 
-            io.DisplaySize = new System.Numerics.Vector2(_graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
+            //io.DisplaySize = new System.Numerics.Vector2(_graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
+            io.DisplaySize = new System.Numerics.Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
             io.DisplayFramebufferScale = new System.Numerics.Vector2(1f, 1f);
 
             io.MousePos = new System.Numerics.Vector2(Mouse.position.X, Mouse.position.Y);
@@ -266,7 +267,8 @@ namespace myEngine
             drawData.ScaleClipRects(ImGui.GetIO().DisplayFramebufferScale);
 
             // Setup projection
-            _graphicsDevice.Viewport = new Viewport(0, 0, _graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
+            //_graphicsDevice.Viewport = new Viewport(0, 0, _graphicsDevice.PresentationParameters.BackBufferWidth, _graphicsDevice.PresentationParameters.BackBufferHeight);
+            _graphicsDevice.Viewport = new Viewport(0, 0, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
 
             UpdateBuffers(drawData);
 
