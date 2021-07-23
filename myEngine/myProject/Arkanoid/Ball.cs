@@ -38,8 +38,37 @@ namespace myEngine.myProject.Arkanoid
         {
             if(hasBeenShot)
             {
+                if (transform.position.X > Settings.SCREEN_WIDTH - sprite.GetRectangle().Width / 2)
+                {
+                    direction.X = -1;
+                    OnBallChangeDirection(true);
+                }
+
+                if (transform.position.X < 0 + sprite.GetRectangle().Width / 2)
+                {
+                    direction.X = 1;
+                    OnBallChangeDirection(true);
+                }
+
+                if (transform.position.Y > Settings.SCREEN_HEIGHT - sprite.GetRectangle().Height / 2)
+                {
+                    direction.Y = -1;
+                    OnBallChangeDirection(true);
+                }
+
+                if (transform.position.Y < 0 + sprite.GetRectangle().Height / 2)
+                {
+                    direction.Y = 1;
+                    OnBallChangeDirection(true);
+                }
+
                 transform.position += direction * speed * Time.deltaTime;
             }
+        }
+
+        public void OnBallChangeDirection(bool b)
+        {
+             
         }
 
         public override void LateUpdate()
@@ -53,13 +82,38 @@ namespace myEngine.myProject.Arkanoid
 
         public void Serve()
         {
-            direction = new Vector2(0, -1);
+            direction = new Vector2(-1, -1);
             hasBeenShot = true;
         }
 
         public override void OnCollision(Collider2D other)
         {
-            other.gameObject.Destroy();
+            //REBOND HORIZONTAL
+            if (other.gameObject is Paddle)
+            {
+                float raquettePosX = other.gameObject.transform.position.X;
+                float raquetteDimX = other.rectangle.Width;
+
+                if (transform.position.X < (raquettePosX - (raquetteDimX / 2)) + raquetteDimX / 3)
+                    direction.X = -1;
+                else if ((transform.position.X > (raquettePosX - (raquetteDimX / 2)) + raquetteDimX / 3) &&
+                        transform.position.X < (raquettePosX - (raquetteDimX / 2)) + (raquetteDimX / 3) * 2)
+                    direction.X = 0;
+                else if (transform.position.X > (raquettePosX - (raquetteDimX / 2)) + (raquetteDimX / 3) * 2)
+                    direction.X = 1;
+            }
+               
+
+            //REBOND VERTICAL
+            if (transform.position.Y > other.gameObject.transform.position.Y)
+                direction.Y = 1;
+            else if (transform.position.Y < other.gameObject.transform.position.Y)
+                direction.Y = -1;
+
+            OnBallChangeDirection(false);
+
+            if (!(other.gameObject is Paddle))
+                other.gameObject.Destroy();
         }
     }
 }

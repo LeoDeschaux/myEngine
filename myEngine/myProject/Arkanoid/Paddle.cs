@@ -26,6 +26,8 @@ namespace myEngine.myProject.Arkanoid
             startPos += new Vector2(0, 300);
             this.transform.position = startPos;
             sprite.transform = this.transform;
+
+            AddComponent(new Collider2D(sprite));
         }
 
         //METHODS
