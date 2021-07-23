@@ -8,9 +8,6 @@ namespace myEngine
 {
     public class Input : Entity
     {
-        //STATIC FIELDS
-        public static Point mousePos;
-
         //STATIC KEYBOARD 
         private static KeyboardState keyState;
         private static KeyboardState prevKeyState;
@@ -56,7 +53,7 @@ namespace myEngine
             prevKeyState = keyState;
             keyState = Keyboard.GetState();
 
-            mousePos = Mouse.position;
+            Mouse.Update();
         }
 
         //BUTTONS / Action / Input
@@ -126,17 +123,17 @@ namespace myEngine
         }
 
         //MOUSE
-        public static bool GetMouse(int i)
+        public static bool GetMouse(MouseButton mouseButton)
         {
-            return Mouse.GetMouse(i);
+            return Mouse.GetMouse(mouseButton);
         }
-        public static bool GetMouseDown(int i)
+        public static bool GetMouseDown(MouseButton mouseButton)
         {
-            return Mouse.GetMouseDown(i);
+            return Mouse.GetMouseDown(mouseButton);
         }
-        public static bool GetMouseUp(int i)
+        public static bool GetMouseUp(MouseButton mouseButton)
         {
-            return Mouse.GetMouseUp(i);
+            return Mouse.GetMouseUp(mouseButton);
         }
     }
 }

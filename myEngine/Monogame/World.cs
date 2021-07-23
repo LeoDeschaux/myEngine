@@ -19,6 +19,7 @@ namespace myEngine
             //gameObjects = new List<GameObject>();
             entities = new List<Entity>();
             components = new List<Component>();
+
         }
 
         public static void GetWorldStats()
@@ -43,8 +44,26 @@ namespace myEngine
             }
         }
 
+        public void LateUpdate()
+        {
+            for (int i = 0; i < entities.Count; i++)
+            {
+                Entity e = entities[i];
+                e.LateUpdate();
+            }
+
+            for (int i = 0; i < components.Count; i++)
+            {
+                Component c = components[i];
+                c.LateUpdate();
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
+            //SORT BY DRAW ORDER
+            entities.Sort((x, y) => x.drawOrder.CompareTo(y.drawOrder));
+
             for (int i = 0; i < entities.Count; i++)
             {
                 Entity e = entities[i];

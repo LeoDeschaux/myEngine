@@ -28,7 +28,7 @@ namespace myEngine
             origin.fontSize = 60;
 
             textCenter = new Text();
-            textCenter.s = "CECI EST MON TEXT";
+            textCenter.s = "CECI EST \nMON TEXT";
             textCenter.color = Color.White;
             textCenter.fontSize = 60;
             textCenter.transform.position = Settings.Get_Screen_Center();

@@ -10,6 +10,7 @@ namespace myEngine
     {
         //FIELDS
         //public bool dontDestroyOnLoad = false;
+        public int drawOrder = 0;
 
         public bool disposed = false;
 
@@ -21,6 +22,7 @@ namespace myEngine
 
         //UPDATE & DRAW
         public virtual void Update() { }
+        public virtual void LateUpdate() { }
         public virtual void Draw(SpriteBatch sprite, Matrix matrix) { }
 
         //METHODS

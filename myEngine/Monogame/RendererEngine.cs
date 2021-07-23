@@ -15,8 +15,7 @@ namespace myEngine
 
         private static ImGuiRenderer imGuiRenderer;
 
-        Effect effect;
-        Texture2D textureMask;
+        public static PostProcessingProfile postProcessingProfile;
 
         //CONSTRUCTOR
         public RendererEngine()
@@ -32,8 +31,7 @@ namespace myEngine
             DepthFormat.Depth24);
 
             //POST PROCESSING
-            effect = Ressources.Load<Effect>("myContent/Shader/testShader");
-            textureMask = Ressources.Load<Texture2D>("myContent/2D/texture");
+            postProcessingProfile = new PostProcessingProfile();
             
             //GUI
             imGuiRenderer = new ImGuiRenderer(Engine.game);
@@ -93,16 +91,7 @@ namespace myEngine
                 RasterizerState.CullNone);
             */
 
-            //POST PROCESSING
-            effect.Parameters["customTexture"]?.SetValue(textureMask);
-
-            float speed = 2f;
-            float time = (float)Math.Sin((double)Time.gameTime.TotalGameTime.TotalSeconds * speed);
-            float intensity = 0.2f;
-
-            effect.Parameters["param1"]?.SetValue((1+time) * intensity);
-
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, postProcessingProfile.effect, null);
             spriteBatch.Draw(renderTarget, new Rectangle(0, 0, Engine.game.Window.ClientBounds.Width, Engine.game.Window.ClientBounds.Height), Color.White);
             spriteBatch.End();
         }

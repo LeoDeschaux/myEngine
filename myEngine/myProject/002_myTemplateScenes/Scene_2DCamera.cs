@@ -16,16 +16,38 @@ namespace myEngine
         public Scene_2DCamera()
         {
             Sprite s = new Sprite(Settings.Get_Screen_Center(), (Vector2.One*150));
-            
-            Sprite center = new Sprite(Settings.Get_Screen_Center(), (Vector2.One * 50));
+            s.dimension = new Vector2(300, 150);
+
+            Text t = new Text();
+            t.transform.position = Settings.Get_Screen_Center();
+            t.s = "Ceci est le centre";
+            t.alignment = Alignment.Center;
+            t.color = Color.Red;
+
+            Sprite center = new Sprite(Settings.Get_Screen_Center(), (Vector2.One * 10));
             center.color = Color.Red;
             center.transform = camera.transform;
         }
 
+        Vector2 deltaMouse;
+        float speedMouse = 1;
+
         //METHODS
         public override void Update()
         {
-            //
+            //MOUSE CAM CONTROLE
+            if (Input.GetMouseDown(MouseButton.Middle))
+            {
+                deltaMouse = Mouse.position.ToVector2();
+            }
+
+            if (Input.GetMouse(MouseButton.Middle))
+            {
+                camera.transform.position += ((deltaMouse - Mouse.position.ToVector2()) * speedMouse);
+                deltaMouse = Mouse.position.ToVector2();
+            }
+
+            //KEYBOARD CAM CONTROLE
             if (Input.GetKey(Keys.Q))
             {
                 camera.transform.position.X -= speed * Time.deltaTime;

@@ -6,6 +6,13 @@ using System.Text;
 
 namespace myEngine
 {
+    public enum MouseButton
+    {
+        Left,
+        Middle,
+        Right
+    }
+
     public static class Mouse
     {
         //FIELDS
@@ -33,26 +40,26 @@ namespace myEngine
         }
 
         //METHODS
-        public static bool GetMouse(int i)
+        public static bool GetMouse(MouseButton mouseButton)
         {
-            if (i == 0)
+            if (mouseButton == MouseButton.Left)
                 return (mouseState.LeftButton == ButtonState.Pressed);
 
-            if (i == 1)
+            if (mouseButton == MouseButton.Right)
                 return (mouseState.RightButton == ButtonState.Pressed);
 
-            if (i == 2)
+            if (mouseButton == MouseButton.Middle)
                 return (mouseState.MiddleButton == ButtonState.Pressed);
-
+            
             return false;
         }
 
-        public static bool GetMouseDown(int i)
+        public static bool GetMouseDown(MouseButton mouseButton)
         {
             if (!asBeenReleased)
                 return false;
 
-            if (i == 0)
+            if (mouseButton == MouseButton.Left)
             {
                 if (mouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released)
                 {
@@ -61,18 +68,18 @@ namespace myEngine
                 }
             }
 
-            if (i == 1)
+            if (mouseButton == MouseButton.Right)
             {
-                if (mouseState.RightButton == ButtonState.Pressed && prevMouseState.RightButton == ButtonState.Released);
+                if (mouseState.RightButton == ButtonState.Pressed && prevMouseState.RightButton == ButtonState.Released)
                 {
                     asBeenReleased = false;
                     return true;
                 }
             }
 
-            if (i == 2)
+            if (mouseButton == MouseButton.Middle)
             {
-                if (mouseState.MiddleButton == ButtonState.Pressed && prevMouseState.MiddleButton == ButtonState.Released);
+                if (mouseState.MiddleButton == ButtonState.Pressed && prevMouseState.MiddleButton == ButtonState.Released)
                 {
                     asBeenReleased = false;
                     return true;
@@ -82,15 +89,15 @@ namespace myEngine
             return false;
         }
 
-        public static bool GetMouseUp(int i)
+        public static bool GetMouseUp(MouseButton mouseButton)
         {
-            if (i == 0)
+            if (mouseButton == MouseButton.Left)
                 return (mouseState.LeftButton == ButtonState.Released && prevMouseState.LeftButton == ButtonState.Pressed);
 
-            if (i == 1)
+            if (mouseButton == MouseButton.Right)
                 return (mouseState.RightButton == ButtonState.Released && prevMouseState.RightButton == ButtonState.Pressed);
 
-            if (i == 2)
+            if (mouseButton == MouseButton.Middle)
                 return (mouseState.MiddleButton == ButtonState.Released && prevMouseState.MiddleButton == ButtonState.Pressed);
 
             return false;

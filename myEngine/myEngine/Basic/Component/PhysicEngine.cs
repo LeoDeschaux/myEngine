@@ -31,11 +31,11 @@ namespace myEngine
         {
             for (int i = 0; i < collider2Ds.Count; i++)
             {
-                Collider2D c = collider2Ds[i];
+                Collider2D other = collider2Ds[i];
 
                 for (int j = 0; j < collider2Ds.Count; j++)
                 {
-                    Collider2D other = collider2Ds[j];
+                    Collider2D c = collider2Ds[j];
 
                     if (c.rectangle.Intersects(other.rectangle) && j != i)
                         c.gameObject.OnCollision(other);

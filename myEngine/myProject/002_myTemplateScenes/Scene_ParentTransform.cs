@@ -24,7 +24,7 @@ namespace myEngine
             c = new Sprite();
             c.dimension = Vector2.One * 50;
             c.color = Color.Red;
-            c.orderInLayer = 5000;
+            c.drawOrder = 5000;
             
             c.transform.position += Vector2.One*100; // c.transform.position = c.transform.position + Vector2.One
             Console.WriteLine(c.transform.position);

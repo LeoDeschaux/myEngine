@@ -80,8 +80,8 @@ namespace myEngine
 
             if (ImGui.Checkbox("FullScreen", ref fullScreen))
             {
-                Engine.graphicDevice.IsFullScreen = fullScreen;
-                Engine.graphicDevice.ApplyChanges();
+                Engine.graphics.IsFullScreen = fullScreen;
+                Engine.graphics.ApplyChanges();
             }
 
             ImGui.End();

@@ -17,8 +17,7 @@ namespace myEngine
         //CONSTRUCTOR
         public SceneManager()
         {
-            //currentScene = new Scene_ParentTransform();
-            currentScene = new Scene_ParticleEditor();
+            currentScene = new Scene_Arkanoid();
             input = new Input();
         }
 

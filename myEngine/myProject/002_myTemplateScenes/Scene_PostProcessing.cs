@@ -9,8 +9,6 @@ namespace myEngine
 {
     public class Scene_PostProcessing : IScene
     {
-        //FIELDS
-
         //CONSTRUCTOR
         public Scene_PostProcessing()
         {
@@ -22,6 +20,8 @@ namespace myEngine
 
             Text t = new Text("mon text");
             t.fontSize = 50;
+
+            postProcessingProfile.effect.Parameters["param1"]?.SetValue((1f));
         }
 
         //METHODS

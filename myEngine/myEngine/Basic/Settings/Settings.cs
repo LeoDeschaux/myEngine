@@ -32,9 +32,12 @@ namespace myEngine
             this.game = game;
 
             game.IsMouseVisible = true;
+            game.IsFixedTimeStep = false;
 
-            Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
-            Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+            Engine.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            Engine.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+
+            Engine.graphics.SynchronizeWithVerticalRetrace = false;
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
@@ -44,7 +47,7 @@ namespace myEngine
             game.Window.IsBorderless = false;
 
             game.Window.Title = "MonogameV2";
-            Engine.graphicDevice.ApplyChanges();
+            Engine.graphics.ApplyChanges();
         }
         
         public void OnResize(Object sender, EventArgs e)
@@ -66,7 +69,7 @@ namespace myEngine
             //Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             //Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
-            Engine.graphicDevice.ApplyChanges();
+            Engine.graphics.ApplyChanges();
 
             //Settings.SCREEN_WIDTH = game.Window.ClientBounds.Width;
             //Settings.SCREEN_HEIGHT = game.Window.ClientBounds.Height;
@@ -79,12 +82,12 @@ namespace myEngine
             Settings.SCREEN_WIDTH = x;
             Settings.SCREEN_HEIGHT = y;
 
-            Engine.graphicDevice.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
-            Engine.graphicDevice.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
+            Engine.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
+            Engine.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
-            Engine.graphicDevice.ApplyChanges();
+            Engine.graphics.ApplyChanges();
         }
 
         //UPDATE & DRAW

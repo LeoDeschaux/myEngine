@@ -9,11 +9,11 @@ namespace myEngine
 {
     public class Game1 : Game
     {
-        public GraphicsDeviceManager graphicDevice;
+        public GraphicsDeviceManager graphics;
 
         public Game1()
         {
-            graphicDevice = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
         }
 
         protected override void Initialize()

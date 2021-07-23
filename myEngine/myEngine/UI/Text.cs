@@ -30,8 +30,6 @@ namespace myEngine
 
         public Color color;
 
-        public int orderInLayer = 0;
-
         public bool isVisible = true;
 
         public Alignment alignment;
@@ -78,7 +76,7 @@ namespace myEngine
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
 
                 spriteBatch.DrawString(font, s, transform.position, color, transform.scale, transform.rotation, origin,
-                    (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
+                    (float)((Math.Clamp(drawOrder, -1000, 1000) + 1000)) / 2000);
 
                 spriteBatch.End();
             }

@@ -30,11 +30,11 @@ namespace myEngine
 
         public override void Update()
         {
-            myObject.transform3D.rotation.X++;
-            myObject.transform3D.rotation.Y++;
+            myObject.transform3D.rotation.X += speed * Time.deltaTime;
+            myObject.transform3D.rotation.Y += speed * Time.deltaTime;
 
             //
-            if(Input.GetKey(Keys.Q))
+            if (Input.GetKey(Keys.Q))
             {
                 camera.camPosition.X += speed * Time.deltaTime;
             }

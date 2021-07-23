@@ -59,7 +59,7 @@ namespace myEngine.myProject.Pong
                 target.transform.position = new Vector2(zoneRectangle.X + (zoneRectangle.Width * (float)random.NextDouble()),
                                                         zoneRectangle.Y + (zoneRectangle.Height * (float)random.NextDouble()));
                 target.sprite.transform.position = target.transform.position;
-                target.sprite.orderInLayer = 500;
+                target.sprite.drawOrder = 500;
             }
         }
 

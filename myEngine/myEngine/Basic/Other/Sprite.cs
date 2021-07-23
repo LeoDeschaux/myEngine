@@ -14,7 +14,6 @@ namespace myEngine
         public Color color;
 
         public bool isVisible = true;
-        public int orderInLayer = 0;
 
         public SpriteEffects spriteEffect;
         public Effect effect;
@@ -95,7 +94,7 @@ namespace myEngine
             //effect?.CurrentTechnique.Passes[0].Apply();
 
             spriteBatch.Draw(this.texture, GetRec(), null, this.color, MathHelper.ToRadians(transform.rotation), GetOrigin(), spriteEffect, 
-                (float)( (Math.Clamp(orderInLayer, -1000, 1000)+1000)) / 2000);
+                (float)( (Math.Clamp(drawOrder, -1000, 1000)+1000)) / 2000);
 
             spriteBatch.End();
         }

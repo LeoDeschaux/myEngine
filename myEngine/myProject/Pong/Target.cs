@@ -18,7 +18,7 @@ namespace myEngine.myProject.Pong
         {
             sprite = new Sprite(new Vector2(Settings.Get_Screen_Center().X, Settings.Get_Screen_Center().Y), new Vector2(50, 50));
             sprite.color = Color.HotPink;
-            sprite.orderInLayer = 0;
+            sprite.drawOrder = 0;
             sprite.transform.rotation = 45f;
             this.AddComponent(new Collider2D(sprite));
             this.GetComponent<Collider2D>().scale = 2;

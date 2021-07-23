@@ -12,6 +12,7 @@ namespace myEngine
     {
         //FIELDS
         public Camera2D camera;
+        public PostProcessingProfile postProcessingProfile;
 
         //CONSTRUCTOR
         public IScene()
@@ -20,6 +21,8 @@ namespace myEngine
             Settings.GAME_SPEED = 1;
 
             camera = new Camera2D();
+            postProcessingProfile = new PostProcessingProfile();
+            RendererEngine.postProcessingProfile = postProcessingProfile;
         }
 
         public virtual void DrawGUI() { }

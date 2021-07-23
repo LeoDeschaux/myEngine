@@ -48,7 +48,7 @@ namespace myEngine.myProject.Pong
 
             trail = new Trail(sprite.transform);
             trail.maxPoints = 3;
-            trail.orderInLayer = -900;
+            trail.drawOrder = -900;
 
             AddComponent(new Collider2D(sprite));
             //collider = new Collider2D(sprite);

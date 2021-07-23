@@ -17,8 +17,6 @@ namespace myEngine.myProject.Snake
         public int size { get; private set; } = 9;
         float spriteSize = 50;
 
-        Vector2 start;
-
         private Snake snake;
         private Apple_Spawner spawner;
 
@@ -94,7 +92,7 @@ namespace myEngine.myProject.Snake
             for (int y = 0; y < size; y++)
                 for (int x = 0; x < size; x++)
                 {
-                    start = new Vector2(Settings.Get_Screen_Center().X - ((size * spriteSize * 1.1f) / 2), Settings.Get_Screen_Center().Y - ((size * spriteSize * 1.1f)) / 2);
+                    Vector2 start = new Vector2(Settings.Get_Screen_Center().X - ((size * spriteSize * 1.1f) / 2), Settings.Get_Screen_Center().Y - ((size * spriteSize * 1.1f)) / 2);
                     start = new Vector2(start.X + ((spriteSize * 1.1f) / 2), start.Y + ((spriteSize * 1.1f) / 2));
 
                     Vector2 position = new Vector2(start.X + (x * spriteSize * 1.1f), start.Y + (y * spriteSize * 1.1f));

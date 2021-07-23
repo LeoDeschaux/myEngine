@@ -16,7 +16,7 @@ namespace myEngine
         public Scene_PhysiqueEngine()
         {
             Sprite s = new Sprite(new Vector2(Settings.Get_Screen_Center().X, Settings.Get_Screen_Center().Y), new Vector2(50, 150));
-            s.orderInLayer = -1000;
+            s.drawOrder = -1000;
             s.transform.rotation = 45f;
             s.AddComponent(new Collider2D(s));
 

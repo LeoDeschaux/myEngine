@@ -41,7 +41,7 @@ namespace myEngine
             pvp.text.color = Color.Black;
             pvp.text.fontSize = 80;
             pvp.text.s = "Play PVP";
-            pvp.text.orderInLayer = 9000;
+            pvp.text.drawOrder = 9000;
 
             pvp.onButtonPressed += (object sender, EventArgs eventArgs) => LoadPVPScene();
 
@@ -54,7 +54,7 @@ namespace myEngine
             ai.text.color = Color.Black;
             ai.text.fontSize = 80;
             ai.text.s = "Play vs AI";
-            ai.text.orderInLayer = 9000;
+            ai.text.drawOrder = 9000;
 
             ai.onButtonPressed += (object sender, EventArgs eventArgs) => LoadAIScene();
 
@@ -67,7 +67,7 @@ namespace myEngine
             exit.text.color = Color.Black;
             exit.text.fontSize = 50;
             exit.text.s = "Exit";
-            exit.text.orderInLayer = 9000;
+            exit.text.drawOrder = 9000;
 
             exit.onButtonPressed += (object sender, EventArgs eventArgs) => ExitGame();
         }

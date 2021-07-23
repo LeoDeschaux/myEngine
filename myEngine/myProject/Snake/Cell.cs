@@ -53,7 +53,7 @@ namespace myEngine.myProject.Snake
             sprite = new Sprite();
             sprite.transform.position = position;
             sprite.dimension = new Vector2(dimension, dimension);
-            sprite.orderInLayer = orderInLayer;
+            sprite.drawOrder = orderInLayer;
 
             this.color = CellColors.empty;
             this.type = CellType.empty;
@@ -76,7 +76,7 @@ namespace myEngine.myProject.Snake
             sprite.transform.position = position;
             sprite.dimension = new Vector2(dimension, dimension);
 
-            sprite.orderInLayer = 500;
+            sprite.drawOrder = 500;
 
             this.color = CellColors.head;
             this.type = CellType.head;
@@ -102,7 +102,7 @@ namespace myEngine.myProject.Snake
             sprite.transform.position = position;
             sprite.dimension = new Vector2(dimension, dimension);
 
-            sprite.orderInLayer = 500;
+            sprite.drawOrder = 500;
 
             this.color = CellColors.body;
             this.type = CellType.body;
@@ -126,7 +126,7 @@ namespace myEngine.myProject.Snake
             sprite = new Sprite();
             sprite.transform.position = position;
             sprite.dimension = new Vector2(dimension, dimension);
-            sprite.orderInLayer = orderInLayer;
+            sprite.drawOrder = orderInLayer;
 
             this.color = CellColors.apple;
             this.type = CellType.apple;

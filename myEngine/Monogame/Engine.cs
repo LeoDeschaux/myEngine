@@ -18,7 +18,7 @@ namespace myEngine
     {
         //BASE
         public static Game1 game;
-        public static GraphicsDeviceManager graphicDevice;
+        public static GraphicsDeviceManager graphics;
 
         //FIELDS
         public static World world;
@@ -39,7 +39,7 @@ namespace myEngine
         public static void Initialize(Game1 game)
         {
             Engine.game = game;
-            graphicDevice = game.graphicDevice;
+            graphics = game.graphics;
 
             settings = new Settings(game);
             //Settings_Init.InitSettingsFromFile(settings);
@@ -76,11 +76,11 @@ namespace myEngine
             Time.UpdateGameTime(gameTime, deltaTime);
 
             Input.StaticUpdate();
-            Mouse.Update();
 
             settings.Update();
 
             world.Update();
+            world.LateUpdate();
             physicEngine.Update();
         }
 

@@ -19,8 +19,6 @@ namespace myEngine
 
         Perlin p;
 
-        //GUI
-
         //CONSTRUCTOR
         public Scene_PerlinNoise()
         {
@@ -47,7 +45,7 @@ namespace myEngine
 
         }
 
-        public Texture2D GetTexture(int x = 1, int y = 1)
+        public Texture2D GetTexture(int x, int y)
         {
             Texture2D texture = new Texture2D(RendererEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 

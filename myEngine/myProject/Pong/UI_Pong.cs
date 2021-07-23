@@ -34,7 +34,7 @@ namespace myEngine.myProject.Pong
             scorePlayer1.transform.position = new Vector2(Settings.SCREEN_WIDTH/4, (Settings.SCREEN_HEIGHT / 2) - 100);
             scorePlayer1.alignment = Alignment.Center;
 
-            scorePlayer1.orderInLayer = -1000;
+            scorePlayer1.drawOrder = -1000;
 
             //SET AI SCORE
             scorePlayer2 = new Text();
@@ -44,7 +44,7 @@ namespace myEngine.myProject.Pong
             scorePlayer2.transform.position = new Vector2((Settings.SCREEN_WIDTH / 4)*3, (Settings.SCREEN_HEIGHT / 2) - 100);
             scorePlayer2.alignment = Alignment.Center;
 
-            scorePlayer2.orderInLayer = -1000;
+            scorePlayer2.drawOrder = -1000;
 
             //SET PLAYER LIVES
             livesContainerPlayer1 = new Sprite[3];
@@ -53,10 +53,10 @@ namespace myEngine.myProject.Pong
             {
                 livesContainerPlayer1[i] = new Sprite(new Vector2((int)((150) + 30*1.2*i), 650), new Vector2(30, 30));
                 livesContainerPlayer1[i].color = Color.White;
-                livesContainerPlayer1[i].orderInLayer = 450;
+                livesContainerPlayer1[i].drawOrder = 450;
 
                 livesPlayer1[i] = new Sprite(livesContainerPlayer1[i].transform.position, livesContainerPlayer1[i].dimension*0.8f);
-                livesPlayer1[i].orderInLayer = 500;
+                livesPlayer1[i].drawOrder = 500;
                 livesPlayer1[i].color = Color.HotPink;
             }
 
@@ -67,10 +67,10 @@ namespace myEngine.myProject.Pong
             {
                 livesContainerPlayer2[i] = new Sprite(new Vector2((int)((1100) + 30 * 1.2 * i), 650), new Vector2(30, 30));
                 livesContainerPlayer2[i].color = Color.White;
-                livesContainerPlayer2[i].orderInLayer = 450;
+                livesContainerPlayer2[i].drawOrder = 450;
 
                 livesPlayer2[i] = new Sprite(livesContainerPlayer2[i].transform.position, livesContainerPlayer2[i].dimension * 0.8f);
-                livesPlayer2[i].orderInLayer = 500;
+                livesPlayer2[i].drawOrder = 500;
                 livesPlayer2[i].color = Color.HotPink;
             }
 
@@ -150,13 +150,13 @@ namespace myEngine.myProject.Pong
             {
                 pauseMenu_BG = new Sprite(Settings.Get_Screen_Center(), new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT));
                 pauseMenu_BG.color = new Color(0, 0, 0, 200);
-                pauseMenu_BG.orderInLayer = 600;
+                pauseMenu_BG.drawOrder = 600;
 
                 pause = new Text();
                 pause.s = "=";
                 pause.fontSize = 500;
                 pause.color = Color.White;
-                pause.orderInLayer = 700;
+                pause.drawOrder = 700;
                 //pause.transform.position = new Vector2(900, 200);
                 pause.transform.position = new Vector2(Settings.SCREEN_WIDTH/2 + 45, Settings.SCREEN_HEIGHT/2 - 50);
                 pause.alignment = Alignment.Center;
@@ -168,10 +168,10 @@ namespace myEngine.myProject.Pong
 
                 mainMenu.sprite.transform.position = new Vector2(Settings.SCREEN_WIDTH / 2, 600);
                 mainMenu.sprite.dimension = new Vector2(500, 100);
-                mainMenu.sprite.orderInLayer = 700;
+                mainMenu.sprite.drawOrder = 700;
 
                 mainMenu.text.s = "Exit to Menu";
-                mainMenu.text.orderInLayer = 800;
+                mainMenu.text.drawOrder = 800;
                 mainMenu.text.color = Color.Black;
                 mainMenu.text.transform.position = new Vector2(Settings.SCREEN_WIDTH/2, 600);
                 mainMenu.text.alignment = Alignment.Center;
