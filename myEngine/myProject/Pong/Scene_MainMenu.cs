@@ -43,7 +43,8 @@ namespace myEngine
             pvp.text.s = "Play PVP";
             pvp.text.drawOrder = 9000;
 
-            pvp.onButtonPressed += (object sender, EventArgs eventArgs) => LoadPVPScene();
+            //pvp.onButtonPressed += (object sender, EventArgs eventArgs) => LoadPVPScene();
+            new ArgumentException("ERROR");
 
             //BUTTON AI
             Button ai = new Button();
@@ -56,7 +57,8 @@ namespace myEngine
             ai.text.s = "Play vs AI";
             ai.text.drawOrder = 9000;
 
-            ai.onButtonPressed += (object sender, EventArgs eventArgs) => LoadAIScene();
+            //ai.onButtonPressed += (object sender, EventArgs eventArgs) => LoadAIScene();
+            new ArgumentException("ERROR");
 
             //QUITTER
             Button exit = new Button();
@@ -69,7 +71,8 @@ namespace myEngine
             exit.text.s = "Exit";
             exit.text.drawOrder = 9000;
 
-            exit.onButtonPressed += (object sender, EventArgs eventArgs) => ExitGame();
+            //exit.onButtonPressed += (object sender, EventArgs eventArgs) => ExitGame();
+            new ArgumentException("ERROR");
         }
 
         //METHODS

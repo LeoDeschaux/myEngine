@@ -44,7 +44,10 @@ namespace myEngine.myProject.Arkanoid
             Console.WriteLine("GAME WINNED");
             Settings.GAME_SPEED = 0;
             PopUp p = new PopUp();
-            p.button.onButtonPressed += (object sender, EventArgs eventArgs) => Engine.sceneManager.ReloadScene();
+            //p.button.onButtonPressed += (object sender, EventArgs eventArgs) => Engine.sceneManager.ReloadScene();
+            p.button.onButtonPressed.PlayFunction(Engine.sceneManager.ReloadScene);
+            
+            //new ArgumentException("ERROR");
         }
     }
 }

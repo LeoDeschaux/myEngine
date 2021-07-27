@@ -177,7 +177,8 @@ namespace myEngine.myProject.Pong
                 mainMenu.text.alignment = Alignment.Center;
                 mainMenu.text.fontSize = 65;
 
-                mainMenu.onButtonPressed += QuitGame;
+                //mainMenu.onButtonPressed += QuitGame;
+                new ArgumentException("ERROR");
 
                 Settings.GAME_SPEED = 0;
             }

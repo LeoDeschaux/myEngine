@@ -11,13 +11,27 @@ namespace myEngine
     public class Button : Entity
     {
         //COMPONENTS
+        private static List<Button> instance = null;
+        public static List<Button> buttonsSelected
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new List<Button>();
+                }
+                return instance;
+            }
+        }
+
         public Transform transform;
 
         //public Image image;
         public Text text;
         public Sprite sprite;
 
-        public event EventHandler onButtonPressed;
+        public Event onButtonPressed;
+        public Event onButtonRelease;
         private bool isActive;
         public bool isVisible = true;
 
@@ -42,13 +56,17 @@ namespace myEngine
             transform = new Transform();
 
             sprite = new Sprite(Vector2.Zero, Vector2.One * 50);
+            sprite.transform = this.transform;
             sprite.color = Color.White;
+            sprite.drawOrder = this.drawOrder + 1;
 
             defaultColor = Color.White;
             hoverColor = Color.LightGray;
             onClicColor = Color.DarkGray;
 
             text = new Text();
+            text.transform = this.transform;
+            text.drawOrder = this.drawOrder + 2;
 
             //image = new Image(img);
 
@@ -56,46 +74,138 @@ namespace myEngine
             //text.transform.SetParent(this.transform);
             
             isActive = true;
+
+            onButtonPressed = new Event();
+            onButtonRelease = new Event();
         }
 
-        bool isPressed = false;
+        public enum ButtonState
+        {
+            unselected,
+            hover,
+            clicked
+        }
 
         //UPDATE & DRAW
-        public override void Update()
+        private bool IsOnTop()
         {
-
-            if (!isActive || !isVisible)
-                return;
-
-            if (sprite.GetRectangle().Contains(Mouse.mouseState.Position))
+            bool isOnTop = false;
+            if (Button.buttonsSelected.Count > 0)
             {
-                if(!isPressed)
-                    sprite.color = hoverColor;
-
-                if (Mouse.GetMouseDown(0))
+                int maxDrawOrder = buttonsSelected[0].drawOrder;
+                foreach (Button b in buttonsSelected)
                 {
-                    sprite.color = onClicColor;
+                    if (b.drawOrder >= maxDrawOrder)
+                        maxDrawOrder = b.drawOrder;
+                }
 
-                    isPressed = true;
-
-                    if(onButtonPressed != null)
-                        onButtonPressed(this, EventArgs.Empty);
+                if (this.drawOrder == maxDrawOrder)
+                {
+                    isOnTop = true;
                 }
             }
             else
-                sprite.color = defaultColor;
+                isOnTop = true;
 
+            return isOnTop;
+        }
 
-            if (Mouse.GetMouseUp(0))
+        private void OnHoverEnter()
+        {
+            Button.buttonsSelected.Add(this);
+        }
+
+        private void OnHoverExit()
+        {
+            isSelected = false;
+            buttonState = ButtonState.unselected;
+            Button.buttonsSelected.Remove(this);
+        }
+
+        private void OnButtonSelected()
+        {
+            isSelected = true;
+            buttonState = ButtonState.hover;
+        }
+
+        ButtonState buttonState;
+        bool hoverState = false;
+        bool previousHoverState = false;
+        bool isSelected = false;
+        bool isPressed = false;
+
+        public override void Update()
+        {
+            if (!isActive || !isVisible)
+                return;
+
+            buttonState = ButtonState.unselected;
+
+            previousHoverState = hoverState;
+            if (sprite.GetRectangle().Contains(Mouse.position))
+                hoverState = true;
+            else
+                hoverState = false;
+
+            if (hoverState == true && previousHoverState == false)
+                OnHoverEnter();
+
+            if (hoverState && IsOnTop())
             {
-                sprite.color = defaultColor;
+                OnButtonSelected();
+
+                //CHECK INPUT
+                if (Mouse.GetMouseDown(MouseButton.Left))
+                {
+                    buttonState = ButtonState.clicked;
+                    isPressed = true;
+
+                    OnButtonPressed();
+                }
+            }
+            else
+            {
+                if (isSelected)
+                    OnHoverExit();
+                else if (hoverState == false && previousHoverState == true)
+                    OnHoverExit();
+            }
+
+            //CHECK INPUT
+            if (Mouse.GetMouseUp(0) && isPressed)
+            {
+                if (buttonState == ButtonState.hover)
+                {
+                    OnRelease();
+                }
+                else
+                    OnReleaseOutSide();
+
                 isPressed = false;
             }
 
+            //SET COLORS 
+            if (buttonState == ButtonState.unselected)
+                sprite.color = defaultColor;
+            else if (buttonState == ButtonState.hover)
+                sprite.color = hoverColor;
+            else if (buttonState == ButtonState.clicked)
+                sprite.color = onClicColor;
+
+            if (isPressed)
+                sprite.color = onClicColor;
         }
+
+        //public void OnHoverEnter() { }
+        //public void OnHoverExit() { }
+        public void OnRelease() { onButtonRelease?.Invoke(); }
+        public void OnReleaseOutSide() { onButtonRelease?.Invoke(); }
+        public void OnButtonPressed() { onButtonPressed?.Invoke(); }
 
         public override void OnDestroy()
         {
+            Button.buttonsSelected.Remove(this);
+
             sprite.Destroy();
             text.Destroy();
         }

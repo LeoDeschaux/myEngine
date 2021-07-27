@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Microsoft.Xna.Framework.Input;
 using myEngine.myProject.Arkanoid;
 
 namespace myEngine
@@ -18,6 +18,9 @@ namespace myEngine
         }
 
         //METHODS
+        public override void Update()
+        {
+        }
 
     }
 }
