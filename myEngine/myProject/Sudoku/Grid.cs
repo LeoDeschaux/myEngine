@@ -10,8 +10,8 @@ namespace myEngine.myProject.Sudoku
         //FIELDS
         Cell[,] cells;
         int rows = 9, collumns = 9;
-        int spriteSizeX = 75, spriteSizeY = 75;
-        int marginX = 2, marginY = 2;
+        int spriteSizeX = 63, spriteSizeY = 63;
+        public static int marginX = 2, marginY = 2;
         int offSetX = 0, offSetY = 0;
 
         int currentBlocksLeft;
@@ -20,6 +20,9 @@ namespace myEngine.myProject.Sudoku
         //CONSTRUCTOR
         public Grid()
         {
+            float maxSize = (Settings.SCREEN_HEIGHT - (marginY*11)) / 11;
+            Console.WriteLine(maxSize);
+
             totalBlocks = rows * collumns;
             currentBlocksLeft = totalBlocks;
 

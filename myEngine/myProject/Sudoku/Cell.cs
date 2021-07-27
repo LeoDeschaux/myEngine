@@ -8,7 +8,7 @@ namespace myEngine.myProject.Sudoku
     public class Cell : GameObject
     {
         //FIELDS
-        Button button;
+        public Button button;
 
         //CONSTRUCTOR
         public Cell(Vector2 position, Vector2 dimension)
@@ -27,7 +27,6 @@ namespace myEngine.myProject.Sudoku
             button.text.alignment = Alignment.Center;
 
             button.onButtonPressed.PlayFunction(OnClic);
-            button.onButtonRelease.PlayFunction(OnClicRelease);
         }
 
         public override void Update()
@@ -35,28 +34,15 @@ namespace myEngine.myProject.Sudoku
         }
 
         //METHODS
-        Button b;
+        GridMenu menu;
         public void OnClic()
         {
-            //SHOW CHOICE
-            b = new Button();
-            b.transform.position = this.transform.position + new Vector2(this.button.sprite.dimension.X + 10, 0);
-            b.sprite.transform = b.transform;
-            b.text.transform = b.transform;
-
-            b.sprite.dimension = button.sprite.dimension;
-            b.drawOrder = button.drawOrder + 10;
-            b.sprite.drawOrder = b.drawOrder + 11;
-            b.text.drawOrder = b.drawOrder + 12;
-            b.text.s = "1";
-            b.text.alignment = Alignment.Center;
-
-            b.defaultColor = Color.Red;
+            menu = new GridMenu(this);
         }
 
-        public void OnClicRelease()
+        public void OnSubButtonClic()
         {
-            b.Destroy();
+            menu.Destroy();
         }
         
         public override void OnDestroy()
