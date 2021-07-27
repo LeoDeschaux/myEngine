@@ -44,7 +44,7 @@ namespace myEngine
         public static void DrawLine(Vector2 point, float length, float angle, Color color, float thickness = 1f, int orderInLayer = 0)
         {
             var origin = new Vector2(0f, 0.5f);
-            var scale = new Vector2(length/2, thickness);
+            var scale = new Vector2(length * 0.5f, thickness * 0.5f);
 
             RendererEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
             RendererEngine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
@@ -55,7 +55,7 @@ namespace myEngine
         public static void DrawLine(Vector2 point, float length, float angle, Color color, Matrix? matrix, float thickness = 1f, int orderInLayer = 0)
         {
             var origin = new Vector2(0f, 0.5f);
-            var scale = new Vector2(length / 2, thickness);
+            var scale = new Vector2(length * 0.5f, thickness * 0.5f);
 
             RendererEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, transformMatrix: matrix);
             RendererEngine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
@@ -132,13 +132,13 @@ namespace myEngine
             point4 = new Vector2(x, y);
 
             //NEW RECTANGLE
-            DrawLine(point1, point2, color, matrix, 3f);
-            DrawLine(point2, point3, color, matrix, 3f);
-            DrawLine(point3, point4, color, matrix, 3f);
-            DrawLine(point4, point1, color, matrix, 3f);
+            DrawLine(point1, point2, color, matrix, thickness: thickness);
+            DrawLine(point2, point3, color, matrix, thickness: thickness);
+            DrawLine(point3, point4, color, matrix, thickness: thickness);
+            DrawLine(point4, point1, color, matrix, thickness: thickness);
 
             //DIAGO
-            DrawLine(point1, point3, color, matrix, 3f);
+            DrawLine(point1, point3, color, matrix, thickness: thickness);
         }
 
         public static void DrawRectangle(Rectangle rectangle, float rotation, Color color, float thickness = 1f, int orderInLayer = 0)
@@ -177,13 +177,13 @@ namespace myEngine
             point4 = new Vector2(x, y);
 
             //NEW RECTANGLE
-            DrawLine(point1, point2, color, 3f);
-            DrawLine(point2, point3, color, 3f);
-            DrawLine(point3, point4, color, 3f);
-            DrawLine(point4, point1, color, 3f);
+            DrawLine(point1, point2, color, thickness: thickness);
+            DrawLine(point2, point3, color, thickness: thickness);
+            DrawLine(point3, point4, color, thickness: thickness);
+            DrawLine(point4, point1, color, thickness: thickness);
 
             //DIAGO
-            DrawLine(point1, point3, color, 3f);
+            DrawLine(point1, point3, color, thickness: thickness);
         }
 
         public static void DrawRectangleFull(Vector2 position, Vector2 dimension, Color color, Matrix? matrix, int orderInLayer = 0)

@@ -17,7 +17,7 @@ namespace myEngine
         //CONSTRUCTOR
         public SceneManager()
         {
-            currentScene = new Scene_Arkanoid();
+            currentScene = new Scene_Sudoku();
             input = new Input();
         }
 
@@ -68,6 +68,11 @@ namespace myEngine
             currentScene = (IScene)Activator.CreateInstance(t);
         }
 
+        public void OnSceneChange()
+        {
+
+        }
+
         public void ReloadScene()
         {
             ChangeScene(currentScene);
@@ -75,7 +80,7 @@ namespace myEngine
 
         private void ClearScene()
         {
-            Engine.world = new World();
+            //Engine.world = new World();
             Engine.world.ClearWorld();
             Engine.world.AddEntity(this);
             Engine.world.AddEntity(input);

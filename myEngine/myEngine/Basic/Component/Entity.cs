@@ -9,7 +9,7 @@ namespace myEngine
     public class Entity : IDisposable
     {
         //FIELDS
-        //public bool dontDestroyOnLoad = false;
+        public bool dontDestroyOnLoad = false;
         public int drawOrder = 0;
 
         public bool disposed = false;

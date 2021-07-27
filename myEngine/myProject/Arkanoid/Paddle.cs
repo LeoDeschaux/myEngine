@@ -18,7 +18,7 @@ namespace myEngine.myProject.Arkanoid
         public Paddle()
         {
             sprite = new Sprite();
-            sprite.color = Color.Blue;
+            sprite.color = Color.White;
             sprite.dimension = new Vector2(200, 40);
 
             //START POS

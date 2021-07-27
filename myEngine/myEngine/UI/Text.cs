@@ -66,6 +66,9 @@ namespace myEngine
         //DRAW
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
+            if (s == null || isVisible == false)
+                return;
+
             SpriteFontBase font = fontSystem.GetFont(fontSize);
 
             Vector2 dimensions = font.MeasureString(s);

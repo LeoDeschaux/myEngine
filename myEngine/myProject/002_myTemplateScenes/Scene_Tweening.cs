@@ -40,8 +40,7 @@ namespace myEngine
                 for (int x = 0; x < 5; x++)
                 {
                     Vector2 offSet = new Vector2(350, 450);
-                    mySprites[i] = new Sprite(new Vector2(x * 125, y*55)+ offSet, new Vector2(120, 50));
-                    //mySprites[i].transform.scale = new Vector2(0.5f, 0.5f);
+                    mySprites[i] = new Sprite(new Vector2(x * 125, y*55) + offSet, new Vector2(120, 50));
                     i++;
                 }
             }
@@ -50,7 +49,7 @@ namespace myEngine
             myTweens = new SimpleTween[mySprites.Length];
             for (int x = 0; x < mySprites.Length; x++)
             {
-                myTweens[x] = new SimpleTween(mySprites[x].transform.position.Y, mySprites[x].transform.position.Y-400, 0.5f, x*0.1f);
+                myTweens[x] = new SimpleTween(mySprites[x].transform.position.Y, mySprites[x].transform.position.Y-300, 0.5f, x*0.1f);
             }
 
             myTweensR = new SimpleTween[mySprites.Length];

@@ -11,7 +11,7 @@ namespace myEngine
         //FIELDS
         //List<GameObject> gameObjects;
         public static List<Entity> entities;
-        static List<Component> components;
+        public static List<Component> components;
 
         //CONSTRUCTOR
         public World()
@@ -101,10 +101,25 @@ namespace myEngine
         {
             //gameObjects = new List<GameObject>();
             components = new List<Component>();
+
+            List<Entity> dontDestroy = new List<Entity>();
+            for (int i = 0; i < entities.Count; i++)
+            {
+                Entity e = entities[i];
+                if (e.dontDestroyOnLoad)
+                    dontDestroy.Add(e);
+            }
+
             entities = new List<Entity>();
 
+            for (int i = 0; i < dontDestroy.Count; i++)
+            {
+                Entity e = dontDestroy[i];
+                entities.Add(e);
+            }
+
             Engine.physicEngine = new PhysicEngine();
-            Engine.debug = new Debug();
+            //Engine.debug = new Debug();
 
             /*
             for (int i = 0; i < gameObjects.Count; i++)

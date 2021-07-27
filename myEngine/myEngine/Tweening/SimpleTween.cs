@@ -50,6 +50,8 @@ namespace myEngine
         
         public override void Update()
         {
+
+            value += 200 * Time.deltaTime;
             if (start)
             {
                 timerDelay += speed * (float)Time.deltaTime;

@@ -11,19 +11,16 @@ namespace myEngine
     public class Debug : Entity
     {
         //FIELDS
-        private Input input;
-
-        public static Text t;
+        Debug_UI UI;
 
         //CONSTRUCTOR
         public Debug()
         {
-            input = new Input();
-            //t = new Text();
-            //t.color = Color.White;
-        }
+            this.dontDestroyOnLoad = true;
 
-        //METHODS
+            UI = new Debug_UI();
+            UI.SetVisible(false);
+        }
 
         //UPDATE & DRAW
         public override void Update()
@@ -44,17 +41,25 @@ namespace myEngine
                 Settings.GAME_SPEED = 1f;
 
             if (Input.GetKeyDown(Keys.NumPad9) && !Settings.DEBUG_MODE)
+            {
                 Settings.DEBUG_MODE = true;
+                UI.SetVisible(true);
+            }
             else if (Input.GetKeyDown(Keys.NumPad9) && Settings.DEBUG_MODE)
+            {
                 Settings.DEBUG_MODE = false;
+                UI.SetVisible(false);
+            }
 
+            //FRAME RATE
+            float frameRate = 1 / (float)Time.gameTime.ElapsedGameTime.TotalSeconds;
+            Engine.game.Window.Title = "FPS:" + frameRate.ToString();
         }
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            //MOUSE CURSOR
-            //DrawSimpleShape.DrawRuller(input.mousePos.ToVector2(), Color.Red);
-            //t.s = input.mouse.position.ToVector2().ToString();
+            if(Settings.DEBUG_MODE)
+                DrawSimpleShape.DrawRuller(Mouse.position.ToVector2(), Color.Red);
         }
     }
 }

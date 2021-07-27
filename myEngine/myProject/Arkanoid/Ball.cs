@@ -24,7 +24,7 @@ namespace myEngine.myProject.Arkanoid
             this.paddle = paddle;
 
             sprite = new Sprite();
-            sprite.color = Color.Green;
+            sprite.color = Color.Yellow;
             sprite.transform = this.transform;
             sprite.dimension = new Vector2(30, 30);
 
@@ -82,7 +82,7 @@ namespace myEngine.myProject.Arkanoid
 
         public void Serve()
         {
-            direction = new Vector2(-1, -1);
+            direction = new Vector2(0, -1);
             hasBeenShot = true;
         }
 
@@ -112,8 +112,8 @@ namespace myEngine.myProject.Arkanoid
 
             OnBallChangeDirection(false);
 
-            if (!(other.gameObject is Paddle))
-                other.gameObject.Destroy();
+            if ((other.gameObject is Block))
+                ((Block)other.gameObject).OnHit();
         }
     }
 }

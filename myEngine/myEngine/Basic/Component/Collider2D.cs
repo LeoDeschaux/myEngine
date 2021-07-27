@@ -51,7 +51,7 @@ namespace myEngine
         {
             //you cannot rotate a rectangle, but 0 correspond to the rotation just in case..
             if(Settings.DEBUG_MODE)
-                DrawSimpleShape.DrawRectangle(rectangle, 0, Color.Green, 2, 1000);
+                DrawSimpleShape.DrawRectangle(rectangle, 0, Color.Green, thickness: 3, orderInLayer: 700);
         }
 
         public override void OnDestroy()

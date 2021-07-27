@@ -20,7 +20,6 @@ namespace myEngine
         public static Color BACKGROUND_COLOR = Color.Black;
 
         public static bool DEBUG_MODE = false;
-
         public static bool RELEASE_MODE = false;
 
         //REF
@@ -93,14 +92,6 @@ namespace myEngine
         //UPDATE & DRAW
         public void Update()
         {
-            Debug();
-        }
-
-        public void Debug()
-        {
-            //DEBUG
-            float frameRate = 1 / (float)Time.gameTime.ElapsedGameTime.TotalSeconds;
-            game.Window.Title = "FPS:" + frameRate.ToString();
         }
 
         //PROPS
