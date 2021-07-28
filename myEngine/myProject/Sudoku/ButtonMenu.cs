@@ -40,7 +40,7 @@ namespace myEngine.myProject.Sudoku
 
             b.defaultColor = Color.Red;
 
-            b.onButtonPressed.PlayFunction(OnClic);
+            b.onButtonPressed.SetFunction(OnClic);
         }
 
         //METHODS

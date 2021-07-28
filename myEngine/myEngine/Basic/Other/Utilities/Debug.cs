@@ -59,7 +59,7 @@ namespace myEngine
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
             if(Settings.DEBUG_MODE)
-                DrawSimpleShape.DrawRuller(Mouse.position.ToVector2(), Color.Red);
+                DrawSimpleShape.DrawRuller(Mouse.position.ToVector2(), Color.Red, orderInLayer: 999);
         }
     }
 }

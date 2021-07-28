@@ -32,6 +32,10 @@ namespace myEngine
 
         public Event onButtonPressed;
         public Event onButtonRelease;
+
+        public Event onButtonPressedOutside;
+        public Event onButtonReleaseOutside;
+
         private bool isActive;
         public bool isVisible = true;
 
@@ -77,6 +81,8 @@ namespace myEngine
 
             onButtonPressed = new Event();
             onButtonRelease = new Event();
+            onButtonPressedOutside = new Event();
+            onButtonReleaseOutside = new Event();
         }
 
         public enum ButtonState
@@ -134,6 +140,9 @@ namespace myEngine
         bool isSelected = false;
         bool isPressed = false;
 
+        bool mouseDown = false;
+        bool previousMouseDown = false;
+
         public override void Update()
         {
             if (!isActive || !isVisible)
@@ -141,11 +150,19 @@ namespace myEngine
 
             buttonState = ButtonState.unselected;
 
+            previousMouseDown = mouseDown;
+            mouseDown = Mouse.GetMouse(MouseButton.Left);
+
             previousHoverState = hoverState;
             if (sprite.GetRectangle().Contains(Mouse.position))
                 hoverState = true;
             else
+            {
                 hoverState = false;
+
+                if (mouseDown && !previousMouseDown)
+                    OnButtonPressedOutside();
+            }
 
             if (hoverState == true && previousHoverState == false)
                 OnHoverEnter();
@@ -198,9 +215,12 @@ namespace myEngine
 
         //public void OnHoverEnter() { }
         //public void OnHoverExit() { }
+
         public void OnRelease() { onButtonRelease?.Invoke(); }
-        public void OnReleaseOutSide() { onButtonRelease?.Invoke(); }
+        public void OnReleaseOutSide() { onButtonReleaseOutside?.Invoke(); }
+
         public void OnButtonPressed() { onButtonPressed?.Invoke(); }
+        public void OnButtonPressedOutside() { onButtonPressedOutside?.Invoke(); }
 
         public override void OnDestroy()
         {

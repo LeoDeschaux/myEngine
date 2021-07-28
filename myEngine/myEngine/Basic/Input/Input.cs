@@ -56,6 +56,11 @@ namespace myEngine
             Mouse.Update();
         }
 
+        public override void LateUpdate()
+        {
+            Mouse.LateUpdate();
+        }
+
         //BUTTONS / Action / Input
         public bool GetButton(myButtons button)
         {

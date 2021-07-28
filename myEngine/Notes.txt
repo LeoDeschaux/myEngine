@@ -1,0 +1,15 @@
+﻿TODO:
+
+----------- INPUT -------------
+problèmes constatés: 
+GetMouseDown ne peut être utilisé que par une fonction chaque frame 
+car il faut attendre le début de la suivante pour être libéré 
+
+raison pour avoir fait cela : quand on change de scene le dernier clic fonctionne sur la nouvelle scene
+solution: nettoyer le "input cache state" quand on change de scene ?
+
+----------- SUDOKU -------------
+Le menu pour jouer a plusieurs problèmes:
+on voit pas le board quand on joue
+c'est pas hyper clair sur quelle case le prochain num va aller 
+on ne peut pas "selectionner la cellule, puis effacer le contenu" (pour si on s'est trompé)

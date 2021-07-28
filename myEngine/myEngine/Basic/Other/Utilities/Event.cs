@@ -15,7 +15,7 @@ namespace myEngine
             this.function = function;
         }
 
-        public void PlayFunction(Function function)
+        public void SetFunction(Function function)
         {
             this.function = function;
         }

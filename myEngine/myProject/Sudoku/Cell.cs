@@ -26,23 +26,52 @@ namespace myEngine.myProject.Sudoku
             button.text.s = "";
             button.text.alignment = Alignment.Center;
 
-            button.onButtonPressed.PlayFunction(OnClic);
+            button.onButtonPressed.SetFunction(OnClic);
+            //button.onButtonRelease.PlayFunction(SetIsReady);
+            //button.onButtonPressedOutside.SetFunction(ClicOutside);
         }
 
         public override void Update()
         {
+            //TODO: either clic on a button and DO ACTION or clic outside menu and CLOSE MENU
+
+            if (Input.GetMouseUp(MouseButton.Left) && isCellSelected && !finishedSpawned)
+            {
+                finishedSpawned = true;
+                Console.WriteLine("UP CLICK");
+            }
+
+            if (Input.GetMouseDown(MouseButton.Left) && isCellSelected && finishedSpawned)
+            {
+                Console.WriteLine("DOWN CLICK");
+                menu?.Destroy();
+                isCellSelected = false;
+                finishedSpawned = false;
+            }
+
+            //CHECK IF onButtonPressedOutside need refactoring
+            //CHECK IF GetMouseDown need refactoring 
         }
+
+        bool isCellSelected = false;
+        bool finishedSpawned = false;
 
         //METHODS
         GridMenu menu;
+        private void ClicOutside()
+        {
+        }
+
         public void OnClic()
         {
             menu = new GridMenu(this);
+            isCellSelected = true;
         }
 
         public void OnSubButtonClic()
         {
-            menu.Destroy();
+            //menu.Destroy();
+            //isCellSelected = false;
         }
         
         public override void OnDestroy()

@@ -36,6 +36,10 @@ namespace myEngine
 
             position = new Point((int)(mouseState.X / ratioX), (int)(mouseState.Y / ratioY));
 
+        }
+
+        public static void LateUpdate()
+        {
             asBeenReleased = true;
         }
 
@@ -56,8 +60,10 @@ namespace myEngine
 
         public static bool GetMouseDown(MouseButton mouseButton)
         {
+            /*
             if (!asBeenReleased)
                 return false;
+            */
 
             if (mouseButton == MouseButton.Left)
             {
@@ -92,13 +98,31 @@ namespace myEngine
         public static bool GetMouseUp(MouseButton mouseButton)
         {
             if (mouseButton == MouseButton.Left)
-                return (mouseState.LeftButton == ButtonState.Released && prevMouseState.LeftButton == ButtonState.Pressed);
+            {
+                if(mouseState.LeftButton == ButtonState.Released && prevMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    asBeenReleased = true;
+                    return true;
+                }
+            }
 
             if (mouseButton == MouseButton.Right)
-                return (mouseState.RightButton == ButtonState.Released && prevMouseState.RightButton == ButtonState.Pressed);
+            {
+                if (mouseState.RightButton == ButtonState.Released && prevMouseState.RightButton == ButtonState.Pressed)
+                {
+                    asBeenReleased = true;
+                    return true;
+                }
+            }
 
             if (mouseButton == MouseButton.Middle)
-                return (mouseState.MiddleButton == ButtonState.Released && prevMouseState.MiddleButton == ButtonState.Pressed);
+            {
+                if (mouseState.MiddleButton == ButtonState.Released && prevMouseState.MiddleButton == ButtonState.Pressed)
+                {
+                    asBeenReleased = true;
+                    return true;
+                }
+            }
 
             return false;
         }
