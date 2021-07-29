@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,11 @@ namespace myEngine.myProject.Sudoku
     {
         //FIELDS
         public Button button;
+
+        bool isCellSelected = false;
+        bool finishedSpawned = false;
+
+        Sprite overlaySprite;
 
         //CONSTRUCTOR
         public Cell(Vector2 position, Vector2 dimension)
@@ -29,51 +35,65 @@ namespace myEngine.myProject.Sudoku
             button.onButtonPressed.SetFunction(OnClic);
             //button.onButtonRelease.PlayFunction(SetIsReady);
             //button.onButtonPressedOutside.SetFunction(ClicOutside);
+            button.onHoverEnter.SetFunction(OnHoverEnter);
+            button.onHoverExit.SetFunction(OnHoverExit);
+
+            //CURSOR
+            overlaySprite = new Sprite();
+            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/cursor");
+            overlaySprite.transform.position = this.transform.position;
+            overlaySprite.dimension = this.button.sprite.dimension;
+            overlaySprite.color = Color.Blue;
+            overlaySprite.drawOrder = this.drawOrder + 20;
+            overlaySprite.isVisible = false;
         }
 
         public override void Update()
         {
-            //TODO: either clic on a button and DO ACTION or clic outside menu and CLOSE MENU
-
-            if (Input.GetMouseUp(MouseButton.Left) && isCellSelected && !finishedSpawned)
+        }
+        
+        //METHODS
+        public void OnHoverEnter()
+        {
+            if(isCellSelected == false)
             {
-                finishedSpawned = true;
-                Console.WriteLine("UP CLICK");
+                overlaySprite.isVisible = true;
+                overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/cursor");
             }
-
-            if (Input.GetMouseDown(MouseButton.Left) && isCellSelected && finishedSpawned)
-            {
-                Console.WriteLine("DOWN CLICK");
-                menu?.Destroy();
-                isCellSelected = false;
-                finishedSpawned = false;
-            }
-
-            //CHECK IF onButtonPressedOutside need refactoring
-            //CHECK IF GetMouseDown need refactoring 
         }
 
-        bool isCellSelected = false;
-        bool finishedSpawned = false;
-
-        //METHODS
-        GridMenu menu;
-        private void ClicOutside()
+        public void OnHoverExit()
         {
+            if (isCellSelected == false)
+            {
+                overlaySprite.isVisible = false;
+            }
         }
 
         public void OnClic()
         {
-            menu = new GridMenu(this);
-            isCellSelected = true;
+            Game_Sudoku.menu.SubscribeCell(this);
         }
 
-        public void OnSubButtonClic()
+        public void SetCellActive()
         {
-            //menu.Destroy();
-            //isCellSelected = false;
+            isCellSelected = true;
+            button.defaultColor = Color.LightBlue;
+            button.hoverColor = Color.LightBlue;
+            
+            overlaySprite.isVisible = true;
+            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border");
         }
-        
+
+        public void SetCellToDefault()
+        {
+            isCellSelected = false;
+            button.defaultColor = Color.White;
+            button.hoverColor = Color.Gray;
+
+            overlaySprite.isVisible = false;
+        }
+
         public override void OnDestroy()
         {
             button.sprite.Destroy();

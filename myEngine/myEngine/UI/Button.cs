@@ -30,20 +30,21 @@ namespace myEngine
         public Text text;
         public Sprite sprite;
 
+        public Event onHoverEnter;
+        public Event onHoverExit;
         public Event onButtonPressed;
         public Event onButtonRelease;
-
         public Event onButtonPressedOutside;
         public Event onButtonReleaseOutside;
 
-        private bool isActive;
+        public bool isActive = true;
         public bool isVisible = true;
 
         //----- COLORS -----
         public Color defaultColor;
         public Color hoverColor;
         public Color onClicColor;
-        //unaviable
+        public Color disabledColor;
 
         // SETTERS
         public void SetActive(bool b)
@@ -67,6 +68,7 @@ namespace myEngine
             defaultColor = Color.White;
             hoverColor = Color.LightGray;
             onClicColor = Color.DarkGray;
+            disabledColor = Color.DarkGray;
 
             text = new Text();
             text.transform = this.transform;
@@ -79,6 +81,8 @@ namespace myEngine
             
             isActive = true;
 
+            onHoverEnter = new Event();
+            onHoverExit = new Event();
             onButtonPressed = new Event();
             onButtonRelease = new Event();
             onButtonPressedOutside = new Event();
@@ -116,25 +120,27 @@ namespace myEngine
             return isOnTop;
         }
 
-        private void OnHoverEnter()
+        private void HoverEnter()
         {
             Button.buttonsSelected.Add(this);
         }
 
-        private void OnHoverExit()
+        private void HoverExit()
         {
             isSelected = false;
             buttonState = ButtonState.unselected;
             Button.buttonsSelected.Remove(this);
         }
 
-        private void OnButtonSelected()
+        private void ButtonSelected()
         {
             isSelected = true;
             buttonState = ButtonState.hover;
         }
 
         ButtonState buttonState;
+        ButtonState previousState;
+
         bool hoverState = false;
         bool previousHoverState = false;
         bool isSelected = false;
@@ -143,11 +149,16 @@ namespace myEngine
         bool mouseDown = false;
         bool previousMouseDown = false;
 
+
         public override void Update()
         {
             if (!isActive || !isVisible)
+            {
+                sprite.color = disabledColor;
                 return;
+            }
 
+            previousState = buttonState;
             buttonState = ButtonState.unselected;
 
             previousMouseDown = mouseDown;
@@ -165,11 +176,11 @@ namespace myEngine
             }
 
             if (hoverState == true && previousHoverState == false)
-                OnHoverEnter();
+                HoverEnter();
 
             if (hoverState && IsOnTop())
             {
-                OnButtonSelected();
+                ButtonSelected();
 
                 //CHECK INPUT
                 if (Mouse.GetMouseDown(MouseButton.Left))
@@ -183,9 +194,9 @@ namespace myEngine
             else
             {
                 if (isSelected)
-                    OnHoverExit();
+                    HoverExit();
                 else if (hoverState == false && previousHoverState == true)
-                    OnHoverExit();
+                    HoverExit();
             }
 
             //CHECK INPUT
@@ -209,12 +220,17 @@ namespace myEngine
             else if (buttonState == ButtonState.clicked)
                 sprite.color = onClicColor;
 
+            if (buttonState == ButtonState.hover && previousState != ButtonState.hover)
+                OnHoverEnter();
+            if (buttonState != ButtonState.hover && previousState == ButtonState.hover)
+                OnHoverExit();
+
             if (isPressed)
                 sprite.color = onClicColor;
         }
 
-        //public void OnHoverEnter() { }
-        //public void OnHoverExit() { }
+        public void OnHoverEnter() { onHoverEnter?.Invoke(); }
+        public void OnHoverExit() { onHoverExit?.Invoke(); }
 
         public void OnRelease() { onButtonRelease?.Invoke(); }
         public void OnReleaseOutSide() { onButtonReleaseOutside?.Invoke(); }

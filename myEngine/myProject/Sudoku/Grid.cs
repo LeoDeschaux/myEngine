@@ -8,9 +8,9 @@ namespace myEngine.myProject.Sudoku
     public class Grid
     {
         //FIELDS
-        Cell[,] cells;
+        public Cell[,] cells;
         int rows = 9, collumns = 9;
-        int spriteSizeX = 63, spriteSizeY = 63;
+        int spriteSizeX = 76, spriteSizeY = 76;
         public static int marginX = 2, marginY = 2;
         int offSetX = 0, offSetY = 0;
 
@@ -20,7 +20,7 @@ namespace myEngine.myProject.Sudoku
         //CONSTRUCTOR
         public Grid()
         {
-            float maxSize = (Settings.SCREEN_HEIGHT - (marginY*11)) / 11;
+            float maxSize = (Settings.SCREEN_HEIGHT - (marginY*10)) / 10;
             Console.WriteLine(maxSize);
 
             totalBlocks = rows * collumns;
@@ -41,6 +41,9 @@ namespace myEngine.myProject.Sudoku
                     cells[x, y].name = "" + x + ", " + y;
 
                 }
+
+            //SET GRID
+            GridUtils.SetGrid(this);
         }
     }
 }

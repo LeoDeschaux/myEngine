@@ -60,10 +60,8 @@ namespace myEngine
 
         public static bool GetMouseDown(MouseButton mouseButton)
         {
-            /*
             if (!asBeenReleased)
                 return false;
-            */
 
             if (mouseButton == MouseButton.Left)
             {

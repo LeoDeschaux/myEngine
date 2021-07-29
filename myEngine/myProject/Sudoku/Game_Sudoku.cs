@@ -7,12 +7,14 @@ namespace myEngine.myProject.Sudoku
     public class Game_Sudoku
     {
         //FIELDS
-        Grid board;
+        public static Grid board;
+        public static Menu menu;
 
         //CONSTRUCTOR
         public Game_Sudoku()
         {
             board = new Grid();
+            menu = new Menu();
         }
 
         //METHODS

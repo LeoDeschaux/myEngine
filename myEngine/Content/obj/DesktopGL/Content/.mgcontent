@@ -26,6 +26,9 @@
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/TileMaps/spritesheet.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/texture.jpg</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/character.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/locked.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/cursor.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/border.png</File>
   </SourceFiles>
   <DestFiles>
     <File>myContent/2D/mountain.jpg</File>
@@ -50,5 +53,8 @@
     <File xsi:nil="true" />
     <File>myContent/2D/texture.jpg</File>
     <File>myContent/2D/character.png</File>
+    <File>myContent/2D/locked.png</File>
+    <File>myContent/2D/cursor.png</File>
+    <File>myContent/2D/border.png</File>
   </DestFiles>
 </SourceFileCollection>
