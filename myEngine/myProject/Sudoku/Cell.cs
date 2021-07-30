@@ -9,6 +9,7 @@ namespace myEngine.myProject.Sudoku
     public class Cell : GameObject
     {
         //FIELDS
+        public int posX, posY;
         public Button button;
 
         bool isCellSelected = false;
@@ -17,9 +18,11 @@ namespace myEngine.myProject.Sudoku
         Sprite overlaySprite;
 
         //CONSTRUCTOR
-        public Cell(Vector2 position, Vector2 dimension)
+        public Cell(Vector2 position, Vector2 dimension, int posX, int posY)
         {
             transform.position = position;
+            this.posX = posX;
+            this.posY = posY;
 
             button = new Button();
             button.transform = this.transform;

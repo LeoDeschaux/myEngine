@@ -83,7 +83,10 @@ namespace myEngine.myProject.Sudoku
         private void OnClic()
         {
             if(cell != null)
+            {
                 cell.button.text.s = this.number;
+                cell.button.text.color = Color.LightBlue;
+            }
         }
 
         public override void OnDestroy()

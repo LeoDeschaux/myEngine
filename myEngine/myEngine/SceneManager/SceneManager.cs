@@ -39,7 +39,7 @@ namespace myEngine
             if (Input.GetKeyDown(Keys.F4))
                 ChangeScene(new Scene_ParticleSystem());
             if (Input.GetKeyDown(Keys.F5))
-                ChangeScene(new Scene_PhysiqueEngine());
+                ReloadScene();
             if (Input.GetKeyDown(Keys.F6))
                 ChangeScene(new Scene_3D());
             if (Input.GetKeyDown(Keys.F7))

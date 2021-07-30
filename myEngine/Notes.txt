@@ -9,7 +9,25 @@ raison pour avoir fait cela : quand on change de scene le dernier clic fonctionn
 solution: nettoyer le "input cache state" quand on change de scene ?
 
 ----------- SUDOKU -------------
-Le menu pour jouer a plusieurs problèmes:
-on voit pas le board quand on joue
-c'est pas hyper clair sur quelle case le prochain num va aller 
-on ne peut pas "selectionner la cellule, puis effacer le contenu" (pour si on s'est trompé)
+TODO
+pour empecher la de-selection à cause des margins 
+placer un boutton dernière les zones, le rendre inactif et/ou ne rien faire quand on clic dessus
+
+Create Grid 
+
+Create Grid but with blanks 
+
+Check if Grid is completed 
+
+Check if cell is invalid, valid(but it's not the right one), correct
+
+if all cells from a square are correct, square is correct
+
+//GUI
+definitive cells's text is black
+user input's cells's text is blue
+
+----------- MINESWEEPER -------------
+----------- ASTEROID -------------
+Do the physique engine series
+ 

@@ -37,7 +37,7 @@ namespace myEngine.myProject.Sudoku
 
                     Vector2 position = new Vector2(offSetX + start.X + (x * (spriteSizeX + marginX)), offSetY + start.Y + (y * (spriteSizeY + marginY)));
 
-                    cells[x, y] = new Cell(position, new Vector2(spriteSizeX, spriteSizeY));
+                    cells[x, y] = new Cell(position, new Vector2(spriteSizeX, spriteSizeY), x, y);
                     cells[x, y].name = "" + x + ", " + y;
 
                 }

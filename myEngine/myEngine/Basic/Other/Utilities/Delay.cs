@@ -25,7 +25,7 @@ namespace myEngine
             if (this.Timer <= gt.TotalGameTime.TotalMilliseconds)
             {
                 Timer = gt.TotalGameTime.TotalMilliseconds + DelayTime;
-                Action.Invoke();
+                Action?.Invoke();
             }
         }
 
@@ -37,7 +37,7 @@ namespace myEngine
 
                 if (action != null)
                 {
-                    action.Invoke();
+                    action?.Invoke();
                 }
             }
         }
