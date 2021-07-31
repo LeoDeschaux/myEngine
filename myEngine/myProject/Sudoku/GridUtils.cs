@@ -9,23 +9,73 @@ namespace myEngine.myProject.Sudoku
     {
         public static void SetGrid(Grid grid)
         {
+            SetDefaultGrid(grid);
+            RemoveRandomCell(grid);
+            //delay = new Delay(10, () => CheckFunc(grid));
+
+            for (int i = 0; i < 30; i++)
+            {
+                RemoveRandomCell(grid);
+            }
+        }
+
+        public static void RemoveRandomCell(Grid grid)
+        {
+            Random random = new Random();
+
+            if (IsGridEmpty(grid))
+                throw new ArgumentException("[la grid est vide]");
+
+            Cell[] c = GetSealledCells(grid);
+
+            int x = random.Next(0, c.Length);
+
+            Cell cell = c[x];
+
+            cell.button.text.s = "";
+            cell.SetSelled(false);
+        }
+
+        public static Cell[] GetSealledCells(Grid grid)
+        {
+            List<Cell> c = new List<Cell>();
+
             for (int y = 0; y < 9; y++)
                 for (int x = 0; x < 9; x++)
                 {
-                    //grid.cells[x, y].button.text.s = grid.cells[x, y].posX.ToString() + ", " + grid.cells[x, y].posY.ToString();
+                    if (grid.cells[x, y].isSealled)
+                        c.Add(grid.cells[x, y]);
                 }
 
-            SetDefaultGrid(grid);
-            //ColorSquares(grid);
+            return c.ToArray();
+        }
 
-            //grid.cells[3, 0].button.text.s = "0";
-            //grid.cells[0, 3].button.text.s = "0";
-            //grid.cells[1, 1].button.text.s = "0";
+        public static bool IsGridEmpty(Grid grid)
+        {
+            bool b = true;
 
-            delay = new Delay(200, () => CheckFunc(grid));
+            for (int y = 0; y < 9; y++)
+                for (int x = 0; x < 9; x++)
+                {
+                    if (grid.cells[x, y].isSealled)
+                        b = false;
+                }
 
-            CheckCell(grid, grid.cells[0, 0]);
-            //CheckGrid(grid);
+            return b;
+        }
+
+        public static bool IsGridComplete(Grid grid)
+        {
+            bool b = false;
+
+            for (int y = 0; y < 9; y++)
+                for (int x = 0; x < 9; x++)
+                {
+                    if (!grid.cells[x, y].isSealled)
+                        b = false;
+                }
+
+            return b;
         }
 
         static Delay delay;
@@ -33,16 +83,7 @@ namespace myEngine.myProject.Sudoku
         static int myY = 0;
         public static void CheckFunc(Grid grid)
         {
-            //SetCellsColorToWhite(grid);
-
-            CheckCell(grid, grid.cells[myX, myY]);
-
-            /*
-            int squareIndex = FindSquareFromCellPosition(grid.cells[myX, myY]);
-            ColorCells(GetSquare(grid, squareIndex));
-            */
-            //grid.cells[myX, myY].button.defaultColor = Color.Red;
-
+            isCellValid(grid, grid.cells[myX, myY]);
 
             if (myY < 9)
             {
@@ -89,13 +130,16 @@ namespace myEngine.myProject.Sudoku
             for (int y = 0; y < 9; y++)
                 for (int x = 0; x < 9; x++)
                 {
-                    CheckCell(grid, grid.cells[x, y]);
+                    if (isCellValid(grid, grid.cells[x, y]))
+                        grid.cells[x, y].color = Color.Green;
+                    else
+                        grid.cells[x, y].color = Color.Red;
                 }
         }
 
-        public static void CheckCell(Grid grid, Cell cell)
+        public static bool isCellValid(Grid grid, Cell cell)
         {
-            bool isValide = true;
+            bool isValid = true;
 
             //CHECK ROW
             Cell[] row = GetRow(grid, cell.posY);
@@ -103,7 +147,7 @@ namespace myEngine.myProject.Sudoku
             {
                 if (row[i].button.text.s == cell.button.text.s && i != cell.posX)
                 {
-                    isValide = false;
+                    isValid = false;
                 }
             }
 
@@ -113,7 +157,7 @@ namespace myEngine.myProject.Sudoku
             {
                 if (collumn[i].button.text.s == cell.button.text.s && i != cell.posY)
                 {
-                    isValide = false;
+                    isValid = false;
                 }
             }
 
@@ -123,14 +167,11 @@ namespace myEngine.myProject.Sudoku
             {
                 if (square[i].button.text.s == cell.button.text.s && (square[i].posX != cell.posX && square[i].posY != cell.posY))
                 {
-                    isValide = false;
+                    isValid = false;
                 }
             }
 
-            if (isValide)
-                cell.button.defaultColor = Color.Green;
-            else
-                cell.button.defaultColor = Color.Red;
+            return isValid;
         }
 
         public static int FindSquareFromCellPosition(Cell cell)
@@ -153,7 +194,6 @@ namespace myEngine.myProject.Sudoku
                 for (int k = 0; k < 9; k++)
                 {
                     cells[k].button.defaultColor = new Color(100 + (j * 20), 100 + (j * 20), 100 + (j * 20));
-                    //cells[k].button.text.s = "" + (k + 1);
                 }
             }
         }
@@ -172,7 +212,8 @@ namespace myEngine.myProject.Sudoku
 
                 for (int x = 0; x < 9; x++)
                 {
-                    grid.cells[x, y].button.text.s = "" + ((x + i) % 9);
+                    grid.cells[x, y].button.text.s = "" + (((x + i) % 9) + 1);
+                    grid.cells[x, y].SetSelled(true);
                 }
             }
         }

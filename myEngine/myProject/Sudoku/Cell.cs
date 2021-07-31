@@ -15,7 +15,11 @@ namespace myEngine.myProject.Sudoku
         bool isCellSelected = false;
         bool finishedSpawned = false;
 
+        public bool isSealled = false;
+
         Sprite overlaySprite;
+
+        public Color color = Color.White;
 
         //CONSTRUCTOR
         public Cell(Vector2 position, Vector2 dimension, int posX, int posY)
@@ -29,15 +33,13 @@ namespace myEngine.myProject.Sudoku
             button.sprite.transform = this.transform;
             button.text.transform = this.transform;
 
-            button.sprite.color = Color.White;
+            button.sprite.color = color;
             button.sprite.dimension = new Vector2(dimension.X, dimension.Y);
 
             button.text.s = "";
             button.text.alignment = Alignment.Center;
 
             button.onButtonPressed.SetFunction(OnClic);
-            //button.onButtonRelease.PlayFunction(SetIsReady);
-            //button.onButtonPressedOutside.SetFunction(ClicOutside);
             button.onHoverEnter.SetFunction(OnHoverEnter);
             button.onHoverExit.SetFunction(OnHoverExit);
 
@@ -51,11 +53,25 @@ namespace myEngine.myProject.Sudoku
             overlaySprite.isVisible = false;
         }
 
-        public override void Update()
-        {
-        }
-        
         //METHODS
+        public void SetSelled(bool b)
+        {
+            isSealled = b;
+
+            if (isSealled)
+                button.isActive = false;
+            else
+                button.isActive = true;
+        }
+
+        public void SetColor(Color color)
+        {
+            this.color = color;
+
+            button.defaultColor = color;
+            button.hoverColor = color;
+        }
+
         public void OnHoverEnter()
         {
             if(isCellSelected == false)
@@ -81,8 +97,7 @@ namespace myEngine.myProject.Sudoku
         public void SetCellActive()
         {
             isCellSelected = true;
-            button.defaultColor = Color.LightBlue;
-            button.hoverColor = Color.LightBlue;
+            SetColor(Color.LightBlue);
             
             overlaySprite.isVisible = true;
             overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border");
@@ -91,15 +106,9 @@ namespace myEngine.myProject.Sudoku
         public void SetCellToDefault()
         {
             isCellSelected = false;
-            button.defaultColor = Color.White;
-            button.hoverColor = Color.Gray;
+            SetColor(color);
 
             overlaySprite.isVisible = false;
-        }
-
-        public override void OnDestroy()
-        {
-            button.sprite.Destroy();
         }
     }
 }

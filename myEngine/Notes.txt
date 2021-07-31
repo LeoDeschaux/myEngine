@@ -13,15 +13,9 @@ TODO
 pour empecher la de-selection à cause des margins 
 placer un boutton dernière les zones, le rendre inactif et/ou ne rien faire quand on clic dessus
 
-Create Grid 
-
 Create Grid but with blanks 
 
-Check if Grid is completed 
-
 Check if cell is invalid, valid(but it's not the right one), correct
-
-if all cells from a square are correct, square is correct
 
 //GUI
 definitive cells's text is black

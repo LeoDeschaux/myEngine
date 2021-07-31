@@ -15,6 +15,7 @@ namespace myEngine.myProject.Sudoku
         //BUTTON PROPERTIES
         Vector2 dimension = new Vector2(70, 70);
         Vector2 startPos = new Vector2(50, 50);
+        Color userInputColor = new Color(80, 80, 255);
 
         Sprite overlaySprite;
 
@@ -24,8 +25,6 @@ namespace myEngine.myProject.Sudoku
             b = new Button();
 
             this.number = number;
-
-            //this.b.transform.position = button.transform.position;
 
             Vector2 offSet = new Vector2(startPos.X, startPos.Y);
             Vector2 position = new Vector2(posX * (dimension.X + Grid.marginX), posY * (dimension.Y + Grid.marginY));
@@ -85,7 +84,12 @@ namespace myEngine.myProject.Sudoku
             if(cell != null)
             {
                 cell.button.text.s = this.number;
-                cell.button.text.color = Color.LightBlue;
+                //cell.button.text.color = userInputColor;
+
+                if (GridUtils.isCellValid(Game_Sudoku.board, cell))
+                    cell.SetColor(Color.Green);
+                else
+                    cell.SetColor(Color.Red);
             }
         }
 

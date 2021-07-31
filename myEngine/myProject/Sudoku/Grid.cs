@@ -39,7 +39,6 @@ namespace myEngine.myProject.Sudoku
 
                     cells[x, y] = new Cell(position, new Vector2(spriteSizeX, spriteSizeY), x, y);
                     cells[x, y].name = "" + x + ", " + y;
-
                 }
 
             //SET GRID
