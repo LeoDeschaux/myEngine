@@ -19,6 +19,8 @@ namespace myEngine.myProject.Sudoku
 
         Sprite overlaySprite;
 
+        Event onClic;
+
         //CONSTRUCTOR
         public ButtonNumber(int posX, int posY, string number)
         {
@@ -66,10 +68,11 @@ namespace myEngine.myProject.Sudoku
             this.cell = null;
         }
 
-        public void SetButtonActive()
+        public void SetButtonActive(Event onClic)
         {
            this.button.isActive = true;
-            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border"); 
+            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border");
+            this.onClic = onClic;
         }
 
         public void SetButtonInactive()
@@ -84,6 +87,7 @@ namespace myEngine.myProject.Sudoku
             if(cell != null)
             {
                 cell.button.text.s = this.number;
+                onClic?.Invoke();
                 //cell.button.text.color = userInputColor;
 
                 /*

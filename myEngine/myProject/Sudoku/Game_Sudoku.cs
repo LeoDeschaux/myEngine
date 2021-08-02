@@ -26,9 +26,11 @@ namespace myEngine.myProject.Sudoku
         {
         }
 
-        public void OnGridIsComplete()
+        public static void OnGridIsComplete()
         {
             Console.WriteLine("GRID IS COMPLETE");
+            PopUp p = new PopUp("             GRID COMPLETED !\nPress the button below to play again");
+            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
         }
     }
 }

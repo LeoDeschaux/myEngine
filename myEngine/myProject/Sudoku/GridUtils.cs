@@ -38,6 +38,23 @@ namespace myEngine.myProject.Sudoku
                 }
         }
 
+        public static void SetGridToAnwser(Grid grid)
+        {
+            for (int y = 0; y < 9; y++)
+                for (int x = 0; x < 9; x++)
+                {
+                    grid.cells[x, y].overlaySprite.isVisible = false;
+
+                    if (grid.cells[x, y].isSealled)
+                        continue;
+
+                    grid.cells[x, y].button.text.s = grid.answers[x, y];
+
+                    grid.cells[x, y].button.isActive = false;
+
+                }
+        }
+
         public static void RemoveRandomCells(Grid grid, int amount)
         {
             for (int i = 0; i < amount; i++)
@@ -88,12 +105,12 @@ namespace myEngine.myProject.Sudoku
 
         public static bool IsGridComplete(Grid grid)
         {
-            bool b = false;
+            bool b = true;
 
             for (int y = 0; y < 9; y++)
                 for (int x = 0; x < 9; x++)
                 {
-                    if (!grid.cells[x, y].isSealled)
+                    if (grid.cells[x, y].button.text.s != grid.answers[x, y])
                         b = false;
                 }
 
@@ -312,15 +329,6 @@ namespace myEngine.myProject.Sudoku
         public static void GetDiagonal(Grid grid)
         {
             throw new NotImplementedException();
-        }
-
-        public static string PrintCells(Cell[] cells)
-        {
-            string s = "";
-            for (int i = 0; i < cells.Length; i++)
-                s += cells[i] + ", ";
-
-            return s;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace myEngine.myProject.Sudoku
         //CONSTRUCTOR
         public Menu()
         {
-            buttons = new ButtonNumber[9];
+            buttons = new ButtonNumber[10];
 
             //SHOW CHOICE
             buttons[0] = new ButtonNumber(0, 0, "1");
@@ -28,6 +28,13 @@ namespace myEngine.myProject.Sudoku
             buttons[6] = new ButtonNumber(0, 6, "7");
             buttons[7] = new ButtonNumber(0, 7, "8");
             buttons[8] = new ButtonNumber(0, 8, "9");
+
+            buttons[9] = new ButtonNumber(1, 0, "");
+            Text t = new Text();
+            t.s = "E";
+            t.alignment = Alignment.Center;
+            t.drawOrder = buttons[9].button.drawOrder + 20;
+            t.transform = buttons[9].button.transform;
 
 
             laDouille = new Button();
@@ -48,6 +55,14 @@ namespace myEngine.myProject.Sudoku
         Button laDouille;
 
         //METHODS
+        public void OnClic()
+        {
+            if (cellRef.button.text.s != "")
+                buttons[9].SetButtonActive(new Event(OnClic));
+            else
+                buttons[9].SetButtonInactive();  
+        }
+
         public void OnClicOutSide()
         {
             UnSubscribePreviousCell();
@@ -70,20 +85,26 @@ namespace myEngine.myProject.Sudoku
 
         private void SetMenuActive()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].SetCell(cellRef);
-                buttons[i].SetButtonActive();
+                buttons[i].SetButtonActive(new Event(OnClic));
             }
+
+            buttons[9].SetButtonInactive();
+            if (cellRef.button.text.s != "")
+                buttons[9].SetButtonActive(new Event(OnClic));
         }
 
         public void SetMenuInactive()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < buttons.Length; i++)
             {
                 buttons[i].RemoveCell();
                 buttons[i].SetButtonInactive();
             }
+
+            buttons[9].SetButtonInactive();
         }
 
         public override void OnDestroy()

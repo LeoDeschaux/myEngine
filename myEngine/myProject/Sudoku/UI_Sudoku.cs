@@ -21,7 +21,7 @@ namespace myEngine.myProject.Sudoku
             }
 
             SetButton(0, "New Grid", () => OnNewGrid(grid));
-            SetButton(1, "CheckGrid", () => GridUtils.CheckGrid(grid));
+            SetButton(1, "CHEAT", () => Cheat(grid));
             SetButton(2, "Show Answer", () => OnShowAnswer(grid));
 
             buttons[0].SetButtonActive();
@@ -34,11 +34,24 @@ namespace myEngine.myProject.Sudoku
             buttons[2].SetButtonActive();
         }
 
+        public void Cheat(Grid grid)
+        {
+            //GridUtils.CheckGrid(grid);
+            GridUtils.SetGridToAnwser(grid);
+        }
+
         private void OnShowAnswer(Grid grid)
         {
+            if (GridUtils.IsGridComplete(grid))
+                Game_Sudoku.OnGridIsComplete();
+            else
+                Console.WriteLine("DOMMAGE");
+
             GridUtils.ShowAnwser(grid);
+            
             buttons[1].SetButtonInactive();
             buttons[2].SetButtonInactive();
+
             Game_Sudoku.menu.SetMenuInactive();
         }
 
