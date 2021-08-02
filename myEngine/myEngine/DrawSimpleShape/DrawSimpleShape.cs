@@ -13,7 +13,7 @@ namespace myEngine
         //FIELDS
 
         //METHODS
-        public static Texture2D GetTexture(int x = 2, int y = 2) //2 make it divisible, i guess ?????
+        public static Texture2D GetTexture(int x = 2, int y = 2) //2 make it divisible, making it avoid glitching (i guess ?????)
         {
             Texture2D texture = new Texture2D(RendererEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 
@@ -38,7 +38,7 @@ namespace myEngine
             var distance = Vector2.Distance(point1, point2);
             var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
 
-            DrawLine(point1, distance, angle, color, null, thickness, orderInLayer);
+            DrawLine(point1, distance, angle, color, matrix, thickness, orderInLayer);
         }
 
         public static void DrawLine(Vector2 point, float length, float angle, Color color, float thickness = 1f, int orderInLayer = 0)
@@ -138,52 +138,12 @@ namespace myEngine
             DrawLine(point4, point1, color, matrix, thickness: thickness);
 
             //DIAGO
-            DrawLine(point1, point3, color, matrix, thickness: thickness);
+            //DrawLine(point1, point3, color, matrix, thickness: thickness);
         }
 
         public static void DrawRectangle(Rectangle rectangle, float rotation, Color color, float thickness = 1f, int orderInLayer = 0)
         {
-            float angle = MathHelper.ToRadians(rotation);
-
-            Vector2 center = new Vector2(rectangle.X + (rectangle.Width / 2), rectangle.Y + (rectangle.Height / 2));
-            Vector2 point1 = new Vector2(rectangle.X, rectangle.Y);
-            Vector2 point2 = new Vector2(rectangle.X + rectangle.Width, rectangle.Y);
-            Vector2 point3 = new Vector2(rectangle.X + rectangle.Width, rectangle.Y + rectangle.Height);
-            Vector2 point4 = new Vector2(rectangle.X, rectangle.Y + rectangle.Height);
-
-            Vector2 initPoint1 = point1;
-
-            //POINT1
-            float x = center.X + (rectangle.Width / 2 * (float)Math.Cos((double)angle) - rectangle.Height / 2 * (float)Math.Sin((double)angle));
-            float y = center.Y + (rectangle.Width / 2 * (float)Math.Sin((double)angle) + rectangle.Height / 2 * (float)Math.Cos((double)angle));
-            point1 = new Vector2(x, y);
-
-            //POINT2
-            angle += (float)Math.PI / 2;
-            x = center.X + (rectangle.Height / 2 * (float)Math.Cos((double)angle) - rectangle.Width / 2 * (float)Math.Sin((double)angle));
-            y = center.Y + (rectangle.Height / 2 * (float)Math.Sin((double)angle) + rectangle.Width / 2 * (float)Math.Cos((double)angle));
-            point2 = new Vector2(x, y);
-
-            //POINT3
-            angle += (float)Math.PI / 2;
-            x = center.X + (rectangle.Width / 2 * (float)Math.Cos((double)angle) - rectangle.Height / 2 * (float)Math.Sin((double)angle));
-            y = center.Y + (rectangle.Width / 2 * (float)Math.Sin((double)angle) + rectangle.Height / 2 * (float)Math.Cos((double)angle));
-            point3 = new Vector2(x, y);
-
-            //POINT4
-            angle += (float)Math.PI / 2;
-            x = center.X + (rectangle.Height / 2 * (float)Math.Cos((double)angle) - rectangle.Width / 2 * (float)Math.Sin((double)angle));
-            y = center.Y + (rectangle.Height / 2 * (float)Math.Sin((double)angle) + rectangle.Width / 2 * (float)Math.Cos((double)angle));
-            point4 = new Vector2(x, y);
-
-            //NEW RECTANGLE
-            DrawLine(point1, point2, color, thickness: thickness);
-            DrawLine(point2, point3, color, thickness: thickness);
-            DrawLine(point3, point4, color, thickness: thickness);
-            DrawLine(point4, point1, color, thickness: thickness);
-
-            //DIAGO
-            DrawLine(point1, point3, color, thickness: thickness);
+            DrawRectangle(rectangle, rotation, color, null, thickness, orderInLayer);
         }
 
         public static void DrawRectangleFull(Vector2 position, Vector2 dimension, Color color, Matrix? matrix, int orderInLayer = 0)

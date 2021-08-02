@@ -87,7 +87,7 @@ namespace myEngine
             if (!isVisible)
                 return;
 
-
+            //BlendState.NonPremultiplied
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);
             //spriteBatch.Begin(SpriteSortMode.Immediate);
 

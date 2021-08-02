@@ -8,32 +8,34 @@ namespace myEngine.myProject.Sudoku
     public class Menu : Entity
     {
         //FIELDS
-        ButtonMenu[] buttons;
+        ButtonNumber[] buttons;
         private Cell cellRef;
 
         //CONSTRUCTOR
         public Menu()
         {
-            buttons = new ButtonMenu[9];
+            buttons = new ButtonNumber[9];
 
             //SHOW CHOICE
-            buttons[0] = new ButtonMenu(0, 0, "1");
-            buttons[1] = new ButtonMenu(0, 1, "2");
-            buttons[2] = new ButtonMenu(0, 2, "3");
+            buttons[0] = new ButtonNumber(0, 0, "1");
+            buttons[1] = new ButtonNumber(0, 1, "2");
+            buttons[2] = new ButtonNumber(0, 2, "3");
 
-            buttons[3] = new ButtonMenu(0, 3, "4");
-            buttons[4] = new ButtonMenu(0, 4, "5");
-            buttons[5] = new ButtonMenu(0, 5, "6");
+            buttons[3] = new ButtonNumber(0, 3, "4");
+            buttons[4] = new ButtonNumber(0, 4, "5");
+            buttons[5] = new ButtonNumber(0, 5, "6");
 
-            buttons[6] = new ButtonMenu(0, 6, "7");
-            buttons[7] = new ButtonMenu(0, 7, "8");
-            buttons[8] = new ButtonMenu(0, 8, "9");
+            buttons[6] = new ButtonNumber(0, 6, "7");
+            buttons[7] = new ButtonNumber(0, 7, "8");
+            buttons[8] = new ButtonNumber(0, 8, "9");
 
 
             laDouille = new Button();
             laDouille.sprite.dimension = new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
             laDouille.sprite.transform.position = Settings.Get_Screen_Center();
             laDouille.defaultColor = Color.Transparent;
+            laDouille.hoverColor = Color.Transparent;
+            laDouille.onClicColor = Color.Transparent;
 
             laDouille.drawOrder = -999;
             laDouille.sprite.drawOrder = -999;
@@ -75,7 +77,7 @@ namespace myEngine.myProject.Sudoku
             }
         }
 
-        private void SetMenuInactive()
+        public void SetMenuInactive()
         {
             for (int i = 0; i < 9; i++)
             {

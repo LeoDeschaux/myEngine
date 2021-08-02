@@ -7,13 +7,40 @@ namespace myEngine.myProject.Sudoku
 {
     public static class GridUtils
     {
-        public static void SetGrid(Grid grid)
+        public static void CreateNewGrid(Grid grid)
         {
-            SetDefaultGrid(grid);
-            RemoveRandomCell(grid);
-            //delay = new Delay(10, () => CheckFunc(grid));
+            GenerateGrid(grid);
+            RemoveRandomCells(grid, 46);
+        }
 
-            for (int i = 0; i < 30; i++)
+        public static void ShowAnwser(Grid grid)
+        {
+            CheckGrid(grid);
+
+            for (int y = 0; y < 9; y++)
+                for (int x = 0; x < 9; x++)
+                {
+                    grid.cells[x, y].overlaySprite.isVisible = false;
+
+                    if (grid.cells[x, y].isSealled)
+                        continue;
+
+                    if (grid.cells[x, y].button.text.s == grid.answers[x, y])
+                        grid.cells[x, y].SetColor(Color.Green);
+                    else
+                    {
+                        grid.cells[x, y].button.text.s = grid.answers[x, y];
+                        grid.cells[x, y].SetColor(Color.Red);
+                    }
+
+                    grid.cells[x, y].button.isActive = false;
+
+                }
+        }
+
+        public static void RemoveRandomCells(Grid grid, int amount)
+        {
+            for (int i = 0; i < amount; i++)
             {
                 RemoveRandomCell(grid);
             }
@@ -27,13 +54,8 @@ namespace myEngine.myProject.Sudoku
                 throw new ArgumentException("[la grid est vide]");
 
             Cell[] c = GetSealledCells(grid);
-
-            int x = random.Next(0, c.Length);
-
-            Cell cell = c[x];
-
-            cell.button.text.s = "";
-            cell.SetSelled(false);
+            int index = random.Next(0, c.Length);
+            c[index].SetCellEmpty();
         }
 
         public static Cell[] GetSealledCells(Grid grid)
@@ -130,10 +152,15 @@ namespace myEngine.myProject.Sudoku
             for (int y = 0; y < 9; y++)
                 for (int x = 0; x < 9; x++)
                 {
+                    grid.cells[x, y].overlaySprite.isVisible = false;
+
+                    if (grid.cells[x, y].isSealled)
+                        continue;
+
                     if (isCellValid(grid, grid.cells[x, y]))
-                        grid.cells[x, y].color = Color.Green;
+                        grid.cells[x, y].SetColor(Color.Green);
                     else
-                        grid.cells[x, y].color = Color.Red;
+                        grid.cells[x, y].SetColor(Color.Red);
                 }
         }
 
@@ -198,22 +225,37 @@ namespace myEngine.myProject.Sudoku
             }
         }
 
-        public static void SetDefaultGrid(Grid grid)
+        public static void GenerateGrid(Grid grid)
         {
-            int i = 0;
+            List<int> numbers = new List<int>();
+            for (int i = 0; i < 9; i++)
+                numbers.Add(i + 1);
+
+            //GENERATE sequence
+            Random random = new Random();
+            int[] sequence = new int[9];
+            for (int i = 0; i < 9; i++)
+            {
+                int index = random.Next(0, numbers.Count);
+                sequence[i] = numbers[index];
+                numbers.RemoveAt(index);
+            }
+
+            int j = 0;
             for (int y = 0; y < 9; y++)
             {
                 if (y == 0)
-                    i += 0;
+                    j += 0;
                 else if (y == 3 || y == 6)
-                    i += 1;
+                    j += 1;
                 else
-                    i += 3;
+                    j += 3;
 
                 for (int x = 0; x < 9; x++)
                 {
-                    grid.cells[x, y].button.text.s = "" + (((x + i) % 9) + 1);
-                    grid.cells[x, y].SetSelled(true);
+                    string number = "" + sequence[(x+j)%9];
+                    grid.cells[x, y].Init(number);
+                    grid.answers[x, y] = grid.cells[x, y].button.text.s;
                 }
             }
         }

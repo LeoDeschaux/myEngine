@@ -17,7 +17,10 @@ namespace myEngine.myProject.Sudoku
 
         public bool isSealled = false;
 
-        Sprite overlaySprite;
+        public Sprite overlaySprite;
+
+        private static Texture2D cursor;
+        private static Texture2D border;
 
         public Color color = Color.White;
 
@@ -33,7 +36,8 @@ namespace myEngine.myProject.Sudoku
             button.sprite.transform = this.transform;
             button.text.transform = this.transform;
 
-            button.sprite.color = color;
+            button.defaultColor = color;
+            button.hoverColor = Color.White;
             button.sprite.dimension = new Vector2(dimension.X, dimension.Y);
 
             button.text.s = "";
@@ -43,25 +47,42 @@ namespace myEngine.myProject.Sudoku
             button.onHoverEnter.SetFunction(OnHoverEnter);
             button.onHoverExit.SetFunction(OnHoverExit);
 
+            button.isActive = false;
+
             //CURSOR
             overlaySprite = new Sprite();
-            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/cursor");
+            overlaySprite.texture = cursor;
             overlaySprite.transform.position = this.transform.position;
             overlaySprite.dimension = this.button.sprite.dimension;
             overlaySprite.color = Color.Blue;
-            overlaySprite.drawOrder = this.drawOrder + 20;
+            overlaySprite.drawOrder = 600;
             overlaySprite.isVisible = false;
         }
 
-        //METHODS
-        public void SetSelled(bool b)
+        public static void Load()
         {
-            isSealled = b;
+            cursor = Ressources.Load<Texture2D>("myContent/2D/cursor");
+            border = Ressources.Load<Texture2D>("myContent/2D/border");
+        }
 
-            if (isSealled)
-                button.isActive = false;
-            else
-                button.isActive = true;
+        //METHODS
+        public void Init(string number)
+        {
+            button.text.s = number;
+            isSealled = true;
+            button.isActive = false;
+            overlaySprite.isVisible = false;
+
+            SetColor(Color.LightGray);
+        }
+
+        public void SetCellEmpty()
+        {
+            isSealled = false;
+            button.isActive = true;
+            button.text.s = "";
+
+            SetColor(Color.White);
         }
 
         public void SetColor(Color color)
@@ -70,6 +91,7 @@ namespace myEngine.myProject.Sudoku
 
             button.defaultColor = color;
             button.hoverColor = color;
+            button.disabledColor = color;
         }
 
         public void OnHoverEnter()
@@ -77,7 +99,7 @@ namespace myEngine.myProject.Sudoku
             if(isCellSelected == false)
             {
                 overlaySprite.isVisible = true;
-                overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/cursor");
+                overlaySprite.texture = cursor;
             }
         }
 
@@ -97,10 +119,10 @@ namespace myEngine.myProject.Sudoku
         public void SetCellActive()
         {
             isCellSelected = true;
-            SetColor(Color.LightBlue);
+            //SetColor(Color.White);
             
             overlaySprite.isVisible = true;
-            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border");
+            overlaySprite.texture = border;
         }
 
         public void SetCellToDefault()

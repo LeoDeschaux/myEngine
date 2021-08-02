@@ -6,10 +6,10 @@ using System.Text;
 
 namespace myEngine.myProject.Sudoku
 {
-    public class ButtonMenu : GameObject
+    public class ButtonNumber : GameObject
     {
         //FIELDS
-        public Button b;
+        public Button button;
         public string number;
 
         //BUTTON PROPERTIES
@@ -20,35 +20,35 @@ namespace myEngine.myProject.Sudoku
         Sprite overlaySprite;
 
         //CONSTRUCTOR
-        public ButtonMenu(int posX, int posY, string number)
+        public ButtonNumber(int posX, int posY, string number)
         {
-            b = new Button();
+            button = new Button();
 
             this.number = number;
 
             Vector2 offSet = new Vector2(startPos.X, startPos.Y);
             Vector2 position = new Vector2(posX * (dimension.X + Grid.marginX), posY * (dimension.Y + Grid.marginY));
-            b.transform.position = this.transform.position + offSet + position;
-            b.sprite.transform = b.transform;
-            b.text.transform = b.transform;
+            button.transform.position = this.transform.position + offSet + position;
+            button.sprite.transform = button.transform;
+            button.text.transform = button.transform;
 
-            b.sprite.dimension = dimension;
-            b.drawOrder = this.drawOrder + 10;
-            b.sprite.drawOrder = b.drawOrder + 11;
-            b.text.drawOrder = b.drawOrder + 12;
-            b.text.s = number;
-            b.text.alignment = Alignment.Center;
+            button.sprite.dimension = dimension;
+            button.drawOrder = this.drawOrder + 10;
+            button.sprite.drawOrder = button.drawOrder + 11;
+            button.text.drawOrder = button.drawOrder + 12;
+            button.text.s = number;
+            button.text.alignment = Alignment.Center;
 
-            b.defaultColor = Color.White;
-            b.isActive = false;
+            button.defaultColor = Color.White;
+            button.isActive = false;
 
-            b.onButtonPressed.SetFunction(OnClic);
+            button.onButtonPressed.SetFunction(OnClic);
 
             //LOCK SPRITE
             overlaySprite = new Sprite();
             overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/locked");
-            overlaySprite.transform.position = this.b.sprite.transform.position;
-            overlaySprite.dimension = this.b.sprite.dimension;
+            overlaySprite.transform.position = this.button.sprite.transform.position;
+            overlaySprite.dimension = this.button.sprite.dimension;
             overlaySprite.color = Color.Blue;
             overlaySprite.drawOrder = this.drawOrder + 200;
             overlaySprite.isVisible = true;
@@ -57,7 +57,7 @@ namespace myEngine.myProject.Sudoku
         //METHODS
         public void SetCell(Cell cell)
         {
-            b.onButtonPressed.SetFunction(OnClic);
+            button.onButtonPressed.SetFunction(OnClic);
             this.cell = cell;
         }
 
@@ -68,13 +68,13 @@ namespace myEngine.myProject.Sudoku
 
         public void SetButtonActive()
         {
-            this.b.isActive = true;
-            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border");
+           this.button.isActive = true;
+            overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/border"); 
         }
 
         public void SetButtonInactive()
         {
-            this.b.isActive = false;
+            this.button.isActive = false;
             overlaySprite.texture = Ressources.Load<Texture2D>("myContent/2D/locked");
         }
 
@@ -86,16 +86,18 @@ namespace myEngine.myProject.Sudoku
                 cell.button.text.s = this.number;
                 //cell.button.text.color = userInputColor;
 
-                if (GridUtils.isCellValid(Game_Sudoku.board, cell))
+                /*
+                if (GridUtils.isCellValid(Game_Sudoku.grid, cell))
                     cell.SetColor(Color.Green);
                 else
                     cell.SetColor(Color.Red);
+                */
             }
         }
 
         public override void OnDestroy()
         {
-            b.Destroy();
+            button.Destroy();
         }
     }
 }
