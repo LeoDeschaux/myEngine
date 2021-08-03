@@ -177,8 +177,7 @@ namespace myEngine.myProject.Pong
                 mainMenu.text.alignment = Alignment.Center;
                 mainMenu.text.fontSize = 65;
 
-                //mainMenu.onButtonPressed += QuitGame;
-                new ArgumentException("ERROR");
+                mainMenu.onButtonPressed.SetFunction(QuitGame);
 
                 Settings.GAME_SPEED = 0;
             }
@@ -192,7 +191,7 @@ namespace myEngine.myProject.Pong
             }
         }
 
-        private void QuitGame(object sender, EventArgs eventArgs)
+        private void QuitGame()
         {
             Engine.sceneManager.ChangeScene(new Scene_MainMenu());
         }

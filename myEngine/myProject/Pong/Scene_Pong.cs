@@ -29,22 +29,24 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (Input.GetKeyDown(Keys.M))
+            if(Settings.RELEASE_MODE)
             {
-                ((UI_Pong) ui).OnPauseMenuCalled();
+                if (Input.GetKeyDown(Keys.Escape))
+                {
+                    ((UI_Pong)ui).OnPauseMenuCalled();
+                }
             }
-
-            if (Settings.RELEASE_MODE)
-                return;
-
-            if (Input.GetKeyDown(Keys.Tab))
+            else
             {
-                game.player1.OnPlayerGetRemovedStock();
-            }
+                if (Input.GetKeyDown(Keys.Tab))
+                {
+                    game.player1.OnPlayerGetRemovedStock();
+                }
 
-            if (Input.GetKeyDown(Keys.CapsLock))
-            {
-                game.player2.OnPlayerGetRemovedStock();
+                if (Input.GetKeyDown(Keys.CapsLock))
+                {
+                    game.player2.OnPlayerGetRemovedStock();
+                }
             }
         }
 

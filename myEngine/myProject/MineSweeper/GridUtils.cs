@@ -20,7 +20,7 @@ namespace myEngine.myProject.MineSweeper
 
             Cell[] c = GetEmptyCells(grid);
 
-            Console.WriteLine(c.Length);
+            //Console.WriteLine(c.Length);
 
             if (c.Length == 0)
             {
@@ -52,7 +52,7 @@ namespace myEngine.myProject.MineSweeper
             for (int y = 0; y < grid.rows; y++)
                 for (int x = 0; x < grid.collumns; x++)
                 {
-                    if (grid.cells[x, y] is Cell_Empty)
+                    if (grid.cells[x, y] is Cell_Empty && grid.cells[x,y].revealed == false)
                     {
                         c.Add(grid.cells[x, y]);
                     }
@@ -73,6 +73,89 @@ namespace myEngine.myProject.MineSweeper
                         if (grid.cells[x, y] is Cell_Bomb)
                             amount++;
                     }
+                }
+
+            return amount;
+        }
+
+        public static void ShowCellsAround(Grid grid, Cell cell)
+        {
+            if (GetNumberOfBombAround(grid, cell) == 0)
+            {
+                for (int y = cell.y - 1; y < cell.y + 2; y++)
+                    for (int x = cell.x - 1; x < cell.x + 2; x++)
+                    {
+                        if (y >= 0 && x >= 0 && y < grid.rows && x < grid.collumns)
+                        {
+                            if (grid.cells[x, y] is Cell_Empty && !grid.cells[x, y].revealed)
+                            {
+                                grid.cells[x, y].OnClic();
+                            }
+                        }
+                    }
+            }
+        }
+
+        public static int GetRevealedCells(Grid grid)
+        {
+            int amount = 0;
+
+            for (int y = 0; y < grid.rows; y++)
+                for (int x = 0; x < grid.collumns; x++)
+                {
+                    if (grid.cells[x,y].revealed)
+                        amount++;
+                }
+
+            return amount;
+        }
+
+        public static void ShowEveryCells(Grid grid)
+        {
+            for (int y = 0; y < grid.rows; y++)
+                for (int x = 0; x < grid.collumns; x++)
+                {
+                    grid.cells[x, y].ShowCell();
+                }
+        }
+
+        public static int GetBombsLeft(Grid grid)
+        {
+            int amount = 0;
+
+            for (int y = 0; y < grid.rows; y++)
+                for (int x = 0; x < grid.collumns; x++)
+                {
+                    if (grid.cells[x, y] is Cell_Bomb)
+                        amount++;
+                }
+
+            return amount;
+        }
+
+        public static int GetHiddenCellsLeft(Grid grid)
+        {
+            int amount = 0;
+
+            for (int y = 0; y < grid.rows; y++)
+                for (int x = 0; x < grid.collumns; x++)
+                {
+                    if (grid.cells[x, y].revealed == false)
+                        amount++;
+                }
+
+            return amount;
+        } 
+
+        public static int GetEmptyCellsLeft(Grid grid)
+        {
+            int amount = 0;
+
+            for (int y = 0; y < grid.rows; y++)
+                for (int x = 0; x < grid.collumns; x++)
+                {
+                    if (grid.cells[x, y].revealed == false && grid.cells[x,y] is Cell_Empty)
+                        amount++;
                 }
 
             return amount;

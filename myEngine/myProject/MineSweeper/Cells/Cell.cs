@@ -13,6 +13,9 @@ namespace myEngine.myProject.MineSweeper
         public int x;
         public int y;
 
+        public bool revealed = false;
+        private bool isMarked = false;
+
         //CONSTRUCTOR
         public Cell(Vector2 position, Vector2 dimension, int x, int y)
         {
@@ -32,7 +35,36 @@ namespace myEngine.myProject.MineSweeper
         }
 
         //METHODS
-        public abstract void ShowCell();
+        public override void Update()
+        {
+            if (Mouse.GetMouseDown(MouseButton.Right) && button.sprite.GetRectangle().Contains(Mouse.position))
+                OnLeftClic();
+        }
+        public abstract void OnClic();
+
+        public virtual void OnLeftClic()
+        {
+            if (!isMarked)
+            {
+                isMarked = true;
+                button.sprite.texture = Ressources.Load<Texture2D>("myContent/2D/Crossed");
+            }
+            else
+            {
+                isMarked = false;
+                button.sprite.texture = Ressources.Load<Texture2D>("myContent/2D/Cell");
+            }
+        }
+
+        public virtual void ShowCell()
+        {
+            revealed = true;
+
+            Game_MineSweeper.grid.OnShowCell(this);
+
+            button.isActive = false;
+            button.disabledColor = Color.White;
+        }
 
         public override void OnDestroy()
         {

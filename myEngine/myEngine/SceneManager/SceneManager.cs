@@ -17,7 +17,7 @@ namespace myEngine
         //CONSTRUCTOR
         public SceneManager()
         {
-            currentScene = new Scene_MineSweeper();
+            currentScene = new Scene_MineSweeper(); 
             input = new Input();
         }
 

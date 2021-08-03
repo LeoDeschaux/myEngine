@@ -47,5 +47,18 @@ namespace myEngine.myProject.MineSweeper
         }
 
         //METHODS
+        public void OnShowCell(Cell cell)
+        {
+            if (GridUtils.GetRevealedCells(this) == 1)
+                OnFirstCellShown(cell);
+
+            if (GridUtils.GetEmptyCellsLeft(this) == 0)
+                Game_MineSweeper.OnGameWin();
+        }
+
+        public void OnFirstCellShown(Cell cell)
+        {
+            GridUtils.SetBombs(this, 70);
+        }
     }
 }

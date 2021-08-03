@@ -17,22 +17,27 @@ namespace myEngine.myProject.MineSweeper
         }
 
         //METHODS
+        public override void OnClic()
+        {
+            ShowCell();
+            ShowCellsAround();
+        }
+
+        public void ShowCellsAround()
+        {
+            GridUtils.ShowCellsAround(Game_MineSweeper.grid, this);
+        }
+
         public void GetNumberOfBombAround()
         {
             button.text.s = GridUtils.GetNumberOfBombAround(Game_MineSweeper.grid, this).ToString();
         }
 
-        public void OnClic()
-        {
-            GetNumberOfBombAround();
-            ShowCell();
-        }
-
         public override void ShowCell()
         {
+            base.ShowCell();
+            GetNumberOfBombAround();
             button.sprite.texture = Ressources.Load<Texture2D>("myContent/2D/CellRevealed");
-            button.isActive = false;
-            button.disabledColor = Color.White;
         }
     }
 }

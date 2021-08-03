@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace myEngine.myProject.MineSweeper
 {
@@ -10,17 +11,34 @@ namespace myEngine.myProject.MineSweeper
     {
         //FIELDS
         public static Grid grid;
+        UI_MineSweeper ui;
+        static bool isGameLoose = false;
 
         //CONSTRUCTOR
         public Game_MineSweeper()
         {
             grid = new Grid();
+            ui = new UI_MineSweeper();
+            isGameLoose = false;
         }
 
         public override void Update()
         {
-            if (Input.GetKeyDown(Microsoft.Xna.Framework.Input.Keys.Enter))
-                GridUtils.SetBombs(grid, 15);
+        }
+
+        public static void OnGameLoose()
+        {
+            Console.WriteLine("YOU LOOSE");
+            GridUtils.ShowEveryCells(grid);
+            isGameLoose = true;
+        }
+
+        public static void OnGameWin()
+        {
+            if (isGameLoose == false)
+            {
+                Console.WriteLine("YOU WIN !");
+            }
         }
     }
 }

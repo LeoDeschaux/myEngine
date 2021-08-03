@@ -21,18 +21,16 @@ namespace myEngine.myProject.MineSweeper
         }
 
         //METHODS
-        public void OnClic()
+        public override void OnClic()
         {
             ShowCell();
+            Game_MineSweeper.OnGameLoose();
         }
 
         public override void ShowCell()
         {
-            Console.WriteLine("BOMB, YOU LOOSE");
-
+            base.ShowCell();
             button.sprite.texture = Ressources.Load<Texture2D>("myContent/2D/Mine");
-            button.isActive = false;
-            button.disabledColor = Color.White;
         }
     }
 }

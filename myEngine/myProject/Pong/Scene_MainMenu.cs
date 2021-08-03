@@ -34,45 +34,44 @@ namespace myEngine
             pvp.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 400);
             pvp.sprite.dimension = new Vector2(500, 80);
 
-            pvp.text.transform.position = new Vector2(480, 355);
             //pvp.text.transform.position = pvp.sprite.transform.position;
             //pvp.text.alignment = Alignment.Center;
-            
+
+            pvp.text.alignment = Alignment.Center;
             pvp.text.color = Color.Black;
             pvp.text.fontSize = 80;
             pvp.text.s = "Play PVP";
             pvp.text.drawOrder = 9000;
 
-            //pvp.onButtonPressed += (object sender, EventArgs eventArgs) => LoadPVPScene();
-            new ArgumentException("ERROR");
+            pvp.onButtonPressed.SetFunction(LoadPVPScene);
 
             //BUTTON AI
             Button ai = new Button();
             ai.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 500);
             ai.sprite.dimension = new Vector2(500, 80);
 
-            ai.text.transform.position = new Vector2(480, 455);
+            //ai.text.transform.position = new Vector2(480, 455);
+            ai.text.alignment = Alignment.Center;
             ai.text.color = Color.Black;
             ai.text.fontSize = 80;
             ai.text.s = "Play vs AI";
             ai.text.drawOrder = 9000;
 
-            //ai.onButtonPressed += (object sender, EventArgs eventArgs) => LoadAIScene();
-            new ArgumentException("ERROR");
+            ai.onButtonPressed.SetFunction(LoadAIScene);
 
             //QUITTER
             Button exit = new Button();
             exit.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 655);
             exit.sprite.dimension = new Vector2(350, 50);
 
-            exit.text.transform.position = new Vector2(595, 630);
+            exit.text.alignment = Alignment.Center;
+
             exit.text.color = Color.Black;
             exit.text.fontSize = 50;
             exit.text.s = "Exit";
             exit.text.drawOrder = 9000;
 
-            //exit.onButtonPressed += (object sender, EventArgs eventArgs) => ExitGame();
-            new ArgumentException("ERROR");
+            exit.onButtonPressed.SetFunction(ExitGame);
         }
 
         //METHODS
