@@ -283,3 +283,51 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../../myEngine/Content/myContent/2D/border.png;myContent/2D/border.png
+
+#begin ../../myEngine/Content/myContent/2D/CellMasked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/CellMasked.png;myContent/2D/CellMasked.png
+
+#begin ../../myEngine/Content/myContent/2D/Cell.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Cell.png;myContent/2D/Cell.png
+
+#begin ../../myEngine/Content/myContent/2D/CellRevealed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/CellRevealed.png;myContent/2D/CellRevealed.png
+
+#begin ../../myEngine/Content/myContent/2D/Mine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Mine.png;myContent/2D/Mine.png

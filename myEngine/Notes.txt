@@ -12,22 +12,14 @@ solution: nettoyer le "input cache state" quand on change de scene ?
 pour empecher la de-selection à cause des margins 
 placer un boutton dernière les zones, le rendre inactif et/ou ne rien faire quand on clic dessus
 ---------
-s'assurer d'autoriser à l'utilisateur uniquement des actions qui font sens 
-(ne pas pouvoir selectionner les cellules si la partie n'a pas commencé, avoir le menu locked si on affiche le résultat de la grille)
----------
 s'assurer que le sudoku soit réalisable 
 vérifier si il y a plusieurs solution de grille possibe ? (et les autoriser à l'utilisateur ? => ça serait bête de lui montrer faut alors que c'est juste)
+---------
 
------------------------------
-
-Check if cell is invalid, valid(but it's not the right one), correct
-
-//GUI
-
+/!\ le bouton Erase ne marche pas (et en plus fait tout crash!!)
 
 ----------- MINESWEEPER -------------
-grid
-cells 
+
 
 ----------- ASTEROID -------------
 Do the physique engine series

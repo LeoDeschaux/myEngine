@@ -29,6 +29,10 @@
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/locked.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/cursor.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/border.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/CellMasked.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Cell.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/CellRevealed.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Mine.png</File>
   </SourceFiles>
   <DestFiles>
     <File>myContent/2D/mountain.jpg</File>
@@ -56,5 +60,9 @@
     <File>myContent/2D/locked.png</File>
     <File>myContent/2D/cursor.png</File>
     <File>myContent/2D/border.png</File>
+    <File>myContent/2D/CellMasked.png</File>
+    <File>myContent/2D/Cell.png</File>
+    <File>myContent/2D/CellRevealed.png</File>
+    <File>myContent/2D/Mine.png</File>
   </DestFiles>
 </SourceFileCollection>

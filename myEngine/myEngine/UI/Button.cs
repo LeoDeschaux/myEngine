@@ -74,6 +74,8 @@ namespace myEngine
             text.transform = this.transform;
             text.drawOrder = this.drawOrder + 2;
 
+            text.alignment = Alignment.Center;
+
             //image = new Image(img);
 
             //image.transform.SetParent(this.transform);
