@@ -17,7 +17,7 @@ namespace myEngine
         //CONSTRUCTOR
         public SceneManager()
         {
-            currentScene = new Scene_MineSweeper(); 
+            currentScene = new Scene_Paralax(); 
             input = new Input();
         }
 
@@ -30,6 +30,7 @@ namespace myEngine
 
         private void CheckInput_ChangeScene()
         {
+
             if (Input.GetKeyDown(Keys.F1))
                 ChangeScene(new Scene_Pong());
             if (Input.GetKeyDown(Keys.F2))
@@ -68,6 +69,14 @@ namespace myEngine
             currentScene = (IScene)Activator.CreateInstance(t);
         }
 
+        public void ChangeScene(Type scene)
+        {
+            ClearScene();
+            currentScene = (IScene)Activator.CreateInstance(scene);
+            //Type t = Type.GetType(scene.ToString());
+            //currentScene = (IScene)Activator.CreateInstance(t);
+        }
+
         public void OnSceneChange()
         {
 
@@ -80,6 +89,8 @@ namespace myEngine
 
         private void ClearScene()
         {
+            Engine.world.SkipUpdate();
+
             //Engine.world = new World();
             Engine.world.ClearWorld();
             Engine.world.AddEntity(this);
@@ -89,6 +100,7 @@ namespace myEngine
             {
                 currentScene.Destroy();
             }
+
         }
     }
 }

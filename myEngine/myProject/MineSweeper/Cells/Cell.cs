@@ -13,7 +13,7 @@ namespace myEngine.myProject.MineSweeper
         public int x;
         public int y;
 
-        public bool revealed = false;
+        public bool isRevealed = false;
         private bool isMarked = false;
 
         //CONSTRUCTOR
@@ -28,8 +28,10 @@ namespace myEngine.myProject.MineSweeper
             button.sprite.transform = button.transform;
             button.text.transform = button.transform;
 
+            button.disabledColor = Color.White;
+
             button.text.s = "";
-            button.text.drawOrder = button.sprite.drawOrder + 100000;
+            button.text.drawOrder = button.sprite.drawOrder + 1000;
 
             button.sprite.texture = Ressources.Load<Texture2D>("myContent/2D/Cell");
         }
@@ -40,10 +42,14 @@ namespace myEngine.myProject.MineSweeper
             if (Mouse.GetMouseDown(MouseButton.Right) && button.sprite.GetRectangle().Contains(Mouse.position))
                 OnLeftClic();
         }
+
         public abstract void OnClic();
 
         public virtual void OnLeftClic()
         {
+            if (isRevealed)
+                return;
+
             if (!isMarked)
             {
                 isMarked = true;
@@ -58,7 +64,7 @@ namespace myEngine.myProject.MineSweeper
 
         public virtual void ShowCell()
         {
-            revealed = true;
+            isRevealed = true;
 
             Game_MineSweeper.grid.OnShowCell(this);
 

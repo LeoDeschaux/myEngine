@@ -7,19 +7,21 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine.myProject.MineSweeper
 {
-    class Game_MineSweeper : Entity
+    public class Game_MineSweeper : Entity
     {
         //FIELDS
         public static Grid grid;
         UI_MineSweeper ui;
-        static bool isGameLoose = false;
+
+        private static bool isGameOver = false;
 
         //CONSTRUCTOR
         public Game_MineSweeper()
         {
             grid = new Grid();
             ui = new UI_MineSweeper();
-            isGameLoose = false;
+
+            isGameOver = false;
         }
 
         public override void Update()
@@ -28,17 +30,27 @@ namespace myEngine.myProject.MineSweeper
 
         public static void OnGameLoose()
         {
-            Console.WriteLine("YOU LOOSE");
+            isGameOver = true;
             GridUtils.ShowEveryCells(grid);
-            isGameLoose = true;
+            GridUtils.SetEveryCellsToDisabled(grid);
+
+            PopUp p = new PopUp("GAME OVER");
+            p.text.transform.position += new Vector2(0, 50);
+            p.background.color = new Color(0, 0, 0, 180);
+            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
         }
 
         public static void OnGameWin()
         {
-            if (isGameLoose == false)
-            {
-                Console.WriteLine("YOU WIN !");
-            }
+            if (isGameOver)
+                return;
+
+            GridUtils.SetEveryCellsToDisabled(grid);
+
+            PopUp p = new PopUp("YOU WIN !");
+            p.text.transform.position += new Vector2(0, 50);
+            p.background.color = new Color(0, 0, 0, 180);
+            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
         }
     }
 }

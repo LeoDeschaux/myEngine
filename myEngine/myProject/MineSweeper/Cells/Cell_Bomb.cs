@@ -16,6 +16,7 @@ namespace myEngine.myProject.MineSweeper
         {
             button.defaultColor = Color.Pink;
             button.hoverColor = Color.Red;
+            button.disabledColor = Color.Pink;
 
             button.onButtonPressed.SetFunction(OnClic);
         }

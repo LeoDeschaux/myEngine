@@ -23,7 +23,7 @@ namespace myEngine
             background.transform = this.transform;
 
             text = new Text();
-            text.drawOrder = 1000;
+            text.drawOrder = 2010;
             text.s = msg;
             text.transform.position = new Vector2(background.transform.position.X,
                                                    background.transform.position.Y - (background.dimension.Y/2) + (text.GetRectangle().Height*2));
@@ -45,9 +45,9 @@ namespace myEngine
             button.text.transform = button.transform;
             button.sprite.transform = button.transform;
 
-            background.drawOrder = 1000;
-            button.sprite.drawOrder = 1001;
-            button.text.drawOrder = 1002;
+            background.drawOrder = 2000;
+            button.sprite.drawOrder = 2001;
+            button.text.drawOrder = 2002;
 
         }
 

@@ -60,7 +60,7 @@ namespace myEngine
         {
             transform = new Transform();
 
-            sprite = new Sprite(Vector2.Zero, Vector2.One * 50);
+            sprite = new Sprite(Vector2.Zero, new Vector2(250, 50));
             sprite.transform = this.transform;
             sprite.color = Color.White;
             sprite.drawOrder = this.drawOrder + 1;

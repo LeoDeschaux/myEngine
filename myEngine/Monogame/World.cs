@@ -29,12 +29,23 @@ namespace myEngine
         }
 
         //UPDATE & DRAW
+        private bool runUpdate;
+        public void SkipUpdate()
+        {
+            runUpdate = false;
+        }
+
         public void Update()
         {
+            runUpdate = true;
+
             for (int i = 0; i < entities.Count; i++)
             {
                 Entity e = entities[i];
                 e.Update();
+
+                if (!runUpdate)
+                    return;
             }
 
             for (int i = 0; i < components.Count; i++)

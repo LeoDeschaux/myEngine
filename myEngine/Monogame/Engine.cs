@@ -34,7 +34,6 @@ namespace myEngine
 
         public static bool isGameRunning = true;
 
-
         //METHODS
         public static void Initialize(Game1 game)
         {

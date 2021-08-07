@@ -19,6 +19,8 @@ namespace myEngine
         //INPUT PROFILE
         private InputProfile inputProfile;
 
+        private static bool recordInput = true;
+
         //CONSTRUCTOR
         /*
         public Input(PlayerIndex playerIndex = 0) //INPUT PROFILE
@@ -50,6 +52,9 @@ namespace myEngine
 
         public static void StaticUpdate()
         {
+            if (recordInput == false)
+                return;
+
             prevKeyState = keyState;
             keyState = Keyboard.GetState();
 

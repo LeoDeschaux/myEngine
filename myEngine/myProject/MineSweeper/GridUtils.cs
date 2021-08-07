@@ -52,7 +52,7 @@ namespace myEngine.myProject.MineSweeper
             for (int y = 0; y < grid.rows; y++)
                 for (int x = 0; x < grid.collumns; x++)
                 {
-                    if (grid.cells[x, y] is Cell_Empty && grid.cells[x,y].revealed == false)
+                    if (grid.cells[x, y] is Cell_Empty && grid.cells[x,y].isRevealed == false)
                     {
                         c.Add(grid.cells[x, y]);
                     }
@@ -87,7 +87,7 @@ namespace myEngine.myProject.MineSweeper
                     {
                         if (y >= 0 && x >= 0 && y < grid.rows && x < grid.collumns)
                         {
-                            if (grid.cells[x, y] is Cell_Empty && !grid.cells[x, y].revealed)
+                            if (grid.cells[x, y] is Cell_Empty && !grid.cells[x, y].isRevealed)
                             {
                                 grid.cells[x, y].OnClic();
                             }
@@ -103,7 +103,7 @@ namespace myEngine.myProject.MineSweeper
             for (int y = 0; y < grid.rows; y++)
                 for (int x = 0; x < grid.collumns; x++)
                 {
-                    if (grid.cells[x,y].revealed)
+                    if (grid.cells[x,y].isRevealed)
                         amount++;
                 }
 
@@ -140,7 +140,7 @@ namespace myEngine.myProject.MineSweeper
             for (int y = 0; y < grid.rows; y++)
                 for (int x = 0; x < grid.collumns; x++)
                 {
-                    if (grid.cells[x, y].revealed == false)
+                    if (grid.cells[x, y].isRevealed == false)
                         amount++;
                 }
 
@@ -154,11 +154,20 @@ namespace myEngine.myProject.MineSweeper
             for (int y = 0; y < grid.rows; y++)
                 for (int x = 0; x < grid.collumns; x++)
                 {
-                    if (grid.cells[x, y].revealed == false && grid.cells[x,y] is Cell_Empty)
+                    if (grid.cells[x, y].isRevealed == false && grid.cells[x,y] is Cell_Empty)
                         amount++;
                 }
 
             return amount;
+        }
+
+        public static void SetEveryCellsToDisabled(Grid grid)
+        {
+            for (int y = 0; y < grid.rows; y++)
+                for (int x = 0; x < grid.collumns; x++)
+                {
+                    grid.cells[x, y].button.isActive = false;
+                }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace myEngine
     public class Scene_MineSweeper : IScene
     {
         //FIELDS
-        Game_MineSweeper game;
+        public static Game_MineSweeper game;
 
         //CONSTRUCTOR
         public Scene_MineSweeper()
