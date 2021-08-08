@@ -30,7 +30,7 @@ namespace myEngine
 
         private void CheckInput_ChangeScene()
         {
-
+            /*
             if (Input.GetKeyDown(Keys.F1))
                 ChangeScene(new Scene_Pong());
             if (Input.GetKeyDown(Keys.F2))
@@ -53,6 +53,8 @@ namespace myEngine
                 ChangeScene(new Scene_PerlinNoise());
             if (Input.GetKeyDown(Keys.F11))
                 ChangeScene(new Scene_TextUI());
+            */
+
             /*
             if (Input.GetKeyDown(Keys.F12))
                 ChangeScene(new Scene_WindowSizes());
