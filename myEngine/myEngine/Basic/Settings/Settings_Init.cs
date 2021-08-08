@@ -9,6 +9,7 @@ namespace myEngine
     {
         public static void InitSettingsFromFile(Settings settings)
         {
+            /*
             var iniFile = new IniFile("options.ini");
 
             //string s = iniFile.GetInteger("Section", "variable", "defaultValue");
@@ -31,6 +32,7 @@ namespace myEngine
             Engine.game.IsFixedTimeStep = false;
 
             Engine.graphics.ApplyChanges();
+            */
         }
     }
 }

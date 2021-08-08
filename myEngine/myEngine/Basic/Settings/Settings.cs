@@ -23,12 +23,12 @@ namespace myEngine
         public static bool RELEASE_MODE = false;
 
         //REF
-        public Game1 game;
+        //public Game1 game;
 
         //CONSTRUCTOR
-        public Settings(Game1 game)
+        public Settings(Game game)
         {
-            this.game = game;
+            //this.game = game;
 
             game.IsMouseVisible = true;
             game.IsFixedTimeStep = false;

@@ -58,7 +58,7 @@ namespace myEngine.myProject.MineSweeper
 
         public void OnFirstCellShown(Cell cell)
         {
-            GridUtils.SetBombs(this, 70);
+            GridUtils.SetBombs(this, 15);
         }
     }
 }

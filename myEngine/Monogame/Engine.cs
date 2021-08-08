@@ -10,14 +10,12 @@ using Microsoft.Xna.Framework;
 
 using ImGuiNET;
 
-
-
 namespace myEngine
 {
     public class Engine
     {
         //BASE
-        public static Game1 game;
+        public static Game game;
         public static GraphicsDeviceManager graphics;
 
         //FIELDS
@@ -35,10 +33,10 @@ namespace myEngine
         public static bool isGameRunning = true;
 
         //METHODS
-        public static void Initialize(Game1 game)
+        public static void Initialize(Game game, GraphicsDeviceManager graphics)
         {
             Engine.game = game;
-            graphics = game.graphics;
+            Engine.graphics = graphics;
 
             settings = new Settings(game);
             //Settings_Init.InitSettingsFromFile(settings);

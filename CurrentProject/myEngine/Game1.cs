@@ -1,15 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.IO;
+using myEngine;
 
-namespace myEngine
+namespace zCurrentProject
 {
     public class Game1 : Game
     {
-        public GraphicsDeviceManager graphics;
+        private GraphicsDeviceManager graphics;
 
         public Game1()
         {
@@ -18,7 +17,9 @@ namespace myEngine
 
         protected override void Initialize()
         {
-            Engine.Initialize(this);
+            Engine.Initialize(this, graphics);
+            Engine.sceneManager.ChangeScene(typeof(Scene_Default));
+
             base.Initialize();
         }
 

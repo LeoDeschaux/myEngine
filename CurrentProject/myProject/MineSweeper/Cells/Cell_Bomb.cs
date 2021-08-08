@@ -14,9 +14,9 @@ namespace myEngine.myProject.MineSweeper
 
         public Cell_Bomb(Vector2 position, Vector2 dimension, int x, int y) : base(position, dimension, x, y)
         {
-            button.defaultColor = Color.Pink;
-            button.hoverColor = Color.Red;
-            button.disabledColor = Color.Pink;
+            //button.defaultColor = Color.Pink;
+            //button.hoverColor = Color.Red;
+            //button.disabledColor = Color.Pink;
 
             button.onButtonPressed.SetFunction(OnClic);
         }
