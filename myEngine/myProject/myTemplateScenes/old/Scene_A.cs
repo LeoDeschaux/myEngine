@@ -15,7 +15,7 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.LightGreen;
 
             Button button = new Button();
-            button.transform.position = Settings.Get_Screen_Center();
+            button.transform.position = Settings.GetScreenCenter();
             button.text.s = "GO TO SCENE B";
             button.onButtonPressed.SetFunction(ChangeScene);
         }
@@ -29,7 +29,7 @@ namespace myEngine
 
         public void ChangeScene()
         {
-            Engine.sceneManager.ChangeScene(typeof(Scene_B));
+            SceneManager.ChangeScene(typeof(Scene_B));
             //Engine.sceneManager.ChangeScene(new Scene_B());
         }
     }

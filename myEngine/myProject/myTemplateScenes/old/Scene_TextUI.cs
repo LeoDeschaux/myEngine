@@ -31,7 +31,7 @@ namespace myEngine
             textCenter.s = "CECI EST \nMON TEXT";
             textCenter.color = Color.White;
             textCenter.fontSize = 60;
-            textCenter.transform.position = Settings.Get_Screen_Center();
+            textCenter.transform.position = Settings.GetScreenCenter();
             textCenter.alignment = Alignment.Center;
 		}
 

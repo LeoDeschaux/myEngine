@@ -15,7 +15,7 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.Khaki;
 
             Sprite s = new Sprite(Ressources.Load<Texture2D>("myContent/2D/mountain"));
-            s.transform.position = Settings.Get_Screen_Center();
+            s.transform.position = Settings.GetScreenCenter();
             s.dimension = new Vector2(Settings.SCREEN_WIDTH * 0.9f, Settings.SCREEN_HEIGHT * 0.9f);
 
             Text t = new Text("mon text");
@@ -27,7 +27,7 @@ namespace myEngine
         //METHODS
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), Color.Red, orderInLayer: 1000);
+            DrawSimpleShape.DrawRuller(Settings.GetScreenCenter(), Color.Red, orderInLayer: 1000);
         }
     }
 }

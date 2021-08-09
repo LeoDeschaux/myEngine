@@ -27,7 +27,7 @@ namespace myEngine
 
             sprite = new Sprite(mountain);
 
-            sprite.transform.position = Settings.Get_Screen_Center();
+            sprite.transform.position = Settings.GetScreenCenter();
             sprite.dimension = new Vector2(Settings.SCREEN_WIDTH * 0.95f, Settings.SCREEN_HEIGHT * 0.95f);
 
             //EFFECT

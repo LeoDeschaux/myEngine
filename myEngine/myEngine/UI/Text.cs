@@ -37,7 +37,7 @@ namespace myEngine
         //CONSTRUCTOR 
         public Text(string s = "new Text")
         {
-            fontSystem = FontSystemFactory.CreateStroked(RendererEngine.spriteBatch.GraphicsDevice, 1, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
+            fontSystem = FontSystemFactory.CreateStroked(RenderingEngine.spriteBatch.GraphicsDevice, 1, Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
             fontSystem.AddFont(File.ReadAllBytes(@"Content/myContent/UI/Fonts/arial.ttf"));
 
             this.s = s;

@@ -24,7 +24,7 @@ namespace myEngine.myProject.Pong
         {
             random = new Random();
 
-            Vector2 position = Settings.Get_Screen_Center();
+            Vector2 position = Settings.GetScreenCenter();
             Vector2 dimension = new Vector2(500, Settings.SCREEN_HEIGHT - 100);
             zoneRectangle = new Rectangle((int)(position.X - (dimension.X / 2)), (int)(position.Y - (dimension.Y / 2)), (int)dimension.X, (int)dimension.Y);
         }

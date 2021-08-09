@@ -22,7 +22,7 @@ namespace myEngine.myProject.Arkanoid
             sprite.dimension = new Vector2(200, 40);
 
             //START POS
-            Vector2 startPos = Settings.Get_Screen_Center();
+            Vector2 startPos = Settings.GetScreenCenter();
             startPos += new Vector2(0, 300);
             this.transform.position = startPos;
             sprite.transform = this.transform;

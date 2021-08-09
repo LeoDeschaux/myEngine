@@ -24,7 +24,7 @@ namespace myEngine
 
             Sprite sprite = new Sprite();
             sprite.texture = Ressources.Load<Texture2D>("myContent/ParticleSystem/star");
-            sprite.transform.position = Settings.Get_Screen_Center();
+            sprite.transform.position = Settings.GetScreenCenter();
             sprite.transform.scale =  Vector2.One * 2;
         }
 

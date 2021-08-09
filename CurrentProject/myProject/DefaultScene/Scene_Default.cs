@@ -4,6 +4,7 @@ using System.Text;
 
 using myEngine;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace zCurrentProject
 {
@@ -19,6 +20,12 @@ namespace zCurrentProject
             Text t = new Text();
             t.s = "SCENE_DEFAULT";
             t.color = Color.White;
+
+            /*
+            Sprite s = new Sprite();
+            s.texture = Ressources.Load<Texture2D>("yourContent/char");
+            s.transform.position = Settings.Get_Screen_Center();
+            */
         }
 
         //METHODS

@@ -18,7 +18,7 @@ namespace myEngine
 
             s = new Sprite();
             s.color = Color.Black;
-            s.transform.position = new Vector2(100, Settings.Get_Screen_Center().Y);
+            s.transform.position = new Vector2(100, Settings.GetScreenCenter().Y);
 
             NewTween.BaseTween(ref s.transform.position.X, 1000);
 

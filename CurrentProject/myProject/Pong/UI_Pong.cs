@@ -148,7 +148,7 @@ namespace myEngine.myProject.Pong
 
             if (b)
             {
-                pauseMenu_BG = new Sprite(Settings.Get_Screen_Center(), new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT));
+                pauseMenu_BG = new Sprite(Settings.GetScreenCenter(), new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT));
                 pauseMenu_BG.color = new Color(0, 0, 0, 200);
                 pauseMenu_BG.drawOrder = 600;
 

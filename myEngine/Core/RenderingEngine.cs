@@ -7,20 +7,23 @@ using System.IO;
 
 namespace myEngine
 {
-    public class RendererEngine
+    public class RenderingEngine
     {
         //FIELDS
         public static SpriteBatch spriteBatch;
-        public RenderTarget2D renderTarget;
+        private RenderTarget2D renderTarget;
 
         private static ImGuiRenderer imGuiRenderer;
 
         public static PostProcessingProfile postProcessingProfile;
 
+        public static GraphicsDeviceManager graphics;
+
         //CONSTRUCTOR
-        public RendererEngine()
+        public RenderingEngine()
         {
-            spriteBatch = new SpriteBatch(Engine.game.GraphicsDevice);
+            //spriteBatch = new SpriteBatch(Engine.game.GraphicsDevice);
+            spriteBatch = new SpriteBatch(Engine.graphics.GraphicsDevice);
 
             renderTarget = new RenderTarget2D(
             Engine.game.GraphicsDevice,
@@ -65,7 +68,7 @@ namespace myEngine
 
             //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
 
-            Matrix matrix = Engine.sceneManager.currentScene.camera.transformMatrix;
+            Matrix matrix = SceneManager.currentScene.camera.transformMatrix;
             Engine.world.Draw(spriteBatch, matrix);
 
             //spriteBatch.End();
@@ -77,7 +80,7 @@ namespace myEngine
 
             //ImGUI
             imGuiRenderer.BeforeLayout(Time.gameTime);
-            Engine.sceneManager.currentScene.DrawGUI();
+            SceneManager.currentScene.DrawGUI();
             imGuiRenderer.AfterLayout();
 
             Engine.game.GraphicsDevice.SetRenderTarget(null);

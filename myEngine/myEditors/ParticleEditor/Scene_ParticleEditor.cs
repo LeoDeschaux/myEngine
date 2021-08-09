@@ -42,10 +42,10 @@ namespace myEngine
             particleEngine = new ParticleEngine(pp, Vector2.Zero);
             particleEngine.isActive = true;
 
-            particleEngine.EmitterLocation = Settings.Get_Screen_Center();
+            particleEngine.EmitterLocation = Settings.GetScreenCenter();
 
             //FOLLOW MOUSE
-            pe_followMouse = new ParticleEngine(pp, Settings.Get_Screen_Center());
+            pe_followMouse = new ParticleEngine(pp, Settings.GetScreenCenter());
             pe_followMouse.isActive = false;
 
             //UI
@@ -73,7 +73,7 @@ namespace myEngine
             else
             {
                 pe_followMouse.isActive = false;
-                pe_followMouse.EmitterLocation = Settings.Get_Screen_Center();
+                pe_followMouse.EmitterLocation = Settings.GetScreenCenter();
             }
         }
 

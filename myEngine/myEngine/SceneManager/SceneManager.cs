@@ -8,70 +8,19 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine
 {
-    public class SceneManager : Entity
+    public static class SceneManager
     {
         //FIELDS
-        public IScene currentScene;
-        private Input input;
+        public static IScene currentScene;
 
-        //CONSTRUCTOR
-        public SceneManager()
-        {
-            currentScene = new Scene_Paralax(); 
-            input = new Input();
-        }
-
-        //UPDATE & DRAW
-        public override void Update()
-        {
-            if(!Settings.RELEASE_MODE)
-                CheckInput_ChangeScene();
-        }
-
-        private void CheckInput_ChangeScene()
-        {
-            /*
-            if (Input.GetKeyDown(Keys.F1))
-                ChangeScene(new Scene_Pong());
-            if (Input.GetKeyDown(Keys.F2))
-                ChangeScene(new Scene_DrawSimpleShape());
-            if (Input.GetKeyDown(Keys.F3))
-                ChangeScene(new Scene_Tweening());
-            if (Input.GetKeyDown(Keys.F4))
-                ChangeScene(new Scene_ParticleSystem());
-            if (Input.GetKeyDown(Keys.F5))
-                ReloadScene();
-            if (Input.GetKeyDown(Keys.F6))
-                ChangeScene(new Scene_3D());
-            if (Input.GetKeyDown(Keys.F7))
-                ChangeScene(new Scene_Animation());
-            if (Input.GetKeyDown(Keys.F8))
-                ChangeScene(new Scene_2DCamera());
-            if (Input.GetKeyDown(Keys.F9))
-                ChangeScene(new Scene_ParentTransform());
-            if (Input.GetKeyDown(Keys.F10))
-                ChangeScene(new Scene_PerlinNoise());
-            if (Input.GetKeyDown(Keys.F11))
-                ChangeScene(new Scene_TextUI());
-            */
-
-            /*
-            if (Input.GetKeyDown(Keys.F12))
-                ChangeScene(new Scene_WindowSizes());
-            */
-
-            if (Input.GetKeyDown(Keys.F12))
-                ChangeScene(new Scene_ParticleEditor());
-        }
-
-        public void ChangeScene(IScene scene)
+        public static void ChangeScene(IScene scene)
         {
             ClearScene();
             Type t = Type.GetType(scene.ToString());
             currentScene = (IScene)Activator.CreateInstance(t);
         }
 
-        public void ChangeScene(Type scene)
+        public static void ChangeScene(Type scene)
         {
             ClearScene();
             currentScene = (IScene)Activator.CreateInstance(scene);
@@ -79,30 +28,28 @@ namespace myEngine
             //currentScene = (IScene)Activator.CreateInstance(t);
         }
 
-        public void OnSceneChange()
+        public static void OnSceneChange()
         {
 
         }
 
-        public void ReloadScene()
+        public static void ReloadScene()
         {
             ChangeScene(currentScene);
         }
 
-        private void ClearScene()
+        private static void ClearScene()
         {
             Engine.world.SkipUpdate();
 
             //Engine.world = new World();
             Engine.world.ClearWorld();
-            Engine.world.AddEntity(this);
-            Engine.world.AddEntity(input);
+            //Engine.world.AddEntity();
 
             if(currentScene != null)
             {
                 currentScene.Destroy();
             }
-
         }
     }
 }

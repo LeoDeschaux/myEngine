@@ -12,7 +12,7 @@ using ImGuiNET;
 
 namespace myEngine
 {
-    public class Engine
+    public static class Engine
     {
         //BASE
         public static Game game;
@@ -20,11 +20,11 @@ namespace myEngine
 
         //FIELDS
         public static World world;
-        public static SceneManager sceneManager;
+        //public static SceneManager sceneManager;
 
         public static AudioEngine audioEngine;
         public static PhysicEngine physicEngine;
-        public static RendererEngine rendererEngine;
+        public static RenderingEngine renderingEngine;
 
         public static Settings settings;
 
@@ -33,26 +33,36 @@ namespace myEngine
         public static bool isGameRunning = true;
 
         //METHODS
-        public static void Initialize(Game game, GraphicsDeviceManager graphics)
+        public static void Create(Game game, GraphicsDeviceManager graphics)
         {
             Engine.game = game;
             Engine.graphics = graphics;
 
+            /*
             settings = new Settings(game);
             //Settings_Init.InitSettingsFromFile(settings);
+            */
 
-            Save_RunTime.Init();
+            /*
+            SaveSystem_RunTime.Init();
             Time.Init();
 
             LoadContent(game.Content);
 
-            rendererEngine = new RendererEngine();
+            renderingEngine = new RenderingEngine();
             audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
 
             world = new World();
-            sceneManager = new SceneManager();
+            //sceneManager = new SceneManager();
             debug = new Debug();
+            */
+        }
+
+        public static void Initialize()
+        {
+            //settings = new Settings(game);
+            //Settings_Init.InitSettingsFromFile(settings);
         }
 
         private static void LoadContent(ContentManager content)
@@ -69,6 +79,7 @@ namespace myEngine
             if (!Settings.RELEASE_MODE && (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 game.Exit();
 
+            /*
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * Settings.GAME_SPEED;
             Time.UpdateGameTime(gameTime, deltaTime);
 
@@ -79,11 +90,12 @@ namespace myEngine
             world.Update();
             world.LateUpdate();
             physicEngine.Update();
+            */
         }
 
         public static void Draw()
         {
-            rendererEngine.Draw();
+            //renderingEngine.Draw();
         }
 
         //METHODS

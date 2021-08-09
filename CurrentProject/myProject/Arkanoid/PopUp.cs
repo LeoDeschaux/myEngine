@@ -14,7 +14,7 @@ namespace myEngine.myProject.Arkanoid
         //CONSTRUCTOR
         public PopUp()
         {
-            transform.position = Settings.Get_Screen_Center();
+            transform.position = Settings.GetScreenCenter();
             
             background = new Sprite();
             background.color = Color.Black;

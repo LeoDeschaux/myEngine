@@ -19,6 +19,7 @@ namespace myEngine
 
         public static T Load<T>(string path)
         {
+            //Console.WriteLine("LOADING FILE: [" + path + "]");
             return content.Load<T>(path);
         }
     }

@@ -19,7 +19,7 @@ namespace myEngine
         public Scene_ParentTransform()
         {
             p = new Sprite();
-            p.transform.position = Settings.Get_Screen_Center();
+            p.transform.position = Settings.GetScreenCenter();
 
             c = new Sprite();
             c.dimension = Vector2.One * 50;

@@ -31,7 +31,7 @@ namespace myEngine
 
             //BUTTON PVP
             pvp = new Button();
-            pvp.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 400);
+            pvp.sprite.transform.position = new Vector2(Settings.GetScreenCenter().X, 400);
             pvp.sprite.dimension = new Vector2(500, 80);
 
             //pvp.text.transform.position = pvp.sprite.transform.position;
@@ -47,7 +47,7 @@ namespace myEngine
 
             //BUTTON AI
             Button ai = new Button();
-            ai.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 500);
+            ai.sprite.transform.position = new Vector2(Settings.GetScreenCenter().X, 500);
             ai.sprite.dimension = new Vector2(500, 80);
 
             //ai.text.transform.position = new Vector2(480, 455);
@@ -61,7 +61,7 @@ namespace myEngine
 
             //QUITTER
             Button exit = new Button();
-            exit.sprite.transform.position = new Vector2(Settings.Get_Screen_Center().X, 655);
+            exit.sprite.transform.position = new Vector2(Settings.GetScreenCenter().X, 655);
             exit.sprite.dimension = new Vector2(350, 50);
 
             exit.text.alignment = Alignment.Center;
@@ -77,14 +77,14 @@ namespace myEngine
         //METHODS
         private void LoadPVPScene()
         {
-            Save_RunTime.data.Clear();
+            SaveSystem_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvP;
             Engine.sceneManager.ChangeScene(new Scene_Pong());
         }
 
         private void LoadAIScene()
         {
-            Save_RunTime.data.Clear();
+            SaveSystem_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvAI;
             Engine.sceneManager.ChangeScene(new Scene_Pong());
         }

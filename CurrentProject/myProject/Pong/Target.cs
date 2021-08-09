@@ -16,7 +16,7 @@ namespace myEngine.myProject.Pong
         //CONSTRUCTOR
         public Target()
         {
-            sprite = new Sprite(new Vector2(Settings.Get_Screen_Center().X, Settings.Get_Screen_Center().Y), new Vector2(50, 50));
+            sprite = new Sprite(new Vector2(Settings.GetScreenCenter().X, Settings.GetScreenCenter().Y), new Vector2(50, 50));
             sprite.color = Color.HotPink;
             sprite.drawOrder = 0;
             sprite.transform.rotation = 45f;

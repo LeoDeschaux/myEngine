@@ -22,7 +22,7 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.CornflowerBlue;
 
             AnimatedSprite animatedSprite = new AnimatedSprite(Ressources.Load<Texture2D>("TileMaps/myFile"), 2, 2);
-            animatedSprite.transform.position = Settings.Get_Screen_Center();
+            animatedSprite.transform.position = Settings.GetScreenCenter();
             animatedSprite.speed = 4;
             animatedSprite.playAllFrame = true;
 

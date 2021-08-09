@@ -22,7 +22,7 @@ namespace myEngine
 
             camera = new Camera2D();
             postProcessingProfile = new PostProcessingProfile();
-            RendererEngine.postProcessingProfile = postProcessingProfile;
+            RenderingEngine.postProcessingProfile = postProcessingProfile;
         }
 
         public virtual void DrawGUI() { }

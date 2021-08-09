@@ -35,8 +35,8 @@ namespace myEngine.myProject.Sudoku
             cells = new Cell[collumns, rows];
             answers = new string[collumns, rows];
 
-            Vector2 start = new Vector2(Settings.Get_Screen_Center().X - ((collumns * (spriteSizeX + marginX)) / 2),
-                                                Settings.Get_Screen_Center().Y - ((rows * (spriteSizeY + marginY)) / 2));
+            Vector2 start = new Vector2(Settings.GetScreenCenter().X - ((collumns * (spriteSizeX + marginX)) / 2),
+                                                Settings.GetScreenCenter().Y - ((rows * (spriteSizeY + marginY)) / 2));
             start = new Vector2(start.X + ((spriteSizeX + marginX) / 2), start.Y + ((spriteSizeY + marginY) / 2));
 
             for (int y = 0; y < rows; y++)

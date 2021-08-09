@@ -83,14 +83,14 @@ namespace myEngine.myProject.Pong
 
         public void LoadScore()
         {
-            if (Save_RunTime.data.ContainsKey((scoreKey + playerIndex).ToString()))
-                score = Int32.Parse(Save_RunTime.data[(scoreKey + playerIndex).ToString()]);
+            if (SaveSystem_RunTime.data.ContainsKey((scoreKey + playerIndex).ToString()))
+                score = Int32.Parse(SaveSystem_RunTime.data[(scoreKey + playerIndex).ToString()]);
         }
 
         public void SaveScore()
         {
-            Save_RunTime.data.Remove((scoreKey+playerIndex).ToString());
-            Save_RunTime.data.Add((scoreKey+playerIndex).ToString(), score.ToString());
+            SaveSystem_RunTime.data.Remove((scoreKey+playerIndex).ToString());
+            SaveSystem_RunTime.data.Add((scoreKey+playerIndex).ToString(), score.ToString());
         }
 
 

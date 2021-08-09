@@ -28,8 +28,8 @@ namespace myEngine.myProject.Arkanoid
             for (int y = 0; y < sizeY; y++)
                 for (int x = 0; x < sizeX; x++)
                 {
-                    Vector2 start = new Vector2(Settings.Get_Screen_Center().X - ((sizeX * (spriteSizeX + marginX)) / 2),
-                                                Settings.Get_Screen_Center().Y - ((sizeY * (spriteSizeY + marginY)) / 2));
+                    Vector2 start = new Vector2(Settings.GetScreenCenter().X - ((sizeX * (spriteSizeX + marginX)) / 2),
+                                                Settings.GetScreenCenter().Y - ((sizeY * (spriteSizeY + marginY)) / 2));
                     start = new Vector2(start.X + ((spriteSizeX + marginX) / 2), start.Y + ((spriteSizeY + marginY) / 2));
 
                     Vector2 position = new Vector2(offSetX + start.X + (x * (spriteSizeX + marginX)), offSetY + start.Y + (y * (spriteSizeY + marginY)));

@@ -18,7 +18,7 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.LightBlue;
 
             b1 = new Button();
-            b1.transform.position = Settings.Get_Screen_Center();
+            b1.transform.position = Settings.GetScreenCenter();
             b1.sprite.dimension = new Vector2(120, 120);
             b1.drawOrder = 0;
             b1.sprite.drawOrder = 1;

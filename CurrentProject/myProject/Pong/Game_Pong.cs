@@ -52,8 +52,8 @@ namespace myEngine.myProject.Pong
 
         private void ServeTheBall()
         {
-            if (Save_RunTime.data.ContainsKey(lastWinnerKey))
-                lastWinner = Save_RunTime.data[lastWinnerKey];
+            if (SaveSystem_RunTime.data.ContainsKey(lastWinnerKey))
+                lastWinner = SaveSystem_RunTime.data[lastWinnerKey];
 
             if (lastWinner != "none")
             {
@@ -83,8 +83,8 @@ namespace myEngine.myProject.Pong
 
             player.score++;
 
-            Save_RunTime.data.Remove(lastWinnerKey);
-            Save_RunTime.data.Add(lastWinnerKey, looser.ToString());
+            SaveSystem_RunTime.data.Remove(lastWinnerKey);
+            SaveSystem_RunTime.data.Add(lastWinnerKey, looser.ToString());
 
             SaveScore();
             ReloadScene();

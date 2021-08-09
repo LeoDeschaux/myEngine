@@ -15,7 +15,7 @@ namespace myEngine
         //METHODS
         public static Texture2D GetTexture(int x = 2, int y = 2) //2 make it divisible, making it avoid glitching (i guess ?????)
         {
-            Texture2D texture = new Texture2D(RendererEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
+            Texture2D texture = new Texture2D(RenderingEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 
             Color[] data = new Color[x * y];
             for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
@@ -46,10 +46,10 @@ namespace myEngine
             var origin = new Vector2(0f, 0.5f);
             var scale = new Vector2(length * 0.5f, thickness * 0.5f);
 
-            RendererEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
-            RendererEngine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
+            RenderingEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied);
+            RenderingEngine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
-            RendererEngine.spriteBatch.End();
+            RenderingEngine.spriteBatch.End();
         }
 
         public static void DrawLine(Vector2 point, float length, float angle, Color color, Matrix? matrix, float thickness = 1f, int orderInLayer = 0)
@@ -57,10 +57,10 @@ namespace myEngine
             var origin = new Vector2(0f, 0.5f);
             var scale = new Vector2(length * 0.5f, thickness * 0.5f);
 
-            RendererEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, transformMatrix: matrix);
-            RendererEngine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
+            RenderingEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, transformMatrix: matrix);
+            RenderingEngine.spriteBatch.Draw(GetTexture(), point, null, color, angle, origin, scale, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
-            RendererEngine.spriteBatch.End();
+            RenderingEngine.spriteBatch.End();
         }
 
         //##### DRAW RECTANGLE #####
@@ -159,10 +159,10 @@ namespace myEngine
 
             //Rectangle sourceRectangle = new Rectangle(0, 0, (int)dimension.X, (int)dimension.Y);
 
-            RendererEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
-            RendererEngine.spriteBatch.Draw(GetTexture(), r, null, color, 0, Vector2.Zero, SpriteEffects.None,
+            RenderingEngine.spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
+            RenderingEngine.spriteBatch.Draw(GetTexture(), r, null, color, 0, Vector2.Zero, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
-            RendererEngine.spriteBatch.End();
+            RenderingEngine.spriteBatch.End();
         }
 
         public static void DrawRuller(Vector2 position)

@@ -15,16 +15,16 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_2DCamera()
         {
-            Sprite s = new Sprite(Settings.Get_Screen_Center(), (Vector2.One*150));
+            Sprite s = new Sprite(Settings.GetScreenCenter(), (Vector2.One*150));
             s.dimension = new Vector2(300, 150);
 
             Text t = new Text();
-            t.transform.position = Settings.Get_Screen_Center();
+            t.transform.position = Settings.GetScreenCenter();
             t.s = "Ceci est le centre";
             t.alignment = Alignment.Center;
             t.color = Color.Red;
 
-            Sprite center = new Sprite(Settings.Get_Screen_Center(), (Vector2.One * 10));
+            Sprite center = new Sprite(Settings.GetScreenCenter(), (Vector2.One * 10));
             center.color = Color.Red;
             center.transform = camera.transform;
         }
@@ -72,7 +72,7 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            DrawSimpleShape.DrawRuller(Settings.Get_Screen_Center(), matrix);
+            DrawSimpleShape.DrawRuller(Settings.GetScreenCenter(), matrix);
         }
     }
 }

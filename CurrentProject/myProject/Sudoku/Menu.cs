@@ -39,7 +39,7 @@ namespace myEngine.myProject.Sudoku
 
             laDouille = new Button();
             laDouille.sprite.dimension = new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
-            laDouille.sprite.transform.position = Settings.Get_Screen_Center();
+            laDouille.sprite.transform.position = Settings.GetScreenCenter();
             laDouille.defaultColor = Color.Transparent;
             laDouille.hoverColor = Color.Transparent;
             laDouille.onClicColor = Color.Transparent;

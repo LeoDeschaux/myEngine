@@ -95,7 +95,7 @@ namespace myEngine
         }
 
         //PROPS
-        public static Vector2 Get_Screen_Center()
+        public static Vector2 GetScreenCenter()
         {
             return new Vector2((float)SCREEN_WIDTH / 2, (float)SCREEN_HEIGHT / 2);
         }

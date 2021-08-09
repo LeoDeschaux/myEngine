@@ -28,7 +28,7 @@ namespace myEngine
             p = new Perlin();
 
             sprite = new Sprite();
-            sprite.transform.position = Settings.Get_Screen_Center();
+            sprite.transform.position = Settings.GetScreenCenter();
             sprite.dimension = new Vector2(256, 256);
 
             sprite.texture = GetTexture((int)sprite.dimension.X, (int)sprite.dimension.Y);
@@ -47,7 +47,7 @@ namespace myEngine
 
         public Texture2D GetTexture(int x, int y)
         {
-            Texture2D texture = new Texture2D(RendererEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
+            Texture2D texture = new Texture2D(RenderingEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
 
             Color[] data = new Color[x * y];
             for (int i = 0; i < data.Length; ++i)

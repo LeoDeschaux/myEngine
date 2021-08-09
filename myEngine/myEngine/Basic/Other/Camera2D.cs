@@ -13,7 +13,7 @@ namespace myEngine
         //CONSTRUCTOR
         public Camera2D()
         {
-            transform.position = Settings.Get_Screen_Center();
+            transform.position = Settings.GetScreenCenter();
         }
 
         //METHODS

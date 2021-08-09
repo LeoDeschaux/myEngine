@@ -4,7 +4,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Save_RunTime
+    public class SaveSystem_RunTime
     {
         //FIELDS
         public static IDictionary<string, string> data;
