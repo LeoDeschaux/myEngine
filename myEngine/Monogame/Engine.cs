@@ -20,7 +20,6 @@ namespace myEngine
 
         //FIELDS
         public static World world;
-        public static SceneManager sceneManager;
 
         public static AudioEngine audioEngine;
         public static PhysicEngine physicEngine;
@@ -51,7 +50,7 @@ namespace myEngine
             physicEngine = new PhysicEngine();
 
             world = new World();
-            sceneManager = new SceneManager();
+            //sceneManager = new SceneManager();
             debug = new Debug();
         }
 

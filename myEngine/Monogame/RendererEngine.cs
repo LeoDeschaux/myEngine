@@ -65,7 +65,7 @@ namespace myEngine
 
             //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, null);
 
-            Matrix matrix = Engine.sceneManager.currentScene.camera.transformMatrix;
+            Matrix matrix = SceneManager.currentScene.camera.transformMatrix;
             Engine.world.Draw(spriteBatch, matrix);
 
             //spriteBatch.End();
@@ -77,7 +77,7 @@ namespace myEngine
 
             //ImGUI
             imGuiRenderer.BeforeLayout(Time.gameTime);
-            Engine.sceneManager.currentScene.DrawGUI();
+            SceneManager.currentScene.DrawGUI();
             imGuiRenderer.AfterLayout();
 
             Engine.game.GraphicsDevice.SetRenderTarget(null);

@@ -16,7 +16,7 @@ namespace myEngine
         protected override void Initialize()
         {
             Engine.Initialize(this, graphics);
-            Engine.sceneManager.ChangeScene(typeof(Scene_Default));
+            SceneManager.ChangeScene(typeof(Scene_Default));
 
             base.Initialize();
         }

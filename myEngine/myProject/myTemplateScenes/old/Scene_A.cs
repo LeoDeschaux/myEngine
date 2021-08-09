@@ -29,7 +29,7 @@ namespace myEngine
 
         public void ChangeScene()
         {
-            Engine.sceneManager.ChangeScene(typeof(Scene_B));
+            SceneManager.ChangeScene(typeof(Scene_B));
             //Engine.sceneManager.ChangeScene(new Scene_B());
         }
     }
