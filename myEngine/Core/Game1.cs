@@ -6,18 +6,18 @@ namespace myEngine
 {
     public class Game1 : Game
     {
-        GraphicsDeviceManager g;
+        private GraphicsDeviceManager graphics;
+
         public Game1()
         {
-            g = new GraphicsDeviceManager(this);
-            Engine.Create(this, g);
+            graphics = new GraphicsDeviceManager(this);
         }
 
         protected override void Initialize()
         {
-            //Engine.Initialize();
-            //Engine.sceneManager.ChangeScene(typeof(Scene_TwoBitCoding));
-            //SceneManager.ChangeScene(typeof(Scene_TwoBitCoding));
+            Engine.Initialize(this, graphics);
+            SceneManager.ChangeScene(typeof(Scene_Default));
+
             base.Initialize();
         }
 

@@ -44,12 +44,14 @@ namespace myEngine
 
             //Engine.world = new World();
             Engine.world.ClearWorld();
-            //Engine.world.AddEntity();
+            //Engine.world.AddEntity(this);
+            //Engine.world.AddEntity(input);
 
             if(currentScene != null)
             {
                 currentScene.Destroy();
             }
+
         }
     }
 }
