@@ -10,20 +10,28 @@ namespace myEngine
         //FIELDS
         public Matrix transformMatrix { get; private set; }
 
+        private Matrix offSet;
+
         //CONSTRUCTOR
         public Camera2D()
         {
             transform.position = Settings.GetScreenCenter();
+            transform.scale = new Vector2(1, 1);
+
+            offSet = Matrix.CreateTranslation(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT, 0);
         }
 
         //METHODS
         public override void Update()
         {
-            var position = Matrix.CreateTranslation(-(int)transform.position.X, -(int)transform.position.Y, 0);
+            transform.scale.X = MathHelper.Clamp(transform.scale.X, 0.1f, 10);
+            transform.scale.Y = MathHelper.Clamp(transform.scale.X, 0.1f, 10);
 
-            var offSet = Matrix.CreateTranslation(Settings.SCREEN_WIDTH/2, Settings.SCREEN_HEIGHT/2, 0);
+            Matrix scale = Matrix.CreateScale(transform.scale.X, transform.scale.Y, 1);
+            Matrix rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(transform.rotation));
+            Matrix position = Matrix.CreateTranslation(-(int)transform.position.X, -(int)transform.position.Y, 0);
 
-            transformMatrix = position * offSet;
+            transformMatrix = scale * rotation * position * offSet;
         }
     }
 }

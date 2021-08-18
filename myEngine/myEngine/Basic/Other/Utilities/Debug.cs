@@ -51,6 +51,11 @@ namespace myEngine
                 UI.SetVisible(false);
             }
 
+            if (Input.GetKeyDown(Keys.PageUp))
+                SceneManager_Utils.ChangeToPreviousScene();
+            if (Input.GetKeyDown(Keys.PageDown))
+                SceneManager_Utils.ChangeToNextScene();
+
             //FRAME RATE
             float frameRate = 1 / (float)Time.gameTime.ElapsedGameTime.TotalSeconds;
             Engine.game.Window.Title = "FPS:" + frameRate.ToString();

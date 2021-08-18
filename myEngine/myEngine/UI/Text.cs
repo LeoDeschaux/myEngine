@@ -30,9 +30,11 @@ namespace myEngine
 
         public Color color;
 
-        public bool isVisible = true;
+        public bool isVisible;
 
         public Alignment alignment;
+
+        public bool useScreenCoord;
 
         //CONSTRUCTOR 
         public Text(string s = "new Text")
@@ -45,6 +47,9 @@ namespace myEngine
 
             this.color = Color.Black;
             this.alignment = Alignment.Left;
+
+            isVisible = true;
+            useScreenCoord = true;
         }
 
         //METHODS
@@ -76,6 +81,9 @@ namespace myEngine
 
             if (font != null && s != null)
             {
+                if (useScreenCoord)
+                    matrix = Matrix.Identity;
+
                 spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
 
                 spriteBatch.DrawString(font, s, transform.position, color, transform.scale, transform.rotation, origin,

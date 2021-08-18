@@ -27,12 +27,12 @@ namespace myEngine
         //UPDATE & DRAW
         public override void Update()
         {
-            if (Input.GetMouseDown(MouseButton.Left))
+            if (Input.GetMouseDown(MouseButtons.Left))
             {
                 draw = true;
                 pos = Mouse.position.ToVector2();
             }
-            if (Input.GetMouseUp(MouseButton.Left))
+            if (Input.GetMouseUp(MouseButtons.Left))
                 draw = false;
 
             DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());

@@ -21,6 +21,7 @@ namespace myEngine
         }
 
         //UPDATE & DRAW
+        public virtual void Start() { }
         public virtual void Update() { }
         public virtual void LateUpdate() { }
         public virtual void Draw(SpriteBatch sprite, Matrix matrix) { }

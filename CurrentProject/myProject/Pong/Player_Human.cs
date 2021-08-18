@@ -11,12 +11,12 @@ namespace myEngine.myProject.Pong
     public class Player_Human : Player
     {
         //FIELDS
-        private Input input;
+        private PlayerInput Input;
 
         //CONSTRUCTOR
         public Player_Human(Vector2 startPos, PlayerIndex playerIndex, InputProfile inputProfile)
         {
-            input = new Input(inputProfile);
+            Input = new PlayerInput(inputProfile);
             this.playerIndex = playerIndex;
 
             raquette.transform.position = startPos;
@@ -34,19 +34,19 @@ namespace myEngine.myProject.Pong
         {
             base.Update();
 
-            bool pressingDown = (input.GetButton(myButtons.LeftAxisDown) || input.GetButton(myButtons.DPadDown));
+            bool pressingDown = (Input.GetButton(myButtons.LeftAxisDown) || Input.GetButton(myButtons.DPadDown));
             if (pressingDown && raquette.transform.position.Y < (Settings.SCREEN_HEIGHT - raquette.sprite.GetRectangle().Height / 2))
             {
                 raquette.transform.position = new Vector2(raquette.transform.position.X, raquette.transform.position.Y + (speed * Time.deltaTime));
             }
 
-            bool pressingUp = (input.GetButton(myButtons.LeftAxisUp) || input.GetButton(myButtons.DPadUp));
+            bool pressingUp = (Input.GetButton(myButtons.LeftAxisUp) || Input.GetButton(myButtons.DPadUp));
             if (pressingUp && raquette.transform.position.Y > (0 + raquette.sprite.GetRectangle().Height / 2))
             {
                 raquette.transform.position = new Vector2(raquette.transform.position.X, raquette.transform.position.Y - (speed * Time.deltaTime));
             }
 
-            if(input.GetButtonDown(myButtons.ButtonA) && Scene_Pong.game.ball.ballState != Ball.BallState.moving && isHoldingTheBall)
+            if(Input.GetButtonDown(myButtons.ButtonA) && Scene_Pong.game.ball.ballState != Ball.BallState.moving && isHoldingTheBall)
             {
                 FireBall(ballDirection);
             }

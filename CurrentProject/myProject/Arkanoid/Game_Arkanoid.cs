@@ -45,7 +45,7 @@ namespace myEngine.myProject.Arkanoid
             Settings.GAME_SPEED = 0;
             PopUp p = new PopUp();
             //p.button.onButtonPressed += (object sender, EventArgs eventArgs) => Engine.sceneManager.ReloadScene();
-            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
+            p.button.onButtonPressed.SetFunction(SceneManager.ReloadScene);
             
             //new ArgumentException("ERROR");
         }

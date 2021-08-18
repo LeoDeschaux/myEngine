@@ -23,10 +23,9 @@ namespace myEngine
 
         public static AudioEngine audioEngine;
         public static PhysicEngine physicEngine;
-        public static RendererEngine rendererEngine;
+        public static RenderingEngine renderingEngine;
 
         public static Settings settings;
-
         public static Debug debug;
 
         public static bool isGameRunning = true;
@@ -40,17 +39,16 @@ namespace myEngine
             settings = new Settings(game);
             //Settings_Init.InitSettingsFromFile(settings);
 
-            Save_RunTime.Init();
+            SaveSystem_RunTime.Init();
             Time.Init();
 
             LoadContent(game.Content);
 
-            rendererEngine = new RendererEngine();
+            renderingEngine = new RenderingEngine();
             audioEngine = new AudioEngine();
             physicEngine = new PhysicEngine();
 
             world = new World();
-            //sceneManager = new SceneManager();
             debug = new Debug();
         }
 
@@ -71,7 +69,8 @@ namespace myEngine
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * Settings.GAME_SPEED;
             Time.UpdateGameTime(gameTime, deltaTime);
 
-            Input.StaticUpdate();
+            Input.Update();
+            Mouse.Update();
 
             settings.Update();
 
@@ -82,7 +81,7 @@ namespace myEngine
 
         public static void Draw()
         {
-            rendererEngine.Draw();
+            renderingEngine.Draw();
         }
 
         //METHODS

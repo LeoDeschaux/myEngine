@@ -193,7 +193,7 @@ namespace myEngine.myProject.Pong
 
         private void QuitGame()
         {
-            Engine.sceneManager.ChangeScene(new Scene_MainMenu());
+            SceneManager.ChangeScene(new Scene_MainMenu());
         }
     }
 }

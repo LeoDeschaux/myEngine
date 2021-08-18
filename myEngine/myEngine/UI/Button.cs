@@ -164,7 +164,7 @@ namespace myEngine
             buttonState = ButtonState.unselected;
 
             previousMouseDown = mouseDown;
-            mouseDown = Mouse.GetMouse(MouseButton.Left);
+            mouseDown = Input.GetMouse(MouseButtons.Left);
 
             previousHoverState = hoverState;
             if (sprite.GetRectangle().Contains(Mouse.position))
@@ -185,7 +185,7 @@ namespace myEngine
                 ButtonSelected();
 
                 //CHECK INPUT
-                if (Mouse.GetMouseDown(MouseButton.Left))
+                if (Input.GetMouseDown(MouseButtons.Left))
                 {
                     buttonState = ButtonState.clicked;
                     isPressed = true;
@@ -202,7 +202,7 @@ namespace myEngine
             }
 
             //CHECK INPUT
-            if (Mouse.GetMouseUp(0) && isPressed)
+            if (Input.GetMouseUp(0) && isPressed)
             {
                 if (buttonState == ButtonState.hover)
                 {

@@ -39,7 +39,7 @@ namespace myEngine.myProject.MineSweeper
         //METHODS
         public override void Update()
         {
-            if (Mouse.GetMouseDown(MouseButton.Right) && button.sprite.GetRectangle().Contains(Mouse.position))
+            if (Input.GetMouseDown(MouseButtons.Right) && button.sprite.GetRectangle().Contains(Mouse.position))
                 OnLeftClic();
         }
 

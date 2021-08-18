@@ -24,6 +24,11 @@ namespace myEngine
         {
             ClearScene();
             currentScene = (IScene)Activator.CreateInstance(scene);
+
+            currentScene.Start();
+
+            //Console.WriteLine(currentScene.GetType());
+
             //Type t = Type.GetType(scene.ToString());
             //currentScene = (IScene)Activator.CreateInstance(t);
         }

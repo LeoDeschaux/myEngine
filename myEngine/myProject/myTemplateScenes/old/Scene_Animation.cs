@@ -50,6 +50,10 @@ namespace myEngine
         //METHODS
         public override void Update()
         {
+            float tmpSpeed = speed;
+            if (Input.GetKey(Keys.LeftShift))
+                speed = tmpSpeed * 3;
+
             if (state != myChar.idle)
                 spritesheet.play = true;
 
@@ -83,6 +87,8 @@ namespace myEngine
                 state = myChar.idle;
                 spritesheet.play = false;
             }
+
+            speed = tmpSpeed;
         }
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)

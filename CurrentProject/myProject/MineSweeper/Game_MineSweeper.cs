@@ -37,7 +37,7 @@ namespace myEngine.myProject.MineSweeper
             PopUp p = new PopUp("GAME OVER");
             p.text.transform.position += new Vector2(0, 50);
             p.background.color = new Color(0, 0, 0, 180);
-            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
+            p.button.onButtonPressed.SetFunction(SceneManager.ReloadScene);
         }
 
         public static void OnGameWin()
@@ -50,7 +50,7 @@ namespace myEngine.myProject.MineSweeper
             PopUp p = new PopUp("YOU WIN !");
             p.text.transform.position += new Vector2(0, 50);
             p.background.color = new Color(0, 0, 0, 180);
-            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
+            p.button.onButtonPressed.SetFunction(SceneManager.ReloadScene);
         }
     }
 }

@@ -5,74 +5,75 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Transform // : Entity //Transform2D 
+    public enum SpaceMode
     {
-        //FIELDS
+        local,
+        global
+    }
+
+    public struct Transform
+    {
+        SpaceMode mode;
+
         public Vector2 position;
         public float rotation;
         public Vector2 scale;
 
-        private Transform parent;
-
+        //FIELDS
         /*
-        private List<Transform> children = new List<Transform>();
+        public Vector2 position
+        {
+            get 
+            {
+                return m_localPos;
+            }
 
-        private Matrix absolute, invertAbsolute, local;
-        private float localRotation, absoluteRotation;
-        private Vector2 localScale, absoluteScale, localPosition, absolutePosition;
-        private bool needsAbsoluteUpdate = true, needsLocalUpdate = true;
+            set
+            {
+                m_localPos = value;
+            }
+        }
+
+
+
+        public float rotation
+        {
+            get { return m_localRot; }
+            set { m_localRot = value; }
+        }
+
+        public Vector2 scale
+        {
+            get { return m_localScale; }
+            set { m_localScale = value; }
+        }
         */
+
+        private Vector2 m_localPos;
+        private float m_localRot;
+        private Vector2 m_localScale;
+
+        private Vector2 m_globalPos;
+        private float m_globalRot;
+        private Vector2 m_globalScale;
 
         //CONSTRUCTOR
-        public Transform()
+        public Transform(Vector2 pos, float rot, Vector2 scale)
         {
-            position = Vector2.Zero;
-            rotation = 0f;
-            scale = Vector2.One;
-        }
+            mode = SpaceMode.local;
 
-        //ACCESOR
-        /*
-        public void SetPosition(Vector2 p)
-        {
-            position = p;
-        }
+            m_localPos = Vector2.Zero;
+            m_localRot = 0;
+            m_localScale = Vector2.One;
 
-        public void SetPosition(float x, float y)
-        {
-            position.X = x;
-            position.Y = y;
-        }
+            m_globalPos = Vector2.Zero;
+            m_globalRot = 0;
+            m_globalScale = Vector2.One;
 
-        public Vector2 GetPosition()
-        {
-            if (parent != null)
-                return position + parent.GetWorldPosition();
-            else
-                return position;
+            //INIT
+            this.position = Vector2.Zero;
+            this.rotation = rot;
+            this.scale = Vector2.One;
         }
-
-        private Vector2 GetWorldPosition()
-        {
-            return position;
-        }
-
-        public void SetParent(Transform parent)
-        {
-            this.parent = parent;
-
-            //SetPosition(parent.GetPosition().X, parent.GetPosition().Y);
-        }
-
-        public Transform GetParent()
-        {
-            return this.parent;
-        }
-
-        public static Transform Zero()
-        {
-            return new Transform();
-        }
-        */
     }
 }

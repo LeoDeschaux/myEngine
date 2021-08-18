@@ -19,6 +19,8 @@ namespace myEngine
 
         public static GraphicsDeviceManager graphics;
 
+        private Shapes shapes;
+
         //CONSTRUCTOR
         public RenderingEngine()
         {
@@ -39,13 +41,34 @@ namespace myEngine
             //GUI
             imGuiRenderer = new ImGuiRenderer(Engine.game);
             imGuiRenderer.RebuildFontAtlas();
+
+            //screen = new Screen(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
+            //shapes = new Shapes();
         }
 
         //METHODS
         public void Draw()
         {
+            Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
+
+            /*
+            shapes.Begin();
+            shapes.DrawRectangle(0, 0, 500, 500, Color.Yellow);
+            shapes.End();
+            */
+
+
+            /*
+            spriteBatch.Begin();
+            spriteBatch.Draw(Ressources.Load<Texture2D>("myContent/2D/character"), new Rectangle(0, 0, 500, 500), Color.White);
+            spriteBatch.End();
+            */
+
+
+            //Matrix matrix = SceneManager.currentScene.camera.transformMatrix;
+            //Engine.world.Draw(spriteBatch, matrix);
             RenderScene();
-            DrawTextureToScreen();
+            DrawSceneToScreen();
         }
 
         private void RenderScene()
@@ -80,22 +103,22 @@ namespace myEngine
 
             //ImGUI
             imGuiRenderer.BeforeLayout(Time.gameTime);
-            SceneManager.currentScene.DrawGUI();
+            SceneManager.currentScene?.DrawGUI();
             imGuiRenderer.AfterLayout();
 
             Engine.game.GraphicsDevice.SetRenderTarget(null);
         }
 
-        protected void DrawTextureToScreen()
+        protected void DrawSceneToScreen()
         {
             /*
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend,
-                SamplerState.LinearClamp, DepthStencilState.Default,
-                RasterizerState.CullNone);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, postProcessingProfile.effect, null);
+            spriteBatch.Draw(renderTarget, new Rectangle(0, 0, Engine.game.Window.ClientBounds.Width, Engine.game.Window.ClientBounds.Height), Color.White);
+            spriteBatch.End();
             */
 
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, postProcessingProfile.effect, null);
-            spriteBatch.Draw(renderTarget, new Rectangle(0, 0, Engine.game.Window.ClientBounds.Width, Engine.game.Window.ClientBounds.Height), Color.White);
+            spriteBatch.Draw(renderTarget, new Rectangle(0, 0, renderTarget.Width, renderTarget.Height), Color.White);
             spriteBatch.End();
         }
 

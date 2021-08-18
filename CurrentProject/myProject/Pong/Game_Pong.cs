@@ -110,7 +110,7 @@ namespace myEngine.myProject.Pong
         {
             delay = new Delay(2000, () =>
             {
-                Engine.sceneManager.ReloadScene();
+                SceneManager.ReloadScene();
             });
         }
     }

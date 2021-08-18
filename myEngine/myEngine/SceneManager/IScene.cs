@@ -12,6 +12,8 @@ namespace myEngine
     {
         //FIELDS
         public Camera2D camera;
+        public CameraMouseController camControl;
+
         public PostProcessingProfile postProcessingProfile;
 
         //CONSTRUCTOR
@@ -23,6 +25,8 @@ namespace myEngine
             camera = new Camera2D();
             postProcessingProfile = new PostProcessingProfile();
             RenderingEngine.postProcessingProfile = postProcessingProfile;
+
+            camControl = new CameraMouseController(camera);
         }
 
         public virtual void DrawGUI() { }

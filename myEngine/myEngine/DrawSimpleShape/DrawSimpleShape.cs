@@ -13,6 +13,17 @@ namespace myEngine
         //FIELDS
 
         //METHODS
+        public static Texture2D GetTexture(SpriteBatch spriteBatch, int x = 1, int y = 1) //2 make it divisible, making it avoid glitching (i guess ?????)
+        {
+            Texture2D texture = new Texture2D(spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
+
+            Color[] data = new Color[x * y];
+            for (int i = 0; i < data.Length; ++i) data[i] = Color.White;
+            texture.SetData(data);
+
+            return texture;
+        }
+
         public static Texture2D GetTexture(int x = 2, int y = 2) //2 make it divisible, making it avoid glitching (i guess ?????)
         {
             Texture2D texture = new Texture2D(RenderingEngine.spriteBatch.GraphicsDevice, x, y, false, SurfaceFormat.Color);
@@ -27,16 +38,20 @@ namespace myEngine
         //##### DRAW LINE #####
         public static void DrawLine(Vector2 point1, Vector2 point2, Color color, float thickness = 1f, int orderInLayer = 0)
         {
-            var distance = Vector2.Distance(point1, point2);
-            var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
+            /*
+            var distance = Vector2.Distance(new Vector2(point1.X, -point1.Y), new Vector2(point2.X, -point2.Y));
+            var angle = (float)Math.Atan2(-point2.Y - -point1.Y, point2.X - point1.X);
 
             DrawLine(point1, distance, angle, color, thickness, orderInLayer);
+            */
         }
 
         public static void DrawLine(Vector2 point1, Vector2 point2, Color color, Matrix? matrix, float thickness = 1f, int orderInLayer = 0)
         {
-            var distance = Vector2.Distance(point1, point2);
-            var angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
+            var distance = Vector2.Distance(new Vector2(point1.X, -point1.Y), new Vector2(point2.X, -point2.Y));
+            var angle = (float)Math.Atan2(-point2.Y +point1.Y, point2.X - point1.X);
+
+            point1.Y *= -1;
 
             DrawLine(point1, distance, angle, color, matrix, thickness, orderInLayer);
         }
@@ -163,6 +178,18 @@ namespace myEngine
             RenderingEngine.spriteBatch.Draw(GetTexture(), r, null, color, 0, Vector2.Zero, SpriteEffects.None,
                 (float)((Math.Clamp(orderInLayer, -1000, 1000) + 1000)) / 2000);
             RenderingEngine.spriteBatch.End();
+        }
+
+
+
+        //#########################     DRAW RULLER    ##############################
+        public static void DrawRullerFree(Vector2 position, Matrix matrix)
+        {
+            //VERTICAL
+            DrawSimpleShape.DrawLine(new Vector2(position.X, -((float)Settings.SCREEN_HEIGHT / 2)), Settings.SCREEN_HEIGHT, MathHelper.ToRadians(90), Color.Red, matrix);
+
+            //HORIZONTAL
+            DrawSimpleShape.DrawLine(new Vector2(-(float)Settings.SCREEN_WIDTH / 2, position.Y), Settings.SCREEN_WIDTH, 0, Color.Red, matrix);
         }
 
         public static void DrawRuller(Vector2 position)

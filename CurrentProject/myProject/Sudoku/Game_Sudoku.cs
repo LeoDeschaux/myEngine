@@ -30,7 +30,7 @@ namespace myEngine.myProject.Sudoku
         {
             Console.WriteLine("GRID IS COMPLETE");
             PopUp p = new PopUp("             GRID COMPLETED !\nPress the button below to play again");
-            p.button.onButtonPressed.SetFunction(Engine.sceneManager.ReloadScene);
+            p.button.onButtonPressed.SetFunction(SceneManager.ReloadScene);
         }
     }
 }

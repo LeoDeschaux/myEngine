@@ -21,9 +21,7 @@ namespace myEngine
         //CONSTRUCTOR
         public Sprite()
         {
-            transform = new Transform();
             this.texture = DrawSimpleShape.GetTexture();
-            transform.position = Vector2.Zero;
             this.dimension = Vector2.One * 150;
             color = Color.White;
             spriteEffect = SpriteEffects.None;
@@ -31,10 +29,7 @@ namespace myEngine
 
         public Sprite(Texture2D texture2D)
         {
-            transform = new Transform();
-
             this.texture = texture2D;
-
             this.dimension = new Vector2(texture2D.Width, texture2D.Height);
             color = Color.White;
             spriteEffect = SpriteEffects.None;
@@ -42,7 +37,7 @@ namespace myEngine
 
         public Sprite(Vector2 position, Vector2 dimension, Texture2D texture2D = null)
         {
-            transform = new Transform();
+            //transform = new Transform();
 
             if (texture2D != null)
                 this.texture = texture2D;
@@ -71,7 +66,7 @@ namespace myEngine
         {
             return new Rectangle(
                 (int)transform.position.X,
-                (int)transform.position.Y,
+                (int)-transform.position.Y,
                 (int)(dimension.X * transform.scale.X),
                 (int)(dimension.Y * transform.scale.Y));
         }
@@ -86,6 +81,8 @@ namespace myEngine
         {
             if (!isVisible)
                 return;
+
+
 
             //BlendState.NonPremultiplied
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);

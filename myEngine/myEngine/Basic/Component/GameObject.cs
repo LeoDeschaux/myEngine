@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
@@ -9,51 +10,28 @@ namespace myEngine
         public string name;
 
         public GameObject parent { get; private set; }
-        public Transform relativeTransform;
-
-        private Transform m_transform;
-        public Transform transform
-        {
-            get
-            {
-                foreach (GameObject child in childs)
-                {
-                    child.transform.position.X = (this.m_transform.position.X + child.relativeTransform.position.X);
-                    child.transform.position.Y = (this.m_transform.position.Y + child.relativeTransform.position.Y);
-                }
-
-                return m_transform;
-            }
-            set
-            {
-                m_transform = value;
-            }
-        }
+        public Transform transform;
 
         public List<Component> components;
-
         private List<GameObject> childs;
 
-        //public int orderInLayer = 0;
         //public bool dontDestroyOnLoad = false;
 
         //CONSTRUCTOR
         public GameObject()
         {
-            relativeTransform = new Transform();
-            m_transform = new Transform();
-            transform = new Transform();
-            components = new List<Component>();
+            transform = new Transform(Vector2.Zero, 0f, Vector2.One);
 
+            components = new List<Component>();
             childs = new List<GameObject>();
         }
 
         public void AddChild(GameObject child)
         {
             childs.Add(child);
-            child.parent = this;
-            child.relativeTransform.position = child.transform.position;
-            child.transform.position += this.transform.position;
+            //child.parent = this;
+            //child.relativeTransform.position = child.transform.position;
+            //child.transform.position += this.transform.position;
         }
 
         public void AddComponent(Component c)

@@ -7,34 +7,31 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Scene_2DCamera : IScene
+    public class CameraMouseController : Entity
     {
         //FIELDS
         float speed = 500;
-
-        //CONSTRUCTOR
-        public Scene_2DCamera()
-        {
-            Sprite s = new Sprite(Settings.GetScreenCenter(), (Vector2.One*150));
-            s.dimension = new Vector2(300, 150);
-
-            Text t = new Text();
-            t.transform.position = Settings.GetScreenCenter();
-            t.s = "Ceci est le centre";
-            t.alignment = Alignment.Center;
-            t.color = Color.Red;
-
-            Sprite center = new Sprite(Settings.GetScreenCenter(), (Vector2.One * 10));
-            center.color = Color.Red;
-            center.transform = camera.transform;
-        }
-
         Vector2 deltaMouse;
         float speedMouse = 1;
+
+        public bool isActive;
+
+        //REF
+        Camera2D camera;
+
+        //CONSTRUCTOR
+        public CameraMouseController(Camera2D camera)
+        {
+            this.camera = camera;
+            isActive = false;
+        }
 
         //METHODS
         public override void Update()
         {
+            if (!isActive)
+                return;
+
             //MOUSE CAM CONTROLE
             if (Input.GetMouseDown(MouseButtons.Middle))
             {
@@ -48,31 +45,55 @@ namespace myEngine
             }
 
             //KEYBOARD CAM CONTROLE
-            if (Input.GetKey(Keys.Q))
+            if (Input.GetKey(Keys.K))
             {
                 camera.transform.position.X -= speed * Time.deltaTime;
             }
 
-            if (Input.GetKey(Keys.D))
+            if (Input.GetKey(Keys.M))
             {
                 camera.transform.position.X += speed * Time.deltaTime;
             }
 
             //
-            if (Input.GetKey(Keys.Z))
+            if (Input.GetKey(Keys.O))
             {
                 camera.transform.position.Y -= speed * Time.deltaTime;
             }
 
-            if (Input.GetKey(Keys.S))
+            if (Input.GetKey(Keys.L))
             {
                 camera.transform.position.Y += speed * Time.deltaTime;
+            }
+
+            //ZOOM
+            if(Input.GetKey(Keys.B))
+            {
+                camera.transform.scale.X += 0.001f;
+                camera.transform.scale.Y += 0.001f;
+            }
+
+            //DEZOOM
+            if (Input.GetKey(Keys.N))
+            {
+                camera.transform.scale.X -= 0.001f;
+                camera.transform.scale.Y -= 0.001f;
+            }
+
+            if (Input.GetKey(Keys.I))
+            {
+                camera.transform.rotation += 0.1f;
+            }
+
+            if (Input.GetKey(Keys.P))
+            {
+                camera.transform.rotation -= 0.1f;
             }
         }
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            DrawSimpleShape.DrawRuller(Settings.GetScreenCenter(), matrix);
+            DrawSimpleShape.DrawRullerFree(new Vector2(0,0), matrix);
         }
     }
 }

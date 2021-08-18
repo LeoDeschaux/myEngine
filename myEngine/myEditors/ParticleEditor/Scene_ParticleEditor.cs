@@ -65,7 +65,7 @@ namespace myEngine
             p.Size = particleSize;
 
             //
-            if (Input.GetMouse(MouseButton.Left))
+            if (Input.GetMouse(MouseButtons.Left))
             {
                 pe_followMouse.isActive = true;
                 pe_followMouse.EmitterLocation = Mouse.position.ToVector2();

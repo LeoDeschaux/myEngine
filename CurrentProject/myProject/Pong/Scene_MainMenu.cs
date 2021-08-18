@@ -13,15 +13,11 @@ namespace myEngine
     public class Scene_MainMenu : IScene
     {
         //FIELDS
-        public Input input;
-
         Button pvp;
 
         //CONSTRUCTOR
         public Scene_MainMenu()
         {
-            input = new Input();
-
             Text text = new Text();
             text.s = "CRYSTAL PONG";
             text.color = Color.White;
@@ -79,14 +75,14 @@ namespace myEngine
         {
             SaveSystem_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvP;
-            Engine.sceneManager.ChangeScene(new Scene_Pong());
+            SceneManager.ChangeScene(new Scene_Pong());
         }
 
         private void LoadAIScene()
         {
             SaveSystem_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvAI;
-            Engine.sceneManager.ChangeScene(new Scene_Pong());
+            SceneManager.ChangeScene(new Scene_Pong());
         }
 
         private void ExitGame()
