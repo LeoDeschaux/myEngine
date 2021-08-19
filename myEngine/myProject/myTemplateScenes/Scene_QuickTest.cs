@@ -15,10 +15,6 @@ namespace myEngine
 
         float speed = 500;
 
-        Vector2 localPos;
-        Vector2 localScale;
-        float localRotation;
-
         //CONSTRUCTOR
         public Scene_QuickTest()
         {
@@ -34,36 +30,22 @@ namespace myEngine
 
             child = new Sprite();
             child.color = Color.Black;
-            child.transform.position = new Vector2(100, 100);
+            child.transform.position = new Vector2(150, 100);
             child.dimension = new Vector2(30, 30);
             child.transform.rotation = 45;
 
-            localPos = child.transform.position;
-            localScale = child.transform.scale;
-            localRotation = child.transform.rotation;
+            child.SetParent(parent);
 
             camControl.isActive = true;
+
+            //child.transform.position += new Vector2(123, 0);
+
+            //child.transform = new Transform();
         }
 
         //METHODS
         public override void Update()
         {
-            //PARENT
-            Matrix p_scale = Matrix.CreateScale(parent.transform.scale.X, parent.transform.scale.Y, 1);
-            Matrix p_rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(-parent.transform.rotation));
-            Matrix p_position = Matrix.CreateTranslation((int)parent.transform.position.X, (int)parent.transform.position.Y, 0);
-            Matrix p_transform = p_scale * p_rotation * p_position;
-
-            //CHILD
-            Matrix c_scale = Matrix.CreateScale(localScale.X, localScale.Y, 1);
-            Matrix c_rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(-localRotation));
-            Matrix c_position = Matrix.CreateTranslation((int)localPos.X, (int)localPos.Y, 0);
-            Matrix c_transform = c_scale * c_rotation * c_position;
-
-            Matrix newTransform = c_transform * p_transform;
-
-            Util.DecomposeMatrix(ref newTransform, out child.transform.position, out child.transform.rotation, out child.transform.scale);
-
             UpdateInputs();
         }
 
@@ -75,13 +57,17 @@ namespace myEngine
         private void UpdateInputs()
         {
             if(Input.GetKey(Keys.Left))
-                localPos.X -= speed * Time.deltaTime;
+            {
+                child.transform.position.X -= speed * Time.deltaTime;
+                //Console.WriteLine(child.transform.position.X);
+                //Console.WriteLine("TEST");
+            }
             if (Input.GetKey(Keys.Right))
-                localPos.X += speed * Time.deltaTime;
+                child.transform.position.X += speed * Time.deltaTime;
             if (Input.GetKey(Keys.Up))
-                localPos.Y += speed * Time.deltaTime;
+                child.transform.position.Y += speed * Time.deltaTime;
             if (Input.GetKey(Keys.Down))
-                localPos.Y -= speed * Time.deltaTime;
+                child.transform.position.Y -= speed * Time.deltaTime;
 
             if (Input.GetKey(Keys.Q))
             {

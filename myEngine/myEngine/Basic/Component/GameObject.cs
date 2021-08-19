@@ -10,7 +10,19 @@ namespace myEngine
         public string name;
 
         public GameObject parent { get; private set; }
+        private bool hasParent;
+
         public Transform transform;
+
+        /*
+        {
+            get { return t_transform.GetTransform(this.parent); }
+            set { Console.WriteLine("test"); t_transform = value; } 
+            //set { t_transform.SetTransform(value); }
+        }
+        */
+
+        private Transform t_transform;
 
         public List<Component> components;
         private List<GameObject> childs;
@@ -21,9 +33,19 @@ namespace myEngine
         public GameObject()
         {
             transform = new Transform(Vector2.Zero, 0f, Vector2.One);
+            //transform = new Transform();
 
             components = new List<Component>();
             childs = new List<GameObject>();
+
+            parent = null;
+            hasParent = false;
+        }
+
+        public void SetParent(GameObject parent)
+        {
+            this.parent = parent;
+            this.hasParent = true;
         }
 
         public void AddChild(GameObject child)
