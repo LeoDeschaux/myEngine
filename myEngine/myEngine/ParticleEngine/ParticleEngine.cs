@@ -8,11 +8,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine
 {
-    public class ParticleEngine : Entity
+    public class ParticleEngine : GameObject
     {
         //FIELDS
         private Random random;
-        public Vector2 EmitterLocation { get; set; }
         private List<Particle> particles;
         private int totalParticlesSpawned;
 
@@ -23,9 +22,9 @@ namespace myEngine
         public bool isActive;
 
         //CONSTRUCTOR
-        public ParticleEngine(ParticleProfile profile, Vector2 location)
+        public ParticleEngine(ParticleProfile profile, Vector2 position)
         {
-            EmitterLocation = location;
+            transform.position = position;
             this.particles = new List<Particle>();
             random = new Random();
 
@@ -41,7 +40,7 @@ namespace myEngine
         {
             //PARTICLE SYSTEM BEHAVIOR 
             Texture2D texture = profile.particle.Texture;
-            Vector2 position = EmitterLocation;
+            Vector2 position = transform.position;
 
             Vector2 velocity = new Vector2(
                     1f * (float)(random.NextDouble() * 2 - 1),
@@ -129,9 +128,8 @@ namespace myEngine
         {
             for (int index = 0; index < particles.Count; index++)
             {
-                particles[index].Draw(spriteBatch);
+                particles[index].Draw(spriteBatch, matrix);
             }
         }
-
     }
 }

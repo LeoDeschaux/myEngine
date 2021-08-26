@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class SimpleTween : Entity
+    public class SimpleTween : EmptyObject
     {
         //FIELDS
         public float startValue { get; private set; }

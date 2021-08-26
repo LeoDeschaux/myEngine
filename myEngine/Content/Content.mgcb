@@ -343,3 +343,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../../myEngine/Content/myContent/2D/Crossed.png;myContent/2D/Crossed.png
+
+#begin ../../myEngine/Content/myContent/Audio/Explosion8.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../../myEngine/Content/myContent/Audio/Explosion8.wav;myContent/Audio/Explosion8.wav

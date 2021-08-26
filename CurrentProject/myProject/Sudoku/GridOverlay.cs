@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine.myProject.Sudoku
 {
-    public class GridOverlay : Entity
+    public class GridOverlay : EmptyObject
     {
         //FIELDS
         Rectangle rectangle;

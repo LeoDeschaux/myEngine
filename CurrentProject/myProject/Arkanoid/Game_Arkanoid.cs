@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine.myProject.Arkanoid
 {
-    public class Game_Arkanoid : Entity
+    public class Game_Arkanoid : EmptyObject
     {
         //FIELDS
         public static Grid grid;

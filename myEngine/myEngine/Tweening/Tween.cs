@@ -4,7 +4,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Tween : Entity
+    public class Tween : EmptyObject
     {
         //FIELDS
         private unsafe float* valueToModify;

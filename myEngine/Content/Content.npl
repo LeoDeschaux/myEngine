@@ -63,6 +63,16 @@
 				"Quality": "Best"
 			}
 		},
+		"mp3V2": {
+			"path": "myContent/Audio/*.wav", // $ means that 'root' will not be appended to the path.
+			"recursive": "True",
+			"action": "build",
+			"importer": "WavImporter",
+			"processor": "SoundEffectProcessor",
+			"processorParam": {
+				"Quality": "Best"
+			}
+		},
 		"model": {
 			"path": "myContent/3D/*.fbx",
 			"recursive": "True",

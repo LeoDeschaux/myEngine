@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Entity : IDisposable
+    public class EmptyObject : IDisposable
     {
         //FIELDS
         public bool dontDestroyOnLoad = false;
@@ -15,7 +15,7 @@ namespace myEngine
         public bool disposed = false;
 
         //CONSTRUCTOR
-        public Entity()
+        public EmptyObject()
         {
             Engine.world.AddEntity(this);
         }

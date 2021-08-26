@@ -38,9 +38,7 @@ namespace myEngine
 
             camControl.isActive = true;
 
-            //child.transform.position += new Vector2(123, 0);
-
-            //child.transform = new Transform();
+            child.transform.position += new Vector2(1, 0);
         }
 
         //METHODS
@@ -56,6 +54,9 @@ namespace myEngine
 
         private void UpdateInputs()
         {
+            speed = 100000f / Vector2.Distance(parent.transform.position, child.transform.position);
+            speed = MathHelper.Clamp(speed, 50, 800);
+
             if(Input.GetKey(Keys.Left))
             {
                 child.transform.position.X -= speed * Time.deltaTime;

@@ -10,14 +10,14 @@ namespace myEngine
     {
         //FIELDS
         //List<GameObject> gameObjects;
-        public static List<Entity> entities;
+        public static List<EmptyObject> entities;
         public static List<Component> components;
 
         //CONSTRUCTOR
         public World()
         {
             //gameObjects = new List<GameObject>();
-            entities = new List<Entity>();
+            entities = new List<EmptyObject>();
             components = new List<Component>();
 
         }
@@ -41,7 +41,7 @@ namespace myEngine
 
             for (int i = 0; i < entities.Count; i++)
             {
-                Entity e = entities[i];
+                EmptyObject e = entities[i];
                 e.Update();
 
                 if (!runUpdate)
@@ -59,7 +59,7 @@ namespace myEngine
         {
             for (int i = 0; i < entities.Count; i++)
             {
-                Entity e = entities[i];
+                EmptyObject e = entities[i];
                 e.LateUpdate();
             }
 
@@ -77,7 +77,7 @@ namespace myEngine
 
             for (int i = 0; i < entities.Count; i++)
             {
-                Entity e = entities[i];
+                EmptyObject e = entities[i];
                 e.Draw(spriteBatch, matrix);
             }
 
@@ -88,12 +88,12 @@ namespace myEngine
             }
         }
 
-        public void AddEntity(Entity e)
+        public void AddEntity(EmptyObject e)
         {
             entities.Add(e);
         }
 
-        public void RemoveEntity(Entity e)
+        public void RemoveEntity(EmptyObject e)
         {
             entities.Remove(e);
         }
@@ -113,19 +113,19 @@ namespace myEngine
             //gameObjects = new List<GameObject>();
             components = new List<Component>();
 
-            List<Entity> dontDestroy = new List<Entity>();
+            List<EmptyObject> dontDestroy = new List<EmptyObject>();
             for (int i = 0; i < entities.Count; i++)
             {
-                Entity e = entities[i];
+                EmptyObject e = entities[i];
                 if (e.dontDestroyOnLoad)
                     dontDestroy.Add(e);
             }
 
-            entities = new List<Entity>();
+            entities = new List<EmptyObject>();
 
             for (int i = 0; i < dontDestroy.Count; i++)
             {
-                Entity e = dontDestroy[i];
+                EmptyObject e = dontDestroy[i];
                 entities.Add(e);
             }
 

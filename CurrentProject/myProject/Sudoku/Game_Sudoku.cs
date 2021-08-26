@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine.myProject.Sudoku
 {
-    public class Game_Sudoku : Entity
+    public class Game_Sudoku : EmptyObject
     {
         //FIELDS
         public static Grid grid;

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine.myProject.Sudoku
 {
-    public class Grid : Entity
+    public class Grid : EmptyObject
     {
         //FIELDS
         public Cell[,] cells;

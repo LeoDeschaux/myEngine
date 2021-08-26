@@ -23,7 +23,7 @@ namespace myEngine.myProject.Snake
         public static Color apple = Color.Red;
     }
 
-    public abstract class Cell : Entity
+    public abstract class Cell : EmptyObject
     {
         //FIELDS
         public Vec2Int position;

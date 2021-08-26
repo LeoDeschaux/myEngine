@@ -9,7 +9,7 @@ namespace myEngine.myProject.Snake
 {
     
 
-    public class Grid : Entity
+    public class Grid : EmptyObject
     {
         //FIELDS
         public Cell[,] cells;

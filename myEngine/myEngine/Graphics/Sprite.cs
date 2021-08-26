@@ -71,6 +71,15 @@ namespace myEngine
                 (int)(dimension.Y * transform.scale.Y));
         }
 
+        public Rectangle GetRec2()
+        {
+            return new Rectangle(
+                (int)Math.Round(transform.position.X, MidpointRounding.AwayFromZero),
+                (int)Math.Round(-transform.position.Y, MidpointRounding.AwayFromZero),
+                (int)Math.Round((dimension.X * transform.scale.X), MidpointRounding.AwayFromZero),
+                (int)Math.Round((dimension.Y * transform.scale.Y), MidpointRounding.AwayFromZero));
+        }
+
         private Vector2 GetOrigin()
         {
             return new Vector2(texture.Width/2, texture.Height/2);
@@ -83,10 +92,11 @@ namespace myEngine
                 return;
 
 
-
             //BlendState.NonPremultiplied
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);
             //spriteBatch.Begin(SpriteSortMode.Immediate);
+
+            //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, effect, matrix);
 
             //effect?.CurrentTechnique.Passes[0].Apply();
 

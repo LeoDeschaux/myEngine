@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
-    public sealed class PlayerInput : Entity
+    public sealed class PlayerInput : EmptyObject
     {
         //FIELDS
         InputProfile profile;

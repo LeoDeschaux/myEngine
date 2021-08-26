@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Trail : Entity
+    public class Trail : EmptyObject
     {
         //FIELDS
         public Transform transform;

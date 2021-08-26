@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine.myProject.Sudoku
 {
-    public class UI_Sudoku : Entity
+    public class UI_Sudoku : EmptyObject
     {
         //FIELDS
         public Button_UI[] buttons;

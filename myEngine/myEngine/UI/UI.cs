@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public abstract class UI : Entity
+    public abstract class UI : EmptyObject
     {
         //FIELDS
 

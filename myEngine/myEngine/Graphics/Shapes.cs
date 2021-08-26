@@ -315,12 +315,15 @@ namespace myEngine
             shapeCount++;
         }
 
-        public void DrawPolygon(Vector2[] vertices, float thickness, Color color)
+        public void DrawPolygon(Vector2[] vertices, Matrix transform, float thickness, Color color)
         {
             for(int i = 0; i < vertices.Length; i++)
             {
                 Vector2 a = vertices[i];
                 Vector2 b = vertices[(i + 1) % vertices.Length];
+
+                a = Vector2.Transform(a, transform) * new Vector2(1, -1);
+                b = Vector2.Transform(b, transform) * new Vector2(1, -1);
 
                 DrawLine(a, b, thickness, color);
             }

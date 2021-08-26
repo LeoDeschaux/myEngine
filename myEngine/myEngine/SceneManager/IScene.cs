@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine
 {
-    public abstract class IScene : Entity
+    public abstract class IScene : EmptyObject
     {
         //FIELDS
         public Camera2D camera;

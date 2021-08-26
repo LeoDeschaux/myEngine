@@ -15,7 +15,7 @@ namespace myEngine.myProject.Pong
         PvAI
     }
 
-    public class Game_Pong : Entity
+    public class Game_Pong : EmptyObject
     {
         //FIELDS
         public Player player1;

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine.myProject.MineSweeper
 {
-    public abstract class Cell : Entity
+    public abstract class Cell : EmptyObject
     {
         //FIELDS
         public Button button;

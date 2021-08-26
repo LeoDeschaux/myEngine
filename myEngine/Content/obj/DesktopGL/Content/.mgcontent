@@ -34,6 +34,7 @@
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/CellRevealed.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Mine.png</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Crossed.png</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/Audio/Explosion8.wav</File>
   </SourceFiles>
   <DestFiles>
     <File>myContent/2D/mountain.jpg</File>
@@ -66,5 +67,6 @@
     <File>myContent/2D/CellRevealed.png</File>
     <File>myContent/2D/Mine.png</File>
     <File>myContent/2D/Crossed.png</File>
+    <File>myContent/Audio/Explosion8.wav</File>
   </DestFiles>
 </SourceFileCollection>

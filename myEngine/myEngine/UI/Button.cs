@@ -8,7 +8,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Button : Entity
+    public class Button : EmptyObject
     {
         //COMPONENTS
         private static List<Button> instance = null;

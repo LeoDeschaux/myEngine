@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
-    public class GameObject : Entity, IDisposable
+    public class GameObject : EmptyObject, IDisposable
     {
         //FIELDS
         public string name;
@@ -32,8 +32,7 @@ namespace myEngine
         //CONSTRUCTOR
         public GameObject()
         {
-            transform = new Transform(Vector2.Zero, 0f, Vector2.One);
-            //transform = new Transform();
+            transform = new Transform();
 
             components = new List<Component>();
             childs = new List<GameObject>();

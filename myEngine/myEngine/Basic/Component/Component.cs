@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Component : Entity
+    public class Component : EmptyObject
     {
         //FIELDS
         public GameObject gameObject;

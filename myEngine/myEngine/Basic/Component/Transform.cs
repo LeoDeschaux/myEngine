@@ -5,8 +5,37 @@ using System.Text;
 
 namespace myEngine
 {
-    public struct Transform
+    public class Transform
     {
+        /*
+        public myVector myPosition
+        {
+            get { Console.WriteLine(); return myPopos; }
+            set { Console.WriteLine(); myPopos = value; }
+        }
+
+        private myVector myPopos;
+
+         public Vector2 test
+        {
+            get { Console.WriteLine(); return new Vector2(); }
+            //set { Console.WriteLine("HELLO GUYS"); m_test = value; }
+        }
+        private Vector2 m_test;
+
+         public Transform(Vector2 pos, float rot, Vector2 scale)
+        {
+            //INIT
+            this.position = Vector2.Zero;
+            this.rotation = 0f;
+            this.scale = Vector2.One;
+
+            parent = null;
+            hasParent = false;
+        }
+
+        */
+
         public Vector2 position;
         public float rotation;
         public Vector2 scale;
@@ -15,7 +44,7 @@ namespace myEngine
         private bool hasParent;
 
         //CONSTRUCTOR
-        public Transform(Vector2 pos, float rot, Vector2 scale)
+        public Transform()
         {
             //INIT
             this.position = Vector2.Zero;
@@ -32,12 +61,29 @@ namespace myEngine
             hasParent = true;
         }
 
+        public void UnSetParent()
+        {
+            this.parent = null;
+            hasParent = false;
+        }
+
+        public Matrix GetMatrix()
+        {
+            Matrix c_scale = Matrix.CreateScale(scale.X, scale.Y, 1);
+            Matrix c_rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(rotation));
+            Matrix c_position = Matrix.CreateTranslation((int)position.X, (int)position.Y, 0);
+            Matrix c_transform = c_scale * c_rotation * c_position;
+
+            return c_transform;
+        }
+
         public Transform GetTransform(GameObject? parent)
         {
-            //Console.WriteLine(name);
-
-            if (parent != null)
+            if (hasParent)
             {
+                if (parent == null)
+                    throw new ArgumentException("no parent");
+
                 //PARENT
                 Matrix p_scale = Matrix.CreateScale(parent.transform.scale.X, parent.transform.scale.Y, 1);
                 Matrix p_rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(-parent.transform.rotation));
@@ -63,8 +109,6 @@ namespace myEngine
                 result.scale = tmp_Scale;
                 result.rotation = tmp_Rot;
 
-                //Console.WriteLine("pos:" + this.position);
-
                 return result;
             }
             else
@@ -75,10 +119,11 @@ namespace myEngine
 
         public void SetTransform(Transform value)
         {
-            //Console.WriteLine(name);
-
-            if (parent != null)
+            if (hasParent)
             {
+                if (parent == null)
+                    throw new ArgumentException("no parent");
+
                 this.position = value.position;
             }
             else

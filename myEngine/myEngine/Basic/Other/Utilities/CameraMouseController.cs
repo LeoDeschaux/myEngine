@@ -7,7 +7,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class CameraMouseController : Entity
+    public class CameraMouseController : EmptyObject
     {
         //FIELDS
         float speed = 500;
@@ -93,7 +93,8 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            DrawSimpleShape.DrawRullerFree(new Vector2(0,0), matrix);
+            if(isActive)
+                DrawSimpleShape.DrawRullerFree(new Vector2(0,0), matrix);
         }
     }
 }

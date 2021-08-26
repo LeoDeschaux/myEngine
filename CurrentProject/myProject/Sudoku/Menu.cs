@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine.myProject.Sudoku
 {
-    public class Menu : Entity
+    public class Menu : EmptyObject
     {
         //FIELDS
         ButtonNumber[] buttons;

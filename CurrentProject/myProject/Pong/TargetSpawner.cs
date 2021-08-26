@@ -8,7 +8,7 @@ using myEngine.myProject.Pong;
 
 namespace myEngine.myProject.Pong
 {
-    public class TargetSpawner : Entity
+    public class TargetSpawner : EmptyObject
     {
         //FIELDS
         Rectangle zoneRectangle;

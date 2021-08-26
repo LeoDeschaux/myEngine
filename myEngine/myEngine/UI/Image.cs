@@ -8,7 +8,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Image : Entity
+    public class Image : EmptyObject
     {
         // FIELDS 
         private Texture2D texture;

@@ -37,6 +37,7 @@ namespace myEngine
             Engine.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
             Engine.graphics.SynchronizeWithVerticalRetrace = false;
+            //Engine.game.TargetElapsedTime = TimeSpan.FromTicks((long)(TimeSpan.TicksPerSecond / 60L));
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 

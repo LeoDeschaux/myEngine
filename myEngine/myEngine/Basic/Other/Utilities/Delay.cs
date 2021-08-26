@@ -5,7 +5,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Delay : Entity
+    public class Delay : EmptyObject
     {
         public double Timer = 0.0;
         public double DelayTime = 0.0;

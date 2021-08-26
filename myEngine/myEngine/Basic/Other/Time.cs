@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
-    public class Time
+    public static class Time
     {
         //FIELDS
         public static GameTime gameTime;

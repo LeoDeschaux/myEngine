@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
-    public class Debug : Entity
+    public class Debug : EmptyObject
     {
         //FIELDS
         Debug_UI UI;
@@ -55,6 +55,10 @@ namespace myEngine
                 SceneManager_Utils.ChangeToPreviousScene();
             if (Input.GetKeyDown(Keys.PageDown))
                 SceneManager_Utils.ChangeToNextScene();
+
+            //REFRESH SCENE
+            if (Input.GetKeyDown(Keys.F5))
+                SceneManager.ReloadScene();
 
             //FRAME RATE
             float frameRate = 1 / (float)Time.gameTime.ElapsedGameTime.TotalSeconds;

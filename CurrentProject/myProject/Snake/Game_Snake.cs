@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace myEngine.myProject.Snake
 {
-    public class Game_Snake : Entity
+    public class Game_Snake : EmptyObject
     {
         //FIELDS
         public static Grid grid;

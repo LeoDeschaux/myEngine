@@ -6,7 +6,7 @@ using System.Text;
 
 namespace myEngine
 {
-    public class Debug_UI : Entity
+    public class Debug_UI : EmptyObject
     {
         //FIELDS
         Text debugMode;

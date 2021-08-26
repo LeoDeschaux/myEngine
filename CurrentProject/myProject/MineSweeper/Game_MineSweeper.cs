@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace myEngine.myProject.MineSweeper
 {
-    public class Game_MineSweeper : Entity
+    public class Game_MineSweeper : EmptyObject
     {
         //FIELDS
         public static Grid grid;
