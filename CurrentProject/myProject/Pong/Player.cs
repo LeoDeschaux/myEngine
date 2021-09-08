@@ -7,8 +7,9 @@ using System.Text;
 
 using myEngine.myProject.Pong;
 using Microsoft.Xna.Framework.Audio;
+using myEngine;
 
-namespace myEngine.myProject.Pong
+namespace zCurrentProject
 {
     public enum InGamePlayerPosition
     {
@@ -50,7 +51,7 @@ namespace myEngine.myProject.Pong
 
             anchorPoint.position = new Vector2(raquette.transform.position.X + anchorOffSetX, raquette.transform.position.Y);
 
-            AddComponent(new Collider2D(raquette.sprite));
+            AddComponent(new BoxCollider(raquette.sprite));
 
             target_hit_sounds = new SoundEffect[] { 
                 Ressources.Load<SoundEffect>("myContent/Audio/TargetHit_Small"),

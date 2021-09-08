@@ -41,6 +41,8 @@ namespace myEngine
             viewMatrix = Matrix.CreateLookAt(camPosition, camPosition + camDirection, camUp);
         }
 
+        Vector2 deltaMouse = Vector2.Zero;
+
         public override void Update()
         {
             //camDirection = camTarget - camPosition;
@@ -56,8 +58,32 @@ namespace myEngine
 
             //viewMatrix = Matrix.CreateLookAt(camPosition, camPosition * camRotation, Vector3.Up);
 
+            //MOUSE CAM CONTROLE
+
+
+            //deltaMouse = Mouse.position.ToVector2();
+
+            //deltaMouse -= Mouse.position.ToVector2();
+            //camRotation += new Vector3((deltaMouse.X - Mouse.position.ToVector2().X) * 500 * Time.deltaTime, deltaMouse.Y * 5 * Time.deltaTime, 0f);
+
+            camRotation.X = Mouse.position.ToVector2().X * 0.5f; // * Time.deltaTime;
+            camRotation.Y = Mouse.position.ToVector2().Y * 0.5f;
+
+            Console.WriteLine(camRotation.X);
+
+            /*
             viewMatrix = Matrix.CreateTranslation(camPosition) *
+                        Matrix.CreateFromAxisAngle(Vector3.Up, MathHelper.ToRadians(camRotation.X)) *
                         Matrix.CreateFromAxisAngle(Vector3.Up, MathHelper.ToRadians(camRotation.Y));
+            */
+
+            viewMatrix = Matrix.CreateTranslation(camPosition) *
+                         Matrix.CreateRotationX(-MathHelper.ToRadians(camRotation.Y)) *
+                         Matrix.CreateRotationY(MathHelper.ToRadians(camRotation.X));
+
+            
+
+            
         }
 
         //METHODS

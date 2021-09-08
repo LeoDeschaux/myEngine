@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using myEngine.myProject.Pong;
+using myEngine;
 
-namespace myEngine
+namespace zCurrentProject
 {
     public class Scene_Pong : IScene
     {
@@ -22,6 +23,8 @@ namespace myEngine
         {
             game = new Game_Pong(Scene_Pong.gameMode);
             ui = new UI_Pong();
+
+            this.camControl.isActive = true;
         }
 
         //METHODS

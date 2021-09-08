@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using myEngine.myProject.Pong;
+using myEngine;
 
-namespace myEngine.myProject.Pong
+namespace zCurrentProject
 {
     public enum GameMode
     {

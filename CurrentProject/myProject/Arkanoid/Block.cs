@@ -22,7 +22,7 @@ namespace myEngine.myProject.Arkanoid
             sprite.color = Color.LightGreen;
             sprite.dimension = new Vector2(dimension.X, dimension.Y);
 
-            AddComponent(new Collider2D(sprite));
+            AddComponent(new BoxCollider(sprite));
 
             currentLife = maxLife;
 

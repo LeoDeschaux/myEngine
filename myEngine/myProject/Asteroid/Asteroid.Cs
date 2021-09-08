@@ -53,6 +53,12 @@ namespace myEngine
             transform.scale.X = Util.RandomBetween(random, 2, 8);
 
             this.color = Color.Brown;
+
+            Matrix m = Matrix.CreateScale(transform.scale.X) * Matrix.CreateRotationZ(MathHelper.ToRadians(transform.rotation)) * Matrix.CreateTranslation(transform.position.X, transform.position.Y, 0f);
+            circleRadius = Util.FindCollisionRadius(Util.ConvertVerticesTransform(vertices, m));
+
+            collider = new CircleCollider(transform, circleRadius);
+            this.AddComponent(collider);
         }
 
         //METHODS
@@ -63,16 +69,6 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            Shapes s = new Shapes(Engine.game);
-
-            s.Begin(Scene_Asteroid.cam);
-
-            Matrix m = Matrix.CreateScale(transform.scale.X) * Matrix.CreateRotationZ(MathHelper.ToRadians(transform.rotation)) * Matrix.CreateTranslation(transform.position.X, transform.position.Y, 0f);
-
-            s.DrawPolygon(vertices, m, 2, Color.Brown);
-
-            s.End();
-
             base.Draw(sprite, matrix);
         }
     }

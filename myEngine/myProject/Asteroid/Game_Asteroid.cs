@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace myEngine
 {
@@ -15,8 +16,9 @@ namespace myEngine
         public Game_Asteroid()
         {
             this.player = new Player();
-            this.spawner = new Asteroid_Spawner();
+            this.spawner = new Asteroid_Spawner(10);
 
+            //Asteroid a = new Asteroid(Vector2.Zero);
         }
 
         //METHODS

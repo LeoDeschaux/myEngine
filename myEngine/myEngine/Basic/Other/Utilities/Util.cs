@@ -7,6 +7,21 @@ namespace myEngine
 {
     public static class Util
     {
+        public static Vector2 ScreenToWorld(Camera2D cam, Vector2 position)
+        {
+            Transform t = new Transform();
+            t.position = position;
+
+            t = t.GetTransform(cam);
+
+            return t.position;
+        }
+
+        public static Vector2 WorldToScreen()
+        {
+            return Vector2.Zero;
+        }
+
         public static float RandomBetween(float min, float max)
         {
             if (min > max)
@@ -25,7 +40,7 @@ namespace myEngine
                 throw new ArgumentException("min > max");
 
             //Random random = new Random();
-            float result = min + ((float)random.NextDouble() * (max-min));
+            float result = min + ((float)random.NextDouble() * (max - min));
             return result;
         }
 
@@ -70,6 +85,58 @@ namespace myEngine
             transform.rotation = -1 * MathHelper.ToDegrees((float)Math.Atan2((double)(direction.Y), (double)(direction.X)));
             transform.position = new Vector2(position3.X, position3.Y);
             transform.scale = new Vector2(scale3.X, scale3.Y);
+        }
+
+        public static float FindPolygonArea(Vector2[] vertices)
+        {
+            float totalArea = 0f;
+
+            for (int i = 0; i < vertices.Length; i++)
+            {
+                Vector2 a = vertices[i];
+                Vector2 b = vertices[(i + 1) % vertices.Length];
+
+                float dy = (a.Y + b.Y) / 2f;
+                float dx = b.X - a.X;
+
+                float area = dy * dx;
+                totalArea += area;
+            }
+
+            return MathF.Abs(totalArea);
+        }
+
+        public static float FindCollisionRadius(Vector2[] vertices)
+        {
+            float polygonArea = Util.FindPolygonArea(vertices);
+            float circleRadius = MathF.Sqrt(polygonArea / MathHelper.Pi);
+
+            return circleRadius;
+        }
+
+        public static Vector2[] ConvertVerticesTransform(Vector2[] vertices, Matrix transformMatrix)
+        {
+            Vector2[] newVertices = new Vector2[vertices.Length];
+            vertices.CopyTo(newVertices, 0);
+
+            Transform t = new Transform();
+            Util.DecomposeMatrix(transformMatrix, t);
+            Matrix m = Matrix.CreateScale((float)Math.Sqrt((double)t.scale.X)) * Matrix.CreateRotationZ(MathHelper.ToRadians(t.rotation)) * Matrix.CreateTranslation(0f, 0f, 0f);
+            //Console.WriteLine(t.scale.X);
+
+            for (int i = 0; i < newVertices.Length; i++)
+            {
+                Vector2 a = newVertices[i];
+                Vector2 b = newVertices[(i + 1) % newVertices.Length];
+
+                a = Vector2.Transform(a, m) * new Vector2(1, -1);
+                b = Vector2.Transform(b, m) * new Vector2(1, -1);
+
+                newVertices[i] = a;
+                newVertices[(i + 1) % newVertices.Length] = b;
+            }
+
+            return newVertices;
         }
     }
 }

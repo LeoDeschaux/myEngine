@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using myEngine.myProject.Pong;
+using myEngine;
 
-
-namespace myEngine.myProject.Pong
+namespace zCurrentProject
 {
     public class Ball : GameObject
     {
@@ -50,7 +50,7 @@ namespace myEngine.myProject.Pong
             trail.maxPoints = 3;
             trail.drawOrder = -900;
 
-            AddComponent(new Collider2D(sprite));
+            AddComponent(new BoxCollider(sprite));
             //collider = new Collider2D(sprite);
 
             //LOAD SOUNDS
@@ -74,7 +74,7 @@ namespace myEngine.myProject.Pong
                 ballState = BallState.moving;
 
                 trail.transform = this.transform;
-                GetComponent<Collider2D>().transformTarget = this.transform;
+                GetComponent<BoxCollider>().transformTarget = this.transform;
                 OnBallChangeDirection(false);
             }
 

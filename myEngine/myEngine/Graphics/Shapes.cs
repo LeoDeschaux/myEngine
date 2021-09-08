@@ -261,7 +261,13 @@ namespace myEngine
                 float bx = MathF.Sin(angle) * radius + center.X;
                 float by = MathF.Cos(angle) * radius + center.Y;
 
-                DrawLine(new Vector2(ax, ay), new Vector2(bx, by), thickness, color);
+                Vector2 p1 = new Vector2(ax, -ay);
+                Vector2 p2 = new Vector2(bx, -by);
+
+                //p1 = Vector2.Transform(p1, transformMatrix) * new Vector2(1, 1);
+                //p2 = Vector2.Transform(p2, transformMatrix) * new Vector2(1, 1);
+
+                DrawLine(p1, p2, thickness, color);
 
                 ax = bx;
                 ay = by;
@@ -315,15 +321,15 @@ namespace myEngine
             shapeCount++;
         }
 
-        public void DrawPolygon(Vector2[] vertices, Matrix transform, float thickness, Color color)
+        public void DrawPolygon(Vector2[] vertices, Matrix transformMatrix, float thickness, Color color)
         {
             for(int i = 0; i < vertices.Length; i++)
             {
                 Vector2 a = vertices[i];
                 Vector2 b = vertices[(i + 1) % vertices.Length];
 
-                a = Vector2.Transform(a, transform) * new Vector2(1, -1);
-                b = Vector2.Transform(b, transform) * new Vector2(1, -1);
+                a = Vector2.Transform(a, transformMatrix) * new Vector2(1, -1);
+                b = Vector2.Transform(b, transformMatrix) * new Vector2(1, -1);
 
                 DrawLine(a, b, thickness, color);
             }

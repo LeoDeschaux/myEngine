@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using myEngine.myProject.Pong;
+using myEngine;
 
-namespace myEngine.myProject.Pong
+namespace zCurrentProject
 {
     public class Target : GameObject, IDisposable
     {
@@ -20,8 +21,8 @@ namespace myEngine.myProject.Pong
             sprite.color = Color.HotPink;
             sprite.drawOrder = 0;
             sprite.transform.rotation = 45f;
-            this.AddComponent(new Collider2D(sprite));
-            this.GetComponent<Collider2D>().scale = 2;
+            this.AddComponent(new BoxCollider(sprite));
+            //this.GetComponent<BoxCollider>().scale = 2;
         }
 
         //METHODS
@@ -44,7 +45,7 @@ namespace myEngine.myProject.Pong
 
             ParticleEngine pe = new ParticleEngine(pp, sprite.transform.position);
 
-            this.GetComponent<Collider2D>().Destroy();
+            this.GetComponent<BoxCollider>().Destroy();
             sprite.Destroy();
 
             Scene_Pong.game.targetSpawner.SpawnNewTarget();

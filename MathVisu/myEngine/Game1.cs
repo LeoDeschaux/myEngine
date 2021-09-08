@@ -2,7 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace myEngine
+using myEngine;
+
+namespace zzMathVisu
 {
     public class Game1 : Game
     {
@@ -11,12 +13,13 @@ namespace myEngine
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            //TODO: define the ressources repertoir of the ressource manager when instanciating the engine
         }
 
         protected override void Initialize()
         {
             Engine.Initialize(this, graphics);
-            SceneManager.ChangeScene(typeof(Scene_2DShader));
+            SceneManager.ChangeScene(typeof(Scene_Main));
 
             base.Initialize();
         }

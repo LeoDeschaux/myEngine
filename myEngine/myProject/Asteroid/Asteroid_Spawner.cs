@@ -13,8 +13,10 @@ namespace myEngine
         Random random;
 
         //CONSTRUCTOR
-        public Asteroid_Spawner()
+        public Asteroid_Spawner(int amount)
         {
+            this.max = amount;
+
             random = new Random(0);
 
             for (int i = 0; i < max; i++)

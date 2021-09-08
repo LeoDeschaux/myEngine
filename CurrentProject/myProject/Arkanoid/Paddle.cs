@@ -27,7 +27,7 @@ namespace myEngine.myProject.Arkanoid
             this.transform.position = startPos;
             sprite.transform = this.transform;
 
-            AddComponent(new Collider2D(sprite));
+            AddComponent(new BoxCollider(sprite));
         }
 
         //METHODS

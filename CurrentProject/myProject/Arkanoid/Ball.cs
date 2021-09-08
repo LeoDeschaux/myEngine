@@ -28,7 +28,7 @@ namespace myEngine.myProject.Arkanoid
             sprite.transform = this.transform;
             sprite.dimension = new Vector2(30, 30);
 
-            AddComponent(new Collider2D(sprite));
+            AddComponent(new BoxCollider(sprite));
         }
 
         int i = 0;
@@ -88,11 +88,12 @@ namespace myEngine.myProject.Arkanoid
 
         public override void OnCollision(Collider2D other)
         {
+            BoxCollider boxCollider = (BoxCollider)other;
             //REBOND HORIZONTAL
-            if (other.gameObject is Paddle)
+            if (boxCollider.gameObject is Paddle)
             {
-                float raquettePosX = other.gameObject.transform.position.X;
-                float raquetteDimX = other.rectangle.Width;
+                float raquettePosX = boxCollider.gameObject.transform.position.X;
+                float raquetteDimX = boxCollider.rectangle.Width;
 
                 if (transform.position.X < (raquettePosX - (raquetteDimX / 2)) + raquetteDimX / 3)
                     direction.X = -1;
@@ -105,15 +106,15 @@ namespace myEngine.myProject.Arkanoid
                
 
             //REBOND VERTICAL
-            if (transform.position.Y > other.gameObject.transform.position.Y)
+            if (transform.position.Y > boxCollider.gameObject.transform.position.Y)
                 direction.Y = 1;
-            else if (transform.position.Y < other.gameObject.transform.position.Y)
+            else if (transform.position.Y < boxCollider.gameObject.transform.position.Y)
                 direction.Y = -1;
 
             OnBallChangeDirection(false);
 
-            if ((other.gameObject is Block))
-                ((Block)other.gameObject).OnHit();
+            if ((boxCollider.gameObject is Block))
+                ((Block)boxCollider.gameObject).OnHit();
         }
     }
 }

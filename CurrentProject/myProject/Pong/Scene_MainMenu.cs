@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 using myEngine.myProject.Pong;
+using myEngine;
 
-namespace myEngine
+namespace zCurrentProject
 {
     public class Scene_MainMenu : IScene
     {
@@ -75,14 +76,14 @@ namespace myEngine
         {
             SaveSystem_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvP;
-            SceneManager.ChangeScene(new Scene_Pong());
+            SceneManager.ChangeScene(typeof(Scene_Pong));
         }
 
         private void LoadAIScene()
         {
             SaveSystem_RunTime.data.Clear();
             Scene_Pong.gameMode = GameMode.PvAI;
-            SceneManager.ChangeScene(new Scene_Pong());
+            SceneManager.ChangeScene(typeof(Scene_Pong));
         }
 
         private void ExitGame()

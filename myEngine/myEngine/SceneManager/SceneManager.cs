@@ -13,10 +13,11 @@ namespace myEngine
         //FIELDS
         public static IScene currentScene;
 
-        public static void ChangeScene(IScene scene)
+        public static void ChangeSceneOld(IScene scene)
         {
             ClearScene();
-            Type t = Type.GetType(scene.ToString());
+            //Type t = Type.GetType(scene.ToString());
+            Type t = scene.GetType();
             currentScene = (IScene)Activator.CreateInstance(t);
         }
 
@@ -40,7 +41,7 @@ namespace myEngine
 
         public static void ReloadScene()
         {
-            ChangeScene(currentScene);
+            ChangeScene(currentScene.GetType());
         }
 
         private static void ClearScene()

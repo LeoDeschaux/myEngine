@@ -18,7 +18,7 @@ namespace zCurrentProject
         protected override void Initialize()
         {
             Engine.Initialize(this, graphics);
-            SceneManager.ChangeScene(typeof(Scene_Pong));
+            SceneManager.ChangeSceneOld(new Scene_Pong());
 
             base.Initialize();
         }

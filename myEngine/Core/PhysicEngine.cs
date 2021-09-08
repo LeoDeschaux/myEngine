@@ -29,18 +29,20 @@ namespace myEngine
         //UPDATE 
         public void Update()
         {
-            for (int i = 0; i < collider2Ds.Count; i++)
+            for (int i = 0; i < collider2Ds.Count - 1; i++)
             {
                 Collider2D other = collider2Ds[i];
 
-                for (int j = 0; j < collider2Ds.Count; j++)
+                for (int j = i+1; j < collider2Ds.Count; j++)
                 {
                     Collider2D c = collider2Ds[j];
 
-                    if (c.rectangle.Intersects(other.rectangle) && j != i)
+                    if (c.Intersects(other))
+                    {
                         c.gameObject.OnCollision(other);
+                        other.gameObject.OnCollision(c);
+                    }
                 }
-                
             }
         }
     }

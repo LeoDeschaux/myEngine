@@ -349,3 +349,15 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:../../myEngine/Content/myContent/Audio/Explosion8.wav;myContent/Audio/Explosion8.wav
+
+#begin ../../myEngine/Content/myContent/2D/Utm-zones.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Utm-zones.jpg;myContent/2D/Utm-zones.jpg

@@ -59,6 +59,12 @@ namespace myEngine
             pp.emissionRate = 10;
             pp.particle.Size = 0.1f;
             particleEngine = new ParticleEngine(pp, transform.position);
+
+            Matrix m = Matrix.CreateScale(transform.scale.X) * Matrix.CreateRotationZ(MathHelper.ToRadians(transform.rotation)) * Matrix.CreateTranslation(transform.position.X, transform.position.Y, 0f);
+            circleRadius = Util.FindCollisionRadius(Util.ConvertVerticesTransform(vertices, m));
+
+            collider = new CircleCollider(transform, circleRadius);
+            this.AddComponent(collider);
         }
 
         public void ApplyForce(float amount)
@@ -89,7 +95,7 @@ namespace myEngine
 
                 isMoving = true;
 
-                particleEngine.isActive = true;
+                particleEngine.isActive = false;
 
                 //PLAY SOUND
                 if (rocketSoundInstance.State != SoundState.Playing)
@@ -119,9 +125,6 @@ namespace myEngine
             Shapes s = new Shapes(Engine.game);
 
             s.Begin(Scene_Asteroid.cam);
-
-            Matrix m = Matrix.CreateScale(transform.scale.X) * Matrix.CreateRotationZ(MathHelper.ToRadians(transform.rotation)) * Matrix.CreateTranslation(transform.position.X, transform.position.Y, 0f);
-            s.DrawPolygon(shipVertices, m, 2, color);
 
             if(isMoving)
             {

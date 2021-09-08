@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using myEngine.myProject.Pong;
+using myEngine;
 
-namespace myEngine.myProject.Pong
+namespace zCurrentProject
 {
     public class UI_Pong : UI
     {
@@ -193,7 +194,7 @@ namespace myEngine.myProject.Pong
 
         private void QuitGame()
         {
-            SceneManager.ChangeScene(new Scene_MainMenu());
+            SceneManager.ChangeScene(typeof(Scene_MainMenu));
         }
     }
 }
