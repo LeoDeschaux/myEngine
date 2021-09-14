@@ -15,12 +15,10 @@ namespace myEngine
         //CONSTRUCTOR
         public PopUp(string msg)
         {
-            transform.position = Settings.GetScreenCenter();
-
             background = new Sprite();
             background.color = Color.Black;
             background.dimension = new Vector2(500, 300);
-            background.transform = this.transform;
+            //background.transform = this.transform;
 
             text = new Text();
             text.drawOrder = 2010;
@@ -29,25 +27,30 @@ namespace myEngine
                                                    background.transform.position.Y - (background.dimension.Y/2) + (text.GetRectangle().Height*2));
             text.color = Color.White;
             text.alignment = Alignment.Center;
+            text.useScreenCoord = false;
 
             button = new Button();
             button.sprite.dimension = new Vector2(200, 80);
-            button.transform.position = new Vector2(background.transform.position.X,
-                                                   background.transform.position.Y + (background.dimension.Y/2) - (button.sprite.dimension.Y/1.2f));
+            //button.sprite.transform.position = new Vector2(0, -150);
 
+            button.transform.position = new Vector2(background.transform.position.X,
+                                                   (background.transform.position.Y + (background.dimension.Y/2) - (button.sprite.dimension.Y/1.2f)));
             button.defaultColor = Color.White;
             button.hoverColor = Color.Yellow;
             button.onClicColor = Color.Red;
 
             button.text.s = "Continue";
             button.text.alignment = Alignment.Center;
+            button.text.useScreenCoord = false;
 
-            button.text.transform = button.transform;
-            button.sprite.transform = button.transform;
+            //button.text.transform = button.transform;
+            //button.sprite.transform = button.transform;
+            button.sprite.transform.position = new Vector2(button.transform.position.X, button.transform.position.Y);
 
             background.drawOrder = 2000;
-            button.sprite.drawOrder = 2001;
-            button.text.drawOrder = 2002;
+            button.drawOrder = 2001;
+            button.sprite.drawOrder = 2002;
+            button.text.drawOrder = 2003;
 
         }
 

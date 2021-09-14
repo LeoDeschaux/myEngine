@@ -7,14 +7,28 @@ namespace myEngine
 {
     public static class Util
     {
-        public static Vector2 ScreenToWorld(Camera2D cam, Vector2 position)
+        public static Vector2 ScreenToWorld(Matrix cam, Vector2 position)
         {
-            Transform t = new Transform();
-            t.position = position;
+            //CHILD
+            Matrix c_scale = Matrix.CreateScale(1f, 1f, 1f);
+            Matrix c_rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(0));
+            Matrix c_position = Matrix.CreateTranslation((int)position.X, (int)position.Y, 0);
+            Matrix c_transform = c_scale * c_rotation * c_position;
 
-            t = t.GetTransform(cam);
+            Matrix newTransform = c_transform * Matrix.Invert(cam);
 
-            return t.position;
+            Vector2 tmp_Pos = position;
+            Vector2 tmp_Scale = Vector2.One;
+            float tmp_Rot = 0f;
+
+            Util.DecomposeMatrix(ref newTransform, out tmp_Pos, out tmp_Rot, out tmp_Scale);
+
+            Transform result = new Transform();
+            result.position = tmp_Pos;
+            result.scale = tmp_Scale;
+            result.rotation = tmp_Rot;
+
+            return result.position;
         }
 
         public static Vector2 WorldToScreen()

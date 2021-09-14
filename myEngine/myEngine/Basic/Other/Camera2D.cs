@@ -19,6 +19,8 @@ namespace myEngine
             transform.scale = new Vector2(1, 1);
 
             offSet = Matrix.CreateTranslation(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT, 0);
+
+            this.Update();
         }
 
         //METHODS

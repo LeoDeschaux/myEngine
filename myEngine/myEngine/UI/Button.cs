@@ -166,8 +166,11 @@ namespace myEngine
             previousMouseDown = mouseDown;
             mouseDown = Input.GetMouse(MouseButtons.Left);
 
+            Vector2 mousePosition = Util.ScreenToWorld(SceneManager.currentScene.camera.transformMatrix, Mouse.position.ToVector2());
+            mousePosition = new Vector2(mousePosition.X, -mousePosition.Y);
+
             previousHoverState = hoverState;
-            if (sprite.GetRectangle().Contains(Mouse.position))
+            if (sprite.GetRectangle().Contains(mousePosition))
                 hoverState = true;
             else
             {

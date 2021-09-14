@@ -14,6 +14,7 @@ namespace myEngine
 
         public Transform transform;
 
+
         /*
         {
             get { return t_transform.GetTransform(this.parent); }

@@ -4,6 +4,7 @@ using System.Text;
 
 using myEngine;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace myEngine
 {
@@ -27,11 +28,16 @@ namespace myEngine
             center.useScreenCoord = false;
         }
 
-        //METHODS
-        private Vector2 WorldToScreen(Vector2 position, Matrix matrix)
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            Vector2 result = Vector2.Zero;
-            return result;
+
+            Shapes s = new Shapes(Engine.game);
+
+            s.Begin(camera);
+
+            s.DrawCircleFill(new Vector2(0, 200), 128, 12, Color.White);
+
+            s.End();
         }
     }
 }

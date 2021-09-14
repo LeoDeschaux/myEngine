@@ -1,89 +1,168 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Text;
+
+using System.Windows;
 
 namespace myEngine
 {
     public class Camera3D : GameObject
     {
-        //FIELDS 
-        Vector3 camTarget;
-        Vector3 camDirection;
-        Vector3 camUp;
-
-        public Vector3 camPosition;
-        public Vector3 camRotation;
-
-        //MATRIX
-        public Matrix worldMatrix;
-        public Matrix viewMatrix;
-        public Matrix projectionMatrix;
-
-        //CONSTRUCTOR
-        public Camera3D()
+        public Matrix worldMatrix
         {
-            //Setup Camera
-            camPosition = new Vector3(0f, 0f, -10f);
-            camRotation = new Vector3(0f, 0f, 0f);
-
-            camTarget = new Vector3(0f, 0f, 0f);
-
-            camDirection = camTarget - camPosition;
-
-            camDirection.Normalize();
-            camUp = Vector3.Up;
-
-            //SETUP MATRIX
-            worldMatrix = Matrix.CreateWorld(Vector3.Zero, Vector3.Forward, Vector3.Up);
-            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, Settings.ASPECT_RATIO, 1, 100);
-            viewMatrix = Matrix.CreateLookAt(camPosition, camPosition + camDirection, camUp);
+            get;
+            set;
+        }
+        public Matrix projectionMatrix
+        {
+            get;
+            protected set;
+        }
+        public Matrix viewMatrix
+        {
+            get
+            {
+                return Matrix.CreateLookAt(cameraPosition, cameraLookAt, Vector3.Up);
+            }
         }
 
-        Vector2 deltaMouse = Vector2.Zero;
+        private Vector3 cameraPosition;
+        private Vector3 cameraRotation;
+        private float cameraSpeed;
+        private Vector3 cameraLookAt;
+
+        private Vector3 mouseRotationBuffer;
+        private MouseState currentMouseState;
+        private MouseState previousMouseState;
+
+        private Game game;
+
+        public Vector3 Position
+        {
+            get { return cameraPosition; }
+            set
+            {
+                cameraPosition = value;
+                UpdateLookAt();
+            }
+        }
+
+        public Vector3 Rotation
+        {
+            get { return cameraRotation; }
+            set
+            {
+                cameraRotation = value;
+                UpdateLookAt();
+            }
+        }
+
+        public Camera3D(Game game, Vector3 position, Vector3 rotation, float speed)
+        {
+            this.game = game;
+
+            this.cameraSpeed = speed;
+
+            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
+                MathHelper.PiOver4,
+                game.GraphicsDevice.Viewport.AspectRatio,
+                1f,
+                1000f);
+
+            //this.Rotation = rotation;
+
+            MoveTo(position, rotation);
+
+            previousMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
+        }
+
+        private void MoveTo(Vector3 pos, Vector3 rot)
+        {
+            Position = pos;
+            Rotation = rot;
+        }
+
+        private void UpdateLookAt()
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationX(cameraRotation.X) *
+                                    Matrix.CreateRotationY(cameraRotation.Y);
+
+            Vector3 lookAtOffSet = Vector3.Transform(Vector3.UnitZ, rotationMatrix);
+
+            cameraLookAt = cameraPosition + lookAtOffSet;
+        }
+
+        private Vector3 PreviewMove(Vector3 amount)
+        {
+            Matrix rotate = Matrix.CreateRotationY(cameraRotation.Y);
+            Vector3 movement = new Vector3(amount.X, amount.Y, amount.Z);
+            movement = Vector3.Transform(movement, rotate);
+
+            return cameraPosition + movement;
+        }
+
+        private void Move(Vector3 scale)
+        {
+            MoveTo(PreviewMove(scale), Rotation);
+        }
 
         public override void Update()
         {
-            //camDirection = camTarget - camPosition;
-            //camDirection.Normalize();
-            //viewMatrix = Matrix.CreateLookAt(camPosition, camPosition + camDirection, Vector3.Up);
+            currentMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
-            /*
-            viewMatrix = Matrix.CreateRotationX(MathHelper.ToRadians(camRotation.X)) *
-                            Matrix.CreateRotationY(MathHelper.ToRadians(camRotation.Y)) *
-                            Matrix.CreateRotationZ(MathHelper.ToRadians(camRotation.Z)) *
-                            Matrix.CreateTranslation(camPosition);
-            */
+            Vector3 moveVector = Vector3.Zero;
 
-            //viewMatrix = Matrix.CreateLookAt(camPosition, camPosition * camRotation, Vector3.Up);
+            if (Input.GetKey(Keys.Z))
+                moveVector.Z = 1;
+            if (Input.GetKey(Keys.S))
+                moveVector.Z = -1;
+            if (Input.GetKey(Keys.Q))
+                moveVector.X = 1;
+            if (Input.GetKey(Keys.D))
+                moveVector.X = -1;
 
-            //MOUSE CAM CONTROLE
+            if (Input.GetKey(Keys.E))
+                moveVector.Y = 1;
+            if (Input.GetKey(Keys.A))
+                moveVector.Y = -1;
 
+            if (moveVector != Vector3.Zero)
+            {
+                moveVector.Normalize();
+                moveVector *= Time.deltaTime * cameraSpeed;
 
-            //deltaMouse = Mouse.position.ToVector2();
+                Move(moveVector);
+            }
 
-            //deltaMouse -= Mouse.position.ToVector2();
-            //camRotation += new Vector3((deltaMouse.X - Mouse.position.ToVector2().X) * 500 * Time.deltaTime, deltaMouse.Y * 5 * Time.deltaTime, 0f);
+            float deltaX;
+            float deltaY;
 
-            camRotation.X = Mouse.position.ToVector2().X * 0.5f; // * Time.deltaTime;
-            camRotation.Y = Mouse.position.ToVector2().Y * 0.5f;
+            if(currentMouseState != previousMouseState)
+            {
+                deltaX = currentMouseState.X - (game.GraphicsDevice.Viewport.Width / 2);
+                deltaY = currentMouseState.Y - (game.GraphicsDevice.Viewport.Height / 2);
 
-            Console.WriteLine(camRotation.X);
+                mouseRotationBuffer.X -= 2f * deltaX * Time.deltaTime;
+                mouseRotationBuffer.Y -= 2f * deltaY * Time.deltaTime;
 
-            /*
-            viewMatrix = Matrix.CreateTranslation(camPosition) *
-                        Matrix.CreateFromAxisAngle(Vector3.Up, MathHelper.ToRadians(camRotation.X)) *
-                        Matrix.CreateFromAxisAngle(Vector3.Up, MathHelper.ToRadians(camRotation.Y));
-            */
+                if (mouseRotationBuffer.Y < MathHelper.ToRadians(-75f))
+                    mouseRotationBuffer.Y = mouseRotationBuffer.Y - (mouseRotationBuffer.Y - MathHelper.ToRadians(-75f));
+                if (mouseRotationBuffer.Y > MathHelper.ToRadians(75f))
+                    mouseRotationBuffer.Y = mouseRotationBuffer.Y - (mouseRotationBuffer.Y - MathHelper.ToRadians(75f));
 
-            viewMatrix = Matrix.CreateTranslation(camPosition) *
-                         Matrix.CreateRotationX(-MathHelper.ToRadians(camRotation.Y)) *
-                         Matrix.CreateRotationY(MathHelper.ToRadians(camRotation.X));
+                Rotation = new Vector3(-MathHelper.Clamp(mouseRotationBuffer.Y, MathHelper.ToRadians(-75f), MathHelper.ToRadians(75f)),
+                    MathHelper.WrapAngle(mouseRotationBuffer.X), 0);
 
-            
+                deltaX = 0;
+                deltaY = 0;
+            }
 
-            
+            Microsoft.Xna.Framework.Input.Mouse.SetPosition(game.GraphicsDevice.Viewport.Width/2, game.GraphicsDevice.Viewport.Height / 2);
+
+            previousMouseState = currentMouseState;
         }
 
         //METHODS

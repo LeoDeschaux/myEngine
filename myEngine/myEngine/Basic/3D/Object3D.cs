@@ -14,6 +14,8 @@ namespace myEngine
 
         private Camera3D camera;
 
+        public bool isVisible = true;
+
         //CONSTRUCTOR
         public Object3D(Camera3D camera)
         {
@@ -28,7 +30,8 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            camera.DrawModel(this);
+            if(isVisible)
+                camera.DrawModel(this);
         }
     }
 }

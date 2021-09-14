@@ -312,7 +312,7 @@ namespace myEngine
                 float bx = MathF.Sin(angle) * radius + center.X;
                 float by = MathF.Cos(angle) * radius + center.Y;
 
-                vertices[vertexCount++] = new VertexPositionColor(new Vector3(ax + center.X, -ay + center.Y, 0f), color);
+                vertices[vertexCount++] = new VertexPositionColor(new Vector3(ax + center.X, -ay - center.Y, 0f), color);
 
                 ax = bx;
                 ay = by;

@@ -116,20 +116,5 @@ namespace myEngine
                 return this;
             }
         }
-
-        public void SetTransform(Transform value)
-        {
-            if (hasParent)
-            {
-                if (parent == null)
-                    throw new ArgumentException("no parent");
-
-                this.position = value.position;
-            }
-            else
-            {
-                this.position = value.position;
-            }
-        }
     }
 }

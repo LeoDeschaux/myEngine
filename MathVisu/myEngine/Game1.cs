@@ -13,13 +13,12 @@ namespace zzMathVisu
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            //TODO: define the ressources repertoir of the ressource manager when instanciating the engine
         }
 
         protected override void Initialize()
         {
             Engine.Initialize(this, graphics);
-            SceneManager.ChangeScene(typeof(Scene_Main));
+            SceneManager.ChangeScene(typeof(Scene_EarthGlobe));
 
             base.Initialize();
         }

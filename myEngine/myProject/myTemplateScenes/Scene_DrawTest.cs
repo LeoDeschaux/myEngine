@@ -19,14 +19,12 @@ namespace myEngine
         Stopwatch watch;
         
         Shapes shapes;
-        Camera newCamera;
 
         //CONSTRUCTOR
         public Scene_DrawTest()
         {
             Settings.BACKGROUND_COLOR = Color.CornflowerBlue;
 
-            newCamera = new Camera();
 
             shapes = new Shapes(Engine.game);
             Random random = new Random(0);
@@ -44,10 +42,8 @@ namespace myEngine
                 colors[i] = new Color((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());
 
             Util.DisplayMatrix(Matrix.CreateOrthographicOffCenter(0, 1280, 720, 0, 0, 1));
-            Util.DisplayMatrix(newCamera.Projection);
         }
 
-        
 
         //METHODS
         public override void Update()

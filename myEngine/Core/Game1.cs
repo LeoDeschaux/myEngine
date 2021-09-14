@@ -16,7 +16,7 @@ namespace myEngine
         protected override void Initialize()
         {
             Engine.Initialize(this, graphics);
-            SceneManager.ChangeScene(typeof(Scene_2DShader));
+            SceneManager.ChangeScene(typeof(Scene_ParticleEditor));
 
             base.Initialize();
         }
