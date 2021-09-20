@@ -68,7 +68,8 @@ namespace myEngine
             if (Input.GetMouse(MouseButtons.Left))
             {
                 pe_followMouse.isActive = true;
-                pe_followMouse.transform.position = Mouse.position.ToVector2();
+                Vector2 pos = new Vector2(Mouse.position.ToVector2().X, 1 * Mouse.position.ToVector2().Y);
+                pe_followMouse.transform.position = Util.ScreenToWorld(camera.transformMatrix, pos);
             }
             else
             {
@@ -79,6 +80,8 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
+            return;
+
             int x = 16;
             int y = 9;
 

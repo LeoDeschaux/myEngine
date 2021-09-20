@@ -60,6 +60,11 @@ namespace myEngine
             }
         }
 
+        public Vector3 getLookAt()
+        {
+            return cameraLookAt;
+        }
+
         public Camera3D(Game game, Vector3 position, Vector3 rotation, float speed)
         {
             this.game = game;
@@ -168,6 +173,8 @@ namespace myEngine
         //METHODS
         public void DrawModel(Model model, Vector3 position, Vector3 rotation)
         {
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
             worldMatrix = Matrix.CreateRotationX(MathHelper.ToRadians(rotation.X)) *
                             Matrix.CreateRotationY(MathHelper.ToRadians(rotation.Y)) *
                             Matrix.CreateRotationZ(MathHelper.ToRadians(rotation.Z)) *
@@ -188,7 +195,10 @@ namespace myEngine
         //METHODS
         public void DrawModel(Object3D object3D)
         {
-            worldMatrix = Matrix.CreateRotationX(MathHelper.ToRadians(object3D.transform3D.rotation.X)) *
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+
+            worldMatrix = Matrix.CreateScale(object3D.transform3D.scale) * 
+                            Matrix.CreateRotationX(MathHelper.ToRadians(object3D.transform3D.rotation.X)) *
                             Matrix.CreateRotationY(MathHelper.ToRadians(object3D.transform3D.rotation.Y)) *
                             Matrix.CreateRotationZ(MathHelper.ToRadians(object3D.transform3D.rotation.Z)) *
                             Matrix.CreateTranslation(object3D.transform3D.position);

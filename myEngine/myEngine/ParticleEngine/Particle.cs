@@ -69,7 +69,7 @@ namespace myEngine
             Vector2 origin = new Vector2(Texture.Width / 2, Texture.Height / 2);
 
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, null, matrix);
-            spriteBatch.Draw(Texture, new Vector2(Position.X, -Position.Y), sourceRectangle, Color,
+            spriteBatch.Draw(Texture, new Vector2(Position.X, Position.Y), sourceRectangle, Color,
                 Angle, origin, Size, SpriteEffects.None, 
                 (float)((Math.Clamp(OrderInLayer, -1000, 1000) + 1000)) / 2000);
             spriteBatch.End();

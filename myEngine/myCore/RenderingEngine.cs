@@ -27,6 +27,7 @@ namespace myEngine
             //spriteBatch = new SpriteBatch(Engine.game.GraphicsDevice);
             spriteBatch = new SpriteBatch(Engine.graphics.GraphicsDevice);
 
+            /*
             renderTarget = new RenderTarget2D(
             Engine.game.GraphicsDevice,
             Engine.game.GraphicsDevice.PresentationParameters.BackBufferWidth,
@@ -34,10 +35,21 @@ namespace myEngine
             false,
             Engine.game.GraphicsDevice.PresentationParameters.BackBufferFormat,
             DepthFormat.Depth24);
+            */
+
+            renderTarget = new RenderTarget2D(
+            Engine.game.GraphicsDevice,
+            Engine.game.GraphicsDevice.PresentationParameters.BackBufferWidth,
+            Engine.game.GraphicsDevice.PresentationParameters.BackBufferHeight,
+            false,
+            SurfaceFormat.Color,
+            DepthFormat.Depth24Stencil8,
+            0,
+            RenderTargetUsage.DiscardContents);
 
             //POST PROCESSING
             postProcessingProfile = new PostProcessingProfile();
-            
+
             //GUI
             imGuiRenderer = new ImGuiRenderer(Engine.game);
             imGuiRenderer.RebuildFontAtlas();
@@ -50,6 +62,7 @@ namespace myEngine
         public void Draw()
         {
             Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
             /*
             shapes.Begin();

@@ -35,18 +35,24 @@ namespace myEngine
             if (Input.GetMouseUp(MouseButtons.Left))
                 draw = false;
 
-            DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());
+            text.s = "" + Mouse.position.ToVector2();
+            text.color = Color.White;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-            text.Draw(spriteBatch, matrix);
-
             if (draw)
-                DrawSimpleShape.DrawRectangle(pos, Mouse.position.ToVector2() - pos, 0f, Color.Red);
+            {
+                Vector2 endPos = (Mouse.position.ToVector2() - pos);
+
+                Shapes s = new Shapes(Engine.game);
+
+                s.Begin(null);
+                s.DrawRectangle(pos.X,pos.Y, endPos.X, endPos.Y, 2, Color.Green);
+                s.End();
+            }
 
             DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());
-
         }
     }
 }

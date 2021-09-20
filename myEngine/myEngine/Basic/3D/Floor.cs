@@ -86,6 +86,9 @@ namespace myEngine
 
         private void DrawModel()
         {
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            device.RasterizerState = RasterizerState.CullNone;
+
             effect.VertexColorEnabled = true;
             effect.World = Matrix.CreateTranslation(Vector3.Zero);
             effect.View = camera.viewMatrix;

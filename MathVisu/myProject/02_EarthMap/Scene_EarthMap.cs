@@ -7,12 +7,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using myEngine;
 
+using ImGuiNET;
+
 namespace zzMathVisu
 {
     public class Scene_EarthMap : IScene
     {
         //FIELDS
         Text t;
+        PopUpCoord c;
+
 
         //CONSTRUCTOR
         public Scene_EarthMap()
@@ -23,19 +27,13 @@ namespace zzMathVisu
             s.texture = Ressources.Load<Texture2D>("myContent/2D/Utm-zones");
             s.dimension = new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
             s.transform.position = new Vector2(0, 0);
-            s.isVisible = false;
-
-
-            Sprite ss = new Sprite();
-            ss.texture = Ressources.Load<Texture2D>("myContent/2D/Utm-zones");
-            ss.dimension = new Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
-            ss.color = Color.Blue;
-            ss.transform.position = new Vector2(s.dimension.X, 0);
-            ss.isVisible = false;
+            s.isVisible = true;
 
             camControl.isActive = true;
 
             t = new Text();
+            t.color = Color.White;
+            c = new PopUpCoord();
         }
 
         //METHODS
@@ -45,27 +43,36 @@ namespace zzMathVisu
 
             pos = Util.ScreenToWorld(camera.transformMatrix, pos);
             t.s = "" + pos;
+        }
 
-            if (Input.GetMouseDown(MouseButtons.Left))
-            {
-                /*
-                Sprite s = new Sprite();
-                s.color = Color.Red;
-                s.dimension = new Vector2(50, 50);
+        public override void DrawGUI()
+        {
+            c.DrawPopUp();
+        }
 
-                s.transform.position = new Vector2(pos.X, -pos.Y);
-                s.drawOrder = 500;
-                */
-            }
+        public static Vector2 convert(float longitude, float latitude)
+        {
+            //lambda: longitude
+            //phi: latitude
+            //x = cos(phi0)*(lambda - lambda0)
+            //y = (phi - phi0)
 
-            if(Input.GetKeyDown(Keys.Enter))
-            {
-                //PopUp p = new PopUp("Hello");
-                PopUpCoord c = new PopUpCoord();
-                //p.button.onButtonPressed = new Event(OnButtonPressed);
-            }
+            latitude = MathHelper.ToRadians(latitude * 2);
+            longitude = MathHelper.ToRadians(longitude);
 
+            float longCenter = 0; //Settings.SCREEN_WIDTH/2;
+            float latCenter = 0; //Settings.SCREEN_HEIGHT/2;
+            float R = 0; //6.371km;
 
+            Vector2 result = Vector2.Zero;
+
+            result.X = (longitude - longCenter) * (float)Math.Cos(latCenter);
+            result.Y = (latitude - latCenter);
+
+            result.X = (result.X / MathHelper.Pi) * Settings.SCREEN_WIDTH / 2;
+            result.Y = (result.Y / MathHelper.Pi) * Settings.SCREEN_HEIGHT / 2;
+
+            return result;
         }
     }
 }

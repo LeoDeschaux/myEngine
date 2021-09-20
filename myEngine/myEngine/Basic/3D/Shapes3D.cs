@@ -39,6 +39,34 @@ namespace myEngine
             buffer.SetData<VertexPositionColor>(vList.ToArray());
         }
 
+        public void DrawLine(Vector3 start, Vector3 end, float size, Color TOCHANGE)
+        {
+            List<VertexPositionColor> vList = new List<VertexPositionColor>();
+
+            size = size / 100;
+
+            Color color = new Color(0, 0, 0);
+            color.R += 20;
+            color.G += 20;
+            color.B += 20;
+
+            vList.Add(new VertexPositionColor(new Vector3(start.X, start.Y, start.Z), color));
+            vList.Add(new VertexPositionColor(new Vector3(start.X + size, start.Y, start.Z), color));
+            vList.Add(new VertexPositionColor(new Vector3(end.X, end.Y, end.Z), color));
+
+            color.R += 200;
+            color.G += 200;
+            color.B += 200;
+
+            vList.Add(new VertexPositionColor(new Vector3(end.X, end.Y, end.Z), color));
+            vList.Add(new VertexPositionColor(new Vector3(end.X + size, end.Y, end.Z), color));
+            vList.Add(new VertexPositionColor(new Vector3(start.X + size, start.Y, start.Z), color));
+
+
+            buffer = new VertexBuffer(device, VertexPositionColor.VertexDeclaration, vList.Count, BufferUsage.None);
+            buffer.SetData<VertexPositionColor>(vList.ToArray());
+        }
+
         public void DrawCube(Vector3 center, float size, Color TOCHANGE)
         {
             List<VertexPositionColor> vList = new List<VertexPositionColor>();
@@ -84,7 +112,13 @@ namespace myEngine
                 return;
 
             effect.VertexColorEnabled = true;
-            effect.World = Matrix.CreateTranslation(Vector3.Zero);
+            //effect.World = Matrix.CreateTranslation(Vector3.Zero);
+
+            effect.World = Matrix.Identity *
+                Matrix.CreateScale(1) *
+                Matrix.CreateRotationY(MathHelper.ToRadians(90)) *
+                Matrix.CreateTranslation(Vector3.Zero);
+
             effect.View = camera.viewMatrix;
             effect.Projection = camera.projectionMatrix;
 

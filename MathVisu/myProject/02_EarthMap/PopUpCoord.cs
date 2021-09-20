@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using ImGuiNET;
+﻿using ImGuiNET;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using myEngine;
-
+using System;
 using Num = System.Numerics;
 
 namespace zzMathVisu
@@ -17,8 +13,7 @@ namespace zzMathVisu
         ImGuiRenderer renderer;
 
         //UI VALUES
-        public static Vector3 particleColor;
-        public static float particleSize = 1;
+        private static Num.Vector2 coords;
 
         //CONSTRUCTOR
         public PopUpCoord()
@@ -37,8 +32,10 @@ namespace zzMathVisu
 
             renderer.AfterLayout();
         }
-        protected void DrawPopUp()
+
+        public void DrawPopUp()
         {
+            /*
             ImGui.SetNextWindowSize(new Num.Vector2(300, 300));
             ImGui.SetNextWindowPos(new Num.Vector2(Settings.SCREEN_WIDTH/2 - 150, Settings.SCREEN_HEIGHT/2 - 150));
 
@@ -51,53 +48,31 @@ namespace zzMathVisu
 
             ImGuiWindowFlags window_flags = 0;
 
-            window_flags |= ImGuiWindowFlags.NoResize;
-            window_flags |= ImGuiWindowFlags.NoCollapse;
-            window_flags |= ImGuiWindowFlags.NoMove;
-
+            //window_flags |= ImGuiWindowFlags.NoResize;
+            //window_flags |= ImGuiWindowFlags.NoCollapse;
+            //window_flags |= ImGuiWindowFlags.NoMove;
             ImGui.Begin("WINDOW", window_flags);
-            ImGui.Text("Hello, world!");
-            ImGui.SliderFloat("float", ref particleSize, 0.0f, 10.0f, string.Empty);
+            */
 
-            Num.Vector3 v = new Num.Vector3(particleColor.X, particleColor.Y, particleColor.Z);
+            ImGui.Begin("NAME");
 
-            ImGui.ColorEdit3("clear color", ref v);
+            ImGui.Text("Choose your marker position : ");
 
-            particleColor = new Vector3(v.X, v.Y, v.Z);
+            ImGui.SliderFloat("Longitude", ref coords.Y, -180f, 180f);
+            ImGui.SliderFloat("Latitude", ref coords.X, -90f, 90f);
 
-            ImGui.Button("Set Marker");
+            if (ImGui.Button("Set Marker"))
+            {
+                Console.WriteLine("PRESSED");
+                Sprite s = new Sprite();
 
-            ImGui.End();
-        }
+                s.transform.position = Scene_EarthMap.convert(coords.X, coords.Y);
+                //s.transform.position = new Vector2(positionUI.X, positionUI.Y);
+                s.dimension = new Vector2(2, 2);
+                s.color = Color.Red;
+                s.drawOrder = 100;
+            }
 
-        //GUI
-        protected void DrawGUI()
-        {
-            ImGui.SetNextWindowSize(new Num.Vector2(300, Settings.SCREEN_HEIGHT));
-            ImGui.SetNextWindowPos(new Num.Vector2((Settings.SCREEN_WIDTH - 300), 0));
-
-            ImGui.GetStyle().WindowRounding = 0.0f;
-            ImGui.GetStyle().ChildRounding = 0.0f;
-            ImGui.GetStyle().FrameRounding = 0.0f;
-            ImGui.GetStyle().GrabRounding = 0.0f;
-            ImGui.GetStyle().PopupRounding = 0.0f;
-            ImGui.GetStyle().ScrollbarRounding = 0.0f;
-
-            ImGuiWindowFlags window_flags = 0;
-
-            window_flags |= ImGuiWindowFlags.NoResize;
-            window_flags |= ImGuiWindowFlags.NoCollapse;
-            window_flags |= ImGuiWindowFlags.NoMove;
-
-            ImGui.Begin("WINDOW", window_flags);
-            ImGui.Text("Hello, world!");
-            ImGui.SliderFloat("float", ref particleSize, 0.0f, 10.0f, string.Empty);
-
-            Num.Vector3 v = new Num.Vector3(particleColor.X, particleColor.Y, particleColor.Z);
-
-            ImGui.ColorEdit3("clear color", ref v);
-
-            particleColor = new Vector3(v.X, v.Y, v.Z);
             ImGui.End();
         }
     }

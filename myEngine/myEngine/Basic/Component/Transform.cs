@@ -7,35 +7,6 @@ namespace myEngine
 {
     public class Transform
     {
-        /*
-        public myVector myPosition
-        {
-            get { Console.WriteLine(); return myPopos; }
-            set { Console.WriteLine(); myPopos = value; }
-        }
-
-        private myVector myPopos;
-
-         public Vector2 test
-        {
-            get { Console.WriteLine(); return new Vector2(); }
-            //set { Console.WriteLine("HELLO GUYS"); m_test = value; }
-        }
-        private Vector2 m_test;
-
-         public Transform(Vector2 pos, float rot, Vector2 scale)
-        {
-            //INIT
-            this.position = Vector2.Zero;
-            this.rotation = 0f;
-            this.scale = Vector2.One;
-
-            parent = null;
-            hasParent = false;
-        }
-
-        */
-
         public Vector2 position;
         public float rotation;
         public Vector2 scale;
@@ -77,6 +48,7 @@ namespace myEngine
             return c_transform;
         }
 
+        /*
         public Transform GetTransform(GameObject? parent)
         {
             if (hasParent)
@@ -116,5 +88,6 @@ namespace myEngine
                 return this;
             }
         }
+        */
     }
 }
