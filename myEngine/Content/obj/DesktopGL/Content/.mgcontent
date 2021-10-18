@@ -41,8 +41,11 @@
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg</File>
     <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/earth/source/Earth.obj</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/EarthV3.fbx</File>
-    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/untitled.fbx</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/2D/Map.jpg</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/sphere.fbx</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/earth.fbx</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/earthV2/textures/1_earth_8k.jpg</File>
+    <File>C:/Users/Leo/Documents/GitHub/FromGitHub/myEngine/myEngine/Content/../../myEngine/Content/myContent/3D/earthV2/source/Earth.fbx</File>
   </SourceFiles>
   <DestFiles>
     <File>myContent/2D/mountain.jpg</File>
@@ -82,7 +85,10 @@
     <File>myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg</File>
     <File>myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg</File>
     <File>myContent/3D/earth/source/Earth.obj</File>
-    <File>myContent/3D/EarthV3.fbx</File>
-    <File>myContent/3D/untitled.fbx</File>
+    <File>myContent/2D/Map.jpg</File>
+    <File>myContent/3D/sphere.fbx</File>
+    <File>myContent/3D/earth.fbx</File>
+    <File>myContent/3D/earthV2/textures/1_earth_8k.jpg</File>
+    <File>myContent/3D/earthV2/source/Earth.fbx</File>
   </DestFiles>
 </SourceFileCollection>

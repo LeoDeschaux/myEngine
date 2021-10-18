@@ -30,7 +30,6 @@ namespace myEngine
         {
             List<VertexPositionColor> vList = new List<VertexPositionColor>();
 
-
             vList.Add(new VertexPositionColor(new Vector3(0, 0.8f, 0), color));
             vList.Add(new VertexPositionColor(new Vector3(0.5f, 0, 0), color));
             vList.Add(new VertexPositionColor(new Vector3(-0.5f, 0, 0), color));
@@ -101,7 +100,7 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            device.RasterizerState = RasterizerState.CullNone;
+            //device.RasterizerState = RasterizerState.CullNone;
 
             DrawModel();
         }

@@ -62,7 +62,7 @@ namespace myEngine
         public void Draw()
         {
             Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
-            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
             /*
             shapes.Begin();
@@ -87,10 +87,13 @@ namespace myEngine
         private void RenderScene()
         {
             // Set the render target
-            Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
-            Engine.game.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
+            //Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
+            //Engine.game.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
 
-            Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
+            //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            //Engine.game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+
+            //Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
             //DRAW BACKGROUND
             spriteBatch.Begin();

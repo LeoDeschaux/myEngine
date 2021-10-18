@@ -61,7 +61,6 @@ namespace myEngine
             transform = new Transform();
 
             sprite = new Sprite(Vector2.Zero, new Vector2(250, 50));
-            sprite.transform = this.transform;
             sprite.color = Color.White;
             sprite.drawOrder = this.drawOrder + 1;
 
@@ -71,7 +70,6 @@ namespace myEngine
             disabledColor = Color.DarkGray;
 
             text = new Text();
-            text.transform = this.transform;
             text.drawOrder = this.drawOrder + 2;
 
             text.alignment = Alignment.Center;

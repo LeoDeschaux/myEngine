@@ -65,17 +65,21 @@ namespace myEngine
             return cameraLookAt;
         }
 
+        public bool isActive;
+
         public Camera3D(Game game, Vector3 position, Vector3 rotation, float speed)
         {
             this.game = game;
 
             this.cameraSpeed = speed;
 
+            this.isActive = true;
+
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                 MathHelper.PiOver4,
                 game.GraphicsDevice.Viewport.AspectRatio,
-                1f,
-                1000f);
+                0.1f,
+                100f);
 
             //this.Rotation = rotation;
 
@@ -116,6 +120,9 @@ namespace myEngine
 
         public override void Update()
         {
+            if (!isActive)
+                return;
+
             currentMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
             Vector3 moveVector = Vector3.Zero;
@@ -173,8 +180,6 @@ namespace myEngine
         //METHODS
         public void DrawModel(Model model, Vector3 position, Vector3 rotation)
         {
-            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-
             worldMatrix = Matrix.CreateRotationX(MathHelper.ToRadians(rotation.X)) *
                             Matrix.CreateRotationY(MathHelper.ToRadians(rotation.Y)) *
                             Matrix.CreateRotationZ(MathHelper.ToRadians(rotation.Z)) *
@@ -195,22 +200,53 @@ namespace myEngine
         //METHODS
         public void DrawModel(Object3D object3D)
         {
-            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-
             worldMatrix = Matrix.CreateScale(object3D.transform3D.scale) * 
                             Matrix.CreateRotationX(MathHelper.ToRadians(object3D.transform3D.rotation.X)) *
                             Matrix.CreateRotationY(MathHelper.ToRadians(object3D.transform3D.rotation.Y)) *
                             Matrix.CreateRotationZ(MathHelper.ToRadians(object3D.transform3D.rotation.Z)) *
-                            Matrix.CreateTranslation(object3D.transform3D.position);
+                            Matrix.CreateTranslation(new Vector3(-object3D.transform3D.position.X,
+                                                                 object3D.transform3D.position.Y,
+                                                                 object3D.transform3D.position.Z));
+
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            Engine.game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+            Engine.game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
             foreach (ModelMesh mesh in object3D.model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
+                    
+
+                    //mesh.Effects = object3D.effect;
+
                     effect.World = worldMatrix;
                     effect.View = viewMatrix;
                     effect.Projection = projectionMatrix;
+
+                    effect.DiffuseColor = object3D.effect.DiffuseColor;
+                    effect.Alpha = object3D.effect.Alpha;
+
+                    //TEXTURE
+                    effect.TextureEnabled = object3D.effect.TextureEnabled;
+
+                    effect.Texture = object3D.effect.Texture;
+
+                    //GLOBAL
+                    effect.FogEnabled = Object3D.GlobalEffect.FogEnabled;
+                    effect.FogColor = Object3D.GlobalEffect.FogColor;
+                    effect.FogStart = Object3D.GlobalEffect.FogStart;
+                    effect.FogEnd = Object3D.GlobalEffect.FogEnd;
+
+                    //LIGHTING
+                    effect.LightingEnabled = Object3D.GlobalEffect.LightingEnabled;
+                    effect.DirectionalLight0.DiffuseColor = Object3D.GlobalEffect.DirectionalLight0.DiffuseColor;
+                    effect.DirectionalLight0.Direction = Object3D.GlobalEffect.DirectionalLight0.Direction;
+                    effect.DirectionalLight0.SpecularColor = Object3D.GlobalEffect.DirectionalLight0.SpecularColor;
+
+                    effect.AmbientLightColor = Object3D.GlobalEffect.AmbientLightColor;
                 }
+
                 mesh.Draw();
             }
         }

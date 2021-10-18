@@ -28,7 +28,7 @@ namespace myEngine
             p = new Perlin();
 
             sprite = new Sprite();
-            sprite.transform.position = Settings.GetScreenCenter();
+            sprite.transform.position = Vector2.Zero;
             sprite.dimension = new Vector2(256, 256);
 
             sprite.texture = GetTexture((int)sprite.dimension.X, (int)sprite.dimension.Y);

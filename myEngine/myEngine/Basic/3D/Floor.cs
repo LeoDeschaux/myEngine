@@ -21,6 +21,8 @@ namespace myEngine
 
         private BasicEffect effect;
 
+        public Transform3D transform3D;
+
         //CONSTRUCTOR
         public Floor(GraphicsDevice device, Camera3D camera, int width, int height, float tileSize)
         {
@@ -36,6 +38,8 @@ namespace myEngine
             this.camera = camera;
 
             effect = new BasicEffect(device);
+
+            transform3D = new Transform3D();
         }
 
         private void BuildFloorBuffer()
@@ -86,11 +90,11 @@ namespace myEngine
 
         private void DrawModel()
         {
-            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-            device.RasterizerState = RasterizerState.CullNone;
+            //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            //device.RasterizerState = RasterizerState.CullNone;
 
             effect.VertexColorEnabled = true;
-            effect.World = Matrix.CreateTranslation(Vector3.Zero);
+            effect.World = Matrix.CreateTranslation(transform3D.position);
             effect.View = camera.viewMatrix;
             effect.Projection = camera.projectionMatrix;
 

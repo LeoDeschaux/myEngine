@@ -5,6 +5,10 @@ using myEngine;
 using System;
 using Num = System.Numerics;
 
+using zzMathVisu.myProject;
+
+using zzMathVisu.myProject._02_EarthMap;
+
 namespace zzMathVisu
 {
     public class PopUpCoord : GameObject
@@ -13,13 +17,18 @@ namespace zzMathVisu
         ImGuiRenderer renderer;
 
         //UI VALUES
-        private static Num.Vector2 coords;
+        private static float latitude;
+        private static float longitude;
+
+        private static string name;
 
         //CONSTRUCTOR
         public PopUpCoord()
         {
             renderer = new ImGuiRenderer(Engine.game);
             renderer.RebuildFontAtlas();
+
+            name = "Default_Name";
         }
 
         //METHODS
@@ -32,6 +41,8 @@ namespace zzMathVisu
 
             renderer.AfterLayout();
         }
+
+        private byte[] _textBuffer = new byte[100];
 
         public void DrawPopUp()
         {
@@ -58,19 +69,18 @@ namespace zzMathVisu
 
             ImGui.Text("Choose your marker position : ");
 
-            ImGui.SliderFloat("Longitude", ref coords.Y, -180f, 180f);
-            ImGui.SliderFloat("Latitude", ref coords.X, -90f, 90f);
+            ImGui.InputText("Name", ref name, 100);
+            //ImGui.InputText("Name", _textBuffer, 100);
+
+            ImGui.SliderFloat("Latitude", ref latitude, -90f, 90f);
+            ImGui.SliderFloat("Longitude", ref longitude, -180f, 180f);
 
             if (ImGui.Button("Set Marker"))
             {
                 Console.WriteLine("PRESSED");
-                Sprite s = new Sprite();
 
-                s.transform.position = Scene_EarthMap.convert(coords.X, coords.Y);
-                //s.transform.position = new Vector2(positionUI.X, positionUI.Y);
-                s.dimension = new Vector2(2, 2);
-                s.color = Color.Red;
-                s.drawOrder = 100;
+                //Scene_EarthMap.SpawnPinAtCoords(System.Text.Encoding.UTF8.GetString(_textBuffer, 0, _textBuffer.Length), new Coord(latitude, longitude));
+                MVUtil.SpawnPinAtCoords(name, new Coord(latitude, longitude));
             }
 
             ImGui.End();

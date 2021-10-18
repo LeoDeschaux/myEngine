@@ -82,14 +82,28 @@ namespace myEngine
             if (font != null && s != null)
             {
                 if (useScreenCoord)
+                {
                     matrix = Matrix.Identity;
 
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
+                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
 
-                spriteBatch.DrawString(font, s, transform.position, color, transform.scale, transform.rotation, origin,
-                    (float)((Math.Clamp(drawOrder, -1000, 1000) + 1000)) / 2000);
+                    spriteBatch.DrawString(font, s, transform.position, color, transform.scale, transform.rotation, origin,
+                        (float)((Math.Clamp(drawOrder, -1000, 1000) + 1000)) / 2000);
 
-                spriteBatch.End();
+                    spriteBatch.End();
+                }
+                else
+                {
+                    spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.NonPremultiplied, SamplerState.PointClamp, transformMatrix: matrix);
+
+                    spriteBatch.DrawString(font, s, new Vector2(transform.position.X, transform.position.Y * -1), color, transform.scale, transform.rotation, origin,
+                        (float)((Math.Clamp(drawOrder, -1000, 1000) + 1000)) / 2000);
+
+                    spriteBatch.End();
+                }
+                    
+
+                
             }
         }
 
