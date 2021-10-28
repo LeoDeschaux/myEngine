@@ -93,6 +93,8 @@ namespace myEngine
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
+            return;
+
             if(isActive)
                 DrawSimpleShape.DrawRullerFree(new Vector2(0,0), matrix);
         }

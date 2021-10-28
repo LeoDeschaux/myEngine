@@ -32,7 +32,7 @@ namespace myEngine
         private Vector3 cameraPosition;
         private Vector3 cameraRotation;
         private float cameraSpeed;
-        private Vector3 cameraLookAt;
+        public Vector3 cameraLookAt;
 
         private Vector3 mouseRotationBuffer;
         private MouseState currentMouseState;
@@ -101,7 +101,11 @@ namespace myEngine
 
             Vector3 lookAtOffSet = Vector3.Transform(Vector3.UnitZ, rotationMatrix);
 
-            cameraLookAt = cameraPosition + lookAtOffSet;
+            //cameraLookAt = cameraPosition + lookAtOffSet;
+
+            //cameraLookAt
+
+            //cameraLookAt = Matrix.CreateLookAt(cameraPosition, cameraLookAt, Vector3.Up);
         }
 
         private Vector3 PreviewMove(Vector3 amount)
@@ -123,6 +127,7 @@ namespace myEngine
             if (!isActive)
                 return;
 
+            /*
             currentMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
 
             Vector3 moveVector = Vector3.Zero;
@@ -175,6 +180,9 @@ namespace myEngine
             Microsoft.Xna.Framework.Input.Mouse.SetPosition(game.GraphicsDevice.Viewport.Width/2, game.GraphicsDevice.Viewport.Height / 2);
 
             previousMouseState = currentMouseState;
+            */
+
+            
         }
 
         //METHODS
@@ -216,8 +224,6 @@ namespace myEngine
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    
-
                     //mesh.Effects = object3D.effect;
 
                     effect.World = worldMatrix;

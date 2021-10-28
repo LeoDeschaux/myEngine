@@ -20,7 +20,6 @@ namespace myEngine
 
         public bool isVisible = true;
 
-        //CONSTRUCTOR
         public Object3D(Camera3D camera)
         {
             if(GlobalEffect == null)

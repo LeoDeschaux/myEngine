@@ -24,7 +24,6 @@ namespace myEngine
         //CONSTRUCTOR
         public RenderingEngine()
         {
-            //spriteBatch = new SpriteBatch(Engine.game.GraphicsDevice);
             spriteBatch = new SpriteBatch(Engine.graphics.GraphicsDevice);
 
             /*
@@ -53,33 +52,14 @@ namespace myEngine
             //GUI
             imGuiRenderer = new ImGuiRenderer(Engine.game);
             imGuiRenderer.RebuildFontAtlas();
-
-            //screen = new Screen(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
-            //shapes = new Shapes();
         }
 
         //METHODS
         public void Draw()
         {
-            Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
+            //Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
             //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
-            /*
-            shapes.Begin();
-            shapes.DrawRectangle(0, 0, 500, 500, Color.Yellow);
-            shapes.End();
-            */
-
-
-            /*
-            spriteBatch.Begin();
-            spriteBatch.Draw(Ressources.Load<Texture2D>("myContent/2D/character"), new Rectangle(0, 0, 500, 500), Color.White);
-            spriteBatch.End();
-            */
-
-
-            //Matrix matrix = SceneManager.currentScene.camera.transformMatrix;
-            //Engine.world.Draw(spriteBatch, matrix);
             RenderScene();
             DrawSceneToScreen();
         }
@@ -87,13 +67,13 @@ namespace myEngine
         private void RenderScene()
         {
             // Set the render target
-            //Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
+            Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
             //Engine.game.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
 
             //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             //Engine.game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
 
-            //Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
+            Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
             //DRAW BACKGROUND
             spriteBatch.Begin();
@@ -127,15 +107,15 @@ namespace myEngine
 
         protected void DrawSceneToScreen()
         {
-            /*
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, postProcessingProfile.effect, null);
             spriteBatch.Draw(renderTarget, new Rectangle(0, 0, Engine.game.Window.ClientBounds.Width, Engine.game.Window.ClientBounds.Height), Color.White);
             spriteBatch.End();
-            */
 
+            /*
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, postProcessingProfile.effect, null);
             spriteBatch.Draw(renderTarget, new Rectangle(0, 0, renderTarget.Width, renderTarget.Height), Color.White);
             spriteBatch.End();
+            */
         }
 
         public void SaveScreenAsPng()

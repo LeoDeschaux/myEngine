@@ -21,7 +21,7 @@ namespace zzMathVisu.myProject._02_EarthMap
             b.text.transform.position = b.transform.position; //* new Vector2(1f, -1f);
             b.sprite.transform.position = b.transform.position;
 
-            b.sprite.dimension = new Vector2(20, 20);
+            b.sprite.dimension = new Vector2(10, 10);
             b.sprite.color = Color.White;
 
             b.defaultColor = Color.Red;

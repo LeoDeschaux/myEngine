@@ -9,6 +9,8 @@ using myEngine;
 
 using ImGuiNET;
 
+using Num = System.Numerics;
+
 using zzMathVisu.myProject;
 
 using zzMathVisu.myProject._02_EarthMap;
@@ -62,6 +64,47 @@ namespace zzMathVisu
         public override void DrawGUI()
         {
             c.DrawPopUp();
+            DrawRightPanel();
+        }
+
+        public override void Draw(SpriteBatch sprite, Matrix matrix)
+        {
+        }
+
+        float osef = 0;
+
+        public void DrawRightPanel()
+        { 
+            ImGui.SetNextWindowSize(new Num.Vector2(300, Engine.game.Window.ClientBounds.Height));
+            ImGui.SetNextWindowPos(new Num.Vector2(Engine.game.Window.ClientBounds.Width - 300, 0));
+
+            ImGui.GetStyle().WindowRounding = 0.0f;
+            ImGui.GetStyle().ChildRounding = 0.0f;
+            ImGui.GetStyle().FrameRounding = 0.0f;
+            ImGui.GetStyle().GrabRounding = 0.0f;
+            ImGui.GetStyle().PopupRounding = 0.0f;
+            ImGui.GetStyle().ScrollbarRounding = 0.0f;
+
+            ImGuiWindowFlags window_flags = 0;
+
+            window_flags |= ImGuiWindowFlags.NoResize;
+            window_flags |= ImGuiWindowFlags.NoCollapse;
+            window_flags |= ImGuiWindowFlags.NoMove;
+
+            ImGui.SetNextWindowBgAlpha(1);
+
+            ImGui.Begin("WINDOW", window_flags);
+
+            ImGui.Text("Properties");
+
+            ImGui.SliderFloat("Slider", ref osef, 0, 100);
+
+            if (ImGui.Button("Set Marker"))
+            {
+                Console.WriteLine("PRESSED");
+            }
+
+            ImGui.End();
         }
     }
 }

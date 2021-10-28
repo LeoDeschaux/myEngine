@@ -35,11 +35,8 @@ namespace zzMathVisu
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
-            renderer.BeforeLayout(Time.gameTime);
-
-            DrawPopUp();
-
-            renderer.AfterLayout();
+            //DrawPopUp();
+            DrawSimpleShape.DrawRullerFree(MVUtil.ConvertCoordToVector(-latitude, longitude), matrix);
         }
 
         private byte[] _textBuffer = new byte[100];
