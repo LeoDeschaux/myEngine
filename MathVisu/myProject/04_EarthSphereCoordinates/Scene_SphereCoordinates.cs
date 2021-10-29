@@ -80,7 +80,7 @@ namespace zzMathVisu
 
         Vector2 deltaMouse;
 
-        float speedMouse = 1;
+        float speedMouse = 0.5f;
 
         //METHODS
         public override void Update()
@@ -93,21 +93,25 @@ namespace zzMathVisu
             }
 
             //MOUSE CAM CONTROLE
-            if (Input.GetMouseDown(MouseButtons.Left))
+            if(myEngine.Mouse.position.X <= 980)
             {
-                deltaMouse = myEngine.Mouse.position.ToVector2();
+                if (Input.GetMouseDown(MouseButtons.Left))
+                {
+                    deltaMouse = myEngine.Mouse.position.ToVector2();
+                }
+
+                if (Input.GetMouse(MouseButtons.Left))
+                {
+                    //camera.transform.position += ((deltaMouse - myEngine.Mouse.position.ToVector2()) * speedMouse);
+                    Vector2 newRot = ((deltaMouse - myEngine.Mouse.position.ToVector2()) * speedMouse);
+
+                    camRotY += newRot.X;
+                    camRotX -= newRot.Y;
+
+                    deltaMouse = myEngine.Mouse.position.ToVector2();
+                }
             }
-
-            if (Input.GetMouse(MouseButtons.Left))
-            {
-                //camera.transform.position += ((deltaMouse - myEngine.Mouse.position.ToVector2()) * speedMouse);
-                Vector2 newRot = ((deltaMouse - myEngine.Mouse.position.ToVector2()) * speedMouse);
-
-                camRotY += newRot.X;
-                camRotX -= newRot.Y;
-
-                deltaMouse = myEngine.Mouse.position.ToVector2();
-            }
+            
 
             //CAM
             Vector3 targetPos = Vector3.Zero;
@@ -176,6 +180,8 @@ namespace zzMathVisu
             window_flags |= ImGuiWindowFlags.NoResize;
             window_flags |= ImGuiWindowFlags.NoCollapse;
             window_flags |= ImGuiWindowFlags.NoMove;
+
+            ImGui.SetNextWindowBgAlpha(1);
 
             ImGui.Begin("WINDOW", window_flags);
             //ImGui.Begin("NAME");

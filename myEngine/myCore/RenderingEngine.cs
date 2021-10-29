@@ -21,6 +21,8 @@ namespace myEngine
 
         private Shapes shapes;
 
+        private Viewport baseViewPort;
+
         //CONSTRUCTOR
         public RenderingEngine()
         {
@@ -52,6 +54,14 @@ namespace myEngine
             //GUI
             imGuiRenderer = new ImGuiRenderer(Engine.game);
             imGuiRenderer.RebuildFontAtlas();
+
+            baseViewPort = new Viewport();
+            baseViewPort.X = -150;
+            baseViewPort.Y = 0;
+            baseViewPort.Width = Settings.SCREEN_WIDTH;
+            baseViewPort.Height = Settings.SCREEN_HEIGHT;
+            baseViewPort.MinDepth = 0;
+            baseViewPort.MaxDepth = 1;
         }
 
         //METHODS
@@ -60,20 +70,28 @@ namespace myEngine
             //Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
             //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
 
+            Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
+            Engine.game.GraphicsDevice.Clear(Color.Black);
+            Viewport original = Engine.graphics.GraphicsDevice.Viewport;
+            Engine.graphics.GraphicsDevice.Viewport = baseViewPort;
+            Engine.game.GraphicsDevice.Clear(Color.Gray);
             RenderScene();
+            
             DrawSceneToScreen();
+            Engine.graphics.GraphicsDevice.Viewport = original;
+
         }
 
         private void RenderScene()
         {
             // Set the render target
-            Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
+            //Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
             //Engine.game.GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
 
             //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             //Engine.game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
 
-            Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
+            //Engine.game.GraphicsDevice.Clear(Settings.BACKGROUND_COLOR);
 
             //DRAW BACKGROUND
             spriteBatch.Begin();
@@ -89,6 +107,8 @@ namespace myEngine
 
             Matrix matrix = SceneManager.currentScene.camera.transformMatrix;
             Engine.world.Draw(spriteBatch, matrix);
+
+            DrawSimpleShape.DrawRuller(Settings.GetScreenCenter(), Color.Red);
 
             //spriteBatch.End();
 
