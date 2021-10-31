@@ -17,19 +17,24 @@ namespace myEngine
         {
             Settings.BACKGROUND_COLOR = Color.Pink;
 
+            /*
             Text t = new Text();
             t.s = "SCENE_DEFAULT (screen coord)";
             t.color = Color.White;
+            */
 
+            /*
             Text center = new Text();
             center.s = "CENTER OF THE SCREEN (world coord)";
             center.color = Color.White;
             center.alignment = Alignment.Center;
             center.useScreenCoord = false;
+            */
         }
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
+            return;
 
             Shapes s = new Shapes(Engine.game);
 

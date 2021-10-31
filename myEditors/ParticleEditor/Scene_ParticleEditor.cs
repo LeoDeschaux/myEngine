@@ -55,6 +55,17 @@ namespace myEngine
 
             //GUI
             Settings.BACKGROUND_COLOR = Color.LightSlateGray;
+
+            Viewport viewPort = new Viewport();
+            viewPort.X = -150;
+            viewPort.Y = 10;
+            viewPort.Width = Settings.SCREEN_WIDTH;
+            viewPort.Height = Settings.SCREEN_HEIGHT;
+            viewPort.MinDepth = 0;
+            viewPort.MaxDepth = 1;
+
+            Engine.renderingEngine.viewPort = viewPort;
+
         }
 
         //UPDATE & DRAW

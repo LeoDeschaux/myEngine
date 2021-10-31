@@ -71,8 +71,16 @@ namespace myEngine
         //DRAW
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
+            if(s == null)
+                Console.WriteLine("s == null");
+
+            if (isVisible == false)
+                Console.WriteLine("isVisible == false");
+
             if (s == null || isVisible == false)
                 return;
+
+
 
             SpriteFontBase font = fontSystem.GetFont(fontSize);
 
@@ -101,9 +109,6 @@ namespace myEngine
 
                     spriteBatch.End();
                 }
-                    
-
-                
             }
         }
 

@@ -31,6 +31,8 @@ namespace myEngine
         public static bool isGameRunning = true;
 
         //METHODS
+        private void myEngine() { }
+
         public static void Initialize(Game game, GraphicsDeviceManager graphics)
         {
             Engine.game = game;

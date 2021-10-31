@@ -22,6 +22,8 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.Black;
             Settings.GAME_SPEED = 1;
 
+            Engine.game.IsMouseVisible = true;
+
             camera = new Camera2D();
             postProcessingProfile = new PostProcessingProfile();
             RenderingEngine.postProcessingProfile = postProcessingProfile;

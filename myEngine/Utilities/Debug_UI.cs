@@ -60,8 +60,6 @@ namespace myEngine
                 t.fontSize = textSize;
                 t.dontDestroyOnLoad = true;
             }
-
-            //Console.WriteLine(ReturnText())
         }
 
         //METHODS
@@ -86,9 +84,10 @@ namespace myEngine
 
         public void SetVisible(bool b)
         {
+            isVisible = b;
+
             foreach (Text t in texts)
             {
-                isVisible = b;
                 t.isVisible = isVisible;
             }
         }

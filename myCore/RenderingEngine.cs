@@ -21,7 +21,7 @@ namespace myEngine
 
         private Shapes shapes;
 
-        private Viewport baseViewPort;
+        public Viewport viewPort;
 
         //CONSTRUCTOR
         public RenderingEngine()
@@ -55,13 +55,15 @@ namespace myEngine
             imGuiRenderer = new ImGuiRenderer(Engine.game);
             imGuiRenderer.RebuildFontAtlas();
 
-            baseViewPort = new Viewport();
-            baseViewPort.X = -150;
-            baseViewPort.Y = 0;
-            baseViewPort.Width = Settings.SCREEN_WIDTH;
-            baseViewPort.Height = Settings.SCREEN_HEIGHT;
-            baseViewPort.MinDepth = 0;
-            baseViewPort.MaxDepth = 1;
+
+            viewPort = new Viewport();
+            //viewPort.X = -150;
+            viewPort.X = 0;
+            viewPort.Y = 0;
+            viewPort.Width = Settings.SCREEN_WIDTH;
+            viewPort.Height = Settings.SCREEN_HEIGHT;
+            viewPort.MinDepth = 0;
+            viewPort.MaxDepth = 1;
         }
 
         //METHODS
@@ -72,8 +74,11 @@ namespace myEngine
 
             Engine.game.GraphicsDevice.SetRenderTarget(renderTarget);
             Engine.game.GraphicsDevice.Clear(Color.Black);
+            
             Viewport original = Engine.graphics.GraphicsDevice.Viewport;
-            Engine.graphics.GraphicsDevice.Viewport = baseViewPort;
+
+            Engine.graphics.GraphicsDevice.Viewport = viewPort;
+            
             Engine.game.GraphicsDevice.Clear(Color.Gray);
             RenderScene();
             
