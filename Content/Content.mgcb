@@ -13,6 +13,126 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../myEngine/Content/myContent/2D/border.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/border.png;myContent/2D/border.png
+
+#begin ../../myEngine/Content/myContent/2D/Cell.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Cell.png;myContent/2D/Cell.png
+
+#begin ../../myEngine/Content/myContent/2D/CellMasked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/CellMasked.png;myContent/2D/CellMasked.png
+
+#begin ../../myEngine/Content/myContent/2D/CellRevealed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/CellRevealed.png;myContent/2D/CellRevealed.png
+
+#begin ../../myEngine/Content/myContent/2D/character.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/character.png;myContent/2D/character.png
+
+#begin ../../myEngine/Content/myContent/2D/Crossed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Crossed.png;myContent/2D/Crossed.png
+
+#begin ../../myEngine/Content/myContent/2D/cursor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/cursor.png;myContent/2D/cursor.png
+
+#begin ../../myEngine/Content/myContent/2D/locked.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/locked.png;myContent/2D/locked.png
+
+#begin ../../myEngine/Content/myContent/2D/Map.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Map.jpg;myContent/2D/Map.jpg
+
+#begin ../../myEngine/Content/myContent/2D/Mine.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Mine.png;myContent/2D/Mine.png
+
 #begin ../../myEngine/Content/myContent/2D/mountain.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -37,6 +157,30 @@
 /processorParam:TextureFormat=Color
 /build:../../myEngine/Content/myContent/2D/Snake_Head.png;myContent/2D/Snake_Head.png
 
+#begin ../../myEngine/Content/myContent/2D/texture.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/texture.jpg;myContent/2D/texture.jpg
+
+#begin ../../myEngine/Content/myContent/2D/Utm-zones.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/2D/Utm-zones.jpg;myContent/2D/Utm-zones.jpg
+
 #begin ../../myEngine/Content/myContent/3D/DEFAULT_CUBE.fbx
 /importer:FbxImporter
 /processor:ModelProcessor
@@ -55,6 +199,123 @@
 /processorParam:SwapWindingOrder=False
 /processorParam:TextureFormat=Compressed
 /build:../../myEngine/Content/myContent/3D/DEFAULT_CUBE.fbx;myContent/3D/DEFAULT_CUBE.fbx
+
+#begin ../../myEngine/Content/myContent/3D/earth.fbx
+/importer:FbxImporter
+/processor:ModelProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:DefaultEffect=BasicEffect
+/processorParam:GenerateMipmaps=True
+/processorParam:GenerateTangentFrames=False
+/processorParam:PremultiplyTextureAlpha=True
+/processorParam:PremultiplyVertexColors=True
+/processorParam:ResizeTexturesToPowerOfTwo=False
+/processorParam:RotationX=0
+/processorParam:RotationY=0
+/processorParam:RotationZ=0
+/processorParam:Scale=1
+/processorParam:SwapWindingOrder=False
+/processorParam:TextureFormat=Compressed
+/build:../../myEngine/Content/myContent/3D/earth.fbx;myContent/3D/earth.fbx
+
+#begin ../../myEngine/Content/myContent/3D/earth/source/Earth.obj
+/importer:FbxImporter
+/processor:ModelProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:DefaultEffect=BasicEffect
+/processorParam:GenerateMipmaps=True
+/processorParam:GenerateTangentFrames=False
+/processorParam:PremultiplyTextureAlpha=True
+/processorParam:PremultiplyVertexColors=True
+/processorParam:ResizeTexturesToPowerOfTwo=False
+/processorParam:RotationX=0
+/processorParam:RotationY=0
+/processorParam:RotationZ=0
+/processorParam:Scale=1
+/processorParam:SwapWindingOrder=False
+/processorParam:TextureFormat=Compressed
+/build:../../myEngine/Content/myContent/3D/earth/source/Earth.obj;myContent/3D/earth/source/Earth.obj
+
+#begin ../../myEngine/Content/myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg;myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
+
+#begin ../../myEngine/Content/myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg;myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
+
+#begin ../../myEngine/Content/myContent/3D/earth/textures/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/3D/earth/textures/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg;myContent/3D/earth/textures/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
+
+#begin ../../myEngine/Content/myContent/3D/earth/textures/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/3D/earth/textures/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg;myContent/3D/earth/textures/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
+
+#begin ../../myEngine/Content/myContent/3D/earthV2/source/Earth.fbx
+/importer:FbxImporter
+/processor:ModelProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:DefaultEffect=BasicEffect
+/processorParam:GenerateMipmaps=True
+/processorParam:GenerateTangentFrames=False
+/processorParam:PremultiplyTextureAlpha=True
+/processorParam:PremultiplyVertexColors=True
+/processorParam:ResizeTexturesToPowerOfTwo=False
+/processorParam:RotationX=0
+/processorParam:RotationY=0
+/processorParam:RotationZ=0
+/processorParam:Scale=1
+/processorParam:SwapWindingOrder=False
+/processorParam:TextureFormat=Compressed
+/build:../../myEngine/Content/myContent/3D/earthV2/source/Earth.fbx;myContent/3D/earthV2/source/Earth.fbx
+
+#begin ../../myEngine/Content/myContent/3D/earthV2/textures/1_earth_8k.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../myEngine/Content/myContent/3D/earthV2/textures/1_earth_8k.jpg;myContent/3D/earthV2/textures/1_earth_8k.jpg
 
 #begin ../../myEngine/Content/myContent/3D/pomme.fbx
 /importer:FbxImporter
@@ -75,6 +336,25 @@
 /processorParam:TextureFormat=Compressed
 /build:../../myEngine/Content/myContent/3D/pomme.fbx;myContent/3D/pomme.fbx
 
+#begin ../../myEngine/Content/myContent/3D/sphere.fbx
+/importer:FbxImporter
+/processor:ModelProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:DefaultEffect=BasicEffect
+/processorParam:GenerateMipmaps=True
+/processorParam:GenerateTangentFrames=False
+/processorParam:PremultiplyTextureAlpha=True
+/processorParam:PremultiplyVertexColors=True
+/processorParam:ResizeTexturesToPowerOfTwo=False
+/processorParam:RotationX=0
+/processorParam:RotationY=0
+/processorParam:RotationZ=0
+/processorParam:Scale=1
+/processorParam:SwapWindingOrder=False
+/processorParam:TextureFormat=Compressed
+/build:../../myEngine/Content/myContent/3D/sphere.fbx;myContent/3D/sphere.fbx
+
 #begin ../../myEngine/Content/myContent/Audio/BallHit_V1.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
@@ -86,6 +366,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:../../myEngine/Content/myContent/Audio/BallHit_V2.mp3;myContent/Audio/BallHit_V2.mp3
+
+#begin ../../myEngine/Content/myContent/Audio/Explosion8.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../../myEngine/Content/myContent/Audio/Explosion8.wav;myContent/Audio/Explosion8.wav
 
 #begin ../../myEngine/Content/myContent/Audio/TargetHit_Big.mp3
 /importer:Mp3Importer
@@ -195,6 +481,12 @@
 /processorParam:TextureFormat=Color
 /build:../../myEngine/Content/TileMaps/spritesheet.png;TileMaps/spritesheet.png
 
+#begin myContent/Shader/postProcessing.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:myContent/Shader/postProcessing.fx
+
 #begin myContent/Shader/testShader.fx
 /importer:EffectImporter
 /processor:EffectProcessor
@@ -224,7 +516,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TileMaps/spritesheet.png
-#begin ../../myEngine/Content/myContent/2D/texture.jpg
+#begin ../../myEngine/Content/myContent/ParticleSystem/star_pixel.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -234,277 +526,4 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/texture.jpg;myContent/2D/texture.jpg
-
-#begin ../../myEngine/Content/myContent/2D/character.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/character.png;myContent/2D/character.png
-
-#begin ../../myEngine/Content/myContent/2D/locked.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/locked.png;myContent/2D/locked.png
-
-#begin ../../myEngine/Content/myContent/2D/cursor.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/cursor.png;myContent/2D/cursor.png
-
-#begin ../../myEngine/Content/myContent/2D/border.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/border.png;myContent/2D/border.png
-
-#begin ../../myEngine/Content/myContent/2D/CellMasked.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/CellMasked.png;myContent/2D/CellMasked.png
-
-#begin ../../myEngine/Content/myContent/2D/Cell.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/Cell.png;myContent/2D/Cell.png
-
-#begin ../../myEngine/Content/myContent/2D/CellRevealed.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/CellRevealed.png;myContent/2D/CellRevealed.png
-
-#begin ../../myEngine/Content/myContent/2D/Mine.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/Mine.png;myContent/2D/Mine.png
-
-#begin ../../myEngine/Content/myContent/2D/Crossed.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/Crossed.png;myContent/2D/Crossed.png
-
-#begin ../../myEngine/Content/myContent/Audio/Explosion8.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:../../myEngine/Content/myContent/Audio/Explosion8.wav;myContent/Audio/Explosion8.wav
-
-#begin ../../myEngine/Content/myContent/2D/Utm-zones.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/Utm-zones.jpg;myContent/2D/Utm-zones.jpg
-
-#begin ../../myEngine/Content/myContent/3D/earth/textures/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/3D/earth/textures/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg;myContent/3D/earth/textures/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
-
-#begin ../../myEngine/Content/myContent/3D/earth/textures/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/3D/earth/textures/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg;myContent/3D/earth/textures/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
-
-#begin ../../myEngine/Content/myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg;myContent/3D/earth/source/Object001_2014-12-01_21-48-06_complete.rpf_converted.jpg
-
-#begin ../../myEngine/Content/myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg;myContent/3D/earth/source/Object002_2014-12-01_21-46-35_complete.rpf_converted.jpg
-
-#begin ../../myEngine/Content/myContent/3D/earth/source/Earth.obj
-/importer:FbxImporter
-/processor:ModelProcessor
-/processorParam:ColorKeyColor=0,0,0,0
-/processorParam:ColorKeyEnabled=True
-/processorParam:DefaultEffect=BasicEffect
-/processorParam:GenerateMipmaps=True
-/processorParam:GenerateTangentFrames=False
-/processorParam:PremultiplyTextureAlpha=True
-/processorParam:PremultiplyVertexColors=True
-/processorParam:ResizeTexturesToPowerOfTwo=False
-/processorParam:RotationX=0
-/processorParam:RotationY=0
-/processorParam:RotationZ=0
-/processorParam:Scale=1
-/processorParam:SwapWindingOrder=False
-/processorParam:TextureFormat=Compressed
-/build:../../myEngine/Content/myContent/3D/earth/source/Earth.obj;myContent/3D/earth/source/Earth.obj
-#begin ../../myEngine/Content/myContent/2D/Map.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/2D/Map.jpg;myContent/2D/Map.jpg
-
-#begin ../../myEngine/Content/myContent/3D/sphere.fbx
-/importer:FbxImporter
-/processor:ModelProcessor
-/processorParam:ColorKeyColor=0,0,0,0
-/processorParam:ColorKeyEnabled=True
-/processorParam:DefaultEffect=BasicEffect
-/processorParam:GenerateMipmaps=True
-/processorParam:GenerateTangentFrames=False
-/processorParam:PremultiplyTextureAlpha=True
-/processorParam:PremultiplyVertexColors=True
-/processorParam:ResizeTexturesToPowerOfTwo=False
-/processorParam:RotationX=0
-/processorParam:RotationY=0
-/processorParam:RotationZ=0
-/processorParam:Scale=1
-/processorParam:SwapWindingOrder=False
-/processorParam:TextureFormat=Compressed
-/build:../../myEngine/Content/myContent/3D/sphere.fbx;myContent/3D/sphere.fbx
-
-#begin ../../myEngine/Content/myContent/3D/earth.fbx
-/importer:FbxImporter
-/processor:ModelProcessor
-/processorParam:ColorKeyColor=0,0,0,0
-/processorParam:ColorKeyEnabled=True
-/processorParam:DefaultEffect=BasicEffect
-/processorParam:GenerateMipmaps=True
-/processorParam:GenerateTangentFrames=False
-/processorParam:PremultiplyTextureAlpha=True
-/processorParam:PremultiplyVertexColors=True
-/processorParam:ResizeTexturesToPowerOfTwo=False
-/processorParam:RotationX=0
-/processorParam:RotationY=0
-/processorParam:RotationZ=0
-/processorParam:Scale=1
-/processorParam:SwapWindingOrder=False
-/processorParam:TextureFormat=Compressed
-/build:../../myEngine/Content/myContent/3D/earth.fbx;myContent/3D/earth.fbx
-
-#begin ../../myEngine/Content/myContent/3D/earthV2/textures/1_earth_8k.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../myEngine/Content/myContent/3D/earthV2/textures/1_earth_8k.jpg;myContent/3D/earthV2/textures/1_earth_8k.jpg
-
-#begin ../../myEngine/Content/myContent/3D/earthV2/source/Earth.fbx
-/importer:FbxImporter
-/processor:ModelProcessor
-/processorParam:ColorKeyColor=0,0,0,0
-/processorParam:ColorKeyEnabled=True
-/processorParam:DefaultEffect=BasicEffect
-/processorParam:GenerateMipmaps=True
-/processorParam:GenerateTangentFrames=False
-/processorParam:PremultiplyTextureAlpha=True
-/processorParam:PremultiplyVertexColors=True
-/processorParam:ResizeTexturesToPowerOfTwo=False
-/processorParam:RotationX=0
-/processorParam:RotationY=0
-/processorParam:RotationZ=0
-/processorParam:Scale=1
-/processorParam:SwapWindingOrder=False
-/processorParam:TextureFormat=Compressed
-/build:../../myEngine/Content/myContent/3D/earthV2/source/Earth.fbx;myContent/3D/earthV2/source/Earth.fbx
+/build:../../myEngine/Content/myContent/ParticleSystem/star_pixel.png;myContent/ParticleSystem/star_pixel.png

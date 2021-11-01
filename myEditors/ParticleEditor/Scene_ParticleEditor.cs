@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Text;
 
 using ImGuiNET;
-using ImGuiNET.SampleProgram.XNA;
 using Num = System.Numerics;
 
 namespace myEngine
@@ -26,7 +25,6 @@ namespace myEngine
         //VALUE
         public static Vector3 particleColor;
         public static float particleSize = 1;
-
 
         //CONSTRUCTOR
         public Scene_ParticleEditor()
@@ -56,16 +54,25 @@ namespace myEngine
             //GUI
             Settings.BACKGROUND_COLOR = Color.LightSlateGray;
 
+            /*
             Viewport viewPort = new Viewport();
-            viewPort.X = -150;
-            viewPort.Y = 10;
-            viewPort.Width = Settings.SCREEN_WIDTH;
-            viewPort.Height = Settings.SCREEN_HEIGHT;
+            viewPort.X = 150;
+            viewPort.Y = 150;
+            viewPort.Width = 720;
+            viewPort.Height = 480;
+            viewPort.MinDepth = 0;
+            viewPort.MaxDepth = 1;
+            */
+
+            Viewport viewPort = new Viewport();
+            viewPort.X = 0;
+            viewPort.Y = 15;
+            viewPort.Width = 1280 - 300;
+            viewPort.Height = 720 - 15;
             viewPort.MinDepth = 0;
             viewPort.MaxDepth = 1;
 
             Engine.renderingEngine.viewPort = viewPort;
-
         }
 
         //UPDATE & DRAW
@@ -81,12 +88,25 @@ namespace myEngine
                 pe_followMouse.isActive = true;
                 Vector2 pos = new Vector2(Mouse.position.ToVector2().X, 1 * Mouse.position.ToVector2().Y);
                 pe_followMouse.transform.position = Util.ScreenToWorld(camera.transformMatrix, pos);
+
+                pe_followMouse.transform.position = func(pos);
             }
             else
             {
                 pe_followMouse.isActive = false;
                 pe_followMouse.transform.position = Settings.GetScreenCenter();
             }
+        }
+
+        private Vector2 func(Vector2 pos)
+        {
+            Vector2 result = new Vector2(0, 0);
+
+            result = Util.ScreenToWorld(camera.transformMatrix, pos);
+
+            result -= new Vector2(Engine.renderingEngine.viewPort.X, Engine.renderingEngine.viewPort.Y);
+
+            return result; 
         }
 
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)

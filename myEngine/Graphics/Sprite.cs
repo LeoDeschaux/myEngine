@@ -92,10 +92,10 @@ namespace myEngine
                 return;
 
             //BlendState.NonPremultiplied
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);
+            //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);
             //spriteBatch.Begin(SpriteSortMode.Immediate);
 
-            //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, effect, matrix);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, effect, matrix);
 
             //effect?.CurrentTechnique.Passes[0].Apply();
 

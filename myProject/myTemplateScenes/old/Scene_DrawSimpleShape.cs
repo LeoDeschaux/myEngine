@@ -41,6 +41,8 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
+            DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());
+
             if (draw)
             {
                 Vector2 endPos = (Mouse.position.ToVector2() - pos);
@@ -48,11 +50,9 @@ namespace myEngine
                 Shapes s = new Shapes(Engine.game);
 
                 s.Begin(null);
-                s.DrawRectangle(pos.X,pos.Y, endPos.X, endPos.Y, 2, Color.Green);
+                s.DrawRectangle(pos.X,pos.Y, endPos.X, endPos.Y, 4, Color.Green);
                 s.End();
             }
-
-            DrawSimpleShape.DrawRuller(Mouse.position.ToVector2());
         }
     }
 }

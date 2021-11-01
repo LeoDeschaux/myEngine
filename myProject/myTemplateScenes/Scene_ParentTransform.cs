@@ -18,8 +18,10 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_ParentTransform()
         {
+            Settings.BACKGROUND_COLOR = Color.AntiqueWhite;
+
             p = new Sprite();
-            p.transform.position = Settings.GetScreenCenter();
+            p.transform.position = new Vector2(0,0);
 
             c = new Sprite();
             c.dimension = Vector2.One * 50;
@@ -40,9 +42,9 @@ namespace myEngine
         public override void Update()
         {
             if (Input.GetKey(Keys.Z))
-                p.transform.position.Y -= speed * Time.deltaTime;
-            if (Input.GetKey(Keys.S))
                 p.transform.position.Y += speed * Time.deltaTime;
+            if (Input.GetKey(Keys.S))
+                p.transform.position.Y -= speed * Time.deltaTime;
             if (Input.GetKey(Keys.Q))
                 p.transform.position.X -= speed * Time.deltaTime;
             if (Input.GetKey(Keys.D))

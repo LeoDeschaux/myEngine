@@ -13,7 +13,7 @@ namespace myEngine
         //FIELDS 
         Sprite sprite;
         Effect effect;
-
+        
         float x = 0;
 
         //CONSTRUCTOR
@@ -22,26 +22,18 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.Gray;
 
             //RenderTarget2D
-            Texture2D character = Ressources.Load<Texture2D>("myContent/2D/character");
             Texture2D mountain = Ressources.Load<Texture2D>("myContent/2D/mountain");
-
             sprite = new Sprite(mountain);
-
-            sprite.transform.position = Settings.GetScreenCenter();
-            sprite.dimension = new Vector2(Settings.SCREEN_WIDTH * 0.95f, Settings.SCREEN_HEIGHT * 0.95f);
+            sprite.transform.position = Vector2.Zero;
+            sprite.dimension = new Vector2(Settings.SCREEN_WIDTH * 0.80f, Settings.SCREEN_HEIGHT * 0.80f);
 
             //EFFECT
             effect = Ressources.Load<Effect>("myContent/Shader/testShader");
-
             Texture2D textureMask = Ressources.Load<Texture2D>("myContent/2D/texture");
             effect.Parameters["customTexture"]?.SetValue(textureMask);
 
+            //SET EFFECT TO SPRITE
             sprite.effect = effect;
-
-            //SPRITE
-            Sprite s = new Sprite(mountain);
-            s.transform.position = new Vector2(80*2, 45*2);
-            s.dimension = new Vector2(160*2, 90*2);
         }
 
         //METHODS

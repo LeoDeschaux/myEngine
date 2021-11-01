@@ -34,7 +34,7 @@ namespace myEngine
             particleEngine = new ParticleEngine(pp, Vector2.Zero);
             particleEngine.isActive = true;
 
-            particleEngine.transform.position = Settings.GetScreenCenter();
+            particleEngine.transform.position = new Vector2(0,0);
             
             //UI
             text = new Text("LEFT CLICK TO FIRE PARTICLES");

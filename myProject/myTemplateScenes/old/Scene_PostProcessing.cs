@@ -15,7 +15,7 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.Khaki;
 
             Sprite s = new Sprite(Ressources.Load<Texture2D>("myContent/2D/mountain"));
-            s.transform.position = Settings.GetScreenCenter();
+            s.transform.position = new Vector2(0, 0);
             s.dimension = new Vector2(Settings.SCREEN_WIDTH * 0.9f, Settings.SCREEN_HEIGHT * 0.9f);
 
             Text t = new Text("mon text");

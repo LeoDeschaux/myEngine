@@ -42,7 +42,7 @@ namespace myEngine
 
         public void ChangeScene()
         {
-            //SceneManager.ChangeScene(typeof(Scene_B));
+            SceneManager.ChangeScene(typeof(Scene_B));
 
             Console.WriteLine("CLICKED");
 

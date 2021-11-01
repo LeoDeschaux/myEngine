@@ -42,7 +42,6 @@ namespace myEngine
 
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-
         }
 
         public Texture2D GetTexture(int x, int y)

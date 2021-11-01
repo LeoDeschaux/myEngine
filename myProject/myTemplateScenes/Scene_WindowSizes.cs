@@ -23,8 +23,8 @@ namespace myEngine
             current_item = screenRes;
 
             Sprite sprite = new Sprite();
-            sprite.texture = Ressources.Load<Texture2D>("myContent/ParticleSystem/star");
-            sprite.transform.position = Settings.GetScreenCenter();
+            sprite.texture = Ressources.Load<Texture2D>("myContent/ParticleSystem/star_pixel");
+            sprite.transform.position = new Vector2(0,0);
             sprite.transform.scale =  Vector2.One * 2;
         }
 

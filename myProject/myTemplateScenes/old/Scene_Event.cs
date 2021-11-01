@@ -25,6 +25,7 @@ namespace myEngine
             Console.WriteLine("JE SUIS COULEUR");
         }
     }
+
     public class Scene_Event : IScene
     {
         //FIELDS
@@ -34,6 +35,13 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_Event()
         {
+            Settings.BACKGROUND_COLOR = Color.AliceBlue;
+
+            Text t = new Text();
+            t.s = "Press Enter to launch event";
+            t.transform.position = Settings.GetScreenCenter();
+            t.alignment = Alignment.Center;
+
             r = new ColorObject();
 
             e = new Event(r.Great);

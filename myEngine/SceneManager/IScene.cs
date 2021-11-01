@@ -24,6 +24,16 @@ namespace myEngine
 
             Engine.game.IsMouseVisible = true;
 
+            Viewport viewPort = new Viewport();
+            viewPort.X = 0;
+            viewPort.Y = 0;
+            viewPort.Width = Settings.SCREEN_WIDTH;
+            viewPort.Height = Settings.SCREEN_HEIGHT;
+            viewPort.MinDepth = 0;
+            viewPort.MaxDepth = 1;
+
+            Engine.renderingEngine.viewPort = viewPort;
+
             camera = new Camera2D();
             postProcessingProfile = new PostProcessingProfile();
             RenderingEngine.postProcessingProfile = postProcessingProfile;

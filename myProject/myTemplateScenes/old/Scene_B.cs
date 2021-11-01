@@ -15,8 +15,10 @@ namespace myEngine
             Settings.BACKGROUND_COLOR = Color.LightPink;
 
             Button button = new Button();
-            button.transform.position = Settings.GetScreenCenter();
+            button.transform.position = new Vector2(0,0);
             button.text.s = "GO TO SCENE A";
+            button.text.transform.position = button.transform.position;
+            button.text.useScreenCoord = false;
             button.onButtonPressed.SetFunction(ChangeScene);
         }
 

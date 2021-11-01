@@ -28,6 +28,8 @@ namespace myEngine
             result.scale = tmp_Scale;
             result.rotation = tmp_Rot;
 
+            //result.position += new Vector2(Engine.renderingEngine.viewPort.X, Engine.renderingEngine.viewPort.Y);
+
             return result.position;
         }
 

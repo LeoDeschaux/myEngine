@@ -9,10 +9,11 @@ namespace myEngine
         private static List<Type> scenes = new List<Type>()
         {
             typeof(Scene_2DShader),
+            typeof(Scene_PostProcessing),
             typeof(Scene_3D),
             typeof(Scene_A),
-            typeof(Scene_Animation),
             typeof(Scene_B),
+            typeof(Scene_Animation),
             typeof(Scene_CameraShake),
             typeof(Scene_Default),
             typeof(Scene_DrawSimpleShape),
@@ -22,12 +23,12 @@ namespace myEngine
             typeof(Scene_ParticleEditor),
             typeof(Scene_ParticleSystem),
             typeof(Scene_PerlinNoise),
-            typeof(Scene_PostProcessing),
             typeof(Scene_SaveSystem),
             typeof(Scene_TextUI),
             typeof(Scene_Tweening),
-            typeof(Scene_TwoBitCoding),
-            typeof(Scene_WindowSizes)
+            typeof(Scene_WindowSizes),
+            typeof(Scene_DrawTest),
+            typeof(Scene_QuickTest)
         };
 
         public static int GetSceneIndex(Type scene)

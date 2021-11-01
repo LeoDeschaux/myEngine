@@ -77,7 +77,8 @@ namespace myEngine
 
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                 MathHelper.PiOver4,
-                game.GraphicsDevice.Viewport.AspectRatio,
+                //game.GraphicsDevice.Viewport.AspectRatio,
+                Engine.renderingEngine.viewPort.AspectRatio,
                 0.1f,
                 100f);
 

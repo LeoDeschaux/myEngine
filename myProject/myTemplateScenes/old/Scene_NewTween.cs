@@ -14,13 +14,18 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_NewTween()
         {
+            Text t = new Text();
+            t.s = "Press F5 to restart scene";
+            t.transform.position = new Vector2(Settings.SCREEN_WIDTH / 2, 600);
+            t.alignment = Alignment.Center;
+
             Settings.BACKGROUND_COLOR = Color.AliceBlue;
 
             s = new Sprite();
             s.color = Color.Black;
-            s.transform.position = new Vector2(100, Settings.GetScreenCenter().Y);
+            s.transform.position = new Vector2(-400, 0);
 
-            NewTween.BaseTween(ref s.transform.position.X, 1000);
+            NewTween.BaseTween(ref s.transform.position.X, 400);
 
             //EXEMPLE DE FONCTIONS A CREER
             //NewTween.BaseTween(ref valueToModify, endValue, speed);
@@ -31,7 +36,9 @@ namespace myEngine
         public override void Update()
         {
             if (Input.GetKeyDown(Keys.Enter))
+            {
                 s.Destroy();
+            }
         }
     }
 }
