@@ -1,6 +1,6 @@
 # myEngine
 
-> :warning: **This project is a work in progress**
+> :warning: **This project is a work in progress** and is not meant to be used
 
 myEngine is an experimental, currently in development project for what was supposed to be a game engine.   
 It will probably end up being a game framework.
