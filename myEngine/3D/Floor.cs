@@ -90,8 +90,8 @@ namespace myEngine
 
         private void DrawModel()
         {
-            //Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-            //device.RasterizerState = RasterizerState.CullNone;
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            Engine.game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
             effect.VertexColorEnabled = true;
             effect.World = Matrix.CreateTranslation(transform3D.position);

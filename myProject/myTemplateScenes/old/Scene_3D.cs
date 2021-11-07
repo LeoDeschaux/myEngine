@@ -41,18 +41,44 @@ namespace myEngine
 
             floor = new Floor(Engine.game.GraphicsDevice, camera, 12, 12, 1);
             ss = new Shapes3D(Engine.game.GraphicsDevice, camera);
+            myObject.transform3D.position = new Vector3(-6, 2, 6);
+            myObject.effect.DiffuseColor = Color.CornflowerBlue.ToVector3();
+
+            Object3D.GlobalEffect.LightingEnabled = true;
+            Object3D.GlobalEffect.DirectionalLight0.DiffuseColor = new Vector3(1, 1, 1);
+            Object3D.GlobalEffect.DirectionalLight0.Direction = new Vector3(1, 0, 0);
+            Object3D.GlobalEffect.DirectionalLight0.SpecularColor = new Vector3(1, 1, 1);
+            Object3D.GlobalEffect.AmbientLightColor = Color.Violet.ToVector3();
 
             Engine.game.IsMouseVisible = false;
+
+            initPos = new Vector3(0, 1.5f, 10);
         }
+
+        Vector3 initPos;
+        float camRotX = 0;
+        float camRotY = 0;
+        float camDist = 1;
 
         public override void Update()
         {
             myObject.transform3D.rotation.X += speed * Time.deltaTime;
             myObject.transform3D.rotation.Y += speed * Time.deltaTime;
+
+            //CAM
+            Vector3 targetPos = new Vector3(6, 2, 6);
+            camera.cameraLookAt = targetPos;
+            camRotX += 10 * Time.deltaTime;
+            camRotY += 10 * Time.deltaTime;
+
+            camera.Position = initPos + targetPos + Vector3.Transform(initPos - targetPos,
+                Matrix.CreateFromAxisAngle(new Vector3(0, 0, 0), MathHelper.ToRadians(camRotX)) *
+                Matrix.CreateFromAxisAngle(new Vector3(0, 1, 0), MathHelper.ToRadians(camRotY))) * (camDist);
         }
 
         public override void Draw(SpriteBatch sprite, Matrix matrix)
         {
+            return;
             Shapes s = new Shapes(Engine.game);
 
             s.Begin(null);

@@ -15,8 +15,8 @@ namespace myEngine
             float ratioX = (float)Engine.game.Window.ClientBounds.Width / (float)Settings.SCREEN_WIDTH;
             float ratioY = (float)Engine.game.Window.ClientBounds.Height / (float)Settings.SCREEN_HEIGHT;
 
-            position = new Point((int)(Microsoft.Xna.Framework.Input.Mouse.GetState().X / ratioX), 
-                                 (int)(Microsoft.Xna.Framework.Input.Mouse.GetState().Y / ratioY));
+            position = new Point((int)((Microsoft.Xna.Framework.Input.Mouse.GetState().X / ratioX) + Engine.renderingEngine.viewPort.X), 
+                                 (int)((Microsoft.Xna.Framework.Input.Mouse.GetState().Y / ratioY) - Engine.renderingEngine.viewPort.Y));
         }
     }
 }

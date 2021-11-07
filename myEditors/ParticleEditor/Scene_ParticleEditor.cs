@@ -40,10 +40,10 @@ namespace myEngine
             particleEngine = new ParticleEngine(pp, Vector2.Zero);
             particleEngine.isActive = true;
 
-            particleEngine.transform.position = Settings.GetScreenCenter();
+            particleEngine.transform.position = Util.WorldToScreen(camera.transformMatrix, new Vector2(Settings.VIEWPORT_WIDTH / 3, Settings.VIEWPORT_HEIGHT / 2));
 
             //FOLLOW MOUSE
-            pe_followMouse = new ParticleEngine(pp, Settings.GetScreenCenter());
+            pe_followMouse = new ParticleEngine(pp, Vector2.Zero);
             pe_followMouse.isActive = false;
 
             //UI
@@ -53,16 +53,6 @@ namespace myEngine
 
             //GUI
             Settings.BACKGROUND_COLOR = Color.LightSlateGray;
-
-            /*
-            Viewport viewPort = new Viewport();
-            viewPort.X = 150;
-            viewPort.Y = 150;
-            viewPort.Width = 720;
-            viewPort.Height = 480;
-            viewPort.MinDepth = 0;
-            viewPort.MaxDepth = 1;
-            */
 
             Viewport viewPort = new Viewport();
             viewPort.X = 0;
@@ -88,25 +78,12 @@ namespace myEngine
                 pe_followMouse.isActive = true;
                 Vector2 pos = new Vector2(Mouse.position.ToVector2().X, 1 * Mouse.position.ToVector2().Y);
                 pe_followMouse.transform.position = Util.ScreenToWorld(camera.transformMatrix, pos);
-
-                pe_followMouse.transform.position = func(pos);
             }
             else
             {
                 pe_followMouse.isActive = false;
                 pe_followMouse.transform.position = Settings.GetScreenCenter();
             }
-        }
-
-        private Vector2 func(Vector2 pos)
-        {
-            Vector2 result = new Vector2(0, 0);
-
-            result = Util.ScreenToWorld(camera.transformMatrix, pos);
-
-            result -= new Vector2(Engine.renderingEngine.viewPort.X, Engine.renderingEngine.viewPort.Y);
-
-            return result; 
         }
 
         public override void Draw(SpriteBatch spriteBatch, Matrix matrix)
@@ -172,13 +149,13 @@ namespace myEngine
             window_flags |= ImGuiWindowFlags.NoCollapse;
             window_flags |= ImGuiWindowFlags.NoMove;
 
-            ImGui.Begin("WINDOW", window_flags);
-            ImGui.Text("Hello, world!");
-            ImGui.SliderFloat("float", ref particleSize, 0.0f, 10.0f, string.Empty);
+            ImGui.Begin("Settings", window_flags);
+            ImGui.Text("Particle Properties");
+            ImGui.SliderFloat("Size", ref particleSize, 0.0f, 10.0f, string.Empty);
 
             Num.Vector3 v = new Num.Vector3(particleColor.X, particleColor.Y, particleColor.Z);
 
-            ImGui.ColorEdit3("clear color", ref v);
+            ImGui.ColorEdit3("Color", ref v);
 
             particleColor = new Vector3(v.X, v.Y, v.Z);
             ImGui.End();

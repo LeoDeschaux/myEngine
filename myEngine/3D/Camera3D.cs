@@ -75,6 +75,9 @@ namespace myEngine
 
             this.isActive = true;
 
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            Engine.game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                 MathHelper.PiOver4,
                 //game.GraphicsDevice.Viewport.AspectRatio,
@@ -105,7 +108,6 @@ namespace myEngine
             //cameraLookAt = cameraPosition + lookAtOffSet;
 
             //cameraLookAt
-
             //cameraLookAt = Matrix.CreateLookAt(cameraPosition, cameraLookAt, Vector3.Up);
         }
 
@@ -163,8 +165,8 @@ namespace myEngine
                 deltaX = currentMouseState.X - (game.GraphicsDevice.Viewport.Width / 2);
                 deltaY = currentMouseState.Y - (game.GraphicsDevice.Viewport.Height / 2);
 
-                mouseRotationBuffer.X -= 2f * deltaX * Time.deltaTime;
-                mouseRotationBuffer.Y -= 2f * deltaY * Time.deltaTime;
+                mouseRotationBuffer.X -= 1f * deltaX * Time.deltaTime;
+                mouseRotationBuffer.Y -= 1f * deltaY * Time.deltaTime;
 
                 if (mouseRotationBuffer.Y < MathHelper.ToRadians(-75f))
                     mouseRotationBuffer.Y = mouseRotationBuffer.Y - (mouseRotationBuffer.Y - MathHelper.ToRadians(-75f));
@@ -182,13 +184,14 @@ namespace myEngine
 
             previousMouseState = currentMouseState;
             */
-
-            
         }
 
         //METHODS
         public void DrawModel(Model model, Vector3 position, Vector3 rotation)
         {
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            Engine.game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+
             worldMatrix = Matrix.CreateRotationX(MathHelper.ToRadians(rotation.X)) *
                             Matrix.CreateRotationY(MathHelper.ToRadians(rotation.Y)) *
                             Matrix.CreateRotationZ(MathHelper.ToRadians(rotation.Z)) *
@@ -209,6 +212,9 @@ namespace myEngine
         //METHODS
         public void DrawModel(Object3D object3D)
         {
+            Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            Engine.game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+
             worldMatrix = Matrix.CreateScale(object3D.transform3D.scale) * 
                             Matrix.CreateRotationX(MathHelper.ToRadians(object3D.transform3D.rotation.X)) *
                             Matrix.CreateRotationY(MathHelper.ToRadians(object3D.transform3D.rotation.Y)) *
@@ -216,10 +222,11 @@ namespace myEngine
                             Matrix.CreateTranslation(new Vector3(-object3D.transform3D.position.X,
                                                                  object3D.transform3D.position.Y,
                                                                  object3D.transform3D.position.Z));
-
+            /*
             Engine.game.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
             Engine.game.GraphicsDevice.BlendState = BlendState.AlphaBlend;
             Engine.game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+            */
 
             foreach (ModelMesh mesh in object3D.model.Meshes)
             {

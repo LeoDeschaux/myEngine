@@ -16,6 +16,8 @@ namespace myEngine
 
         public bool isActive;
 
+        public Rectangle boundingBox;
+
         //REF
         Camera2D camera;
 
@@ -24,79 +26,79 @@ namespace myEngine
         {
             this.camera = camera;
             isActive = false;
+            boundingBox = new Rectangle(0, 0, 0, 0);
+
+            oldCamMatrix = camera.transformMatrix;
         }
 
         //METHODS
+        Matrix oldCamMatrix;
+        bool hasBeenPressed = false;
+
+        //SCROLL WHEEL
+        float previousScrollValue;
+        MouseState currentMouseState;
+
         public override void Update()
         {
             if (!isActive)
                 return;
 
-            //MOUSE CAM CONTROLE
-            if (Input.GetMouseDown(MouseButtons.Middle))
+            //////////////// NOTE ////////////
+            ///to do the shaking bug, replace oldCamMatrix with camera.transformMatrix
+            //////////////////////////////////
+            if (Mouse.position.X < Settings.VIEWPORT_WIDTH)
             {
-                deltaMouse = Mouse.position.ToVector2();
+                //MOUSE CAM CONTROLE
+                if (Input.GetMouseDown(MouseButtons.Left))
+                {
+                    oldCamMatrix = camera.transformMatrix;
+                    deltaMouse = Util.ScreenToWorld(oldCamMatrix, Mouse.position.ToVector2());
+                    hasBeenPressed = true;
+                }
+
+                if (Input.GetMouse(MouseButtons.Left) && hasBeenPressed)
+                {
+                    Vector2 nextPos = camera.transform.position + ((deltaMouse - Util.ScreenToWorld(oldCamMatrix, Mouse.position.ToVector2()) * speedMouse));
+
+                    if(boundingBox != new Rectangle(0,0,0,0))
+                    {
+                        if (nextPos.X > boundingBox.X && nextPos.X < boundingBox.Width)
+                            camera.transform.position.X = nextPos.X;
+                        if (nextPos.Y > boundingBox.Y && nextPos.Y < boundingBox.Height)
+                            camera.transform.position.Y = nextPos.Y;
+                    }
+                    else
+                    {
+                        camera.transform.position = nextPos;
+                    }
+                
+                    deltaMouse = Util.ScreenToWorld(oldCamMatrix, Mouse.position.ToVector2());
+                }
+
+                if(Input.GetMouseUp(MouseButtons.Left))
+                {
+                    hasBeenPressed = false;
+                }
             }
 
-            if (Input.GetMouse(MouseButtons.Middle))
+
+            //WHEEL ZOOM
+            currentMouseState = Microsoft.Xna.Framework.Input.Mouse.GetState();
+            
+            if(Engine.renderingEngine.viewPort.Bounds.Contains(Mouse.position))
             {
-                camera.transform.position += ((deltaMouse - Mouse.position.ToVector2()) * speedMouse);
-                deltaMouse = Mouse.position.ToVector2();
+                if (currentMouseState.ScrollWheelValue < previousScrollValue)
+                {
+                    camera.ZoomAt(Util.ScreenToWorld(camera.transformMatrix, new Vector2((1280 - 300) / 2, 720 / 2)), -0.5f);
+                }
+                else if (currentMouseState.ScrollWheelValue > previousScrollValue)
+                {
+                    camera.ZoomAt(Util.ScreenToWorld(camera.transformMatrix, new Vector2((1280 - 300) / 2, 720 / 2)), 0.5f);
+                }
             }
-
-            //KEYBOARD CAM CONTROLE
-            if (Input.GetKey(Keys.K))
-            {
-                camera.transform.position.X -= speed * Time.deltaTime;
-            }
-
-            if (Input.GetKey(Keys.M))
-            {
-                camera.transform.position.X += speed * Time.deltaTime;
-            }
-
-            //
-            if (Input.GetKey(Keys.O))
-            {
-                camera.transform.position.Y -= speed * Time.deltaTime;
-            }
-
-            if (Input.GetKey(Keys.L))
-            {
-                camera.transform.position.Y += speed * Time.deltaTime;
-            }
-
-            //ZOOM
-            if(Input.GetKey(Keys.B))
-            {
-                camera.transform.scale.X += 0.001f;
-                camera.transform.scale.Y += 0.001f;
-            }
-
-            //DEZOOM
-            if (Input.GetKey(Keys.N))
-            {
-                camera.transform.scale.X -= 0.001f;
-                camera.transform.scale.Y -= 0.001f;
-            }
-
-            if (Input.GetKey(Keys.I))
-            {
-                camera.transform.rotation += 0.1f;
-            }
-
-            if (Input.GetKey(Keys.P))
-            {
-                camera.transform.rotation -= 0.1f;
-            }
-        }
-
-        public override void Draw(SpriteBatch sprite, Matrix matrix)
-        {
-            return;
-
-            if(isActive)
-                DrawSimpleShape.DrawRullerFree(new Vector2(0,0), matrix);
+            
+            previousScrollValue = currentMouseState.ScrollWheelValue;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace myEngine
 
         public static Settings settings;
         public static Debug debug;
+        public static LateEventSystem lateEventSystem;
 
         public static bool isGameRunning = true;
 
@@ -52,6 +53,8 @@ namespace myEngine
 
             world = new World();
             debug = new Debug();
+
+            lateEventSystem = new LateEventSystem();
         }
 
         private static void LoadContent(ContentManager content)
@@ -73,9 +76,7 @@ namespace myEngine
 
             Input.Update();
             Mouse.Update();
-
-            settings.Update();
-
+            
             world.Update();
             world.LateUpdate();
             physicEngine.Update();
@@ -84,6 +85,7 @@ namespace myEngine
         public static void Draw()
         {
             renderingEngine.Draw();
+            lateEventSystem.Update();
         }
 
         //METHODS

@@ -13,6 +13,22 @@ namespace myEngine
         public static int SCREEN_WIDTH = 1280;
         public static int SCREEN_HEIGHT = 720;
 
+        public static int VIEWPORT_WIDTH
+        {
+            get
+            {
+                return Engine.renderingEngine.viewPort.Width;
+            }
+        }
+
+        public static int VIEWPORT_HEIGHT
+        {
+            get
+            {
+                return Engine.renderingEngine.viewPort.Height;
+            }
+        }
+
         public static float ASPECT_RATIO { get; private set; }
 
         public static float GAME_SPEED = 1f;
@@ -31,13 +47,13 @@ namespace myEngine
             //this.game = game;
 
             game.IsMouseVisible = true;
-            game.IsFixedTimeStep = true;
+            game.IsFixedTimeStep = false;
 
             Engine.graphics.PreferredBackBufferWidth = Settings.SCREEN_WIDTH;
             Engine.graphics.PreferredBackBufferHeight = Settings.SCREEN_HEIGHT;
 
-            Engine.graphics.SynchronizeWithVerticalRetrace = true;
-            Engine.game.TargetElapsedTime = TimeSpan.FromTicks((long)(TimeSpan.TicksPerSecond / 60L));
+            Engine.graphics.SynchronizeWithVerticalRetrace = false;
+            //Engine.game.TargetElapsedTime = TimeSpan.FromTicks((long)(TimeSpan.TicksPerSecond / 60L));
 
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
@@ -88,11 +104,6 @@ namespace myEngine
             ASPECT_RATIO = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 
             Engine.graphics.ApplyChanges();
-        }
-
-        //UPDATE & DRAW
-        public void Update()
-        {
         }
 
         //PROPS

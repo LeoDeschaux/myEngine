@@ -12,6 +12,7 @@ namespace myEngine
     {
         //FIELDS
         public static IScene currentScene;
+        private static Type nextScene;
 
         public static void ChangeSceneOld(IScene scene)
         {
@@ -23,15 +24,24 @@ namespace myEngine
 
         public static void ChangeScene(Type scene)
         {
-            ClearScene();
-            currentScene = (IScene)Activator.CreateInstance(scene);
+            nextScene = scene;
 
-            currentScene.Start();
+            if (currentScene == null)
+            {
+                ChangeSceneNow();
+            }
+            else
+                Engine.lateEventSystem.AddEvent(new Event(ChangeSceneNow));
+        }
 
-            //Console.WriteLine(currentScene.GetType());
+        private static void ChangeSceneNow()
+        {
+            if (currentScene != null)
+                ClearScene();
 
-            //Type t = Type.GetType(scene.ToString());
-            //currentScene = (IScene)Activator.CreateInstance(t);
+            currentScene = (IScene)Activator.CreateInstance(nextScene);
+
+            //currentScene.Start();
         }
 
         public static void OnSceneChange()
@@ -47,7 +57,8 @@ namespace myEngine
         private static void ClearScene()
         {
             Engine.world.SkipUpdate();
-
+            Engine.renderingEngine.SkipGUI();
+            
             //Engine.world = new World();
             Engine.world.ClearWorld();
             //Engine.world.AddEntity(this);

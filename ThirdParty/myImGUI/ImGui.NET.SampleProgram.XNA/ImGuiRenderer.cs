@@ -234,7 +234,14 @@ namespace myEngine
             io.DisplaySize = new System.Numerics.Vector2(Settings.SCREEN_WIDTH, Settings.SCREEN_HEIGHT);
             io.DisplayFramebufferScale = new System.Numerics.Vector2(1f, 1f);
 
-            io.MousePos = new System.Numerics.Vector2(Mouse.position.X, Mouse.position.Y);
+
+            float ratioX = (float)Engine.game.Window.ClientBounds.Width / (float)Settings.SCREEN_WIDTH;
+            float ratioY = (float)Engine.game.Window.ClientBounds.Height / (float)Settings.SCREEN_HEIGHT;
+
+            float mouseX = Microsoft.Xna.Framework.Input.Mouse.GetState().X / ratioX;
+            float mouseY = Microsoft.Xna.Framework.Input.Mouse.GetState().Y / ratioY;
+
+            io.MousePos = new System.Numerics.Vector2(mouseX, mouseY);
 
             io.MouseDown[0] = mouse.LeftButton == ButtonState.Pressed;
             io.MouseDown[1] = mouse.RightButton == ButtonState.Pressed;

@@ -33,9 +33,10 @@ namespace myEngine
             return result.position;
         }
 
-        public static Vector2 WorldToScreen()
+        public static Vector2 WorldToScreen(Matrix cam, Vector2 wantedPos)
         {
-            return Vector2.Zero;
+            var matrix = Matrix.Invert(cam);
+            return Vector2.Transform(wantedPos, matrix) * new Vector2(1,-1);
         }
 
         public static float RandomBetween(float min, float max)

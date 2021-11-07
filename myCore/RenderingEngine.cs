@@ -13,13 +13,15 @@ namespace myEngine
         public static SpriteBatch spriteBatch;
         private RenderTarget2D renderTarget;
 
-        private static ImGuiRenderer imGuiRenderer;
+        public static ImGuiRenderer imGuiRenderer;
 
         public static PostProcessingProfile postProcessingProfile;
 
         public static GraphicsDeviceManager graphics;
 
         public Viewport viewPort;
+
+        bool skipGUI = false;
 
         //CONSTRUCTOR
         public RenderingEngine()
@@ -77,9 +79,12 @@ namespace myEngine
             //DRAW UI - ImGUI
             imGuiRenderer.BeforeLayout(Time.gameTime);
             SceneManager.currentScene?.DrawGUI();
-            imGuiRenderer.AfterLayout();
+            if(!skipGUI)
+                imGuiRenderer.AfterLayout();
+            skipGUI = false;
 
-            DrawSimpleShape.DrawRuller(new Vector2(viewPort.Width/2, viewPort.Height/2));
+            //DRAW RULLER CENTER VIEWPORT
+            //DrawSimpleShape.DrawRuller(new Vector2(viewPort.Width/2, viewPort.Height/2));
 
             Engine.game.GraphicsDevice.SetRenderTarget(null);
         }
@@ -100,6 +105,12 @@ namespace myEngine
             renderTarget.Dispose();
 
             Console.WriteLine("Screenshoot : " + path);
+        }
+
+        public void SkipGUI()
+        {
+            skipGUI = true;
+            imGuiRenderer.AfterLayout();
         }
     }
 }

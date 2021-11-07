@@ -18,6 +18,8 @@ namespace myEngine
         public SpriteEffects spriteEffect;
         public Effect effect;
 
+        public bool useScreenCoord = false;
+
         //CONSTRUCTOR
         public Sprite()
         {
@@ -95,14 +97,30 @@ namespace myEngine
             //spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied, null, null, null, effect, matrix);
             //spriteBatch.Begin(SpriteSortMode.Immediate);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, effect, matrix);
+            if(!useScreenCoord)
+            {
+                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, effect, matrix);
 
-            //effect?.CurrentTechnique.Passes[0].Apply();
+                //effect?.CurrentTechnique.Passes[0].Apply();
 
-            spriteBatch.Draw(this.texture, GetRec(), null, this.color, MathHelper.ToRadians(transform.rotation), GetOrigin(), spriteEffect, 
-                (float)( (Math.Clamp(drawOrder, -1000, 1000)+1000)) / 2000);
+                spriteBatch.Draw(this.texture, GetRec(), null, this.color, MathHelper.ToRadians(transform.rotation), GetOrigin(), spriteEffect,
+                    (float)((Math.Clamp(drawOrder, -1000, 1000) + 1000)) / 2000);
 
-            spriteBatch.End();
+                spriteBatch.End();
+            }
+            else
+            {
+                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, effect, null);
+
+                //effect?.CurrentTechnique.Passes[0].Apply();
+
+                spriteBatch.Draw(this.texture, GetRec(), null, this.color, MathHelper.ToRadians(transform.rotation), GetOrigin(), spriteEffect,
+                    (float)((Math.Clamp(drawOrder, -1000, 1000) + 1000)) / 2000);
+
+                spriteBatch.End();
+            }
+
+
         }
     }
 }

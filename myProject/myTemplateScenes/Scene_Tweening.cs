@@ -26,6 +26,11 @@ namespace myEngine
         //CONSTRUCTOR
         public Scene_Tweening()
         {
+            Settings.BACKGROUND_COLOR = Color.DarkOrchid;
+            camControl.isActive = true;
+
+            camera.transform.position += new Vector2(560, -Settings.SCREEN_HEIGHT/2);
+
             mySprites = new Sprite[20];
 
             random = new Random();
