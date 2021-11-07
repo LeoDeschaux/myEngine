@@ -11,7 +11,7 @@ It's built on top of the XNA/Monogame C# game framework.
 
 ***
 
-# Some exemples 
+# some examples
 
 <img src="https://media.giphy.com/media/qhWAK1gDdLqaKSSEfG/source.gif" width="100%"/>
 <img src="https://media.giphy.com/media/ghBe7bmaFABZLjGt9V/source.gif" width="100%"/>
