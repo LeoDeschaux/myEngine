@@ -8,3 +8,11 @@ It will probably end up being a game framework.
 I am doing this project to learn as much as possible about game programming.
 
 It's built on top of the XNA/Monogame C# game framework.
+
+***
+
+# Some exemples 
+
+![Gif fonctionnement](https://media.giphy.com/media/sla2HnCJ75JhkqUW6Q/giphy.gif)
+
+https://media.giphy.com/media/fTlOLwG2dyfYkinMVT/giphy.gif
