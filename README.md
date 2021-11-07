@@ -13,6 +13,5 @@ It's built on top of the XNA/Monogame C# game framework.
 
 # Some exemples 
 
-![Gif fonctionnement](https://media.giphy.com/media/fTlOLwG2dyfYkinMVT/giphy.gif)
-<img src="https://media.giphy.com/media/ghBe7bmaFABZLjGt9V/giphy.gif" width="769" height="451"/>
+<img src="https://media.giphy.com/media/fTlOLwG2dyfYkinMVT/giphy.gif" width="100%"/>
 <img src="https://media.giphy.com/media/ghBe7bmaFABZLjGt9V/source.gif" width="100%"/>
